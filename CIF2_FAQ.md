@@ -7,19 +7,19 @@ CIF2 is a revision and improvement of the IUCr's 20 year old CIF format ('CIF1')
 ## How does CIF2 improve on CIF1?
 
 CIF2 allows Unicode characters, and matrices and arrays as
-datavalues. It provides the more familiar triple quote (''')
+datavalues. It provides the more familiar triple quote (`'''`)
 alternative to semicolons as multi-line string delimiters, and it
-disallows embedded quotes/double quotes in delimited strings,
+disallows embedded quotes in delimited strings,
 simplifying parsing.
 
 ## I don't need that new stuff. Can't I just stick with CIF1?
 
 Absolutely. CIF1 was developed and promoted as an archival format, and the 
-IUCr are committed to supporting CIF1 in perpetuity.  As CIF2 becomes more
-widespread, CIF reading software may need to be prepared to handle CIF2 files.
+IUCr are committed to supporting CIF1 in perpetuity, as are the Protein
+Data Bank (wwPDB).
 What approach your software ultimately takes will depend upon
-what your upstream CIF providers/downstream CIF consumers do.  We will
-provide some tools for conversion between CIF2 and CIF1 so that you can
+what your ecosystem of CIF providers and CIF consumers do. 
+We will provide some tools for conversion between CIF2 and CIF1 so that you can
 continue to use CIF1 within your program.
 
 ## What tools are available for CIF2?
@@ -58,7 +58,7 @@ See the next questions for information specific to reading and writing CIFs.
 
 ## My software outputs CIF1 files.  What changes should I make when outputting CIF2 files?
 
-Firstly you should begin your files with the string '#\#CIF2.0'. Then
+Firstly you should begin your files with the string `#\#CIF2.0`. Then
 you should adjust your string datavalue output to use delimiters in
 most cases. See the separate document (insert linke) for the simple steps you need to
 take.  At a future date, when matrix or table-valued datanames are
