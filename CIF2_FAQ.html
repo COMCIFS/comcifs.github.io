@@ -6,30 +6,46 @@
   <meta name="generator" content="pandoc" />
   <title></title>
   <style type="text/css">code{white-space: pre;}</style>
-  <link rel="stylesheet" href="markdown4.css" type="text/css" />
+  <link href="data:text/css,%40charset%20%22utf%2D8%22%3B%0A%0A%2F%2A%2A%0A%20%2A%20markdown%2Ecss%0A%20%2A%0A%20%2A%20This%20program%20is%20free%20software%3A%20you%20can%20redistribute%20it%20and%2For%20modify%20it%20under%0A%20%2A%20the%20terms%20of%20the%20GNU%20Lesser%20General%20Public%20License%20as%20published%20by%20the%20Free%0A%20%2A%20Software%20Foundation%2C%20either%20version%203%20of%20the%20License%2C%20or%20%28at%20your%20option%29%20any%0A%20%2A%20later%20version%2E%0A%20%2A%0A%20%2A%20This%20program%20is%20distributed%20in%20the%20hope%20that%20it%20will%20be%20useful%2C%20but%20WITHOUT%0A%20%2A%20ANY%20WARRANTY%3B%20without%20even%20the%20implied%20warranty%20of%20MERCHANTABILITY%20or%20FITNESS%0A%20%2A%20FOR%20A%20PARTICULAR%20PURPOSE%2E%20See%20the%20GNU%20Lesser%20General%20Public%20License%20for%20more%0A%20%2A%20details%2E%0A%20%2A%0A%20%2A%20You%20should%20have%20received%20a%20copy%20of%20the%20GNU%20Lesser%20General%20Public%20License%0A%20%2A%20along%20with%20this%20program%2E%20If%20not%2C%20see%20http%3A%2F%2Fgnu%2Eorg%2Flicenses%2Flgpl%2Etxt%2E%0A%20%2A%0A%20%2A%20%40project%20%20%20%20%20%20Weblog%20and%20Open%20Source%20Projects%20of%20Florian%20Wolters%0A%20%2A%20%40version%20%20%20%20%20%20GIT%3A%20%24Id%24%0A%20%2A%20%40package%20%20%20%20%20%20xhtml%2Dcss%0A%20%2A%20%40author%20%20%20%20%20%20%20Florian%20Wolters%20%3Cflorian%2Ewolters%2E85%40googlemail%2Ecom%3E%0A%20%2A%20%40copyright%20%20%20%202012%20Florian%20Wolters%0A%20%2A%20%40cssdoc%20%20%20%20%20%20%20version%201%2E0%2Dpre%0A%20%2A%20%40license%20%20%20%20%20%20http%3A%2F%2Fgnu%2Eorg%2Flicenses%2Flgpl%2Etxt%20GNU%20Lesser%20General%20Public%20License%0A%20%2A%20%40link%20%20%20%20%20%20%20%20%20http%3A%2F%2Fgithub%2Ecom%2FFlorianWolters%2Fjekyll%2Dbootstrap%2Dtheme%0A%20%2A%20%40media%20%20%20%20%20%20%20%20all%0A%20%2A%20%40valid%20%20%20%20%20%20%20%20true%0A%20%2A%2F%0A%0Abody%20%7B%0A%20%20%20%20font%2Dfamily%3A%20Helvetica%2C%20Arial%2C%20Freesans%2C%20clean%2C%20sans%2Dserif%3B%0Apadding%3A1em%3B%0Amargin%3Aauto%3B%0Amax%2Dwidth%3A42em%3B%0Abackground%3A%23fefefe%3B%0A%7D%0A%0Ah1%2C%20h2%2C%20h3%2C%20h4%2C%20h5%2C%20h6%20%7B%0A%20%20%20%20font%2Dweight%3A%20bold%3B%0A%7D%0A%0Ah1%20%7B%0A%20%20%20%20color%3A%20%23000000%3B%0A%20%20%20%20font%2Dsize%3A%2028px%3B%0A%7D%0A%0Ah2%20%7B%0A%20%20%20%20border%2Dbottom%3A%201px%20solid%20%23CCCCCC%3B%0A%20%20%20%20color%3A%20%23000000%3B%0A%20%20%20%20font%2Dsize%3A%2024px%3B%0A%7D%0A%0Ah3%20%7B%0A%20%20%20%20font%2Dsize%3A%2018px%3B%0A%7D%0A%0Ah4%20%7B%0A%20%20%20%20font%2Dsize%3A%2016px%3B%0A%7D%0A%0Ah5%20%7B%0A%20%20%20%20font%2Dsize%3A%2014px%3B%0A%7D%0A%0Ah6%20%7B%0A%20%20%20%20color%3A%20%23777777%3B%0A%20%20%20%20background%2Dcolor%3A%20inherit%3B%0A%20%20%20%20font%2Dsize%3A%2014px%3B%0A%7D%0A%0Ahr%20%7B%0A%20%20%20%20height%3A%200%2E2em%3B%0A%20%20%20%20border%3A%200%3B%0A%20%20%20%20color%3A%20%23CCCCCC%3B%0A%20%20%20%20background%2Dcolor%3A%20%23CCCCCC%3B%0A%7D%0A%0Ap%2C%20blockquote%2C%20ul%2C%20ol%2C%20dl%2C%20li%2C%20table%2C%20pre%20%7B%0A%20%20%20%20margin%3A%2015px%200%3B%0A%7D%0A%0Acode%2C%20pre%20%7B%0A%20%20%20%20border%2Dradius%3A%203px%3B%0A%20%20%20%20background%2Dcolor%3A%20%23F8F8F8%3B%0A%20%20%20%20color%3A%20inherit%3B%0A%7D%0A%0Acode%20%7B%0A%20%20%20%20border%3A%201px%20solid%20%23EAEAEA%3B%0A%20%20%20%20margin%3A%200%202px%3B%0A%20%20%20%20padding%3A%200%205px%3B%0A%7D%0A%0Apre%20%7B%0A%20%20%20%20border%3A%201px%20solid%20%23CCCCCC%3B%0A%20%20%20%20line%2Dheight%3A%201%2E25em%3B%0A%20%20%20%20overflow%3A%20auto%3B%0A%20%20%20%20padding%3A%206px%2010px%3B%0A%7D%0A%0Apre%20%3E%20code%20%7B%0A%20%20%20%20border%3A%200%3B%0A%20%20%20%20margin%3A%200%3B%0A%20%20%20%20padding%3A%200%3B%0A%7D%0A%0Aa%2C%20a%3Avisited%20%7B%0A%20%20%20%20color%3A%20%234183C4%3B%0A%20%20%20%20background%2Dcolor%3A%20inherit%3B%0A%20%20%20%20text%2Ddecoration%3A%20none%3B%0A%7D%0A" rel="stylesheet" type="text/css" />
 </head>
 <body>
-<h1 id="cif2-frequently-asked-questions">CIF2 Frequently Asked Questions</h1>
-<h2 id="what-is-cif2">What is CIF2?</h2>
+<div id="TOC">
+<ul>
+<li><a href="#cif2-frequently-asked-questions">CIF2 Frequently Asked Questions</a><ul>
+<li><a href="#what-is-cif2">What is CIF2?</a></li>
+<li><a href="#how-does-cif2-improve-on-cif1">How does CIF2 improve on CIF1?</a></li>
+<li><a href="#i-dont-need-that-new-stuff.-cant-i-just-stick-with-cif1">I don't need that new stuff. Can't I just stick with CIF1?</a></li>
+<li><a href="#what-tools-are-available-for-cif2">What tools are available for CIF2?</a></li>
+<li><a href="#can-i-read-a-cif2-format-file-with-my-cif1-parser">Can I read a CIF2 format file with my CIF1 parser?</a></li>
+<li><a href="#can-i-write-a-parser-that-will-read-both-cif1-and-cif2-files">Can I write a parser that will read both CIF1 and CIF2 files?</a></li>
+<li><a href="#can-i-read-a-cif1-format-file-with-my-strict-cif2-parser">Can I read a CIF1 format file with my strict CIF2 parser?</a></li>
+<li><a href="#how-do-i-make-my-software-cif2-ready">How do I make my software CIF2-ready?</a></li>
+<li><a href="#my-software-outputs-cif1-files.-what-changes-should-i-make-when-outputting-cif2-files">My software outputs CIF1 files. What changes should I make when outputting CIF2 files?</a></li>
+<li><a href="#my-software-reads-cif-files.-how-do-i-become-cif2-ready">My software reads CIF files. How do I become CIF2 ready?</a></li>
+</ul></li>
+</ul>
+</div>
+<h1 id="cif2-frequently-asked-questions"><a href="#cif2-frequently-asked-questions">CIF2 Frequently Asked Questions</a></h1>
+<h2 id="what-is-cif2"><a href="#what-is-cif2">What is CIF2?</a></h2>
 <p>CIF2 is a revision and improvement of the IUCr's 20 year old CIF format ('CIF1').</p>
-<h2 id="how-does-cif2-improve-on-cif1">How does CIF2 improve on CIF1?</h2>
+<h2 id="how-does-cif2-improve-on-cif1"><a href="#how-does-cif2-improve-on-cif1">How does CIF2 improve on CIF1?</a></h2>
 <p>CIF2 allows Unicode characters, and matrices and arrays as datavalues. It provides the more familiar triple quote (<code>'''</code>) alternative to semicolons as multi-line string delimiters, and it disallows embedded quotes in delimited strings, simplifying parsing.</p>
-<h2 id="i-dont-need-that-new-stuff.-cant-i-just-stick-with-cif1">I don't need that new stuff. Can't I just stick with CIF1?</h2>
+<h2 id="i-dont-need-that-new-stuff.-cant-i-just-stick-with-cif1"><a href="#i-dont-need-that-new-stuff.-cant-i-just-stick-with-cif1">I don't need that new stuff. Can't I just stick with CIF1?</a></h2>
 <p>Absolutely. CIF1 was developed and promoted as an archival format, and the IUCr are committed to supporting CIF1 in perpetuity, as are the Protein Data Bank (wwPDB). What approach your software ultimately takes will depend upon what your ecosystem of CIF providers and CIF consumers do. We will provide some tools for conversion between CIF2 and CIF1 so that you can continue to use CIF1 within your program.</p>
-<h2 id="what-tools-are-available-for-cif2">What tools are available for CIF2?</h2>
+<h2 id="what-tools-are-available-for-cif2"><a href="#what-tools-are-available-for-cif2">What tools are available for CIF2?</a></h2>
 <p>The upcoming C-language CIFAPI reference implementation is fully conversant with CIF1 and CIF2. Once bindings to popular programming languages are made available (or using SWIG) it would be a good choice for many projects. Other CIF2-conversant software is listed on this page (create page and add link).</p>
-<h2 id="can-i-read-a-cif2-format-file-with-my-cif1-parser">Can I read a CIF2 format file with my CIF1 parser?</h2>
+<h2 id="can-i-read-a-cif2-format-file-with-my-cif1-parser"><a href="#can-i-read-a-cif2-format-file-with-my-cif1-parser">Can I read a CIF2 format file with my CIF1 parser?</a></h2>
 <p>Reading a CIF2 file with a CIF1 parser will not always succeed, due to the addition of unicode characters and new types of datavalues (tables, lists, additional string delimiters) in CIF2.</p>
 <p>However, if none of the new features are present in the CIF2 format file, a CIF1 parser will succeed. A CIF datafile containing only datanames defined in current dictionaries and not using the triple-quote or triple apostrophe delimiters will read in correctly as long as there are no undelimited datavalues starting with <code>[</code> or <code>{</code>.</p>
-<h2 id="can-i-write-a-parser-that-will-read-both-cif1-and-cif2-files">Can I write a parser that will read both CIF1 and CIF2 files?</h2>
+<h2 id="can-i-write-a-parser-that-will-read-both-cif1-and-cif2-files"><a href="#can-i-write-a-parser-that-will-read-both-cif1-and-cif2-files">Can I write a parser that will read both CIF1 and CIF2 files?</a></h2>
 <p>Yes, because CIF2 files are required to begin with the characters <code>#\#CIF_2.0</code>. You can choose which set of parsing rules to use depending on this string.</p>
-<h2 id="can-i-read-a-cif1-format-file-with-my-strict-cif2-parser">Can I read a CIF1 format file with my strict CIF2 parser?</h2>
+<h2 id="can-i-read-a-cif1-format-file-with-my-strict-cif2-parser"><a href="#can-i-read-a-cif1-format-file-with-my-strict-cif2-parser">Can I read a CIF1 format file with my strict CIF2 parser?</a></h2>
 <p>No, due to the header string mentioned above. Even if you ignore this header string, certain additional characters were disallowed in non-delimited strings in CIF2.</p>
-<h2 id="how-do-i-make-my-software-cif2-ready">How do I make my software CIF2-ready?</h2>
+<h2 id="how-do-i-make-my-software-cif2-ready"><a href="#how-do-i-make-my-software-cif2-ready">How do I make my software CIF2-ready?</a></h2>
 <p>See the next questions for information specific to reading and writing CIFs.</p>
-<h2 id="my-software-outputs-cif1-files.-what-changes-should-i-make-when-outputting-cif2-files">My software outputs CIF1 files. What changes should I make when outputting CIF2 files?</h2>
+<h2 id="my-software-outputs-cif1-files.-what-changes-should-i-make-when-outputting-cif2-files"><a href="#my-software-outputs-cif1-files.-what-changes-should-i-make-when-outputting-cif2-files">My software outputs CIF1 files. What changes should I make when outputting CIF2 files?</a></h2>
 <p>Firstly you should begin your files with the string <code>#\#CIF2.0</code>. Then you should adjust your string datavalue output to use delimiters in most cases. See the separate document (insert linke) for the simple steps you need to take. At a future date, when matrix or table-valued datanames are defined, you should be ready to output them with correct syntax.</p>
-<h2 id="my-software-reads-cif-files.-how-do-i-become-cif2-ready">My software reads CIF files. How do I become CIF2 ready?</h2>
+<h2 id="my-software-reads-cif-files.-how-do-i-become-cif2-ready"><a href="#my-software-reads-cif-files.-how-do-i-become-cif2-ready">My software reads CIF files. How do I become CIF2 ready?</a></h2>
 <p>You will need to enhance your old CIF1 parser with the ability to read (possibly nested) matrix and table datastructures, to recognise triple-quoted strings, and to accept Unicode.</p>
 </body>
 </html>
