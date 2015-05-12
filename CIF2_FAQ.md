@@ -15,8 +15,9 @@ simplifying parsing.
 ## I don't need that new stuff. Can't I just stick with CIF1?
 
 Absolutely. CIF1 was developed and promoted as an archival format, and the 
-IUCr are committed to supporting CIF1 in perpetuity, as are the Protein
-Data Bank (wwPDB).
+IUCr are committed to supporting CIF1 in perpetuity, as are the leading
+crystallographic database services such as the Protein Data Bank (wwPDB), 
+CCDC, COD and ICSD.
 What approach your software ultimately takes will depend upon
 what your ecosystem of CIF providers and CIF consumers do. 
 We will provide some tools for conversion between CIF2 and CIF1 so that you can
@@ -24,10 +25,10 @@ continue to use CIF1 within your program.
 
 ## What tools are available for CIF2?
 
-The upcoming C-language CIFAPI reference implementation is fully conversant with
+The upcoming C-language CIFAPI implementation developed by John Bollinger is fully conversant with
 CIF1 and CIF2. Once bindings to popular programming languages are made available (or using
 SWIG) it would be a good choice for many projects.  Other CIF2-conversant software
-is listed on this page (create page and add link).
+is listed on [this page](cif2_software.html).
 
 ## Can I read a CIF2 format file with my CIF1 parser?
 
@@ -39,7 +40,7 @@ CIF2.
 However, if none of the new features are
 present in the CIF2 format file, a CIF1 parser will succeed.  A
 CIF datafile containing only datanames defined in current dictionaries and not using
-the triple-quote or triple apostrophe delimiters will read in correctly as long
+`'''` or `"""` as delimiters will read in correctly as long
 as there are no undelimited datavalues starting with `[` or `{`.
 
 ## Can I write a parser that will read both CIF1 and CIF2 files?
@@ -49,8 +50,15 @@ choose which set of parsing rules to use depending on this string.
 
 ## Can I read a CIF1 format file with my strict CIF2 parser?
 
-No, due to the header string mentioned above. Even if you ignore this header string,
-certain additional characters were disallowed in non-delimited strings in CIF2.
+No, due to the header string mentioned above, and see the answer to the next question.
+
+## Can I read a CIF1 format file with my liberal CIF2 parser?
+
+If you ignore the header string mentioned above, your chances are good of being
+able to read in a CIF1 file correctly.  The key differences to watch out for are
+strings with embedded delimiters, like `'CA'T'`, which are forbidden in CIF2, 
+and non-delimited strings that start with `{` characters, which are used
+to start CIF2 'Table' datavalues. Neither of these types of datavalues are particularly common.
 
 ## How do I make my software CIF2-ready?
 
@@ -60,7 +68,7 @@ See the next questions for information specific to reading and writing CIFs.
 
 Firstly you should begin your files with the string `#\#CIF2.0`. Then
 you should adjust your string datavalue output to use delimiters in
-most cases. See the separate document (insert linke) for the simple steps you need to
+most cases. See the [separate document](simple_steps.html) for the simple steps you need to
 take.  At a future date, when matrix or table-valued datanames are
 defined, you should be ready to output them with correct syntax.
 
