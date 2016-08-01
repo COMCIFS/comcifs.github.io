@@ -10,17 +10,17 @@ datablock are restricted to single-row loops (or equivalently,
 key-value pairs) by linking their category key to a
 one-value-per-block 'entry' category.
 
-In some situations, being able to loop a conventionally category is
-desirable.  For example, structural data might be presented in both
-standard and alternate space group settings, meaning multiple space
-groups are included in the datablock.  While such a use of CIF
-datanames may appear to be benign, it can easily lead to CIF-reading
-software silently producing incorrect results.  The underlying reason
-for this is that interpretation of looped dataname values often
-depends on values of unlooped datanames (e.g. unit cell parameters are
-needed to transform fractional coordinates into distances), and more
-than one value for these unlooped datanames therefore leads to
-ambiguity.
+In some situations, being able to loop a conventionally single-row
+category is desirable.  For example, structural data might be
+presented in both standard and alternate space group settings, meaning
+multiple space groups are included in the datablock.  While such a use
+of CIF datanames may appear to be benign, it can easily lead to
+CIF-reading software silently producing incorrect results.  The
+underlying reason for this is that interpretation of looped dataname
+values often depends on values of unlooped datanames (e.g. unit cell
+parameters are needed to transform fractional coordinates into
+distances), and more than one value for these unlooped datanames
+therefore leads to ambiguity.
 
 We here propose a mechanism that allows any dataname to appear
 in a multi-row loop, while protecting current software from
@@ -80,6 +80,29 @@ are allowed to add keys to previously-defined categories.  Datafiles
 written according to the expansion dictionaries must set _audit.schema
 appropriately, and change the 'Set' designation of any categories that
 can now be written with multiple loop packets.
+
+(vi) In the current draft cif_core dictionary, datanames for
+describing the unit cell are split between the `cell_angle`,
+`cell_length`, `cell_reciprocal_*` etc.  categories.  These categories
+are all single row (i.e. 'Set') categories and would vary together,
+that is, it is unlikely that one of these categories would have
+multiple rows while the others contained only a single row.  The
+reason for separating these datanames into separate categories
+therefore appears to be to allow the dREL expressions to become more
+compact: for example, cell volume can be written as `v.a * ( v.b ^
+v.c)` instead of the lengthier `c.vector_a * (c.vector_b ^
+c.vector_c)`.  Under the current proposal, we would need to create a
+child key for every single `cell_` category, even though all datanames
+could instead be contained in a single category and only a single key
+created.  Note also that the DDL2 datanames all belong to the `cell`
+category, so that the DDLm datanames are distinct from both the DDL2
+and DDL1 datanames because the period occurs in a different position.
+On balance, the proliferation of child keys and harmonisation with
+DDL2 is considered to outweigh the concision of the dREL expressions.
+Therefore, it is proposed that the current cif_core is altered so that
+all the `cell_` datanames return to a single `cell` category. Note
+that this does not include the `cell_measurement` and
+`cell_measurement_reflns` categories, which is clearly separate.
 
 ### dREL
 
