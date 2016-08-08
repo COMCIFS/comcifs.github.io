@@ -77,11 +77,14 @@ definition.
 
 (v) Once `_audit.schema` checking is widespread, expansion dictionaries
 are allowed to add keys to previously-defined categories.  Datafiles
-written according to the expansion dictionaries must set _audit.schema
+written according to the expansion dictionaries must set `_audit.schema`
 appropriately, and change the 'Set' designation of any categories that
 can now be written with multiple loop packets.
 
-(vi) In the current draft cif_core dictionary, datanames for
+(vi) Most datanames currently in child categories of `cell` (e.g.
+`cell_length.a` is in category `cell_length`) are returned to the
+`cell` category (so `cell_length.a` becomes `cell.length_a`).
+In the current draft cif_core dictionary, datanames for
 describing the unit cell are split between the `cell_angle`,
 `cell_length`, `cell_reciprocal_*` etc.  categories.  These categories
 are all single row (i.e. 'Set') categories and would vary together,
@@ -152,6 +155,11 @@ is adopted:
      normal methods, with the compound key values described in the
      previous sentence placed in scope.
 
+## Example
+
+An annotated example symCIF dictionary using the above mechanisms is
+provided [here](cif_sym.dic.annotated.md).
+
 ## Discussion
 
 Although this proposal involves adding an extra key dataname to virtually
@@ -184,16 +192,20 @@ in ordinary CIF data files;
 
 In a separate DDLm dictionary file (a successor to symCIF):
 
-(iii) a new category, `space_group_tables` is defined, containing a
-single default-valued (key) dataname;
-(iv) all categories that previously assumed a single space group are provided
-     with child keys of `space_group_tables`. In particular, the keys removed in
-     step (ii) above are redefined as child keys of `space_group`.
+(iii) the `space_group` category is provided with an additional key dataname
+
+(iv) _all_ categories that previously assumed a single space group are provided
+     with child keys of `space_group`, as done previously in the old symCIF
+     dictionary. In particular, the keys removed in
+     step (ii) above once again become child keys of `space_group`.
 
 Finally:
 (v) a new enumerated value of `_audit.schema` is defined,
 (e.g. 'space group tables') corresponding to a datablock possibly
-containing multiple packets in the category `space_group_tables`.
+containing multiple packets in the category `space_group`.
+
+Note that [the example symCIF dictionary](cif_sym.dic.annotated.md) instead defines
+a new category, `space_group_hub` that `space_group` is a child of, for demonstration purposes.
 
 ## Appendix I: definition of `_audit.schema`
 ```
