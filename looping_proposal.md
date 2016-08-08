@@ -4,11 +4,7 @@
 
 In the original DDL1 and the current version of DDLm, categories must
 be explicitly labelled as loopable in order for their datanames to
-appear in multi-row loops.  In DDL2, all categories are notionally
-loopable, but datanames for which only one value is allowed per
-datablock are restricted to single-row loops (or equivalently,
-key-value pairs) by linking their category key to a
-one-value-per-block 'entry' category.
+appear in multi-row loops. 
 
 In some situations, being able to loop a conventionally single-row
 category is desirable.  For example, structural data might be
