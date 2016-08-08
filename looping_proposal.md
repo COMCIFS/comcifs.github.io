@@ -24,8 +24,7 @@ inadvertent misinterpretation of such files.
 
 ## Proposal summary
 
-A new dataname, `_audit.schema`, is defined and must be checked by all
-CIF-reading software.  Values of this dataname are linked to special
+A new dataname, `_audit.schema`, is defined.  Values of this dataname are linked to special
 categories that are used to loop and link other categories together.
 All CIF-reading software should check this dataname.  CIF-writing
 software need only set this dataname if a non-default value is
