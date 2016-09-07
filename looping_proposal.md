@@ -24,11 +24,12 @@ inadvertent misinterpretation of such files.
 
 ## Proposal summary
 
-A new dataname, `_audit.schema`, is defined.  Values of this dataname are linked to special
-categories that are used to loop and link other categories together.
-All CIF-reading software should check this dataname.  CIF-writing
-software need only set this dataname if a non-default value is
-chosen.
+A new dataname, `_audit.schema`, is defined.  Values of this dataname
+are linked to special categories that are used to loop and link other
+categories together.  All CIF-reading software should check this
+dataname.  CIF-writing software need only set this dataname if a
+non-default value is chosen. All current CIF usage corresponds to the
+default value.
 
 ## Definitions
 
@@ -53,30 +54,17 @@ check its value; if missing, the value defaults to `Base`,
 corresponding to all current CIF datafiles.  See Appendix I for a
 formal DDLm definition.
 
-(ii) A 'master hub' Loop category is added to the cif_core dictionary,
-corresponding to the default value of `_audit.schema`. The main role of
-this category is to restrict datanames to a single value, which mimics
-current CIF usage (see next point). This category contains a single
-key dataname provided with a default value, meaning that the category
-may be omitted from the datafile if only one packet is present (the
-case for all currently valid CIF files). See Appendix II for a draft
-definition.
+(ii) A 'datablock equivalent' expansion dictionary is defined, which
+would allow information from multiple (core CIF) datablocks to be
+presented in a single datablock (see definition in Appendix II).
 
-(iii) All categories are provided with a 'master hub' child key. This
-      is the only key provided for 'Set' categories in the core
-      dictionary, thus restricting 'Set' categories to a single value
-      for each dataname whenever the 'master hub' has a single entry
-      (the default). The designation of a category as 'Set' is
-      thus equivalent to stating that it has a single key which takes a
-      single value in a datablock.
-
-(v) Once `_audit.schema` checking is widespread, expansion dictionaries
+(iii) Once `_audit.schema` checking is widespread, expansion dictionaries
 are allowed to add keys to previously-defined categories.  Datafiles
 written according to the expansion dictionaries must set `_audit.schema`
 appropriately, and change the 'Set' designation of any categories that
 can now be written with multiple loop packets.
 
-(vi) Most datanames currently in child categories of `cell` (e.g.
+(iv) Most datanames currently in child categories of `cell` (e.g.
 `cell_length.a` is in category `cell_length`) are returned to the
 `cell` category (so `cell_length.a` becomes `cell.length_a`).
 In the current draft cif_core dictionary, datanames for
@@ -152,17 +140,26 @@ is adopted:
 
 ## Example
 
-An annotated example symCIF dictionary using the above mechanisms is
-provided [here](cif_sym.dic.annotated.md).
+For a simple example, consider the 'datablock equivalent' expansion
+dictionary sketched out in Appendix II.  This dictionary imports the
+core dictionary, in the process adding a single category ('ENTRY') and
+child keys of this category to every core dictionary category.  As
+there is a default value for the ENTRY category key, the overall
+dictionary remains a valid basis for interpreting 'normal' datablocks,
+as any missing ENTRY key and child keys simply take the default value.
+
+Should an application wish to present in a single datablock data that
+normally requires several datablocks, that application can adopt the
+'entry' schema, under which multiple values of entry.id are
+possible. The ENTRY category then has multiple values of entry.id, and
+so all other categories must also specify for each packet which value
+of entry.id that information relates to by explicitly setting the
+value of their ENTRY child key.
+
+For a further example, an annotated symCIF dictionary using the above
+mechanisms is provided [here](cif_sym.dic.annotated.md).
 
 ## Discussion
-
-Although this proposal involves adding an extra key dataname to virtually
-all categories, by giving a default value for these datanames they can
-effectively be left out of datafiles (or ignored) as long as the
-master hub has only one row. The default value of `_audit.schema` refers
-to exactly this situation.  Minimal space will be occupied in the dictionary
-file by these definitions due to use of the templating mechanism.
 
 Each `_audit.schema` value refers to a distinct set of categories that can
 have multiple packets. Software written for `_audit.schema` "A" will in general
@@ -172,6 +169,13 @@ the set of multiple-packet categories for "B" is a subset of those for "A".
 Note that `_audit.schema` is advisory and that the same information can
 be determined from the dictionaries listed in `audit_conform`.
 
+An earlier version of this proposal suggested including the 'datablock
+equivalent' expansion dictionary mentioned above into the core
+dictionary. This category ('ENTRY') and keys have been moved to an
+expansion dictionary in this version of the proposal to reduce clutter
+in the core dictionary. Appendix II is an excerpt from this
+dictionary.
+
 ### Legacy issues
 
 One category (`space_group`) in the DDL1 cif core dictionary was mistakenly
@@ -179,9 +183,8 @@ allowed to be looped without making corresponding alterations to the
 many other categories that relied upon having a single space group. This
 is fixed under the current proposal as follows:
 
-(i) category `space_group` is, as for most other categories, given a
-child key of the master hub key, thereby limiting it to a single value
-in ordinary CIF data files;
+(i) category `space_group` is reverted to a Set category;
+
 (ii) `space_group.id`, `space_group_Wyckoff.sg_id` and
      `space_group_symop.sg_id` are removed
 
@@ -215,11 +218,11 @@ _description.text
      correctly interpret datafiles written against a different schema.
 
      Specifically, each value of _audit.schema corresponds to a list
-     of categories that were restricted to a single packet in the
-     default Base schema, but which can contain multiple packets in
-     the specified schema.  All categories containing child keys of
-     the listed categories may also contain multiple packets and do
-     not need to be listed.
+     of categories that were (potentially implicitly) restricted to a
+     single packet in the default Base schema, but which can contain
+     multiple packets in the specified schema.  All categories
+     containing child keys of the listed categories may also contain
+     multiple packets and do not need to be listed.
      
      The category list for each schema may instead be determined from
      the list of dictionaries that this datablock conforms to (see
@@ -235,6 +238,7 @@ _enumeration_set.state
 _enumeration_set.detail
     Base                'Original Core CIF schema'
    'Space group tables'  [ space_group_tables ]
+    Entry                [ entry ]   #information from multiple datablocks in one block
     Custom              'Examine dictionaries provided in _audit_conform'
     Local               'Locally modified dictionaries. These datafiles should not be distributed'
 _enumeration.default    Base
@@ -247,12 +251,17 @@ save_ENTRY
 
 _definition.id                          ENTRY
 _definition.scope                       Category
-_definition.class                       Loop
+_definition.class                       Set
 _description.text
 ;
-    All categories in a datablock have a child key of this
-    category.  This category makes explicit the links implied
-    by the grouping together of categories in a datablock,
+
+    All other categories are provided with keys that are linked to
+    the key of this category. In this way, this category can be used
+    to replace the implicit linking that exists when datanames appear
+    in the same data block, and as a result multiple rows in this
+    category allow the data content from multiple data blocks to
+    be instead presented in a single data block.
+
 ;
 _name.category_id                       CIF_CORE
 _name.object_id                         ENTRY
