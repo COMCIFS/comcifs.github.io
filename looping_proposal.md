@@ -178,6 +178,8 @@ dictionary.
 
 ### Legacy issues
 
+#### Space_group
+
 One category (`space_group`) in the DDL1 cif core dictionary was mistakenly
 allowed to be looped without making corresponding alterations to the
 many other categories that relied upon having a single space group. This
@@ -204,6 +206,22 @@ containing multiple packets in the category `space_group`.
 
 Note that [the example symCIF dictionary](cif_sym.dic.annotated.md) instead defines
 a new category, `space_group_hub` that `space_group` is a child of, for demonstration purposes.
+
+#### Exptl_crystal
+
+The DDL1 dictionaries define `exptl_crystal_id` with child keys in
+`diffrn_refln` and `refln`.  However, `_diffrn_refln_crystal_id` does
+not appear in a looped context in the 380,000 file COD corpus, and
+`_exptl_crystal_id` appears only once as a looped dataitem in 3
+incorrectly constructed files from the same high pressure experiment.
+`refln_crystal_id` never appears. From this we conclude that current
+software assumes a single value for `exptl_crystal_id`. In going from
+DDL1 to DDLm we must decide whether a category listed as 'both' for
+looping in DDL1 should be Set or Loop: given that current usage is to
+treat `exptl_crystal` as a Set category, we define `_exptl_crystal_id`
+in a `exptl_crystal` Set category and remove all child keys into a
+separate 'multi-crystal' dictionary in which `exptl_crystal` is
+looped.
 
 ## Appendix I: definition of `_audit.schema`
 ```
