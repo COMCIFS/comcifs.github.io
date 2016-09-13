@@ -734,7 +734,7 @@ asciidoc.install(2);
 <body class="article">
 <div id="header">
 <h1>CIF_CORE</h1>
-<span id="revdate">2016-09-07</span>
+<span id="revdate">2016-09-13</span>
 </div>
 <div id="content">
 <div id="preamble">
@@ -881,16 +881,6 @@ _diffrn.ambient_temp_lt<br /></p></div>
 <div class="paragraph"><p>_diffrn_ambient_temperature_su<br />
 _diffrn_ambient_temp_su<br />
 _diffrn.ambient_temp_esd<br /></p></div>
-</div></div>
-</div>
-<div class="sect2">
-<h3 id="_diffrn_crystal_id">_diffrn.crystal_id</h3>
-<div class="paragraph"><p>This data item is a pointer to _exptl_crystal.id in the
-     EXPTL_CRYSTAL category.</p></div>
-<div class="sidebarblock">
-<div class="content">
-<div class="title">Aliases</div>
-<div class="paragraph"><p>_diffrn_crystal_id<br /></p></div>
 </div></div>
 </div>
 <div class="sect2">
@@ -1737,15 +1727,6 @@ _diffrn_radiation_wavelength.wavelength<br /></p></div>
 <div class="content">
 <div class="title">Aliases</div>
 <div class="paragraph"><p>_diffrn_refln_counts_total<br /></p></div>
-</div></div>
-</div>
-<div class="sect2">
-<h3 id="_diffrn_refln_crystal_id_8226">_diffrn_refln.crystal_id&#8226;</h3>
-<div class="paragraph"><p>Code identifying each crystal if multiple crystals are used.</p></div>
-<div class="sidebarblock">
-<div class="content">
-<div class="title">Aliases</div>
-<div class="paragraph"><p>_diffrn_refln_crystal_id<br /></p></div>
 </div></div>
 </div>
 <div class="sect2">
@@ -2767,16 +2748,6 @@ _diffrn_standard_refln.diffrn_id<br /></p></div>
 <div class="content">
 <div class="title">Aliases</div>
 <div class="paragraph"><p>_refln_class_code<br /></p></div>
-</div></div>
-</div>
-<div class="sect2">
-<h3 id="_refln_crystal_id_8226">_refln.crystal_id&#8226;</h3>
-<div class="paragraph"><p>Code identifying each crystal if multiple crystals are used. Is
-     used to link with crystals identified by _exptl_crystal.id.</p></div>
-<div class="sidebarblock">
-<div class="content">
-<div class="title">Aliases</div>
-<div class="paragraph"><p>_refln_crystal_id<br /></p></div>
 </div></div>
 </div>
 <div class="sect2">
@@ -3946,10 +3917,104 @@ _exptl.details<br /></p></div>
 <div class="paragraph"><p>The CATEGORY of data items used to describe the parameters of
      the crystal unit cell and their measurement.</p></div>
 <div class="sect2">
+<h3 id="_cell_angle_alpha">_cell.angle_alpha</h3>
+<div class="paragraph"><p>(Generic definition) The angle between the bounding cell axes.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p>_cell_angle_alpha<br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_cell_angle_alpha_su">_cell.angle_alpha_su</h3>
+<div class="paragraph"><p>(Generic definition) Standard uncertainty of the angle between the bounding cell axes.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p>_cell_angle_alpha_su<br />
+_cell.angle_alpha_esd<br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_cell_angle_beta">_cell.angle_beta</h3>
+<div class="paragraph"><p>(Generic definition) The angle between the bounding cell axes.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p>_cell_angle_beta<br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_cell_angle_beta_su">_cell.angle_beta_su</h3>
+<div class="paragraph"><p>(Generic definition) Standard uncertainty of the angle between the bounding cell axes.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p>_cell_angle.beta_su<br />
+_cell_angle_beta_su<br />
+_cell.angle_beta_esd<br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_cell_angle_gamma">_cell.angle_gamma</h3>
+<div class="paragraph"><p>(Generic definition) The angle between the bounding cell axes.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p>_cell_angle_gamma<br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_cell_angle_gamma_su">_cell.angle_gamma_su</h3>
+<div class="paragraph"><p>(Generic definition) Standard uncertainty of the angle between the bounding cell axes.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p>_cell_angle.gamma_su<br />
+_cell_angle_gamma_su<br />
+_cell.angle_gamma_esd<br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
 <h3 id="_cell_atomic_mass">_cell.atomic_mass</h3>
 <div class="paragraph"><p>Atomic mass of the contents of the unit cell. This calculated
      from the atom sites present in the ATOM_TYPE list, rather than
      the ATOM_SITE lists of atoms in the refined model.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_cell_convert_uij_to_betaij">_cell.convert_Uij_to_betaij</h3>
+<div class="paragraph"><p>The reciprocal space matrix for converting the U(ij) matrix of
+     atomic displacement parameters to a dimensionless beta(IJ) matrix.
+     The adp factor in a structure factor expression:</p></div>
+<div class="literalblock">
+<div class="content">
+<pre><code>t = exp -2pi**2 ( U11    h h a* a* + ...... 2 U23    k l b* c* )
+t = exp - 0.25  ( B11    h h a* a* + ...... 2 B23    k l b* c* )
+  = exp -       ( beta11 h h + ............ 2 beta23 k l )</code></pre>
+</div></div>
+<div class="literalblock">
+<div class="content">
+<pre><code>The conversion of the U or B matrices to the beta matrix</code></pre>
+</div></div>
+<div class="literalblock">
+<div class="content">
+<pre><code>beta =   C U C   =    C B C /8pi**2</code></pre>
+</div></div>
+<div class="literalblock">
+<div class="content">
+<pre><code>where C is conversion matrix defined here.</code></pre>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_cell_convert_uiso_to_uij">_cell.convert_Uiso_to_Uij</h3>
+<div class="paragraph"><p>The reciprocal space matrix for converting the isotropic Uiso
+     atomic displacement parameter to the anisotropic matrix Uij.</p></div>
+<div class="literalblock">
+<div class="content">
+<pre><code>                 | 1            cos(gamma*)   cos(beta*)  |
+U[i,j]  = Uiso * | cos(gamma*)  1             cos(alpha*) |
+                 | cos(beta*)   cos(alpha*)   1           |</code></pre>
+</div></div>
 </div>
 <div class="sect2">
 <h3 id="_cell_formula_units_z">_cell.formula_units_Z</h3>
@@ -3960,6 +4025,63 @@ _exptl.details<br /></p></div>
 <div class="content">
 <div class="title">Aliases</div>
 <div class="paragraph"><p>_cell_formula_units_Z<br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_cell_length_a">_cell.length_a</h3>
+<div class="paragraph"><p>(Generic definition) The length of each cell axis.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p>_cell_length_a<br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_cell_length_a_su">_cell.length_a_su</h3>
+<div class="paragraph"><p>(Generic definition) Standard uncertainty of the length of each cell axis.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p>_cell_length_a_su<br />
+_cell.length_a_esd<br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_cell_length_b">_cell.length_b</h3>
+<div class="paragraph"><p>(Generic definition) The length of each cell axis.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p>_cell_length_b<br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_cell_length_b_su">_cell.length_b_su</h3>
+<div class="paragraph"><p>(Generic definition) Standard uncertainty of the length of each cell axis.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p>_cell_length_b_su<br />
+_cell.length_b_esd<br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_cell_length_c">_cell.length_c</h3>
+<div class="paragraph"><p>(Generic definition) The length of each cell axis.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p>_cell_length_c<br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_cell_length_c_su">_cell.length_c_su</h3>
+<div class="paragraph"><p>(Generic definition) Standard uncertainty of the length of each cell axis.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p>_cell_length_c_su<br />
+_cell.length_c_esd<br /></p></div>
 </div></div>
 </div>
 <div class="sect2">
@@ -3974,6 +4096,157 @@ _exptl.details<br /></p></div>
      with orthogonal axes X,Y,Z so that c||Z and b in plane YZ.</p></div>
 </div>
 <div class="sect2">
+<h3 id="_cell_reciprocal_angle_alpha">_cell.reciprocal_angle_alpha</h3>
+<div class="paragraph"><p>Reciprocal of the angle between _cell.length_b and _cell.length_c.
+     Ref: Buerger, M. J. (1942). X-ray Crystallography, p. 360.
+          New York: John Wiley &amp; Sons Inc.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p>_cell_reciprocal_angle_alpha<br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_cell_reciprocal_angle_alpha_su">_cell.reciprocal_angle_alpha_su</h3>
+<div class="paragraph"><p>Standard Uncertainty of the
+     Reciprocal of the angle between _cell.length_b and _cell.length_c.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p>_cell_reciprocal_angle_alpha_su<br />
+_cell.reciprocal_angle_alpha_esd<br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_cell_reciprocal_angle_beta">_cell.reciprocal_angle_beta</h3>
+<div class="paragraph"><p>Reciprocal of the angle between _cell.length_a and _cell.length_c.
+     Ref: Buerger, M. J. (1942). X-ray Crystallography, p. 360.
+          New York: John Wiley &amp; Sons Inc.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p>_cell_reciprocal_angle_beta<br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_cell_reciprocal_angle_beta_su">_cell.reciprocal_angle_beta_su</h3>
+<div class="paragraph"><p>Standard Uncertainty of the
+     Reciprocal of the angle between _cell.length_a and _cell.length_c.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p>_cell_reciprocal_angle_beta_su<br />
+_cell.reciprocal_angle_beta_esd<br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_cell_reciprocal_angle_gamma">_cell.reciprocal_angle_gamma</h3>
+<div class="paragraph"><p>Reciprocal of the angle between _cell.length_a and _cell.length_b.
+     Ref: Buerger, M. J. (1942). X-ray Crystallography, p. 360.
+          New York: John Wiley &amp; Sons Inc.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p>_cell_reciprocal_angle_gamma<br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_cell_reciprocal_angle_gamma_su">_cell.reciprocal_angle_gamma_su</h3>
+<div class="paragraph"><p>Standard Uncertainty of the
+     Reciprocal of the angle between _cell.length_a and _cell.length_b.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p>_cell_reciprocal_angle_gamma_su<br />
+_cell.reciprocal_angle_gamma_esd<br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_cell_reciprocal_length_a">_cell.reciprocal_length_a</h3>
+<div class="paragraph"><p>Reciprocal of the _cell.length_a.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p>_cell_reciprocal_length_a<br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_cell_reciprocal_length_a_su">_cell.reciprocal_length_a_su</h3>
+<div class="paragraph"><p>Standard Uncertainty of the reciprocal of the _cell.length_a.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p>_cell_reciprocal_length_a_su<br />
+_cell.reciprocal_length_a_esd<br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_cell_reciprocal_length_b">_cell.reciprocal_length_b</h3>
+<div class="paragraph"><p>Reciprocal of the _cell.length_b.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p>_cell_reciprocal_length_b<br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_cell_reciprocal_length_b_su">_cell.reciprocal_length_b_su</h3>
+<div class="paragraph"><p>Standard Uncertainty of the reciprocal of the _cell.length_b.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p>_cell_reciprocal_length_b_su<br />
+_cell.reciprocal_length_b_esd<br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_cell_reciprocal_length_c">_cell.reciprocal_length_c</h3>
+<div class="paragraph"><p>Reciprocal of the _cell.length_c.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p>_cell_reciprocal_length_c<br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_cell_reciprocal_length_c_su">_cell.reciprocal_length_c_su</h3>
+<div class="paragraph"><p>Standard Uncertainty of the reciprocal of the _cell.length_c.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p>_cell_reciprocal_length_c_su<br />
+_cell.reciprocal_length_c_esd<br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_cell_reciprocal_metric_tensor">_cell.reciprocal_metric_tensor</h3>
+<div class="paragraph"><p>The reciprocal (contravariant) metric tensor used to transform
+     vectors and coordinates from reciprocal space to real (direct)
+     space.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_cell_reciprocal_orthogonal_matrix">_cell.reciprocal_orthogonal_matrix</h3>
+<div class="paragraph"><p>Orthogonal matrix of the reciprocal space. The matrix may be
+     used to transform the non-orthogonal vector h = (h,k,l) into
+     the orthogonal indices p = (p,q,r)</p></div>
+<div class="literalblock">
+<div class="content">
+<pre><code>M h = p</code></pre>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_cell_reciprocal_vector_a">_cell.reciprocal_vector_a</h3>
+<div class="paragraph"><p>Reciprocal of the _cell.vector_a.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_cell_reciprocal_vector_b">_cell.reciprocal_vector_b</h3>
+<div class="paragraph"><p>Reciprocal of the _cell.vector_b.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_cell_reciprocal_vector_c">_cell.reciprocal_vector_c</h3>
+<div class="paragraph"><p>Reciprocal of the _cell.vector_c.</p></div>
+</div>
+<div class="sect2">
 <h3 id="_cell_special_details">_cell.special_details</h3>
 <div class="paragraph"><p>Description of special aspects of the cell choice, noting
      possible alternative settings.</p></div>
@@ -3983,6 +4256,18 @@ _exptl.details<br /></p></div>
 <div class="paragraph"><p>_cell_special_details<br />
 _cell.details<br /></p></div>
 </div></div>
+</div>
+<div class="sect2">
+<h3 id="_cell_vector_a">_cell.vector_a</h3>
+<div class="paragraph"><p>The cell vector along the x axis.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_cell_vector_b">_cell.vector_b</h3>
+<div class="paragraph"><p>The cell vector along the y axis.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_cell_vector_c">_cell.vector_c</h3>
+<div class="paragraph"><p>The cell vector along the z axis.</p></div>
 </div>
 <div class="sect2">
 <h3 id="_cell_volume">_cell.volume</h3>
@@ -4001,140 +4286,6 @@ _cell.details<br /></p></div>
 <div class="title">Aliases</div>
 <div class="paragraph"><p>_cell_volume_su<br />
 _cell.volume_esd<br /></p></div>
-</div></div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_cell_angle">CELL_ANGLE</h2>
-<div class="sectionbody">
-<div class="paragraph"><p>The CATEGORY of data items used to describe the angles between
-     the axes in the crystal unit cell.</p></div>
-<div class="sect2">
-<h3 id="_cell_angle_alpha">_cell_angle.alpha</h3>
-<div class="paragraph"><p>(Generic definition) The angle between the bounding cell axes.</p></div>
-<div class="sidebarblock">
-<div class="content">
-<div class="title">Aliases</div>
-<div class="paragraph"><p>_cell_angle_alpha<br />
-_cell.angle_alpha<br /></p></div>
-</div></div>
-</div>
-<div class="sect2">
-<h3 id="_cell_angle_alpha_su">_cell_angle.alpha_su</h3>
-<div class="paragraph"><p>(Generic definition) Standard uncertainty of the angle between the bounding cell axes.</p></div>
-<div class="sidebarblock">
-<div class="content">
-<div class="title">Aliases</div>
-<div class="paragraph"><p>_cell_angle_alpha_su<br />
-_cell.angle_alpha_esd<br /></p></div>
-</div></div>
-</div>
-<div class="sect2">
-<h3 id="_cell_angle_beta">_cell_angle.beta</h3>
-<div class="paragraph"><p>(Generic definition) The angle between the bounding cell axes.</p></div>
-<div class="sidebarblock">
-<div class="content">
-<div class="title">Aliases</div>
-<div class="paragraph"><p>_cell_angle_beta<br />
-_cell.angle_beta<br /></p></div>
-</div></div>
-</div>
-<div class="sect2">
-<h3 id="_cell_angle_beta_su">_cell_angle.beta_su</h3>
-<div class="paragraph"><p>(Generic definition) Standard uncertainty of the angle between the bounding cell axes.</p></div>
-<div class="sidebarblock">
-<div class="content">
-<div class="title">Aliases</div>
-<div class="paragraph"><p>_cell_angle_beta_su<br />
-_cell.angle_beta_esd<br /></p></div>
-</div></div>
-</div>
-<div class="sect2">
-<h3 id="_cell_angle_gamma">_cell_angle.gamma</h3>
-<div class="paragraph"><p>(Generic definition) The angle between the bounding cell axes.</p></div>
-<div class="sidebarblock">
-<div class="content">
-<div class="title">Aliases</div>
-<div class="paragraph"><p>_cell_angle_gamma<br />
-_cell.angle_gamma<br /></p></div>
-</div></div>
-</div>
-<div class="sect2">
-<h3 id="_cell_angle_gamma_su">_cell_angle.gamma_su</h3>
-<div class="paragraph"><p>(Generic definition) Standard uncertainty of the angle between the bounding cell axes.</p></div>
-<div class="sidebarblock">
-<div class="content">
-<div class="title">Aliases</div>
-<div class="paragraph"><p>_cell_angle_gamma_su<br />
-_cell.angle_gamma_esd<br /></p></div>
-</div></div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_cell_length">CELL_LENGTH</h2>
-<div class="sectionbody">
-<div class="paragraph"><p>The CATEGORY of data items used to describe the lengths of
-     the axes in the crystal unit cell.</p></div>
-<div class="sect2">
-<h3 id="_cell_length_a">_cell_length.a</h3>
-<div class="paragraph"><p>(Generic definition) The length of each cell axis.</p></div>
-<div class="sidebarblock">
-<div class="content">
-<div class="title">Aliases</div>
-<div class="paragraph"><p>_cell_length_a<br />
-_cell.length_a<br /></p></div>
-</div></div>
-</div>
-<div class="sect2">
-<h3 id="_cell_length_a_su">_cell_length.a_su</h3>
-<div class="paragraph"><p>(Generic definition) Standard uncertainty of the length of each cell axis.</p></div>
-<div class="sidebarblock">
-<div class="content">
-<div class="title">Aliases</div>
-<div class="paragraph"><p>_cell_length_a_su<br />
-_cell.length_a_esd<br /></p></div>
-</div></div>
-</div>
-<div class="sect2">
-<h3 id="_cell_length_b">_cell_length.b</h3>
-<div class="paragraph"><p>(Generic definition) The length of each cell axis.</p></div>
-<div class="sidebarblock">
-<div class="content">
-<div class="title">Aliases</div>
-<div class="paragraph"><p>_cell_length_b<br />
-_cell.length_b<br /></p></div>
-</div></div>
-</div>
-<div class="sect2">
-<h3 id="_cell_length_b_su">_cell_length.b_su</h3>
-<div class="paragraph"><p>(Generic definition) Standard uncertainty of the length of each cell axis.</p></div>
-<div class="sidebarblock">
-<div class="content">
-<div class="title">Aliases</div>
-<div class="paragraph"><p>_cell_length_b_su<br />
-_cell.length_b_esd<br /></p></div>
-</div></div>
-</div>
-<div class="sect2">
-<h3 id="_cell_length_c">_cell_length.c</h3>
-<div class="paragraph"><p>(Generic definition) The length of each cell axis.</p></div>
-<div class="sidebarblock">
-<div class="content">
-<div class="title">Aliases</div>
-<div class="paragraph"><p>_cell_length_c<br />
-_cell.length_c<br /></p></div>
-</div></div>
-</div>
-<div class="sect2">
-<h3 id="_cell_length_c_su">_cell_length.c_su</h3>
-<div class="paragraph"><p>(Generic definition) Standard uncertainty of the length of each cell axis.</p></div>
-<div class="sidebarblock">
-<div class="content">
-<div class="title">Aliases</div>
-<div class="paragraph"><p>_cell_length_c_su<br />
-_cell.length_c_esd<br /></p></div>
 </div></div>
 </div>
 </div>
@@ -4284,245 +4435,6 @@ _cell_measurement.temp_esd<br /></p></div>
 <div class="title">Aliases</div>
 <div class="paragraph"><p>_cell_measurement_refln_theta<br /></p></div>
 </div></div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_cell_reciprocal">CELL_RECIPROCAL</h2>
-<div class="sectionbody">
-<div class="paragraph"><p>The CATEGORY of data items used to describe the unit cell data
-     in reciprocal space.</p></div>
-<div class="sect2">
-<h3 id="_cell_reciprocal_convert_uij_to_betaij">_cell_reciprocal.convert_Uij_to_betaij</h3>
-<div class="paragraph"><p>The reciprocal space matrix for converting the U(ij) matrix of
-     atomic displacement parameters to a dimensionless beta(IJ) matrix.
-     The adp factor in a structure factor expression:</p></div>
-<div class="literalblock">
-<div class="content">
-<pre><code>t = exp -2pi**2 ( U11    h h a* a* + ...... 2 U23    k l b* c* )
-t = exp - 0.25  ( B11    h h a* a* + ...... 2 B23    k l b* c* )
-  = exp -       ( beta11 h h + ............ 2 beta23 k l )</code></pre>
-</div></div>
-<div class="literalblock">
-<div class="content">
-<pre><code>The conversion of the U or B matrices to the beta matrix</code></pre>
-</div></div>
-<div class="literalblock">
-<div class="content">
-<pre><code>beta =   C U C   =    C B C /8pi**2</code></pre>
-</div></div>
-<div class="literalblock">
-<div class="content">
-<pre><code>where C is conversion matrix defined here.</code></pre>
-</div></div>
-</div>
-<div class="sect2">
-<h3 id="_cell_reciprocal_convert_uiso_to_uij">_cell_reciprocal.convert_Uiso_to_Uij</h3>
-<div class="paragraph"><p>The reciprocal space matrix for converting the isotropic Uiso
-     atomic displacement parameter to the anisotropic matrix Uij.</p></div>
-<div class="literalblock">
-<div class="content">
-<pre><code>                 | 1            cos(gamma*)   cos(beta*)  |
-U[i,j]  = Uiso * | cos(gamma*)  1             cos(alpha*) |
-                 | cos(beta*)   cos(alpha*)   1           |</code></pre>
-</div></div>
-</div>
-<div class="sect2">
-<h3 id="_cell_reciprocal_metric_tensor">_cell_reciprocal.metric_tensor</h3>
-<div class="paragraph"><p>The reciprocal (contravariant) metric tensor used to transform
-     vectors and coordinates from reciprocal space to real (direct)
-     space.</p></div>
-</div>
-<div class="sect2">
-<h3 id="_cell_reciprocal_orthogonal_matrix">_cell_reciprocal.orthogonal_matrix</h3>
-<div class="paragraph"><p>Orthogonal matrix of the reciprocal space. The matrix may be
-     used to transform the non-orthogonal vector h = (h,k,l) into
-     the orthogonal indices p = (p,q,r)</p></div>
-<div class="literalblock">
-<div class="content">
-<pre><code>M h = p</code></pre>
-</div></div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_cell_reciprocal_angle">CELL_RECIPROCAL_ANGLE</h2>
-<div class="sectionbody">
-<div class="paragraph"><p>The CATEGORY of data items used to describe the unit cell angles
-     in reciprocal space.</p></div>
-<div class="sect2">
-<h3 id="_cell_reciprocal_angle_alpha">_cell_reciprocal_angle.alpha</h3>
-<div class="paragraph"><p>Reciprocal of the angle between _cell_length.b and _cell_length.c.
-     Ref: Buerger, M. J. (1942). X-ray Crystallography, p. 360.
-          New York: John Wiley &amp; Sons Inc.</p></div>
-<div class="sidebarblock">
-<div class="content">
-<div class="title">Aliases</div>
-<div class="paragraph"><p>_cell_reciprocal_angle_alpha<br />
-_cell.reciprocal_angle_alpha<br /></p></div>
-</div></div>
-</div>
-<div class="sect2">
-<h3 id="_cell_reciprocal_angle_alpha_su">_cell_reciprocal_angle.alpha_su</h3>
-<div class="paragraph"><p>Standard Uncertainty of the
-     Reciprocal of the angle between _cell_length.b and _cell_length.c.</p></div>
-<div class="sidebarblock">
-<div class="content">
-<div class="title">Aliases</div>
-<div class="paragraph"><p>_cell_reciprocal_angle_alpha_su<br />
-_cell.reciprocal_angle_alpha_esd<br /></p></div>
-</div></div>
-</div>
-<div class="sect2">
-<h3 id="_cell_reciprocal_angle_beta">_cell_reciprocal_angle.beta</h3>
-<div class="paragraph"><p>Reciprocal of the angle between _cell_length.a and _cell_length.c.
-     Ref: Buerger, M. J. (1942). X-ray Crystallography, p. 360.
-          New York: John Wiley &amp; Sons Inc.</p></div>
-<div class="sidebarblock">
-<div class="content">
-<div class="title">Aliases</div>
-<div class="paragraph"><p>_cell_reciprocal_angle_beta<br />
-_cell.reciprocal_angle_beta<br /></p></div>
-</div></div>
-</div>
-<div class="sect2">
-<h3 id="_cell_reciprocal_angle_beta_su">_cell_reciprocal_angle.beta_su</h3>
-<div class="paragraph"><p>Standard Uncertainty of the
-     Reciprocal of the angle between _cell_length.a and _cell_length.c.</p></div>
-<div class="sidebarblock">
-<div class="content">
-<div class="title">Aliases</div>
-<div class="paragraph"><p>_cell_reciprocal_angle_beta_su<br />
-_cell.reciprocal_angle_beta_esd<br /></p></div>
-</div></div>
-</div>
-<div class="sect2">
-<h3 id="_cell_reciprocal_angle_gamma">_cell_reciprocal_angle.gamma</h3>
-<div class="paragraph"><p>Reciprocal of the angle between _cell_length.a and _cell_length.b.
-     Ref: Buerger, M. J. (1942). X-ray Crystallography, p. 360.
-          New York: John Wiley &amp; Sons Inc.</p></div>
-<div class="sidebarblock">
-<div class="content">
-<div class="title">Aliases</div>
-<div class="paragraph"><p>_cell_reciprocal_angle_gamma<br />
-_cell.reciprocal_angle_gamma<br /></p></div>
-</div></div>
-</div>
-<div class="sect2">
-<h3 id="_cell_reciprocal_angle_gamma_su">_cell_reciprocal_angle.gamma_su</h3>
-<div class="paragraph"><p>Standard Uncertainty of the
-     Reciprocal of the angle between _cell_length.a and _cell_length.b.</p></div>
-<div class="sidebarblock">
-<div class="content">
-<div class="title">Aliases</div>
-<div class="paragraph"><p>_cell_reciprocal_angle_gamma_su<br />
-_cell.reciprocal_angle_gamma_esd<br /></p></div>
-</div></div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_cell_reciprocal_length">CELL_RECIPROCAL_LENGTH</h2>
-<div class="sectionbody">
-<div class="paragraph"><p>The CATEGORY of data items used to describe the unit cell lengths
-     in reciprocal space.</p></div>
-<div class="sect2">
-<h3 id="_cell_reciprocal_length_a">_cell_reciprocal_length.a</h3>
-<div class="paragraph"><p>Reciprocal of the _cell_length.a.</p></div>
-<div class="sidebarblock">
-<div class="content">
-<div class="title">Aliases</div>
-<div class="paragraph"><p>_cell_reciprocal_length_a<br />
-_cell.reciprocal_length_a<br /></p></div>
-</div></div>
-</div>
-<div class="sect2">
-<h3 id="_cell_reciprocal_length_a_su">_cell_reciprocal_length.a_su</h3>
-<div class="paragraph"><p>Standard Uncertainty of the reciprocal of the _cell_length.a.</p></div>
-<div class="sidebarblock">
-<div class="content">
-<div class="title">Aliases</div>
-<div class="paragraph"><p>_cell_reciprocal_length_a_su<br />
-_cell.reciprocal_length_a_esd<br /></p></div>
-</div></div>
-</div>
-<div class="sect2">
-<h3 id="_cell_reciprocal_length_b">_cell_reciprocal_length.b</h3>
-<div class="paragraph"><p>Reciprocal of the _cell_length.b.</p></div>
-<div class="sidebarblock">
-<div class="content">
-<div class="title">Aliases</div>
-<div class="paragraph"><p>_cell_reciprocal_length_b<br />
-_cell.reciprocal_length_b<br /></p></div>
-</div></div>
-</div>
-<div class="sect2">
-<h3 id="_cell_reciprocal_length_b_su">_cell_reciprocal_length.b_su</h3>
-<div class="paragraph"><p>Standard Uncertainty of the reciprocal of the _cell_length.b.</p></div>
-<div class="sidebarblock">
-<div class="content">
-<div class="title">Aliases</div>
-<div class="paragraph"><p>_cell_reciprocal_length_b_su<br />
-_cell.reciprocal_length_b_esd<br /></p></div>
-</div></div>
-</div>
-<div class="sect2">
-<h3 id="_cell_reciprocal_length_c">_cell_reciprocal_length.c</h3>
-<div class="paragraph"><p>Reciprocal of the _cell_length.c.</p></div>
-<div class="sidebarblock">
-<div class="content">
-<div class="title">Aliases</div>
-<div class="paragraph"><p>_cell_reciprocal_length_c<br />
-_cell.reciprocal_length_c<br /></p></div>
-</div></div>
-</div>
-<div class="sect2">
-<h3 id="_cell_reciprocal_length_c_su">_cell_reciprocal_length.c_su</h3>
-<div class="paragraph"><p>Standard Uncertainty of the reciprocal of the _cell_length.c.</p></div>
-<div class="sidebarblock">
-<div class="content">
-<div class="title">Aliases</div>
-<div class="paragraph"><p>_cell_reciprocal_length_c_su<br />
-_cell.reciprocal_length_c_esd<br /></p></div>
-</div></div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_cell_reciprocal_vector">CELL_RECIPROCAL_VECTOR</h2>
-<div class="sectionbody">
-<div class="paragraph"><p>The CATEGORY of data items used to describe the unit cell vectors
-     in reciprocal space.</p></div>
-<div class="sect2">
-<h3 id="_cell_reciprocal_vector_a">_cell_reciprocal_vector.a</h3>
-<div class="paragraph"><p>Reciprocal of the _cell_vector.a.</p></div>
-</div>
-<div class="sect2">
-<h3 id="_cell_reciprocal_vector_b">_cell_reciprocal_vector.b</h3>
-<div class="paragraph"><p>Reciprocal of the _cell_vector.b.</p></div>
-</div>
-<div class="sect2">
-<h3 id="_cell_reciprocal_vector_c">_cell_reciprocal_vector.c</h3>
-<div class="paragraph"><p>Reciprocal of the _cell_vector.c.</p></div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_cell_vector">CELL_VECTOR</h2>
-<div class="sectionbody">
-<div class="paragraph"><p>The CATEGORY of data items used to describe the axial vectors of
-     the crystal unit cell.</p></div>
-<div class="sect2">
-<h3 id="_cell_vector_a">_cell_vector.a</h3>
-<div class="paragraph"><p>The cell vector along the x axis.</p></div>
-</div>
-<div class="sect2">
-<h3 id="_cell_vector_b">_cell_vector.b</h3>
-<div class="paragraph"><p>The cell vector along the y axis.</p></div>
-</div>
-<div class="sect2">
-<h3 id="_cell_vector_c">_cell_vector.c</h3>
-<div class="paragraph"><p>The cell vector along the z axis.</p></div>
 </div>
 </div>
 </div>
@@ -5697,10 +5609,8 @@ nuclear scattering power in the unit cell. See
 </div></div>
 </div>
 <div class="sect2">
-<h3 id="_exptl_crystal_id_8226">_exptl_crystal.id&#8226;</h3>
-<div class="paragraph"><p>Code identifying a crystal if multiple crystals are used. A default
-     value is provided, so that this dataname and child datanames may
-     be omitted if a single crystal only is used.</p></div>
+<h3 id="_exptl_crystal_id">_exptl_crystal.id</h3>
+<div class="paragraph"><p>Code identifying a crystal.</p></div>
 <div class="sidebarblock">
 <div class="content">
 <div class="title">Aliases</div>
@@ -5915,10 +5825,6 @@ _exptl_crystal.colour_modifier<br /></p></div>
 <div class="sectionbody">
 <div class="paragraph"><p>The CATEGORY of data items which specify the dimensions of the
      crystal used in the diffraction measurements.</p></div>
-<div class="sect2">
-<h3 id="_exptl_crystal_face_crystal_id_8226">_exptl_crystal_face.crystal_id&#8226;</h3>
-<div class="paragraph"><p>Code identifying a crystal if multiple crystals are used.</p></div>
-</div>
 <div class="sect2">
 <h3 id="_exptl_crystal_face_diffr_chi">_exptl_crystal_face.diffr_chi</h3>
 <div class="paragraph"><p>(Generic definition) Diffractometer angle setting when the perpendicular to the specified
@@ -8418,6 +8324,70 @@ _audit.revision_id<br /></p></div>
 </div></div>
 </div>
 <div class="sect2">
+<h3 id="_audit_schema">_audit.schema</h3>
+<div class="paragraph"><p>This dataname identifies the type of information contained in the
+     datablock. Software written for one schema will not, in general,
+     correctly interpret datafiles written against a different schema.</p></div>
+<div class="paragraph"><p>Specifically, each value of _audit.schema corresponds to a list
+     of categories that were (potentially implicitly) restricted to a
+     single packet in the default Base schema, but which can contain
+     multiple packets in the specified schema.  All categories
+     containing child keys of the listed categories may also contain
+     multiple packets and do not need to be listed.</p></div>
+<div class="literalblock">
+<div class="content">
+<pre><code>The category list for each schema may instead be determined from
+examination of the dictionaries that this datablock conforms to (see
+_audit_conform.dictionary).</code></pre>
+</div></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Possible values(default in bold):</div>
+<div class="dlist"><dl>
+<dt class="hdlist1">
+<strong><code>Base</code></strong>
+</dt>
+<dd>
+<p>
+Original Core CIF schema
+</p>
+</dd>
+<dt class="hdlist1">
+<code>Space group tables</code>
+</dt>
+<dd>
+<p>
+space_group category is looped
+</p>
+</dd>
+<dt class="hdlist1">
+<code>Entry</code>
+</dt>
+<dd>
+<p>
+entry category is defined and looped: information from multiple datablocks in one block
+</p>
+</dd>
+<dt class="hdlist1">
+<code>Custom</code>
+</dt>
+<dd>
+<p>
+Examine dictionaries provided in _audit_conform
+</p>
+</dd>
+<dt class="hdlist1">
+<code>Local</code>
+</dt>
+<dd>
+<p>
+Locally modified dictionaries. These datafiles should not be distributed
+</p>
+</dd>
+</dl></div>
+</div></div>
+</div>
+<div class="sect2">
 <h3 id="_audit_update_record">_audit.update_record</h3>
 <div class="paragraph"><p>A description of the revision applied to the data.</p></div>
 <div class="sidebarblock">
@@ -9921,11 +9891,6 @@ troff or nroff
 </div></div>
 </div>
 <div class="sect2">
-<h3 id="_publ_body_key_8226">_publ_body.key&#8226;</h3>
-<div class="paragraph"><p>Value is a unique key to a set of PUBL_BODY items
-     in a looped list.</p></div>
-</div>
-<div class="sect2">
 <h3 id="_publ_body_label_8226">_publ_body.label&#8226;</h3>
 <div class="paragraph"><p>Unigue identifier for each part of the body of the paper.</p></div>
 <div class="sidebarblock">
@@ -9999,11 +9964,6 @@ _publ.contact_author_fax<br /></p></div>
 <div class="title">Aliases</div>
 <div class="paragraph"><p>_publ_contact_author_id_iucr<br /></p></div>
 </div></div>
-</div>
-<div class="sect2">
-<h3 id="_publ_contact_author_key_8226">_publ_contact_author.key&#8226;</h3>
-<div class="paragraph"><p>Value is a unique key to a set of PUBL_CONTACT_AUTHOR items
-     in a looped list.</p></div>
 </div>
 <div class="sect2">
 <h3 id="_publ_contact_author_name_8226">_publ_contact_author.name&#8226;</h3>
@@ -14520,7 +14480,7 @@ _refine_ls_class_R_factor_obs<br /></p></div>
 <div id="footer">
 <div id="footer-text">
 Last updated
- 2016-09-07 14:47:19 AEST
+ 2016-09-13 11:52:49 AEST
 </div>
 </div>
 </body>
