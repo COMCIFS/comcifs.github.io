@@ -1,0 +1,2535 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+    "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
+<meta name="generator" content="AsciiDoc 8.6.9" />
+<title>MAGNETIC_CIF</title>
+<style type="text/css">
+/* Shared CSS for AsciiDoc xhtml11 and html5 backends */
+
+/* Default font. */
+body {
+  font-family: Georgia,serif;
+}
+
+/* Title font. */
+h1, h2, h3, h4, h5, h6,
+div.title, caption.title,
+thead, p.table.header,
+#toctitle,
+#author, #revnumber, #revdate, #revremark,
+#footer {
+  font-family: Arial,Helvetica,sans-serif;
+}
+
+body {
+  margin: 1em 5% 1em 5%;
+}
+
+a {
+  color: blue;
+  text-decoration: underline;
+}
+a:visited {
+  color: fuchsia;
+}
+
+em {
+  font-style: italic;
+  color: navy;
+}
+
+strong {
+  font-weight: bold;
+  color: #083194;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #527bbd;
+  margin-top: 1.2em;
+  margin-bottom: 0.5em;
+  line-height: 1.3;
+}
+
+h1, h2, h3 {
+  border-bottom: 2px solid silver;
+}
+h2 {
+  padding-top: 0.5em;
+}
+h3 {
+  float: left;
+}
+h3 + * {
+  clear: left;
+}
+h5 {
+  font-size: 1.0em;
+}
+
+div.sectionbody {
+  margin-left: 0;
+}
+
+hr {
+  border: 1px solid silver;
+}
+
+p {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+ul, ol, li > p {
+  margin-top: 0;
+}
+ul > li     { color: #aaa; }
+ul > li > * { color: black; }
+
+.monospaced, code, pre {
+  font-family: "Courier New", Courier, monospace;
+  font-size: inherit;
+  color: navy;
+  padding: 0;
+  margin: 0;
+}
+pre {
+  white-space: pre-wrap;
+}
+
+#author {
+  color: #527bbd;
+  font-weight: bold;
+  font-size: 1.1em;
+}
+#email {
+}
+#revnumber, #revdate, #revremark {
+}
+
+#footer {
+  font-size: small;
+  border-top: 2px solid silver;
+  padding-top: 0.5em;
+  margin-top: 4.0em;
+}
+#footer-text {
+  float: left;
+  padding-bottom: 0.5em;
+}
+#footer-badges {
+  float: right;
+  padding-bottom: 0.5em;
+}
+
+#preamble {
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+}
+div.imageblock, div.exampleblock, div.verseblock,
+div.quoteblock, div.literalblock, div.listingblock, div.sidebarblock,
+div.admonitionblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+div.admonitionblock {
+  margin-top: 2.0em;
+  margin-bottom: 2.0em;
+  margin-right: 10%;
+  color: #606060;
+}
+
+div.content { /* Block element content. */
+  padding: 0;
+}
+
+/* Block element titles. */
+div.title, caption.title {
+  color: #527bbd;
+  font-weight: bold;
+  text-align: left;
+  margin-top: 1.0em;
+  margin-bottom: 0.5em;
+}
+div.title + * {
+  margin-top: 0;
+}
+
+td div.title:first-child {
+  margin-top: 0.0em;
+}
+div.content div.title:first-child {
+  margin-top: 0.0em;
+}
+div.content + div.title {
+  margin-top: 0.0em;
+}
+
+div.sidebarblock > div.content {
+  background: #ffffee;
+  border: 1px solid #dddddd;
+  border-left: 4px solid #f0f0f0;
+  padding: 0.5em;
+}
+
+div.listingblock > div.content {
+  border: 1px solid #dddddd;
+  border-left: 5px solid #f0f0f0;
+  background: #f8f8f8;
+  padding: 0.5em;
+}
+
+div.quoteblock, div.verseblock {
+  padding-left: 1.0em;
+  margin-left: 1.0em;
+  margin-right: 10%;
+  border-left: 5px solid #f0f0f0;
+  color: #888;
+}
+
+div.quoteblock > div.attribution {
+  padding-top: 0.5em;
+  text-align: right;
+}
+
+div.verseblock > pre.content {
+  font-family: inherit;
+  font-size: inherit;
+}
+div.verseblock > div.attribution {
+  padding-top: 0.75em;
+  text-align: left;
+}
+/* DEPRECATED: Pre version 8.2.7 verse style literal block. */
+div.verseblock + div.attribution {
+  text-align: left;
+}
+
+div.admonitionblock .icon {
+  vertical-align: top;
+  font-size: 1.1em;
+  font-weight: bold;
+  text-decoration: underline;
+  color: #527bbd;
+  padding-right: 0.5em;
+}
+div.admonitionblock td.content {
+  padding-left: 0.5em;
+  border-left: 3px solid #dddddd;
+}
+
+div.exampleblock > div.content {
+  border-left: 3px solid #dddddd;
+  padding-left: 0.5em;
+}
+
+div.imageblock div.content { padding-left: 0; }
+span.image img { border-style: none; vertical-align: text-bottom; }
+a.image:visited { color: white; }
+
+dl {
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+}
+dt {
+  margin-top: 0.5em;
+  margin-bottom: 0;
+  font-style: normal;
+  color: navy;
+}
+dd > *:first-child {
+  margin-top: 0.1em;
+}
+
+ul, ol {
+    list-style-position: outside;
+}
+ol.arabic {
+  list-style-type: decimal;
+}
+ol.loweralpha {
+  list-style-type: lower-alpha;
+}
+ol.upperalpha {
+  list-style-type: upper-alpha;
+}
+ol.lowerroman {
+  list-style-type: lower-roman;
+}
+ol.upperroman {
+  list-style-type: upper-roman;
+}
+
+div.compact ul, div.compact ol,
+div.compact p, div.compact p,
+div.compact div, div.compact div {
+  margin-top: 0.1em;
+  margin-bottom: 0.1em;
+}
+
+tfoot {
+  font-weight: bold;
+}
+td > div.verse {
+  white-space: pre;
+}
+
+div.hdlist {
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+}
+div.hdlist tr {
+  padding-bottom: 15px;
+}
+dt.hdlist1.strong, td.hdlist1.strong {
+  font-weight: bold;
+}
+td.hdlist1 {
+  vertical-align: top;
+  font-style: normal;
+  padding-right: 0.8em;
+  color: navy;
+}
+td.hdlist2 {
+  vertical-align: top;
+}
+div.hdlist.compact tr {
+  margin: 0;
+  padding-bottom: 0;
+}
+
+.comment {
+  background: yellow;
+}
+
+.footnote, .footnoteref {
+  font-size: 0.8em;
+}
+
+span.footnote, span.footnoteref {
+  vertical-align: super;
+}
+
+#footnotes {
+  margin: 20px 0 20px 0;
+  padding: 7px 0 0 0;
+}
+
+#footnotes div.footnote {
+  margin: 0 0 5px 0;
+}
+
+#footnotes hr {
+  border: none;
+  border-top: 1px solid silver;
+  height: 1px;
+  text-align: left;
+  margin-left: 0;
+  width: 20%;
+  min-width: 100px;
+}
+
+div.colist td {
+  padding-right: 0.5em;
+  padding-bottom: 0.3em;
+  vertical-align: top;
+}
+div.colist td img {
+  margin-top: 0.3em;
+}
+
+@media print {
+  #footer-badges { display: none; }
+}
+
+#toc {
+  margin-bottom: 2.5em;
+}
+
+#toctitle {
+  color: #527bbd;
+  font-size: 1.1em;
+  font-weight: bold;
+  margin-top: 1.0em;
+  margin-bottom: 0.1em;
+}
+
+div.toclevel0, div.toclevel1, div.toclevel2, div.toclevel3, div.toclevel4 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+div.toclevel2 {
+  margin-left: 2em;
+  font-size: 0.9em;
+}
+div.toclevel3 {
+  margin-left: 4em;
+  font-size: 0.9em;
+}
+div.toclevel4 {
+  margin-left: 6em;
+  font-size: 0.9em;
+}
+
+span.aqua { color: aqua; }
+span.black { color: black; }
+span.blue { color: blue; }
+span.fuchsia { color: fuchsia; }
+span.gray { color: gray; }
+span.green { color: green; }
+span.lime { color: lime; }
+span.maroon { color: maroon; }
+span.navy { color: navy; }
+span.olive { color: olive; }
+span.purple { color: purple; }
+span.red { color: red; }
+span.silver { color: silver; }
+span.teal { color: teal; }
+span.white { color: white; }
+span.yellow { color: yellow; }
+
+span.aqua-background { background: aqua; }
+span.black-background { background: black; }
+span.blue-background { background: blue; }
+span.fuchsia-background { background: fuchsia; }
+span.gray-background { background: gray; }
+span.green-background { background: green; }
+span.lime-background { background: lime; }
+span.maroon-background { background: maroon; }
+span.navy-background { background: navy; }
+span.olive-background { background: olive; }
+span.purple-background { background: purple; }
+span.red-background { background: red; }
+span.silver-background { background: silver; }
+span.teal-background { background: teal; }
+span.white-background { background: white; }
+span.yellow-background { background: yellow; }
+
+span.big { font-size: 2em; }
+span.small { font-size: 0.6em; }
+
+span.underline { text-decoration: underline; }
+span.overline { text-decoration: overline; }
+span.line-through { text-decoration: line-through; }
+
+div.unbreakable { page-break-inside: avoid; }
+
+
+/*
+ * xhtml11 specific
+ *
+ * */
+
+div.tableblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+div.tableblock > table {
+  border: 3px solid #527bbd;
+}
+thead, p.table.header {
+  font-weight: bold;
+  color: #527bbd;
+}
+p.table {
+  margin-top: 0;
+}
+/* Because the table frame attribute is overriden by CSS in most browsers. */
+div.tableblock > table[frame="void"] {
+  border-style: none;
+}
+div.tableblock > table[frame="hsides"] {
+  border-left-style: none;
+  border-right-style: none;
+}
+div.tableblock > table[frame="vsides"] {
+  border-top-style: none;
+  border-bottom-style: none;
+}
+
+
+/*
+ * html5 specific
+ *
+ * */
+
+table.tableblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+thead, p.tableblock.header {
+  font-weight: bold;
+  color: #527bbd;
+}
+p.tableblock {
+  margin-top: 0;
+}
+table.tableblock {
+  border-width: 3px;
+  border-spacing: 0px;
+  border-style: solid;
+  border-color: #527bbd;
+  border-collapse: collapse;
+}
+th.tableblock, td.tableblock {
+  border-width: 1px;
+  padding: 4px;
+  border-style: solid;
+  border-color: #527bbd;
+}
+
+table.tableblock.frame-topbot {
+  border-left-style: hidden;
+  border-right-style: hidden;
+}
+table.tableblock.frame-sides {
+  border-top-style: hidden;
+  border-bottom-style: hidden;
+}
+table.tableblock.frame-none {
+  border-style: hidden;
+}
+
+th.tableblock.halign-left, td.tableblock.halign-left {
+  text-align: left;
+}
+th.tableblock.halign-center, td.tableblock.halign-center {
+  text-align: center;
+}
+th.tableblock.halign-right, td.tableblock.halign-right {
+  text-align: right;
+}
+
+th.tableblock.valign-top, td.tableblock.valign-top {
+  vertical-align: top;
+}
+th.tableblock.valign-middle, td.tableblock.valign-middle {
+  vertical-align: middle;
+}
+th.tableblock.valign-bottom, td.tableblock.valign-bottom {
+  vertical-align: bottom;
+}
+
+
+/*
+ * manpage specific
+ *
+ * */
+
+body.manpage h1 {
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  border-top: 2px solid silver;
+  border-bottom: 2px solid silver;
+}
+body.manpage h2 {
+  border-style: none;
+}
+body.manpage div.sectionbody {
+  margin-left: 3em;
+}
+
+@media print {
+  body.manpage div#toc { display: none; }
+}
+
+
+</style>
+<script type="text/javascript">
+/*<![CDATA[*/
+var asciidoc = {  // Namespace.
+
+/////////////////////////////////////////////////////////////////////
+// Table Of Contents generator
+/////////////////////////////////////////////////////////////////////
+
+/* Author: Mihai Bazon, September 2002
+ * http://students.infoiasi.ro/~mishoo
+ *
+ * Table Of Content generator
+ * Version: 0.4
+ *
+ * Feel free to use this script under the terms of the GNU General Public
+ * License, as long as you do not remove or alter this notice.
+ */
+
+ /* modified by Troy D. Hanson, September 2006. License: GPL */
+ /* modified by Stuart Rackham, 2006, 2009. License: GPL */
+
+// toclevels = 1..4.
+toc: function (toclevels) {
+
+  function getText(el) {
+    var text = "";
+    for (var i = el.firstChild; i != null; i = i.nextSibling) {
+      if (i.nodeType == 3 /* Node.TEXT_NODE */) // IE doesn't speak constants.
+        text += i.data;
+      else if (i.firstChild != null)
+        text += getText(i);
+    }
+    return text;
+  }
+
+  function TocEntry(el, text, toclevel) {
+    this.element = el;
+    this.text = text;
+    this.toclevel = toclevel;
+  }
+
+  function tocEntries(el, toclevels) {
+    var result = new Array;
+    var re = new RegExp('[hH]([1-'+(toclevels+1)+'])');
+    // Function that scans the DOM tree for header elements (the DOM2
+    // nodeIterator API would be a better technique but not supported by all
+    // browsers).
+    var iterate = function (el) {
+      for (var i = el.firstChild; i != null; i = i.nextSibling) {
+        if (i.nodeType == 1 /* Node.ELEMENT_NODE */) {
+          var mo = re.exec(i.tagName);
+          if (mo && (i.getAttribute("class") || i.getAttribute("className")) != "float") {
+            result[result.length] = new TocEntry(i, getText(i), mo[1]-1);
+          }
+          iterate(i);
+        }
+      }
+    }
+    iterate(el);
+    return result;
+  }
+
+  var toc = document.getElementById("toc");
+  if (!toc) {
+    return;
+  }
+
+  // Delete existing TOC entries in case we're reloading the TOC.
+  var tocEntriesToRemove = [];
+  var i;
+  for (i = 0; i < toc.childNodes.length; i++) {
+    var entry = toc.childNodes[i];
+    if (entry.nodeName.toLowerCase() == 'div'
+     && entry.getAttribute("class")
+     && entry.getAttribute("class").match(/^toclevel/))
+      tocEntriesToRemove.push(entry);
+  }
+  for (i = 0; i < tocEntriesToRemove.length; i++) {
+    toc.removeChild(tocEntriesToRemove[i]);
+  }
+
+  // Rebuild TOC entries.
+  var entries = tocEntries(document.getElementById("content"), toclevels);
+  for (var i = 0; i < entries.length; ++i) {
+    var entry = entries[i];
+    if (entry.element.id == "")
+      entry.element.id = "_toc_" + i;
+    var a = document.createElement("a");
+    a.href = "#" + entry.element.id;
+    a.appendChild(document.createTextNode(entry.text));
+    var div = document.createElement("div");
+    div.appendChild(a);
+    div.className = "toclevel" + entry.toclevel;
+    toc.appendChild(div);
+  }
+  if (entries.length == 0)
+    toc.parentNode.removeChild(toc);
+},
+
+
+/////////////////////////////////////////////////////////////////////
+// Footnotes generator
+/////////////////////////////////////////////////////////////////////
+
+/* Based on footnote generation code from:
+ * http://www.brandspankingnew.net/archive/2005/07/format_footnote.html
+ */
+
+footnotes: function () {
+  // Delete existing footnote entries in case we're reloading the footnodes.
+  var i;
+  var noteholder = document.getElementById("footnotes");
+  if (!noteholder) {
+    return;
+  }
+  var entriesToRemove = [];
+  for (i = 0; i < noteholder.childNodes.length; i++) {
+    var entry = noteholder.childNodes[i];
+    if (entry.nodeName.toLowerCase() == 'div' && entry.getAttribute("class") == "footnote")
+      entriesToRemove.push(entry);
+  }
+  for (i = 0; i < entriesToRemove.length; i++) {
+    noteholder.removeChild(entriesToRemove[i]);
+  }
+
+  // Rebuild footnote entries.
+  var cont = document.getElementById("content");
+  var spans = cont.getElementsByTagName("span");
+  var refs = {};
+  var n = 0;
+  for (i=0; i<spans.length; i++) {
+    if (spans[i].className == "footnote") {
+      n++;
+      var note = spans[i].getAttribute("data-note");
+      if (!note) {
+        // Use [\s\S] in place of . so multi-line matches work.
+        // Because JavaScript has no s (dotall) regex flag.
+        note = spans[i].innerHTML.match(/\s*\[([\s\S]*)]\s*/)[1];
+        spans[i].innerHTML =
+          "[<a id='_footnoteref_" + n + "' href='#_footnote_" + n +
+          "' title='View footnote' class='footnote'>" + n + "</a>]";
+        spans[i].setAttribute("data-note", note);
+      }
+      noteholder.innerHTML +=
+        "<div class='footnote' id='_footnote_" + n + "'>" +
+        "<a href='#_footnoteref_" + n + "' title='Return to text'>" +
+        n + "</a>. " + note + "</div>";
+      var id =spans[i].getAttribute("id");
+      if (id != null) refs["#"+id] = n;
+    }
+  }
+  if (n == 0)
+    noteholder.parentNode.removeChild(noteholder);
+  else {
+    // Process footnoterefs.
+    for (i=0; i<spans.length; i++) {
+      if (spans[i].className == "footnoteref") {
+        var href = spans[i].getElementsByTagName("a")[0].getAttribute("href");
+        href = href.match(/#.*/)[0];  // Because IE return full URL.
+        n = refs[href];
+        spans[i].innerHTML =
+          "[<a href='#_footnote_" + n +
+          "' title='View footnote' class='footnote'>" + n + "</a>]";
+      }
+    }
+  }
+},
+
+install: function(toclevels) {
+  var timerId;
+
+  function reinstall() {
+    asciidoc.footnotes();
+    if (toclevels) {
+      asciidoc.toc(toclevels);
+    }
+  }
+
+  function reinstallAndRemoveTimer() {
+    clearInterval(timerId);
+    reinstall();
+  }
+
+  timerId = setInterval(reinstall, 500);
+  if (document.addEventListener)
+    document.addEventListener("DOMContentLoaded", reinstallAndRemoveTimer, false);
+  else
+    window.onload = reinstallAndRemoveTimer;
+}
+
+}
+asciidoc.install(2);
+/*]]>*/
+</script>
+</head>
+<body class="article">
+<div id="header">
+<h1>MAGNETIC_CIF</h1>
+<span id="revdate">2016-06-28</span>
+</div>
+<div id="content">
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph"><p>The magnetic CIF dictionary is an extension to the core CIF dictionary.
+      It defines datanames for describing magnetic structures.</p></div>
+<div class="paragraph"><p>Generated from magCIF.dic, version 0.9.4</p></div>
+<div class="paragraph"><p>Categories that may have more than one row are called loop categories.
+Datanames making up the keys for these categories have a dot suffix.</p></div>
+<div id="toc">
+  <div id="toctitle">Table of Contents</div>
+  <noscript><p><b>JavaScript must be enabled in your browser to display the table of contents.</b></p></noscript>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_magnetic">MAGNETIC</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>This category is the parent of all categories in the dictionary
+   that are not children of categories found in other CIF dictionaries.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_atom_site_moment_fourier">ATOM_SITE_MOMENT_FOURIER</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>Data items in the ATOM_SITE_MOMENT_FOURIER category record
+     details about the Fourier components of the magnetic modulation
+     of an atom site in a modulated structure. The (in general
+     complex) coefficients of each Fourier component belong to the
+     child category ATOM_SITE_MOMENT_FOURIER_PARAM, which may be
+     listed separately.</p></div>
+<div class="sect2">
+<h3 id="_atom_site_moment_fourier_atom_site_label_8226">_atom_site_moment_Fourier.atom_site_label&#8226;</h3>
+<div class="paragraph"><p>This string uniquely identifies the atom for which the Fourier
+     modulation  components are to be specified.  The Fourier
+     modulation components are always presented in a separate loop
+     (not in the _atom_site loop).  This string must match an
+     _atom_site.label from the _atom_site loop, and otherwise conform
+     to the rules for _atom_site_label.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_atom_site_moment_fourier_axis_8226">_atom_site_moment_Fourier.axis&#8226;</h3>
+<div class="paragraph"><p>Specifies the coordinate system in which the Fourier modulation
+     components are to be presented and an axis in that coordinate
+     system.
+      Analogous tags: msCIF:_atom_site_displace_Fourier.axis,
+     msCIF:_atom_site_rot_Fourier.axis,
+     msCIF:_atom_site_U_Fourier.tens_elem</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Possible values:</div>
+<div class="dlist"><dl>
+<dt class="hdlist1">
+<code>Cx</code>
+</dt>
+<dd>
+<p>
+Cartesian x coordinate
+</p>
+</dd>
+<dt class="hdlist1">
+<code>Cy</code>
+</dt>
+<dd>
+<p>
+Cartesian y coordinate
+</p>
+</dd>
+<dt class="hdlist1">
+<code>Cz</code>
+</dt>
+<dd>
+<p>
+Cartesian z coordinate
+</p>
+</dd>
+<dt class="hdlist1">
+<code>x</code>
+</dt>
+<dd>
+<p>
+crystal a axis coordinate
+</p>
+</dd>
+<dt class="hdlist1">
+<code>y</code>
+</dt>
+<dd>
+<p>
+crystal b axis coordinate
+</p>
+</dd>
+<dt class="hdlist1">
+<code>z</code>
+</dt>
+<dd>
+<p>
+crystal c axis coordinate
+</p>
+</dd>
+<dt class="hdlist1">
+<code>mod</code>
+</dt>
+<dd>
+<p>
+length part of spherical coordinate
+</p>
+</dd>
+<dt class="hdlist1">
+<code>pol</code>
+</dt>
+<dd>
+<p>
+polar angle in spherical coordinates
+</p>
+</dd>
+<dt class="hdlist1">
+<code>azi</code>
+</dt>
+<dd>
+<p>
+azimuthal angle in spherical coordinates
+</p>
+</dd>
+<dt class="hdlist1">
+<code>a1</code>
+</dt>
+<dd>
+<p>
+user-defined coordinate 1
+</p>
+</dd>
+<dt class="hdlist1">
+<code>a2</code>
+</dt>
+<dd>
+<p>
+user-defined coordinate 2
+</p>
+</dd>
+<dt class="hdlist1">
+<code>a3</code>
+</dt>
+<dd>
+<p>
+user-defined coordinate 3
+</p>
+</dd>
+</dl></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_atom_site_moment_fourier_id_8226">_atom_site_moment_Fourier.id&#8226;</h3>
+<div class="paragraph"><p>An arbitrary code that uniquely identifies each of the components
+     of each of the magnetic Fourier modulations of each of the atoms
+     in the structure.  It will typically include an atom name, a
+     wave-vector id, and a coordinate axis. A sequence of positive
+     integers could also be used.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_atom_site_moment_fourier_wave_vector_seq_id_8226">_atom_site_moment_Fourier.wave_vector_seq_id&#8226;</h3>
+<div class="paragraph"><p>An arbitrary code that uniquely identifies the wave vector for
+     which magnetic Fourier modulation components are to be described
+     within the _atom_site_moment_Fourier loop.  It must match one of
+     the _atom_site_Fourier_wave_vector.seq_id values in the
+     _atom_site_Fourier_wave_vector loop.
+     Analogous tags:
+     msCIF:_atom_site_displace_Fourier_wave_vector.seq_id,
+     msCIF:_atom_site_rot_Fourier_wave_vector.seq_id,
+     msCIF:_atom_site_occ_Fourier_wave_vector.seq_id,
+     msCIF:_atom_site_U_Fourier_wave_vector.seq_id</p></div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_atom_site_moment_fourier_param">ATOM_SITE_MOMENT_FOURIER_PARAM</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>Data items in this category record details about the
+     coefficients of the Fourier series used to describe the  magnetic
+     modulation of an atom. This is a child category of  the
+     _atom_site_moment_Fourier category; so that magnetic Fourier
+     components can either be listed within the
+     _atom_site_moment_Fourier loop, or else listed in a separate
+     loop.
+     Analogous tags: _atom_site_displace_Fourier_param.[],
+     _atom_site_rot_Fourier_param.[],
+     _atom_site_occ_Fourier_param.[],
+     _atom_site_U_Fourier_param.[]</p></div>
+<div class="sect2">
+<h3 id="_atom_site_moment_fourier_param_cos">_atom_site_moment_Fourier_param.cos</h3>
+<div class="paragraph"><p>The cosine component of the magnetic Fourier modulation of a
+     specific atom, wave vector, and coordinate axis.  It is always
+     used together with the sine component, but not with the modulus
+     or phase components.
+     Analogous tags: msCIF:_atom_site_displace_Fourier_param.cos,
+     msCIF:_atom_site_rot_Fourier_param.cos,
+     msCIF:_atom_site_occ_Fourier_param.cos,
+     msCIF:_atom_site_U_Fourier_param.cos
+     Also see the technical descriptions of the analogous tags.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p>_atom_site_moment_Fourier_param_cos<br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_atom_site_moment_fourier_param_cos_symmform">_atom_site_moment_Fourier_param.cos_symmform</h3>
+<div class="paragraph"><p>A symbolic expression that indicates symmetry-restricted form of
+     this  modulation component for the affected Wyckoff site.  The
+     expression can either include a zero, a symbol, or a symbol
+     multiplied ("*") by a numerical prefactor. An allowed symbol is a
+     string that contains the following parts.  (1) The 1st character
+     is "m" for magnetic. (2) The 2nd character is one of "x", "y", or
+     "z", to indicate the magnetic component to be modulated. (3) The
+     3rd character is one of "m" for modulus, "p" for phase, "c" for
+     cosine, or "s" for sine.
+     To use the same symbol with modulation components belonging to
+     symmetry related atoms and/or  symmetry-related wave vectors, is
+     to point out a symmetry relationship amongst them. Obviously,
+     modulation components belonging to either symmetry-distinct atoms
+     or symmetry-distinct wave vectors cannot be related by symmetry.
+     Analogous tags: none, though analogous tags are needed for
+     displace, occ, U, and aniso waves.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p>_atom_site_moment_Fourier_param_cos_symmform<br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_atom_site_moment_fourier_param_id_8226">_atom_site_moment_Fourier_param.id&#8226;</h3>
+<div class="paragraph"><p>An arbitrary code that uniquely identifies each of the components
+     of each of the magnetic Fourier modulations of each of the atoms
+     in the structure.  It will typically include, and atom name, a
+     wave-vector id, and a coordinate axis. A sequence of positive
+     integers could also be used.  This tag is only used when the
+     magnetic Fourier modulation components are split off into a
+     separate loop, which is less typical.  When used, its value must
+     match one of the  _atom_site_moment_Fourier.id values in the
+     _atom_site_moment_Fourier loop.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p>_atom_site_moment_Fourier_param_id<br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_atom_site_moment_fourier_param_modulus">_atom_site_moment_Fourier_param.modulus</h3>
+<div class="paragraph"><p>The modulus component of the magnetic Fourier modulation of a
+     specific atom, wave vector, and coordinate axis.  It is always
+     used together with the phase component, but not with the cosine
+     or sine components.
+     Analogous tags: msCIF:_atom_site_displace_Fourier_param.modulus,
+     msCIF:_atom_site_rot_Fourier_param.modulus,
+     msCIF:_atom_site_occ_Fourier_param.modulus,
+     msCIF:_atom_site_U_Fourier_param.modulus
+     Also see the technical descriptions of the analogous tags.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p>_atom_site_moment_Fourier_param_modulus<br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_atom_site_moment_fourier_param_modulus_symmform">_atom_site_moment_Fourier_param.modulus_symmform</h3>
+<div class="paragraph"><p>A symbolic expression that indicates symmetry-restricted form of
+     this  modulation component for the affected Wyckoff site.  The
+     expression can either include a zero, a symbol, or a symbol
+     multiplied ("*") by a numerical prefactor. An allowed symbol is a
+     string that contains the following parts.  (1) The 1st character
+     is "m" for magnetic. (2) The 2nd character is one of "x", "y", or
+     "z", to indicate the magnetic component to be modulated. (3) The
+     3rd character is one of "m" for modulus, "p" for phase, "c" for
+     cosine, or "s" for sine.
+     To use the same symbol with modulation components belonging to
+     symmetry related atoms and/or  symmetry-related wave vectors, is
+     to point out a symmetry relationship amongst them. Obviously,
+     modulation components belonging to either symmetry-distinct atoms
+     or symmetry-distinct wave vectors cannot be related by symmetry.
+     Analogous tags: none, though analogous tags are needed for
+     displace, occ, U, and aniso waves.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p>_atom_site_moment_Fourier_param_modulus_symmform<br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_atom_site_moment_fourier_param_phase">_atom_site_moment_Fourier_param.phase</h3>
+<div class="paragraph"><p>The phase component of the magnetic Fourier modulation of a
+     specific atom, wave vector, and coordinate axis.  It is always
+     used together with the modulus component, but not with the cosine
+     or sine components. This parameter will be unitless regarless of
+     the coordinate system used.
+     Analogous tags: msCIF:_atom_site_displacive_Fourier_param.phase,
+     msCIF:_atom_site_rot_Fourier_param.phase,
+     msCIF:_atom_site_occ_Fourier_param.phase,
+     msCIF:_atom_site_U_Fourier_param.phase
+     Also see the technical descriptions of the analogous tags.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p>_atom_site_moment_Fourier_param_phase<br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_atom_site_moment_fourier_param_phase_symmform">_atom_site_moment_Fourier_param.phase_symmform</h3>
+<div class="paragraph"><p>A symbolic expression that indicates symmetry-restricted form of
+     this  modulation component for the affected Wyckoff site.  The
+     expression can either include a zero, a symbol, or a symbol
+     multiplied ("*") by a numerical prefactor. An allowed symbol is a
+     string that contains the following parts.  (1) The 1st character
+     is "m" for magnetic. (2) The 2nd character is one of "x", "y", or
+     "z", to indicate the magnetic component to be modulated. (3) The
+     3rd character is one of "m" for modulus, "p" for phase, "c" for
+     cosine, or "s" for sine.
+     To use the same symbol with modulation components belonging to
+     symmetry related atoms and/or  symmetry-related wave vectors, is
+     to point out a symmetry relationship amongst them. Obviously,
+     modulation components belonging to either symmetry-distinct atoms
+     or symmetry-distinct wave vectors cannot be related by symmetry.
+     Analogous tags: none, though analogous tags are needed for
+     displace, occ, U, and aniso waves.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p>_atom_site_moment_Fourier_param_phase_symmform<br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_atom_site_moment_fourier_param_sin">_atom_site_moment_Fourier_param.sin</h3>
+<div class="paragraph"><p>The sine component of the magnetic Fourier modulation of a
+     specific atom, wave vector, and coordinate axis.  It is always
+     used together with the cosine component, but not with the modulus
+     or phase components.
+     Analogous tags: msCIF:_atom_site_displace_Fourier_param.sin,
+     msCIF:_atom_site_rot_Fourier_param.sin,
+     msCIF:_atom_site_occ_Fourier_param.sin,
+     msCIF:_atom_site_U_Fourier_param.sin
+     Also see the technical descriptions of the analogous tags.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p>_atom_site_moment_Fourier_param_sin<br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_atom_site_moment_fourier_param_sin_symmform">_atom_site_moment_Fourier_param.sin_symmform</h3>
+<div class="paragraph"><p>A symbolic expression that indicates symmetry-restricted form of
+     this  modulation component for the affected Wyckoff site.  The
+     expression can either include a zero, a symbol, or a symbol
+     multiplied ("*") by a numerical prefactor. An allowed symbol is a
+     string that contains the following parts.  (1) The 1st character
+     is "m" for magnetic. (2) The 2nd character is one of "x", "y", or
+     "z", to indicate the magnetic component to be modulated. (3) The
+     3rd character is one of "m" for modulus, "p" for phase, "c" for
+     cosine, or "s" for sine.
+     To use the same symbol with modulation components belonging to
+     symmetry related atoms and/or  symmetry-related wave vectors, is
+     to point out a symmetry relationship amongst them. Obviously,
+     modulation components belonging to either symmetry-distinct atoms
+     or symmetry-distinct wave vectors cannot be related by symmetry.
+     Analogous tags: none, though analogous tags are needed for
+     displace, occ, U, and aniso waves.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p>_atom_site_moment_Fourier_param_sin_symmform<br /></p></div>
+</div></div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_atom_site_moment_special_func">ATOM_SITE_MOMENT_SPECIAL_FUNC</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>Data items in the ATOM_SITE_MOMENT_SPECIAL_FUNC category record
+     details about the magnetic modulation of an atom site in a
+     modulated structure when it is not described by Fourier series.
+     Special functions are effective in some cases where the
+     modulations are highly anharmonic, since the number of parameters
+     is drastically reduced. However, they are in general
+     discontinuous or with discontinuous derivatives and therefore
+     these functions describe an ideal situation that never occurs in
+     a real modulated crystal. Up to now, only a few types of special
+     functions have been used and all of them come from the JANA suite
+     of programs. Although this approach is far from being general, it
+     has the advantage that the functions are tightly defined and
+     therefore the relevant parameters can be  calculated easily. In
+     this dictionary, only the special functions  available in
+     JANA2000 have been included. These are:  (1) Sawtooth functions
+     for atomic displacive modulation along      x, y and z.  (2)
+     Crenel functions for the occupational modulation of atoms
+     and rigid groups. Both of these only apply to      one-
+     dimensional modulated structures.
+     Analogous tags: _atom_site_displace_special_func.[],
+     _atom_site_occ_special_func.[]</p></div>
+<div class="sect2">
+<h3 id="_atom_site_moment_special_func_atom_site_label_8226">_atom_site_moment_special_func.atom_site_label&#8226;</h3>
+<div class="paragraph"><p>(Generic definition) This label is a unique identifier for a particular site in the
+     asymmetric unit of the crystal unit cell.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_atom_site_moment_special_func_sawtooth_ax">_atom_site_moment_special_func.sawtooth_ax</h3>
+<div class="paragraph"><p><em>atom_site_moment_special_func.sawtooth items are the
+     adjustable parameters of a magnetic sawtooth function.    A
+     magnetic sawtooth function is only used when working    in the
+     crystal-axis coordinate system.  It is defined    along the
+     internal space direction as follows:
+     mx=2*ax[(x4-c)/w]                      my=2*ay[(x4-c)/w]
+     mz=2*az[(x4-c)/w]
+        with x4 belonging to the interval [c-(w/2), c+(w/2)], where
+     ax,    ay and az are the amplitudes (maximum magnetic moments)
+     along each crystallographic axis, w is its width, x4 is the
+     internal coordinate and c is the centre of the function in
+     internal space.  The use of this function is restricted to
+     one-dimensional modulated structures. For more details,     see
+     the manual for JANA2000 (Petricek &amp; Dusek, 2000).
+        Calculated parameters mx, my and mz must be in Bohr-magneton
+     units and can vary in the range (-infinity,infinity).
+     Reference: Petricek, V. &amp; Dusek, M. (2000). JANA2000. The
+     crystallographic computing system. Institute of Physics, Prague,
+     Czech Republic.
+     Analogous tags: _atom_site_displace_special_func.sawtooth</em>,
+     <em>atom_site_occ_special_func.cresnel</em></p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p>_atom_site_moment_special_func_sawtooth_ax<br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_atom_site_moment_special_func_sawtooth_ay">_atom_site_moment_special_func.sawtooth_ay</h3>
+<div class="paragraph"><p><em>atom_site_moment_special_func.sawtooth</em> items are the
+     adjustable parameters of a magnetic sawtooth function.    A
+     magnetic sawtooth function is only used when working    in the
+     crystal-axis coordinate system.  It is defined    along the
+     internal space direction as follows:
+     mx=2*ax[(x4-c)/w]                      my=2*ay[(x4-c)/w]
+     mz=2*az[(x4-c)/w]
+        with x4 belonging to the interval [c-(w/2), c+(w/2)], where
+     ax,    ay and az are the amplitudes (maximum magnetic moments)
+     along each crystallographic axis, w is its width, x4 is the
+     internal coordinate and c is the centre of the function in
+     internal space.  The use of this function is restricted to
+     one-dimensional modulated structures. For more details,     see
+     the manual for JANA2000 (Petricek &amp; Dusek, 2000).
+        Calculated parameters mx, my and mz must be in Bohr-magneton
+     units and can vary in the range (-infinity,infinity).
+     Reference: Petricek, V. &amp; Dusek, M. (2000). JANA2000. The
+     crystallographic computing system. Institute of Physics, Prague,
+     Czech Republic.
+     Analogous tags: <em>atom_site_displace_special_func.sawtooth</em>,
+     <em>atom_site_occ_special_func.cresnel</em></p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p>_atom_site_moment_special_func_sawtooth_ay<br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_atom_site_moment_special_func_sawtooth_az">_atom_site_moment_special_func.sawtooth_az</h3>
+<div class="paragraph"><p><em>atom_site_moment_special_func.sawtooth</em> items are the
+     adjustable parameters of a magnetic sawtooth function.    A
+     magnetic sawtooth function is only used when working    in the
+     crystal-axis coordinate system.  It is defined    along the
+     internal space direction as follows:
+     mx=2*ax[(x4-c)/w]                      my=2*ay[(x4-c)/w]
+     mz=2*az[(x4-c)/w]
+        with x4 belonging to the interval [c-(w/2), c+(w/2)], where
+     ax,    ay and az are the amplitudes (maximum magnetic moments)
+     along each crystallographic axis, w is its width, x4 is the
+     internal coordinate and c is the centre of the function in
+     internal space.  The use of this function is restricted to
+     one-dimensional modulated structures. For more details,     see
+     the manual for JANA2000 (Petricek &amp; Dusek, 2000).
+        Calculated parameters mx, my and mz must be in Bohr-magneton
+     units and can vary in the range (-infinity,infinity).
+     Reference: Petricek, V. &amp; Dusek, M. (2000). JANA2000. The
+     crystallographic computing system. Institute of Physics, Prague,
+     Czech Republic.
+     Analogous tags: <em>atom_site_displace_special_func.sawtooth</em>,
+     <em>atom_site_occ_special_func.cresnel</em></p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p>_atom_site_moment_special_func_sawtooth_az<br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_atom_site_moment_special_func_sawtooth_c">_atom_site_moment_special_func.sawtooth_c</h3>
+<div class="paragraph"><p><em>atom_site_moment_special_func.sawtooth</em> items are the
+     adjustable parameters of a magnetic sawtooth function.    A
+     magnetic sawtooth function is only used when working    in the
+     crystal-axis coordinate system.  It is defined    along the
+     internal space direction as follows:
+     mx=2*ax[(x4-c)/w]                      my=2*ay[(x4-c)/w]
+     mz=2*az[(x4-c)/w]
+        with x4 belonging to the interval [c-(w/2), c+(w/2)], where
+     ax,    ay and az are the amplitudes (maximum magnetic moments)
+     along each crystallographic axis, w is its width, x4 is the
+     internal coordinate and c is the centre of the function in
+     internal space.  The use of this function is restricted to
+     one-dimensional modulated structures. For more details,     see
+     the manual for JANA2000 (Petricek &amp; Dusek, 2000).
+        Calculated parameters mx, my and mz must be in Bohr-magneton
+     units and can vary in the range (-infinity,infinity).
+     Reference: Petricek, V. &amp; Dusek, M. (2000). JANA2000. The
+     crystallographic computing system. Institute of Physics, Prague,
+     Czech Republic.
+     Analogous tags: <em>atom_site_displace_special_func.sawtooth</em>,
+     <em>atom_site_occ_special_func.cresnel</em></p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p>_atom_site_moment_special_func_sawtooth_c<br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_atom_site_moment_special_func_sawtooth_w">_atom_site_moment_special_func.sawtooth_w</h3>
+<div class="paragraph"><p><em>atom_site_moment_special_func.sawtooth</em> items are the
+     adjustable parameters of a magnetic sawtooth function.    A
+     magnetic sawtooth function is only used when working    in the
+     crystal-axis coordinate system.  It is defined    along the
+     internal space direction as follows:
+     mx=2*ax[(x4-c)/w]                      my=2*ay[(x4-c)/w]
+     mz=2*az[(x4-c)/w]
+        with x4 belonging to the interval [c-(w/2), c+(w/2)], where
+     ax,    ay and az are the amplitudes (maximum magnetic moments)
+     along each crystallographic axis, w is its width, x4 is the
+     internal coordinate and c is the centre of the function in
+     internal space.  The use of this function is restricted to
+     one-dimensional modulated structures. For more details,     see
+     the manual for JANA2000 (Petricek &amp; Dusek, 2000).
+        Calculated parameters mx, my and mz must be in Bohr-magneton
+     units and can vary in the range (-infinity,infinity).
+     Reference: Petricek, V. &amp; Dusek, M. (2000). JANA2000. The
+     crystallographic computing system. Institute of Physics, Prague,
+     Czech Republic.
+     Analogous tags: <em>atom_site_displace_special_func.sawtooth</em>,
+     <em>atom_site_occ_special_func.cresnel</em></p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p>_atom_site_moment_special_func_sawtooth_w<br /></p></div>
+</div></div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_atom_sites_moment_fourier">ATOM_SITES_MOMENT_FOURIER</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>Data items in the ATOM_SITES_MOMENT_FOURIER category record
+     details common to the magnetic modulations of atom sites in a
+     modulated structure.
+     Details for individual atom sites are described by data items in
+     the ATOM_SITE_MOMENT_FOURIER category.
+     Analogous tags: _atom_sites_displace_Fourier.[],
+     _atom_sites_rot_Fourier.[]      _atom_sites_occ_Fourier.[],
+     _atom_sites_U_Fourier.[]</p></div>
+<div class="sect2">
+<h3 id="_atom_sites_moment_fourier_axes_description">_atom_sites_moment_Fourier.axes_description</h3>
+<div class="paragraph"><p>Describes a user-defined coordinate system for which magnetic
+     Fourier  modulation components are to be presented.  Only used
+     when different from those described by
+     _atom_site_moment_Fourier.axis.
+     Analogous tags:
+     msCIF:_atom_sites_displace_Fourier.axes_description It&#8217;s not hard
+     to imagine an _atom_sites_rot_Fourier.axes_description tag.</p></div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_parent_propagation_vector">PARENT_PROPAGATION_VECTOR</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>This looped category allows for the presentation of the
+     fundamental magnetic wave vectors in the setting of the parent
+     structure.  In general, there can be more than one fundamental
+     magnetic wave vector. See the _parent_space_group.[] category for
+     more information about parent space groups.</p></div>
+<div class="sect2">
+<h3 id="_parent_propagation_vector_id_8226">_parent_propagation_vector.id&#8226;</h3>
+<div class="paragraph"><p>A code that uniquely identifies a fundamental magnetic propagation vector.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_parent_propagation_vector_kxkykz">_parent_propagation_vector.kxkykz</h3>
+<div class="paragraph"><p>A fundamental magnetic propagation vector in unitless reciprocal-lattice units of
+     the parent space group setting.</p></div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_parent_space_group">PARENT_SPACE_GROUP</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>This category provides information about the space-group and
+     setting of  a non-magnetic parent structure which is related to
+     the present magnetic  structure by a group-subgroup relationship.
+     In general, the choice of a parent structure is not unique; it
+     could be the lowest-symmetry non-magnetic structure obtained by
+     simply setting all magnetic moments to zero, or a higher-symmetry
+     approximation to this structure which idealizes some of the
+     atomic coordinates.  The designation of a parent  structure is
+     common but optional for a magnetic-structure description. This
+     category could also be used to designate high-symmetry parent
+     structures  of low-symmetry non-magnetic structures. As an
+     alternative to this category, one can define a parent structure
+     in a separate data block, and then relate the parent and child
+     space-group settings by conveying an appropriate inter-data-block
+     basis transformation in each data block.
+     Analogous tags: none</p></div>
+<div class="sect2">
+<h3 id="_parent_space_group_child_transform_pp_abc">_parent_space_group.child_transform_Pp_abc</h3>
+<div class="paragraph"><p>This item specifies the transformation (P,p) of the basis vectors
+     and origin of the present setting of the parent space group to
+     those of the present setting of the  child space group. The basis
+     vectors (a',b',c') of the child are described as linear
+     combinations  of the basis vectors (a,b,c) of the parent, and the
+     origin shift (ox,oy,oz)  is displayed in the lattice coordinates
+     of the parent. The Jones-Faithful notation and possible values
+     are identical to those of  symCIF:_space_group.transform_Pp_abc.
+     Analogous tags: _symCIF:_space_group.transform_Pp_abc</p></div>
+</div>
+<div class="sect2">
+<h3 id="_parent_space_group_it_number">_parent_space_group.IT_number</h3>
+<div class="paragraph"><p>Analogous tags: Perfectly analogous to
+     symCIF:_space_group.IT_number except that it applies to the
+     parent structure.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_parent_space_group_name_h_m_alt">_parent_space_group.name_H-M_alt</h3>
+<div class="paragraph"><p>Analogous tags: Perfectly analogous to symCIF:_space_group
+     .name_H-M_alt except that it applies to the parent structure.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_parent_space_group_reference_setting">_parent_space_group.reference_setting</h3>
+<div class="paragraph"><p>Analogous tags: Perfectly analogous to
+     symCIF:_space_group.reference_setting except that it applies to
+     the parent structure.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_parent_space_group_transform_pp_abc">_parent_space_group.transform_Pp_abc</h3>
+<div class="paragraph"><p>Analogous tags: Perfectly analogous to
+     symCIF:_space_group.transform_Pp_abc except that it applies to
+     the parent structure.</p></div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_space_group_magn_ssg_transforms">SPACE_GROUP_MAGN_SSG_TRANSFORMS</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>This loop provides a list of matrix transformations to one or
+     more settings of the magnetic  superspace group, including
+     transformations to both standard and non-standard settings.   A
+     transformation loop is particularly helpful for a magnetic
+     superspace groups,  which often have several reference settings
+     of interest.
+     Analogous tags: transform loops have not yet been approved in
+     other dictionaries.</p></div>
+<div class="sect2">
+<h3 id="_space_group_magn_ssg_transforms_description">_space_group_magn_ssg_transforms.description</h3>
+<div class="paragraph"><p>A string that describes the source of a reference setting for the
+     magnetic superspace group. _space_group_magn_ssg_transforms.source
+     should be used if the reference source is one of those provided in
+     that definition. Otherwise, arbitrary free text can be used to
+     describe reference settings of interest, such as might appear in a specific
+     publication, though care should be taken to  make the description
+     clear and unambiguous.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_space_group_magn_ssg_transforms_id_8226">_space_group_magn_ssg_transforms.id&#8226;</h3>
+<div class="paragraph"><p>An arbitrary identifier that uniquely labels each setting
+     transformation of interest in a looped list of superspace-group
+     transformations. Most commonly, a sequence of positive integers
+     is used for this identification.
+     Analogous tags: transform loops have not yet been approved in
+     other dictionaries.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_space_group_magn_ssg_transforms_pp_superspace">_space_group_magn_ssg_transforms.Pp_superspace</h3>
+<div class="paragraph"><p>This item specifies the transformation (P,p) of the superspace
+     basis vectors  from the current setting (a1,&#8230;,a(3+d)) to a
+     reference setting (a1',&#8230;,a(3+d)') given by
+     _space_group_magn_ssg_transforms.description. The origin shift
+     is presented in the unitless lattice coordinates of the current
+     setting.
+     The notation and usage are analogous to those of
+     _space_group.transform_Pp_abc, except that P now represents a
+     superspace point operation and p now represents a superspace
+     translation.
+     Analogous tags: symCIF:_space_group.transform_Pp_abc</p></div>
+</div>
+<div class="sect2">
+<h3 id="_space_group_magn_ssg_transforms_source">_space_group_magn_ssg_transforms.source</h3>
+<div class="paragraph"><p>A string that describes the source of a reference setting for the
+     magnetic superspace group.
+     If the reference source does not appear in the list below, use
+     _space_group_magn_ssg_transforms.description
+     References: <em>Magnetic Group Tables</em> of D.B. Litvin at
+     <a href="http://www.iucr.org/publ/978-0-9553602-2-0">http://www.iucr.org/publ/978-0-9553602-2-0</a> ISO-MAG tables of H.T.
+     Stokes and B.J. Campbell at <a href="http://iso.byu.edu">http://iso.byu.edu</a> ISO(3+d)D tables
+     of H.T. Stokes and B.J. Campbell at <a href="http://iso.byu.edu">http://iso.byu.edu</a></p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Possible values:</div>
+<div class="dlist"><dl>
+<dt class="hdlist1">
+<code>ISOMAG-ISO(3+d)D</code>
+</dt>
+<dd>
+<p>
+a magnetic superspace- group setting such that (1) the setting of
+     the basic magnetic space group matches the corresponding BNS
+     setting in the Magnetic Space Groups tables of Stokes and
+     Campbell, and (2) the non- magnetic superspace-group setting
+     obtained by eliminating all time-reversed operators from the
+     group is related to that of the corresponding setting in the
+     ISO(3+d)D tables via a purely external (three-dimensional)
+     transformation.
+</p>
+</dd>
+<dt class="hdlist1">
+<code>ISO(3+d)D</code>
+</dt>
+<dd>
+<p>
+After eliminating all time-reversed operators from the group a
+     non-magnetic superspace-group setting that matches that of the
+     corresponding entry in the ISO(3+d)D tables is obtained
+</p>
+</dd>
+</dl></div>
+</div></div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_space_group_magn_transforms">SPACE_GROUP_MAGN_TRANSFORMS</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>This category provides a list of matrix transformations to multiple
+     settings of the magnetic space group, including transformations
+     to both standard and non-standard settings.  A transformation
+     loop is  particularly helpful for a magnetic space group, which
+     often have several reference settings of interest.</p></div>
+<div class="sect2">
+<h3 id="_space_group_magn_transforms_description">_space_group_magn_transforms.description</h3>
+<div class="paragraph"><p>A string that describes the source of the magnetic-space-group
+     reference setting indicated by the
+     <em>space_group_magn_transforms.Pp_abc tag.
+     _space_group_magn_transforms.source
+     should be used if the reference source is one of those provided in
+     that definition.
+     The value string "data_block</em>&lt;blockname&gt;" refers to the setting
+     used in a separate data block named "blockname" within the same
+     file. Otherwise,
+     arbitrary free text can be used to describe other reference
+     settings of interest, such as might appear  in a specific
+     publication, though care should be taken to make the description
+     clear and unambiguous.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_space_group_magn_transforms_id_8226">_space_group_magn_transforms.id&#8226;</h3>
+<div class="paragraph"><p>An arbitrary identifier that uniquely labels each setting
+     transformation of interest in a looped list of space-group
+     transformations.
+     Analogous tags: transform loops have not been approved in other
+     dictionaries.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_space_group_magn_transforms_pp">_space_group_magn_transforms.Pp</h3>
+<div class="paragraph"><p>This item specifies the transformation (P,p) of the basis vectors
+     and origin in the current setting of the CIF file to the
+     reference setting described by the
+     _space_group_magn_transforms.description/source tag, and should not
+     be used without this description.  The basis vectors
+     (a',b',c') of the reference setting are obtained as</p></div>
+<div class="literalblock">
+<div class="content">
+<pre><code>(a',b',c',1) = Pp (a,b,c,1)</code></pre>
+</div></div>
+<div class="paragraph"><p>where (a,b,c) are the current basis vectors.  See IT Vol 1 Section 5.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_space_group_magn_transforms_pp_abc">_space_group_magn_transforms.Pp_abc</h3>
+<div class="paragraph"><p>This item specifies the transformation (P,p) of the basis vectors
+     and origin in the current setting of the CIF file to the
+     reference setting described by the
+     _space_group_magn_transforms.description/source tag, and should not
+     be used without the this description.  The basis vectors
+     (a',b',c') of the reference setting are described as  linear
+     combinations of the current basis vectors (a,b,c), and the origin
+     shift (ox,oy,oz)  is displayed in the lattice coordinates of the
+     current setting. The Jones-Faithful notation and possible values
+     are identical to those of symCIF:_space_group_transform_Pp_abc.
+     Analogous tags: _symCIF:_space_group.transform_Pp_abc</p></div>
+</div>
+<div class="sect2">
+<h3 id="_space_group_magn_transforms_source">_space_group_magn_transforms.source</h3>
+<div class="paragraph"><p>A string that describes the source of the magnetic space group
+     reference indicated by the _space_group_magnetic_transforms.Pp_abc
+     tag.
+     If the reference source does not appear in the list below, use
+     _space_group_magn_transforms.description
+     References: <em>Magnetic Group Tables</em> of D.B. Litvin at
+     <a href="http://www.iucr.org/publ/978-0-9553602-2-0">http://www.iucr.org/publ/978-0-9553602-2-0</a> ISO-MAG tables of H.T.
+     Stokes and B.J. Campbell at <a href="http://iso.byu.edu">http://iso.byu.edu</a> ISO(3+d)D tables
+     of H.T. Stokes and B.J. Campbell at <a href="http://iso.byu.edu">http://iso.byu.edu</a></p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Possible values:</div>
+<div class="dlist"><dl>
+<dt class="hdlist1">
+<code>data_block_CURRENT</code>
+</dt>
+<dd>
+<p>
+the setting used in the current data block.  Obviously, the basis transformation
+     to this setting is the identity.  The ability to reference the
+     current setting can be useful when communicating the same
+     magnetic propagation vector in multiple settings.
+</p>
+</dd>
+<dt class="hdlist1">
+<code>ISOMAG-BNS</code>
+</dt>
+<dd>
+<p>
+The Belov-Neronova-Smirnova group setting presented in the ISO-MAG tables.
+</p>
+</dd>
+<dt class="hdlist1">
+<code>Litvin-2013_OG</code>
+</dt>
+<dd>
+<p>
+The Opechowski-Guccione group setting presented in the Magnetic Group Tables of
+     D.B. Litvin.
+</p>
+</dd>
+</dl></div>
+</div></div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_space_group_symop_magn_centering">SPACE_GROUP_SYMOP_MAGN_CENTERING</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>This loop provides a list of centering or anti-centering
+     translation in a BNS-supercell description of a magnetic space
+     group.
+     Keeping the centering and anti-centering translations in a
+     separate loop leaves only representative point operations in the
+     main _space_group_symop_magn_operation loop. The direct sum of
+     the two loops produces the full set of representative operations
+     of the magnetic space group.  This centering loop is optional, so
+     that it is always possible to include all of the symmetry
+     operations in the main loop.
+     When this centering loop is employed, the representative point
+     operations in the main _space_group_symop_magn_operation loop may
+     not form a closed subgroup, but instead  generate some of the
+     fractional translations of the centering loop.  Despite this
+     annoyance, a separate centering loop is important because
+     magnetic structures tend to have a relatively large number of
+     centering and anti-centering translations, which can make the
+     resulting list of operators very long and unintuitive, especially
+     when working  in non-standard settings.
+     One could argue that anti-centering operations belong in the main
+     representative- point-operation loop since they are not actually
+     translations of the magnetic lattice.   In fact, a pure time
+     reversal is a generator of the magnetic point group of a  type-4
+     magnetic space group.  Nevertheless, this centering loop is
+     defined to  include the anti-centerings due to the common
+     practice of referring to a "black and white" lattice of
+     centerings and anti-centerings.</p></div>
+<div class="sect2">
+<h3 id="_space_group_symop_magn_centering_description">_space_group_symop_magn_centering.description</h3>
+<div class="paragraph"><p>An optional free text description of a particular centering or
+     anti-centering translation in the BNS-supercell description of a
+     magnetic space group.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_space_group_symop_magn_centering_id_8226">_space_group_symop_magn_centering.id&#8226;</h3>
+<div class="paragraph"><p>An arbitrary identifier that uniquely labels each centering or
+     anti-centering translation in a BNS-supercell description of a
+     magnetic space group. Most commonly, a sequence of positive
+     integers is used for this identification.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_space_group_symop_magn_centering_xyz">_space_group_symop_magn_centering.xyz</h3>
+<div class="paragraph"><p>A parsable string giving one of the centering or anti-centering
+     translations in the BNS-supercell description of a magnetic space
+     group in algebraic form. The form of such a string is identical
+     to that expected for _space_group_symop_magn_operation.xyz,
+     except that the rotational part of a translation must always be
+     the identity element.</p></div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_space_group_symop_magn_og_centering">SPACE_GROUP_SYMOP_MAGN_OG_CENTERING</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>This loop provides a list of centering translations in an
+     OG(k)-supercell description of a magnetic space group.
+     For an OG(k)-supercell description, this loop is mandatory and
+     entirely distinct  from the optional
+     _space_group_symop_magn_centering loop used to simplify the
+     presentation of a BNS-supercell description.
+     An integer translation in an OG setting of a type-4 magnetic
+     space group may have  a time-reversal component of -1, in which
+     case it is actually an anti-translation vector rather than a lattice
+     vector.   This loop should include all centering and anti-centering
+     translations, but does not include the time-reveral components,
+     which are instead determined
+     using the value of the _space_group.magn_OG_wavevector_kxkykz tag.
+     Because the centering translations are listed in a separate loop
+     in the OG(k) description,
+     only representative point operations remain in the main
+     _space_group_symop_magn_operation loop.</p></div>
+<div class="sect2">
+<h3 id="_space_group_symop_magn_og_centering_description">_space_group_symop_magn_OG_centering.description</h3>
+<div class="paragraph"><p>An optional free-text description of a particular centering
+     operation from the OG(k)-supercell description of a magnetic
+     space group, without the time-reversal component.
+     Analogous tags: centering loops have not been approved for other
+     dictionaries.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_space_group_symop_magn_og_centering_id_8226">_space_group_symop_magn_OG_centering.id&#8226;</h3>
+<div class="paragraph"><p>An arbitrary loop identifier that uniquely labels each centering
+     translation in an OG(k)-supercell description of a magnetic space
+     group. Most commonly, a sequence of positive integers is used for
+     this identification.
+     Analogous tags: centering loops have not been approved for other
+     dictionaries.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_space_group_symop_magn_og_centering_xyz">_space_group_symop_magn_OG_centering.xyz</h3>
+<div class="paragraph"><p>A parsable string giving one of the centering operations of the
+     OG(k)-supercell  description of a magnetic space group in
+     algebraic form.  The form of such a string  is identical to that
+     expected for _space_group_symop_operation.xyz, except that the
+     rotational part of a translation must always be the identity
+     element. The magnetic component of the centering vector is not
+     given in the value of this tag, but should instead be separately
+     established using the value of the
+     _space_group.magn_OG_wavevector_kxkykz tag.</p></div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_space_group_symop_magn_operation">SPACE_GROUP_SYMOP_MAGN_OPERATION</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>A list of magnetic space-group symmetry operations.</p></div>
+<div class="sect2">
+<h3 id="_space_group_symop_magn_operation_description">_space_group_symop_magn_operation.description</h3>
+<div class="paragraph"><p>The description of a particular symmetry operation of the
+     magnetic space group, which can be presented in either the
+     geometric notation presented in the International Tables of
+     Crystallography(2006), Volume A, section 11.1.2, or the Seitz
+     notation as presented in  Acta Cryst. A70, 300 (2014). This tag
+     is intended for use with the BNS-supercell description of a
+     magnetic structure.
+     Analogous tags: symCIF:_space_group_symop.operation_description
+     References: <em>Magnetic Group Tables</em> by D.B. Litvin at
+     <a href="http://www.iucr.org/publ/978-0-9553602-2-0">http://www.iucr.org/publ/978-0-9553602-2-0</a> ISO-MAG tables of H.T.
+     Stokes and B.J. Campbell at <a href="http://iso.byu.edu">http://iso.byu.edu</a></p></div>
+</div>
+<div class="sect2">
+<h3 id="_space_group_symop_magn_operation_id_8226">_space_group_symop_magn_operation.id&#8226;</h3>
+<div class="paragraph"><p>An arbitrary identifier that uniquely labels each symmetry
+     operation in a looped list of magnetic space-group symmetry
+     operations. Most commonly, a sequence of positive  integers is
+     used for this identification.
+     The _space_group_symop_magn.id alias provides backwards
+     compatibility with the established magCIF prototype.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p>_space_group_symop_magn.id<br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_space_group_symop_magn_operation_xyz">_space_group_symop_magn_operation.xyz</h3>
+<div class="paragraph"><p>A parsable string giving one of the symmetry operations of the
+     magnetic space group in algebraic form.  The analogy between
+     parsable labels for magnetic and non-magnetic symmetry operations
+     is perfect except for the fact that a magnetic symop label ends
+     with an additional piece of information ("-1" or "+1") indicating
+     that the operation is or is not time-reversed, respectively.
+     This tag is intended for use with the BNS-supercell description
+     of a magnetic structure.
+     Analogous tags: symCIF:_space_group_symop.operation_xyz
+     References: <em>Magnetic Group Tables</em> by D.B. Litvin at
+     <a href="http://www.iucr.org/publ/978-0-9553602-2-0">http://www.iucr.org/publ/978-0-9553602-2-0</a> ISO-MAG tables of H.T.
+     Stokes and B.J. Campbell at <a href="http://iso.byu.edu">http://iso.byu.edu</a></p></div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_space_group_symop_magn_ssg_centering">SPACE_GROUP_SYMOP_MAGN_SSG_CENTERING</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>This loop provides a list of the centering and anti-centering
+     translations of a magnetic superspace-group.</p></div>
+<div class="sect2">
+<h3 id="_space_group_symop_magn_ssg_centering_algebraic">_space_group_symop_magn_ssg_centering.algebraic</h3>
+<div class="paragraph"><p>A parsable string giving one of the centering or anti-centering
+     operations of the magnetic superspace group in algebraic form.
+     The form of such a string is identical to that expected for
+     _space_group_symop_magn_ssg_operation.algebraic, except that the
+     rotational part of a translation must always be the identity
+     element.  See the description of
+     _space_group_symop_magn_centering.id for  more information about
+     centering loops. This tag is intended for use with the BNS
+     description of the magnetic basic cell.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_space_group_symop_magn_ssg_centering_id_8226">_space_group_symop_magn_ssg_centering.id&#8226;</h3>
+<div class="paragraph"><p>An arbitrary identifier that uniquely labels each centering or
+     anti-centering translations in a looped list of magnetic
+     superspace-group symmetry operations. Most commonly, a sequence
+     of positive integers is used for this identification.   This tag
+     is intended for use with the BNS description of the magnetic
+     basic cell.
+     Analogous to the case of magnetic space groups, the magCIF
+     dictionary allows the subgroup of time-reversed and non-time-
+     reversed fractional translations of a magnetic superspace group
+     to be split off into a separate loop.  See the description of
+     _space_group_symop_magn_centering.id for more information about
+     centering loops.</p></div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_space_group_symop_magn_ssg_operation">SPACE_GROUP_SYMOP_MAGN_SSG_OPERATION</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>A looped list of magnetic superspace-group symmetry operations.
+     Analogous tags: msCIF:_space_group_symop.ssg_[]</p></div>
+<div class="sect2">
+<h3 id="_space_group_symop_magn_ssg_operation_algebraic">_space_group_symop_magn_ssg_operation.algebraic</h3>
+<div class="paragraph"><p>A parsable string giving one of the symmetry operations of the
+     magnetic  superspace-group in algebraic form.  The analogy
+     between parsable labels for magnetic and non-magnetic symmetry
+     operations is perfect except for the fact that a magnetic symop
+     label ends with an additional piece of information ("-1" or "+1")
+     indicating that the operation is or is not time-reversed,
+     respectively. This tag is intended for use with the BNS
+     description of the magnetic basic cell.
+     Analogous tags: msCIF:_space_group_symop.ssg_operation_algebraic</p></div>
+</div>
+<div class="sect2">
+<h3 id="_space_group_symop_magn_ssg_operation_id_8226">_space_group_symop_magn_ssg_operation.id&#8226;</h3>
+<div class="paragraph"><p>An arbitrary identifier that uniquely labels each symmetry
+     operation in a looped list of magnetic superspace-group symmetry
+     operations. Most commonly, a sequence of positive  integers is
+     used for this identification.
+     The _space_group_symop_magn_ssg.id alias provides backwards
+     compatibility with the established magCIF prototype.
+     Analogous tags: msCIF:_space_group_symop_ssg_id</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p>_space_group_symop_magn_ssg.id<br /></p></div>
+</div></div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_atom_site_moment">ATOM_SITE_MOMENT</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>This category provides a loop for presenting the magnetic moments
+     of atoms in one of several coordinate systems.  This is a child
+     category of the atom_site category, so that the magnetic moments
+     can either be listed along side the non-magnetic atom properties
+     in the main atom_site loop, or be listed in a separate loop.</p></div>
+<div class="sect2">
+<h3 id="_atom_site_moment_cartn">_atom_site_moment.Cartn</h3>
+<div class="paragraph"><p>The atom-site magnetic moment vector specified according to a set
+     of orthogonal Cartesian axes where x||a and z||c* with y
+     completing a right-hand set.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p>_atom_site_moment_Cartn<br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_atom_site_moment_crystalaxis_x">_atom_site_moment.crystalaxis_x</h3>
+<div class="paragraph"><p>The x component of the atom-site magnetic moment vector projected
+     onto the unit cell axes.  See _atom_site_moment.crystalaxis.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p>_atom_site_moment_crystalaxis_x<br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_atom_site_moment_crystalaxis_y">_atom_site_moment.crystalaxis_y</h3>
+<div class="paragraph"><p>The y component of the atom-site magnetic moment vector projected
+     onto the unit cell axes.  See _atom_site_moment.crystalaxis.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p>_atom_site_moment_crystalaxis_y<br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_atom_site_moment_crystalaxis_z">_atom_site_moment.crystalaxis_z</h3>
+<div class="paragraph"><p>The z component of the atom-site magnetic moment vector projected
+     onto the unit cell axes.  See _atom_site_moment.crystalaxis.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p>_atom_site_moment_crystalaxis_z<br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_atom_site_moment_cartn_x">_atom_site_moment.Cartn_x</h3>
+<div class="paragraph"><p>The x component of the atom-site magnetic moment vector
+     (see _atom_site_moment.Cartn).</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p>_atom_site_moment_Cartn_x<br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_atom_site_moment_cartn_z">_atom_site_moment.Cartn_z</h3>
+<div class="paragraph"><p>The z component of the atom-site magnetic moment vector
+     (see _atom_site_moment.Cartn).</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p>_atom_site_moment_Cartn_z<br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_atom_site_moment_spherical_polar">_atom_site_moment.spherical_polar</h3>
+<div class="paragraph"><p>The polar angle of the atom-site magnetic moment vector specified
+     in spherical coordinates relative to a set of orthogonal
+     Cartesian axes where x||a and z||c* with y completing a right-
+     hand set. The polar angle is measured relative to the +z axis.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p>_atom_site_moment_spherical_polar<br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_atom_site_moment_crystalaxis">_atom_site_moment.crystalaxis</h3>
+<div class="paragraph"><p>The atom-site magnetic moment vector specified as a projection
+     onto the axes of the unit cell.  This is the recommended
+     coordinate system for  most magnetic structures.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p>_atom_site_moment_crystalaxis<br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_atom_site_moment_refinement_flags_magnetic">_atom_site_moment.refinement_flags_magnetic</h3>
+<div class="paragraph"><p>The constraints/restraints placed on the magnetic moment during
+    model refinement.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Possible values:</div>
+<div class="dlist"><dl>
+<dt class="hdlist1">
+<code>.</code>
+</dt>
+<dd>
+<p>
+no constraint on magnetic moment
+</p>
+</dd>
+<dt class="hdlist1">
+<code>S</code>
+</dt>
+<dd>
+<p>
+special position constraint on magnetic moment
+</p>
+</dd>
+<dt class="hdlist1">
+<code>M</code>
+</dt>
+<dd>
+<p>
+modulus restraint on magnetic moment
+</p>
+</dd>
+<dt class="hdlist1">
+<code>A</code>
+</dt>
+<dd>
+<p>
+direction restraints on magnetic moment
+</p>
+</dd>
+<dt class="hdlist1">
+<code>SM</code>
+</dt>
+<dd>
+<p>
+superposition of S and M constraints/restraints
+</p>
+</dd>
+<dt class="hdlist1">
+<code>SA</code>
+</dt>
+<dd>
+<p>
+superposition of S and A constraints/restraints
+</p>
+</dd>
+<dt class="hdlist1">
+<code>MA</code>
+</dt>
+<dd>
+<p>
+superposition of M and A constraints/restraints
+</p>
+</dd>
+<dt class="hdlist1">
+<code>SMA</code>
+</dt>
+<dd>
+<p>
+superposition of S, M, and A constraints/restraints
+</p>
+</dd>
+</dl></div>
+</div></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p>_atom_site_moment_refinement_flags_magnetic<br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_atom_site_moment_cartn_y">_atom_site_moment.Cartn_y</h3>
+<div class="paragraph"><p>The y component of the atom-site magnetic moment vector
+     (see _atom_site_moment.Cartn).</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p>_atom_site_moment_Cartn_y<br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_atom_site_moment_label_8226">_atom_site_moment.label&#8226;</h3>
+<div class="paragraph"><p>(Generic definition) This label is a unique identifier for a particular site in the
+     asymmetric unit of the crystal unit cell.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p>_atom_site_moment_label<br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_atom_site_moment_spherical_azimuthal">_atom_site_moment.spherical_azimuthal</h3>
+<div class="paragraph"><p>The azimuthal angle of the atom-site magnetic moment vector
+     specified in spherical coordinates relative to a set of
+     orthogonal Cartesian axes where x||a and z||c* with y completing
+     a right-hand set.  The azimuthal angle is a right-handed rotation
+     around the +z axis starting from the +x side of the x-z plane.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p>_atom_site_moment_spherical_azimuthal<br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_atom_site_moment_spherical_modulus">_atom_site_moment.spherical_modulus</h3>
+<div class="paragraph"><p>The modulus of the atom-site magnetic moment vector specified in
+     spherical coordinates relative to a set of orthogonal Cartesian
+     axes where x||a and z||c* with y completing a right-hand set.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p>_atom_site_moment_spherical_modulus<br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_atom_site_moment_modulation_flag">_atom_site_moment.modulation_flag</h3>
+<div class="paragraph"><p>A code that signals whether the structural model includes the
+     modulation of the magnetic moment of a given atom site.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Possible values:</div>
+<div class="dlist"><dl>
+<dt class="hdlist1">
+<code>yes</code>
+</dt>
+<dd>
+<p>
+magnetic modulation
+</p>
+</dd>
+<dt class="hdlist1">
+<code>y</code>
+</dt>
+<dd>
+<p>
+abbreviation for "yes"
+</p>
+</dd>
+<dt class="hdlist1">
+<code>no</code>
+</dt>
+<dd>
+<p>
+no magnetic modulation
+</p>
+</dd>
+<dt class="hdlist1">
+<code>n</code>
+</dt>
+<dd>
+<p>
+abbreviation for "no"
+</p>
+</dd>
+</dl></div>
+</div></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p>_atom_site_moment_modulation_flag<br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_atom_site_moment_symmform">_atom_site_moment.symmform</h3>
+<div class="paragraph"><p>A symbolic expression that indicates the symmetry-restricted form
+     of the components of  the magnetic moment vector of the atom.
+     Unlike the positional coordinates of an atom, its magnetic moment
+     has no translational component to be represented.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p>_atom_site_moment_symmform<br /></p></div>
+</div></div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_space_group_external">SPACE_GROUP (External)</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>This category is defined in an external dictionary</p></div>
+<div class="sect2">
+<h3 id="_space_group_magn_ssg_number">_space_group.magn_ssg_number</h3>
+<div class="paragraph"><p>The Belov-Neronova-Smirnova (BNS) number for a magnetic
+     superspace-group. This tag is being held in reserve until a
+     future numbering scheme is approved.
+     Analogous tags: msCIF:_space_group.ssg_number</p></div>
+</div>
+<div class="sect2">
+<h3 id="_space_group_magn_og_wavevector_kxkykz">_space_group.magn_OG_wavevector_kxkykz</h3>
+<div class="paragraph"><p>The magnetic propagation vector (k) of the OG(k)-supercell
+    description, which determines the time-reversal component of each
+    translation vector (x) of the OG lattice (including the centering
+    vectors if a centered setting is used) according to the expression
+    cos(2*pi*k.x) = +/-1, where x is defined in the unitless coordinates
+    of the direct-space OG lattice and k is defined in the unitless
+    coordinates of the corresponding reciprocal-space lattice.  If 2*k.x
+    has a non-integer value for any OG lattice (or centering) translation,
+    the definition of k is incorrect.  The value of OG wavevector is
+    essential to the OG(k) description of the magnetic space group
+    symmetry; it cannot be omitted from such a description without
+    ambiguity.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_space_group_magn_point_group_number">_space_group.magn_point_group_number</h3>
+<div class="paragraph"><p>Each of the 122 crystallographic magnetic point groups can be associated with exactly one
+     crystallographic non-magnetic space group by removing the time-reversal component from
+     each group operator.  The identifying number for each such group is taken from the
+     "Survey of 3-dimensional magnetic point group types" from the "Magnetic Group Tables"
+     Of D.B. Litvin.  This number is comprised of three integers: (1) an integer from 1 to 32 that
+     Corresponds to the non-magnetic point group, (2) an integer that runs sequentially over
+     each of the magnetic point groups associated with a given non-magnetic point group, and
+     (3) a redundant third integer that runs from 1 to 122.
+     References: <em>Magnetic Group Tables</em> by D.B. Litvin at <a href="http://www.iucr.org/publ/978-0-9553602-2-0">http://www.iucr.org/publ/978-0-9553602-2-0</a></p></div>
+</div>
+<div class="sect2">
+<h3 id="_space_group_magn_transform_og_pp">_space_group.magn_transform_OG_Pp</h3>
+<div class="paragraph"><p>This item specifies the transformation (P,p) of the basis vectors
+     and origin of  the current setting to those of the Opechowski-
+     Guccione setting presented  in the Magnetic Group Tables of D.B.
+     Litvin.  The basis vectors
+     (a',b',c') of the OG setting are obtained as</p></div>
+<div class="literalblock">
+<div class="content">
+<pre><code>(a',b',c',1) = Pp (a,b,c,1)</code></pre>
+</div></div>
+<div class="paragraph"><p>where (a,b,c) are the current basis vectors.  See IT Vol 1 Section 5.
+     References: <em>Magnetic Group Tables</em> by D.B. Litvin at
+     <a href="http://www.iucr.org/publ/978-0-9553602-2-0">http://www.iucr.org/publ/978-0-9553602-2-0</a></p></div>
+</div>
+<div class="sect2">
+<h3 id="_space_group_magn_point_group_name">_space_group.magn_point_group_name</h3>
+<div class="paragraph"><p>Any magnetic point group (MPG) can be constructed by starting
+     with a non-magnetic point group P, and then by adding a time-
+     reversal component to some or all or none of its elements. For a
+     type-1 MPG, M = P, there are no time-reversed elements. For a
+     type-2 MPG, M = P + P1', there is both a time-reversed and a non-
+     time-reversed  copy of each element in P. For a type-3 MPG, M = Q
+     + (P - Q)1', there is a subgroup Q of P of index 2 whose elements
+     are not time reversed, whereas the remaining elements in P-Q are
+     time reversed. For a type-1 MPG, the symbol is identical with the
+     symbol for the non-magnetic point group P.  For a type 2 MPG, the
+     symbol is the symbol for P followed by the symbol 1'. For a type
+     3 MPG, the symbol is that of P with a prime added to each time-
+     reversed generator.
+     Analogous tags: symCIF:_space_group.point_group_H-M
+     References: <em>Magnetic Group Tables</em> by D.B. Litvin at
+     <a href="http://www.iucr.org/publ/978-0-9553602-2-0">http://www.iucr.org/publ/978-0-9553602-2-0</a></p></div>
+</div>
+<div class="sect2">
+<h3 id="_space_group_magn_name_bns">_space_group.magn_name_BNS</h3>
+<div class="paragraph"><p>See _space_group_magn_number_OG for a description of magnetic
+     space groups (MSGs).
+     The Belov-Neronova-Smirnova (BNS) symbol for a MSG is based on
+     the short Hermann-Maguin space-group symbol of non-magnetic
+     space group F for MSGs of types 1-3 or its subgroup D for MSGs of
+     type 4. For a type-1 MSG, the symbol for the MSG is identical
+     with the unprimed symbol of F.  For a type-2 MSG, its symbol is
+     the symbol of the space group F followed by 1'.  For a type-3
+     MSG, one starts with the symbol for F and then primes any non-
+     translational  generators whose corresponding MSG elements are
+     time reversed. For a type-4 MSG, the non-translational generators
+     are never primed. A subscript always appears on the first
+     (lattice) character of the symbol of a type-4 MSG, and
+     communicates that a pure time-reversal element is included in the
+     point group of the MSG. The value of this subscript indicates the
+     magnetic lattice of the MSG, and specifically indicates the
+     translational part of the generator whose point part is the pure
+     time reversal. Note that OG and BNS symbols are identical for
+     MSGs of types 1-3, but differ substantially  for MSGs of type 4.
+     Analogous tags: symCIF:_space_group.name_H-M_ref
+     References: <em>Magnetic Group Tables</em> by D.B. Litvin at
+     <a href="http://www.iucr.org/publ/978-0-9553602-2-0">http://www.iucr.org/publ/978-0-9553602-2-0</a> ISO-MAG tables of H.T.
+     Stokes and B.J. Campbell at <a href="http://iso.byu.edu">http://iso.byu.edu</a></p></div>
+</div>
+<div class="sect2">
+<h3 id="_space_group_magn_transform_bns_pp">_space_group.magn_transform_BNS_Pp</h3>
+<div class="paragraph"><p>This item specifies the transformation matrix Pp of the basis vectors
+     and origin of the current setting to those of the Belov-Neronova-
+     Smirnova setting presented in the ISO-MAG tables. The basis vectors
+     (a',b',c') of the BNS setting are obtained as</p></div>
+<div class="literalblock">
+<div class="content">
+<pre><code>(a',b',c',1) = Pp (a,b,c,1)</code></pre>
+</div></div>
+<div class="paragraph"><p>where (a,b,c) are the current basis vectors.  See IT Vol 1 Section 5.
+     References: ISO-MAG tables of H.T. Stokes and B.J. Campbell at
+     <a href="http://iso.byu.edu">http://iso.byu.edu</a></p></div>
+</div>
+<div class="sect2">
+<h3 id="_space_group_magn_transform_og_pp_abc">_space_group.magn_transform_OG_Pp_abc</h3>
+<div class="paragraph"><p>This item specifies the transformation (P,p) of the basis vectors
+     and origin of  the current setting to those of the Opechowski-
+     Guccione setting presented  in the Magnetic Group Tables of D.B.
+     Litvin. The basis vectors (a',b',c') of the reference setting are
+     described as  linear combinations of the current basis vectors
+     (a,b,c), and the origin shift (ox,oy,oz)  is displayed in the
+     lattice coordinates of the current setting. The Jones-Faithful
+     notation and possible values are identical to those of
+     symCIF:_space_group.transform_Pp_abc.
+     Analogous tags: _symCIF:_space_group.transform_Pp_abc
+     References: <em>Magnetic Group Tables</em> by D.B. Litvin at
+     <a href="http://www.iucr.org/publ/978-0-9553602-2-0">http://www.iucr.org/publ/978-0-9553602-2-0</a></p></div>
+</div>
+<div class="sect2">
+<h3 id="_space_group_magn_ssg_name">_space_group.magn_ssg_name</h3>
+<div class="paragraph"><p>The Belov-Neronova-Smirnova (BNS) symbol for a magnetic
+     superspace-group (MSSG) is based on the symbol of the non-
+     magnetic superspace group (SSG) obtained by eliminating all time-
+     reversed  operators from the group, as listed in the ISO(3+d)D
+     tables of Stokes and Campbell. If the magnetic basic space group
+     (MBSG) is of type-1 or type-3 (a.k.a. type-3a), its BNS symbol
+     merely replaces that of the basic space-group (BSG).  If the MBSG
+     is of type-2 or type-4  (a.k.a. type-3b), an additional phase-
+     shift symbol associated with the time-reversal generator is added
+     to each modulation vector.  If the MBSG is of type-4, the BNS
+     symbol of the MSSG is further modified to explicity show the
+     time-reversal generator (1') at the end, and the anti-centering
+     subscript is moved from the lattice symbol to the 1' so as to
+     clearly indicate the fractional external-space translation of
+     this generator.
+     The examples are based on SSG 47.1.9.3 Pmmm(0,0,g)ss0 in (3+1)D.</p></div>
+<div class="paragraph"><p>Analogous tags: msCIF:_space_group.ssg_name
+     References: ISO-MAG tables of H.T. Stokes and B.J. Campbell at
+     <a href="http://iso.byu.edu">http://iso.byu.edu</a> ISO(3+d)D tables of H.T. Stokes and B.J.
+     Campbell at <a href="http://iso.byu.edu">http://iso.byu.edu</a></p></div>
+</div>
+<div class="sect2">
+<h3 id="_space_group_magn_number_bns">_space_group.magn_number_BNS</h3>
+<div class="paragraph"><p>See _space_group.magn_number_OG for a description of magnetic
+     space groups (MSGs). The Belov-Neronova-Smirnova (BNS) number for
+     an MSG is comprised of two positive integers separated by a
+     period. The first integer lies in the range [1-230] and indicates
+     the non-magnetic space group F for MSGs of types 1-3 or the non-
+     magnetic space group of the subgroup D for MSGs of type 4.  The
+     second integer is sequential over all MSGs associated  with the
+     same crystal family.
+     There are 1651 distinct equivalence classes of MSGs, each of
+     which has a unique BNS number. These equivalence classes are most
+     accurately referred to as magnetic space-group "types",
+     following the usage in the International Tables of
+     Crystallography.  But the word "type"  is also commonly used to
+     indicate the four-fold classification of MSGs presented above.
+     To avoid confusion, the word "type" is only used in the latter
+     sense here.
+     Analogous tags: symCIF:_space_group.number_IT
+     References: <em>Magnetic Group Tables</em> by D.B. Litvin at
+     <a href="http://www.iucr.org/publ/978-0-9553602-2-0">http://www.iucr.org/publ/978-0-9553602-2-0</a> ISO-MAG tables of H.T.
+     Stokes and B.J. Campbell at <a href="http://iso.byu.edu">http://iso.byu.edu</a></p></div>
+</div>
+<div class="sect2">
+<h3 id="_space_group_magn_name_og">_space_group.magn_name_OG</h3>
+<div class="paragraph"><p>See _space_group.magn_number_OG for more information on magnetic
+     space groups (MSGs). The Opechowski-Guccione (OG) symbol for an
+     MSG is based on the short Hermann-Mauguin space-group symbol of
+     non-magnetic space group F.   For a type-1 MSG, the OG symbol for
+     the MSG is identical with the unprimed symbol of F.  For a type-2
+     MSG, the OG symbol is the symbol of the non-magnetic space group
+     F followed by 1'.  For a type-3 or type-4 MSG, the OG symbol is
+     constructed by starting with the symbol for F and then  priming
+     the symbols of any non-translational generators whose
+     corresponding MSG elements are  time reversed.  When a non-
+     translational generator symbol could potentially represent both
+     time-reversed and non-time-reversed symmetry elements, the prime
+     placement is as described  in the Magnetic Group Tables of
+     Litvin. A subscript always appears on the first (lattice)
+     character of the symbol of a type-4 MSG, and communicates that a
+     pure time-reversal element is included in the point group of the
+     MSG. The value of this subscript indicates the magnetic lattice
+     of the MSG. Note that OG and BNS symbols are identical for MSGs
+     of types 1-3, but differ substantially  for MSGs of type 4.
+     Analogous tags: symCIF:_space_group.name_H-M_ref
+     References: <em>Magnetic Group Tables</em> by D.B. Litvin at
+     <a href="http://www.iucr.org/publ/978-0-9553602-2-0">http://www.iucr.org/publ/978-0-9553602-2-0</a> ISO-MAG tables of H.T.
+     Stokes and B.J. Campbell at <a href="http://iso.byu.edu">http://iso.byu.edu</a></p></div>
+</div>
+<div class="sect2">
+<h3 id="_space_group_magn_transform_bns_pp_abc">_space_group.magn_transform_BNS_Pp_abc</h3>
+<div class="paragraph"><p>This item specifies the transformation (P,p) of the basis vectors
+     and origin of the current setting to those of the Belov-Neronova-
+     Smirnova setting presented in the ISO-MAG tables. The basis
+     vectors (a',b',c') of the BNS setting are described as
+     linear combinations of the current basis vectors (a,b,c), and the
+     origin shift (ox,oy,oz)  is displayed in the lattice coordinates
+     of the current setting. The Jones-Faithful notation and possible
+     values are identical to those of
+     symCIF:_space_group.transform_Pp_abc.
+     Analogous tags: _symCIF:_space_group.transform_Pp_abc
+     References: ISO-MAG tables of H.T. Stokes and B.J. Campbell at
+     <a href="http://iso.byu.edu">http://iso.byu.edu</a></p></div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_atom_type_scat_external">ATOM_TYPE_SCAT (External)</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>This category is defined in an external dictionary</p></div>
+<div class="sect2">
+<h3 id="_atom_type_scat_neutron_magnetic_j0_d">_atom_type_scat.neutron_magnetic_j0_D</h3>
+<div class="paragraph"><p>See definition for _atom_type_scat.neutron_magnetic_j0_A1</p></div>
+</div>
+<div class="sect2">
+<h3 id="_atom_type_scat_neutron_magnetic_j0_e">_atom_type_scat.neutron_magnetic_j0_e</h3>
+<div class="paragraph"><p>See definition for _atom_type_scat.neutron_magnetic_j0_A1</p></div>
+</div>
+<div class="sect2">
+<h3 id="_atom_type_scat_neutron_magnetic_j2_a2">_atom_type_scat.neutron_magnetic_j2_a2</h3>
+<div class="paragraph"><p>See definition for _atom_type_scat.neutron_magnetic_j0_A1</p></div>
+</div>
+<div class="sect2">
+<h3 id="_atom_type_scat_neutron_magnetic_j2_a1">_atom_type_scat.neutron_magnetic_j2_A1</h3>
+<div class="paragraph"><p>See definition for _atom_type_scat.neutron_magnetic_j0_A1</p></div>
+</div>
+<div class="sect2">
+<h3 id="_atom_type_scat_neutron_magnetic_j2_d">_atom_type_scat.neutron_magnetic_j2_D</h3>
+<div class="paragraph"><p>See definition for _atom_type_scat.neutron_magnetic_j0_A1</p></div>
+</div>
+<div class="sect2">
+<h3 id="_atom_type_scat_neutron_magnetic_j2_e">_atom_type_scat.neutron_magnetic_j2_e</h3>
+<div class="paragraph"><p>See definition for _atom_type_scat.neutron_magnetic_j0_A1</p></div>
+</div>
+<div class="sect2">
+<h3 id="_atom_type_scat_neutron_magnetic_j4_d">_atom_type_scat.neutron_magnetic_j4_D</h3>
+<div class="paragraph"><p>See definition for _atom_type_scat.neutron_magnetic_j0_A1</p></div>
+</div>
+<div class="sect2">
+<h3 id="_atom_type_scat_neutron_magnetic_j4_e">_atom_type_scat.neutron_magnetic_j4_e</h3>
+<div class="paragraph"><p>See definition for _atom_type_scat.neutron_magnetic_j0_A1</p></div>
+</div>
+<div class="sect2">
+<h3 id="_atom_type_scat_neutron_magnetic_j4_c2">_atom_type_scat.neutron_magnetic_j4_c2</h3>
+<div class="paragraph"><p>See definition for _atom_type_scat.neutron_magnetic_j0_A1</p></div>
+</div>
+<div class="sect2">
+<h3 id="_atom_type_scat_neutron_magnetic_j6_c1">_atom_type_scat.neutron_magnetic_j6_C1</h3>
+<div class="paragraph"><p>See definition for _atom_type_scat.neutron_magnetic_j0_A1</p></div>
+</div>
+<div class="sect2">
+<h3 id="_atom_type_scat_neutron_magnetic_j6_c2">_atom_type_scat.neutron_magnetic_j6_c2</h3>
+<div class="paragraph"><p>See definition for _atom_type_scat.neutron_magnetic_j0_A1</p></div>
+</div>
+<div class="sect2">
+<h3 id="_atom_type_scat_neutron_magnetic_j6_a2">_atom_type_scat.neutron_magnetic_j6_a2</h3>
+<div class="paragraph"><p>See definition for _atom_type_scat.neutron_magnetic_j0_A1</p></div>
+</div>
+<div class="sect2">
+<h3 id="_atom_type_scat_neutron_magnetic_j6_a1">_atom_type_scat.neutron_magnetic_j6_A1</h3>
+<div class="paragraph"><p>See definition for _atom_type_scat.neutron_magnetic_j0_A1</p></div>
+</div>
+<div class="sect2">
+<h3 id="_atom_type_scat_neutron_magnetic_j4_a1">_atom_type_scat.neutron_magnetic_j4_A1</h3>
+<div class="paragraph"><p>See definition for _atom_type_scat.neutron_magnetic_j0_A1</p></div>
+</div>
+<div class="sect2">
+<h3 id="_atom_type_scat_neutron_magnetic_j4_a2">_atom_type_scat.neutron_magnetic_j4_a2</h3>
+<div class="paragraph"><p>See definition for _atom_type_scat.neutron_magnetic_j0_A1</p></div>
+</div>
+<div class="sect2">
+<h3 id="_atom_type_scat_neutron_magnetic_j6_d">_atom_type_scat.neutron_magnetic_j6_D</h3>
+<div class="paragraph"><p>See definition for _atom_type_scat.neutron_magnetic_j0_A1</p></div>
+</div>
+<div class="sect2">
+<h3 id="_atom_type_scat_neutron_magnetic_j6_e">_atom_type_scat.neutron_magnetic_j6_e</h3>
+<div class="paragraph"><p>See definition for _atom_type_scat.neutron_magnetic_j0_A1</p></div>
+</div>
+<div class="sect2">
+<h3 id="_atom_type_scat_neutron_magnetic_j0_b1">_atom_type_scat.neutron_magnetic_j0_B1</h3>
+<div class="paragraph"><p>See definition for _atom_type_scat.neutron_magnetic_j0_A1</p></div>
+</div>
+<div class="sect2">
+<h3 id="_atom_type_scat_neutron_magnetic_j2_c1">_atom_type_scat.neutron_magnetic_j2_C1</h3>
+<div class="paragraph"><p>See definition for _atom_type_scat.neutron_magnetic_j0_A1</p></div>
+</div>
+<div class="sect2">
+<h3 id="_atom_type_scat_neutron_magnetic_j0_b2">_atom_type_scat.neutron_magnetic_j0_b2</h3>
+<div class="paragraph"><p>See definition for _atom_type_scat.neutron_magnetic_j0_A1</p></div>
+</div>
+<div class="sect2">
+<h3 id="_atom_type_scat_neutron_magnetic_source">_atom_type_scat.neutron_magnetic_source</h3>
+<div class="paragraph"><p>Reference to the source of magnetic neutron scattering factors
+     for a given atom type.
+     Analogous tags: coreCIF:_atom_site.scat_source</p></div>
+</div>
+<div class="sect2">
+<h3 id="_atom_type_scat_neutron_magnetic_j2_c2">_atom_type_scat.neutron_magnetic_j2_c2</h3>
+<div class="paragraph"><p>See definition for _atom_type_scat.neutron_magnetic_j0_A1</p></div>
+</div>
+<div class="sect2">
+<h3 id="_atom_type_scat_neutron_magnetic_j0_a2">_atom_type_scat.neutron_magnetic_j0_a2</h3>
+<div class="paragraph"><p>See definition for _atom_type_scat.neutron_magnetic_j0_A1</p></div>
+</div>
+<div class="sect2">
+<h3 id="_atom_type_scat_neutron_magnetic_j4_c1">_atom_type_scat.neutron_magnetic_j4_C1</h3>
+<div class="paragraph"><p>See definition for _atom_type_scat.neutron_magnetic_j0_A1</p></div>
+</div>
+<div class="sect2">
+<h3 id="_atom_type_scat_neutron_magnetic_j4_b1">_atom_type_scat.neutron_magnetic_j4_B1</h3>
+<div class="paragraph"><p>See definition for _atom_type_scat.neutron_magnetic_j0_A1</p></div>
+</div>
+<div class="sect2">
+<h3 id="_atom_type_scat_neutron_magnetic_j4_b2">_atom_type_scat.neutron_magnetic_j4_b2</h3>
+<div class="paragraph"><p>See definition for _atom_type_scat.neutron_magnetic_j0_A1</p></div>
+</div>
+<div class="sect2">
+<h3 id="_atom_type_scat_neutron_magnetic_j6_b2">_atom_type_scat.neutron_magnetic_j6_b2</h3>
+<div class="paragraph"><p>See definition for _atom_type_scat.neutron_magnetic_j0_A1</p></div>
+</div>
+<div class="sect2">
+<h3 id="_atom_type_scat_neutron_magnetic_j6_b1">_atom_type_scat.neutron_magnetic_j6_B1</h3>
+<div class="paragraph"><p>See definition for _atom_type_scat.neutron_magnetic_j0_A1</p></div>
+</div>
+<div class="sect2">
+<h3 id="_atom_type_scat_neutron_magnetic_j2_b2">_atom_type_scat.neutron_magnetic_j2_b2</h3>
+<div class="paragraph"><p>See definition for _atom_type_scat.neutron_magnetic_j0_A1</p></div>
+</div>
+<div class="sect2">
+<h3 id="_atom_type_scat_neutron_magnetic_j2_b1">_atom_type_scat.neutron_magnetic_j2_B1</h3>
+<div class="paragraph"><p>See definition for _atom_type_scat.neutron_magnetic_j0_A1</p></div>
+</div>
+<div class="sect2">
+<h3 id="_atom_type_scat_neutron_magnetic_j0_c2">_atom_type_scat.neutron_magnetic_j0_c2</h3>
+<div class="paragraph"><p>See definition for _atom_type_scat.neutron_magnetic_j0_A1</p></div>
+</div>
+<div class="sect2">
+<h3 id="_atom_type_scat_neutron_magnetic_j0_c1">_atom_type_scat.neutron_magnetic_j0_C1</h3>
+<div class="paragraph"><p>See definition for _atom_type_scat.neutron_magnetic_j0_A1</p></div>
+</div>
+<div class="sect2">
+<h3 id="_atom_type_scat_neutron_magnetic_j0_a1">_atom_type_scat.neutron_magnetic_j0_A1</h3>
+<div class="paragraph"><p>First, the parameters are used directly to approximate spatial
+     averages of  spherical Bessel functions over the electronic wave
+     functions of unpaired  electrons of the given atom type as a
+     function of s = sin(theta)/lambda.
+     &lt;jn(s)&gt; = <strong><span class="A1*e<sup>(-a2*s</sup>2) + B1*e<sup>(-b2*s</sup>2) + C1*e<sup>(-c2*s</sup>2) +      D">[1 if n=0, s^2 if n=2,4,6]
+     The &lt;jn(s)&gt; are then combined to determine the spin and orbital
+     contributions to the magnetic form factor of the atom.  The "e"
+     parameter is a measure of error in the approximation.
+     Analogous tags: coreCIF:_atom_site.scat_Cromer_Mann_</span></strong>
+     References: International Tables for Crystallography (2006). Vol.
+     C, Sections 4.4.5 and 6.1.2.3 (and references therein).</p></div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_atom_site_fourier_wave_vector_external">ATOM_SITE_FOURIER_WAVE_VECTOR (External)</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>This category is defined in an external dictionary</p></div>
+<div class="sect2">
+<h3 id="_atom_site_fourier_wave_vector_q3_coeff">atom_site_Fourier_wave_vector.q3_coeff</h3>
+<div class="paragraph"><p>For a given incommensurate modulation that contributes to the
+    structure, the wave vector of the modulation can be expressed as an
+    integer linear combination of the d independent wave vectors that
+    define the (3+d)-dimensional superspace.  The q1_coeff tag holds the
+    integer coefficient of the contribution of the first independent wave
+    vector, the q2_coeff tag holds the integer coefficient of the
+    contribution of the second independent wave vector, and so on.  At the
+    time of this writing, no examples with more than three independent
+    wave vectors are known, though there is no theoretical limit to the
+    number that could occur.  These tags are not explicity magnetic; they
+    are equally applicable to any incommensurate modulation.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p>_atom_site_Fourier_wave_vector_q3_coeff<br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_atom_site_fourier_wave_vector_q_coeff">atom_site_Fourier_wave_vector.q_coeff</h3>
+<div class="paragraph"><p>For a given incommensurate modulation that contributes to the
+    structure, the wave vector of the modulation can be expressed as an
+    integer linear combination of the d independent wave vectors that
+    define the (3+d)-dimensional superspace.  This tag holds each of
+    the integer coefficients as an array. At the
+    time of this writing, no examples with more than three independent
+    wave vectors are known, though there is no theoretical limit to the
+    number that could occur.  These tags are not explicity magnetic; they
+    are equally applicable to any incommensurate modulation.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p>_atom_site_Fourier_wave_vector_q_coeff<br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_atom_site_fourier_wave_vector_q2_coeff">atom_site_Fourier_wave_vector.q2_coeff</h3>
+<div class="paragraph"><p>For a given incommensurate modulation that contributes to the
+    structure, the wave vector of the modulation can be expressed as an
+    integer linear combination of the d independent wave vectors that
+    define the (3+d)-dimensional superspace.  The q1_coeff tag holds the
+    integer coefficient of the contribution of the first independent wave
+    vector, the q2_coeff tag holds the integer coefficient of the
+    contribution of the second independent wave vector, and so on.  At the
+    time of this writing, no examples with more than three independent
+    wave vectors are known, though there is no theoretical limit to the
+    number that could occur.  These tags are not explicity magnetic; they
+    are equally applicable to any incommensurate modulation.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p>_atom_site_Fourier_wave_vector_q2_coeff<br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_atom_site_fourier_wave_vector_q1_coeff">atom_site_Fourier_wave_vector.q1_coeff</h3>
+<div class="paragraph"><p>For a given incommensurate modulation that contributes to the
+    structure, the wave vector of the modulation can be expressed as an
+    integer linear combination of the d independent wave vectors that
+    define the (3+d)-dimensional superspace.  The q1_coeff tag holds the
+    integer coefficient of the contribution of the first independent wave
+    vector, the q2_coeff tag holds the integer coefficient of the
+    contribution of the second independent wave vector, and so on.  At the
+    time of this writing, no examples with more than three independent
+    wave vectors are known, though there is no theoretical limit to the
+    number that could occur.  These tags are not explicity magnetic; they
+    are equally applicable to any incommensurate modulation.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p>_atom_site_Fourier_wave_vector_q1_coeff<br /></p></div>
+</div></div>
+</div>
+</div>
+</div>
+</div>
+<div id="footnotes"><hr /></div>
+<div id="footer">
+<div id="footer-text">
+Last updated
+ 2016-09-21 11:33:32 AEST
+</div>
+</div>
+</body>
+</html>
