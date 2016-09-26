@@ -741,6 +741,7 @@ asciidoc.install(2);
 <div class="sectionbody">
 <div class="paragraph"><p>The magnetic CIF dictionary is an extension to the core CIF dictionary.
       It defines datanames for describing magnetic structures.</p></div>
+<div class="paragraph"><p>This dictionary builds on definitions found in CIF_CORE and CIF_MS.</p></div>
 <div class="paragraph"><p>Generated from magCIF.dic, version 0.9.4</p></div>
 <div class="paragraph"><p>Categories that may have more than one row are called loop categories.
 Datanames making up the keys for these categories have a dot suffix.</p></div>
@@ -767,7 +768,7 @@ Datanames making up the keys for these categories have a dot suffix.</p></div>
      child category ATOM_SITE_MOMENT_FOURIER_PARAM, which may be
      listed separately.</p></div>
 <div class="sect2">
-<h3 id="_atom_site_moment_fourier_atom_site_label_8226">_atom_site_moment_Fourier.atom_site_label&#8226;</h3>
+<h3 id="_atom_site_moment_fourier_atom_site_label">_atom_site_moment_Fourier.atom_site_label</h3>
 <div class="paragraph"><p>This string uniquely identifies the atom for which the Fourier
      modulation  components are to be specified.  The Fourier
      modulation components are always presented in a separate loop
@@ -776,7 +777,7 @@ Datanames making up the keys for these categories have a dot suffix.</p></div>
      to the rules for _atom_site_label.</p></div>
 </div>
 <div class="sect2">
-<h3 id="_atom_site_moment_fourier_axis_8226">_atom_site_moment_Fourier.axis&#8226;</h3>
+<h3 id="_atom_site_moment_fourier_axis">_atom_site_moment_Fourier.axis</h3>
 <div class="paragraph"><p>Specifies the coordinate system in which the Fourier modulation
      components are to be presented and an axis in that coordinate
      system.
@@ -895,7 +896,7 @@ user-defined coordinate 3
      integers could also be used.</p></div>
 </div>
 <div class="sect2">
-<h3 id="_atom_site_moment_fourier_wave_vector_seq_id_8226">_atom_site_moment_Fourier.wave_vector_seq_id&#8226;</h3>
+<h3 id="_atom_site_moment_fourier_wave_vector_seq_id">_atom_site_moment_Fourier.wave_vector_seq_id</h3>
 <div class="paragraph"><p>An arbitrary code that uniquely identifies the wave vector for
      which magnetic Fourier modulation components are to be described
      within the _atom_site_moment_Fourier loop.  It must match one of
@@ -1353,7 +1354,11 @@ user-defined coordinate 3
      combinations  of the basis vectors (a,b,c) of the parent, and the
      origin shift (ox,oy,oz)  is displayed in the lattice coordinates
      of the parent. The Jones-Faithful notation and possible values
-     are identical to those of  symCIF:_space_group.transform_Pp_abc.
+     are identical to those of  symCIF:_space_group.transform_Pp_abc,
+     except that the point and tranlational components are separated
+     by a semicolon.  If the child structure is incommensurate, the
+     transformation applies to the present setting of the basic
+     space group of the incommensurate structure.
      Analogous tags: _symCIF:_space_group.transform_Pp_abc</p></div>
 </div>
 <div class="sect2">
@@ -1375,9 +1380,10 @@ user-defined coordinate 3
 </div>
 <div class="sect2">
 <h3 id="_parent_space_group_transform_pp_abc">_parent_space_group.transform_Pp_abc</h3>
-<div class="paragraph"><p>Analogous tags: Perfectly analogous to
+<div class="paragraph"><p>Analogous tags: Notation and usage is analogous to
      symCIF:_space_group.transform_Pp_abc except that it applies to
-     the parent structure.</p></div>
+     the parent structure, and that the point and tranlational
+     components are separated by a semicolon.</p></div>
 </div>
 </div>
 </div>
@@ -1421,8 +1427,9 @@ user-defined coordinate 3
      setting.
      The notation and usage are analogous to those of
      _space_group.transform_Pp_abc, except that P now represents a
-     superspace point operation and p now represents a superspace
-     translation.
+     superspace point operation, that p now represents a superspace
+     translation, and that the point and translational components
+     are now separated with a semicolon.
      Analogous tags: symCIF:_space_group.transform_Pp_abc</p></div>
 </div>
 <div class="sect2">
@@ -1432,36 +1439,29 @@ user-defined coordinate 3
      If the reference source does not appear in the list below, use
      _space_group_magn_ssg_transforms.description
      References: <em>Magnetic Group Tables</em> of D.B. Litvin at
-     <a href="http://www.iucr.org/publ/978-0-9553602-2-0">http://www.iucr.org/publ/978-0-9553602-2-0</a> ISO-MAG tables of H.T.
-     Stokes and B.J. Campbell at <a href="http://iso.byu.edu">http://iso.byu.edu</a> ISO(3+d)D tables
-     of H.T. Stokes and B.J. Campbell at <a href="http://iso.byu.edu">http://iso.byu.edu</a></p></div>
+     <a href="http://www.iucr.org/publ/978-0-9553602-2-0">http://www.iucr.org/publ/978-0-9553602-2-0</a>. ISO-MAG tables of H.T.
+     Stokes and B.J. Campbell at <a href="http://iso.byu.edu">http://iso.byu.edu</a>.
+     ISO(3+d)D tables of H.T. Stokes and B.J. Campbell at <a href="http://iso.byu.edu">http://iso.byu.edu</a>.</p></div>
 <div class="sidebarblock">
 <div class="content">
 <div class="title">Possible values:</div>
 <div class="dlist"><dl>
 <dt class="hdlist1">
-<code>ISOMAG-ISO(3+d)D</code>
+<code>ISO(3+d)D-MAG</code>
 </dt>
 <dd>
 <p>
-a magnetic superspace- group setting such that (1) the setting of
-     the basic magnetic space group matches the corresponding BNS
-     setting in the Magnetic Space Groups tables of Stokes and
-     Campbell, and (2) the non- magnetic superspace-group setting
-     obtained by eliminating all time-reversed operators from the
-     group is related to that of the corresponding setting in the
-     ISO(3+d)D tables via a purely external (three-dimensional)
-     transformation.
-</p>
-</dd>
-<dt class="hdlist1">
-<code>ISO(3+d)D</code>
-</dt>
-<dd>
-<p>
-After eliminating all time-reversed operators from the group a
-     non-magnetic superspace-group setting that matches that of the
-     corresponding entry in the ISO(3+d)D tables is obtained
+This superspace transformation simultaneously takes setting of the
+        basic magnetic space group (BMSG) to the setting of the corresponding
+        entry in the ISO-MAG tables, and takes the setting of the
+        derived non-magnetic superspace group (DNMSG) to within a purely external
+        operation of the setting of the corresponding entry in the ISO(3+d)D tables.
+        The external components of this superspace transformation are those that take
+        the setting of the BMSG to the setting of the corresponding entry
+        in the ISO-MAG tables, while the internal components are those of the
+        transformation that takes the setting of the DNMSG to the setting of the
+        corresponding superspace group in the ISO(3+d)D tables.  Such a transformation
+        is unique for any setting of a magnetic superspace group.
 </p>
 </dd>
 </dl></div>
@@ -1526,8 +1526,13 @@ After eliminating all time-reversed operators from the group a
      combinations of the current basis vectors (a,b,c), and the origin
      shift (ox,oy,oz)  is displayed in the lattice coordinates of the
      current setting. The Jones-Faithful notation and possible values
-     are identical to those of symCIF:_space_group_transform_Pp_abc.
-     Analogous tags: _symCIF:_space_group.transform_Pp_abc</p></div>
+     are identical to those of symCIF:_space_group_transform_Pp_abc,
+     except that the point and translational components are separated
+     by a semicolon.</p></div>
+<div class="literalblock">
+<div class="content">
+<pre><code>Analogous tags: _symCIF:_space_group.transform_Pp_abc</code></pre>
+</div></div>
 </div>
 <div class="sect2">
 <h3 id="_space_group_magn_transforms_source">_space_group_magn_transforms.source</h3>
@@ -1537,9 +1542,9 @@ After eliminating all time-reversed operators from the group a
      If the reference source does not appear in the list below, use
      _space_group_magn_transforms.description
      References: <em>Magnetic Group Tables</em> of D.B. Litvin at
-     <a href="http://www.iucr.org/publ/978-0-9553602-2-0">http://www.iucr.org/publ/978-0-9553602-2-0</a> ISO-MAG tables of H.T.
-     Stokes and B.J. Campbell at <a href="http://iso.byu.edu">http://iso.byu.edu</a> ISO(3+d)D tables
-     of H.T. Stokes and B.J. Campbell at <a href="http://iso.byu.edu">http://iso.byu.edu</a></p></div>
+     <a href="http://www.iucr.org/publ/978-0-9553602-2-0">http://www.iucr.org/publ/978-0-9553602-2-0</a>. ISO-MAG tables of H.T.
+     Stokes and B.J. Campbell at <a href="http://iso.byu.edu">http://iso.byu.edu</a>. ISO(3+d)D tables
+     of H.T. Stokes and B.J. Campbell at <a href="http://iso.byu.edu">http://iso.byu.edu</a>.</p></div>
 <div class="sidebarblock">
 <div class="content">
 <div class="title">Possible values:</div>
@@ -1556,7 +1561,7 @@ the setting used in the current data block.  Obviously, the basis transformation
 </p>
 </dd>
 <dt class="hdlist1">
-<code>ISOMAG-BNS</code>
+<code>BNS</code>
 </dt>
 <dd>
 <p>
@@ -1564,7 +1569,7 @@ The Belov-Neronova-Smirnova group setting presented in the ISO-MAG tables.
 </p>
 </dd>
 <dt class="hdlist1">
-<code>Litvin-2013_OG</code>
+<code>OG</code>
 </dt>
 <dd>
 <p>
@@ -1697,8 +1702,8 @@ The Opechowski-Guccione group setting presented in the Magnetic Group Tables of
      magnetic structure.
      Analogous tags: symCIF:_space_group_symop.operation_description
      References: <em>Magnetic Group Tables</em> by D.B. Litvin at
-     <a href="http://www.iucr.org/publ/978-0-9553602-2-0">http://www.iucr.org/publ/978-0-9553602-2-0</a> ISO-MAG tables of H.T.
-     Stokes and B.J. Campbell at <a href="http://iso.byu.edu">http://iso.byu.edu</a></p></div>
+     <a href="http://www.iucr.org/publ/978-0-9553602-2-0">http://www.iucr.org/publ/978-0-9553602-2-0</a>. ISO-MAG tables of H.T.
+     Stokes and B.J. Campbell at <a href="http://iso.byu.edu">http://iso.byu.edu</a>.</p></div>
 </div>
 <div class="sect2">
 <h3 id="_space_group_symop_magn_operation_id_8226">_space_group_symop_magn_operation.id&#8226;</h3>
@@ -1726,8 +1731,8 @@ The Opechowski-Guccione group setting presented in the Magnetic Group Tables of
      of a magnetic structure.
      Analogous tags: symCIF:_space_group_symop.operation_xyz
      References: <em>Magnetic Group Tables</em> by D.B. Litvin at
-     <a href="http://www.iucr.org/publ/978-0-9553602-2-0">http://www.iucr.org/publ/978-0-9553602-2-0</a> ISO-MAG tables of H.T.
-     Stokes and B.J. Campbell at <a href="http://iso.byu.edu">http://iso.byu.edu</a></p></div>
+     <a href="http://www.iucr.org/publ/978-0-9553602-2-0">http://www.iucr.org/publ/978-0-9553602-2-0</a>. ISO-MAG tables of H.T.
+     Stokes and B.J. Campbell at <a href="http://iso.byu.edu">http://iso.byu.edu</a>.</p></div>
 </div>
 </div>
 </div>
@@ -2078,9 +2083,9 @@ abbreviation for "no"
 </div>
 </div>
 <div class="sect1">
-<h2 id="_space_group_external">SPACE_GROUP (External)</h2>
+<h2 id="_space_group_original_category_from_cif_core">SPACE_GROUP (Original category from: CIF_CORE)</h2>
 <div class="sectionbody">
-<div class="paragraph"><p>This category is defined in an external dictionary</p></div>
+<div class="paragraph"><p>This category is defined in external dictionary CIF_CORE</p></div>
 <div class="sect2">
 <h3 id="_space_group_magn_ssg_number">_space_group.magn_ssg_number</h3>
 <div class="paragraph"><p>The Belov-Neronova-Smirnova (BNS) number for a magnetic
@@ -2172,8 +2177,8 @@ abbreviation for "no"
      MSGs of types 1-3, but differ substantially  for MSGs of type 4.
      Analogous tags: symCIF:_space_group.name_H-M_ref
      References: <em>Magnetic Group Tables</em> by D.B. Litvin at
-     <a href="http://www.iucr.org/publ/978-0-9553602-2-0">http://www.iucr.org/publ/978-0-9553602-2-0</a> ISO-MAG tables of H.T.
-     Stokes and B.J. Campbell at <a href="http://iso.byu.edu">http://iso.byu.edu</a></p></div>
+     <a href="http://www.iucr.org/publ/978-0-9553602-2-0">http://www.iucr.org/publ/978-0-9553602-2-0</a>. ISO-MAG tables of H.T.
+     Stokes and B.J. Campbell at <a href="http://iso.byu.edu">http://iso.byu.edu</a>.</p></div>
 </div>
 <div class="sect2">
 <h3 id="_space_group_magn_transform_bns_pp">_space_group.magn_transform_BNS_Pp</h3>
@@ -2199,10 +2204,14 @@ abbreviation for "no"
      (a,b,c), and the origin shift (ox,oy,oz)  is displayed in the
      lattice coordinates of the current setting. The Jones-Faithful
      notation and possible values are identical to those of
-     symCIF:_space_group.transform_Pp_abc.
-     Analogous tags: _symCIF:_space_group.transform_Pp_abc
-     References: <em>Magnetic Group Tables</em> by D.B. Litvin at
-     <a href="http://www.iucr.org/publ/978-0-9553602-2-0">http://www.iucr.org/publ/978-0-9553602-2-0</a></p></div>
+     symCIF:_space_group.transform_Pp_abc, except that the point and
+     tranlational components are separated by a semicolon.</p></div>
+<div class="literalblock">
+<div class="content">
+<pre><code>Analogous tags: _symCIF:_space_group.transform_Pp_abc
+References: 'Magnetic Group Tables' by D.B. Litvin at
+http://www.iucr.org/publ/978-0-9553602-2-0</code></pre>
+</div></div>
 </div>
 <div class="sect2">
 <h3 id="_space_group_magn_ssg_name">_space_group.magn_ssg_name</h3>
@@ -2224,8 +2233,8 @@ abbreviation for "no"
      The examples are based on SSG 47.1.9.3 Pmmm(0,0,g)ss0 in (3+1)D.</p></div>
 <div class="paragraph"><p>Analogous tags: msCIF:_space_group.ssg_name
      References: ISO-MAG tables of H.T. Stokes and B.J. Campbell at
-     <a href="http://iso.byu.edu">http://iso.byu.edu</a> ISO(3+d)D tables of H.T. Stokes and B.J.
-     Campbell at <a href="http://iso.byu.edu">http://iso.byu.edu</a></p></div>
+     <a href="http://iso.byu.edu">http://iso.byu.edu</a>. ISO(3+d)D tables of H.T. Stokes and B.J.
+     Campbell at <a href="http://iso.byu.edu">http://iso.byu.edu</a>.</p></div>
 </div>
 <div class="sect2">
 <h3 id="_space_group_magn_number_bns">_space_group.magn_number_BNS</h3>
@@ -2247,8 +2256,8 @@ abbreviation for "no"
      sense here.
      Analogous tags: symCIF:_space_group.number_IT
      References: <em>Magnetic Group Tables</em> by D.B. Litvin at
-     <a href="http://www.iucr.org/publ/978-0-9553602-2-0">http://www.iucr.org/publ/978-0-9553602-2-0</a> ISO-MAG tables of H.T.
-     Stokes and B.J. Campbell at <a href="http://iso.byu.edu">http://iso.byu.edu</a></p></div>
+     <a href="http://www.iucr.org/publ/978-0-9553602-2-0">http://www.iucr.org/publ/978-0-9553602-2-0</a>. ISO-MAG tables of H.T.
+     Stokes and B.J. Campbell at <a href="http://iso.byu.edu">http://iso.byu.edu</a>.</p></div>
 </div>
 <div class="sect2">
 <h3 id="_space_group_magn_name_og">_space_group.magn_name_OG</h3>
@@ -2273,8 +2282,8 @@ abbreviation for "no"
      of types 1-3, but differ substantially  for MSGs of type 4.
      Analogous tags: symCIF:_space_group.name_H-M_ref
      References: <em>Magnetic Group Tables</em> by D.B. Litvin at
-     <a href="http://www.iucr.org/publ/978-0-9553602-2-0">http://www.iucr.org/publ/978-0-9553602-2-0</a> ISO-MAG tables of H.T.
-     Stokes and B.J. Campbell at <a href="http://iso.byu.edu">http://iso.byu.edu</a></p></div>
+     <a href="http://www.iucr.org/publ/978-0-9553602-2-0">http://www.iucr.org/publ/978-0-9553602-2-0</a>. ISO-MAG tables of H.T.
+     Stokes and B.J. Campbell at <a href="http://iso.byu.edu">http://iso.byu.edu</a>.</p></div>
 </div>
 <div class="sect2">
 <h3 id="_space_group_magn_transform_bns_pp_abc">_space_group.magn_transform_BNS_Pp_abc</h3>
@@ -2285,18 +2294,22 @@ abbreviation for "no"
      linear combinations of the current basis vectors (a,b,c), and the
      origin shift (ox,oy,oz)  is displayed in the lattice coordinates
      of the current setting. The Jones-Faithful notation and possible
-     values are identical to those of
-     symCIF:_space_group.transform_Pp_abc.
-     Analogous tags: _symCIF:_space_group.transform_Pp_abc
-     References: ISO-MAG tables of H.T. Stokes and B.J. Campbell at
-     <a href="http://iso.byu.edu">http://iso.byu.edu</a></p></div>
+     values are identical to those of symCIF:_space_group.transform_Pp_abc,
+     except that the point and tranlational components are separated
+     by a semicolon.</p></div>
+<div class="literalblock">
+<div class="content">
+<pre><code>Analogous tags: _symCIF:_space_group.transform_Pp_abc
+References: ISO-MAG tables of H.T. Stokes and B.J. Campbell at
+http://iso.byu.edu</code></pre>
+</div></div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_atom_type_scat_external">ATOM_TYPE_SCAT (External)</h2>
+<h2 id="_atom_type_scat_original_category_from_cif_core">ATOM_TYPE_SCAT (Original category from: CIF_CORE)</h2>
 <div class="sectionbody">
-<div class="paragraph"><p>This category is defined in an external dictionary</p></div>
+<div class="paragraph"><p>This category is defined in external dictionary CIF_CORE</p></div>
 <div class="sect2">
 <h3 id="_atom_type_scat_neutron_magnetic_j0_d">_atom_type_scat.neutron_magnetic_j0_D</h3>
 <div class="paragraph"><p>See definition for _atom_type_scat.neutron_magnetic_j0_A1</p></div>
@@ -2444,9 +2457,9 @@ abbreviation for "no"
 </div>
 </div>
 <div class="sect1">
-<h2 id="_atom_site_fourier_wave_vector_external">ATOM_SITE_FOURIER_WAVE_VECTOR (External)</h2>
+<h2 id="_atom_site_fourier_wave_vector_original_category_from_cif_ms">ATOM_SITE_FOURIER_WAVE_VECTOR (Original category from: CIF_MS)</h2>
 <div class="sectionbody">
-<div class="paragraph"><p>This category is defined in an external dictionary</p></div>
+<div class="paragraph"><p>This category is defined in external dictionary CIF_MS</p></div>
 <div class="sect2">
 <h3 id="_atom_site_fourier_wave_vector_q3_coeff">atom_site_Fourier_wave_vector.q3_coeff</h3>
 <div class="paragraph"><p>For a given incommensurate modulation that contributes to the
@@ -2528,7 +2541,7 @@ abbreviation for "no"
 <div id="footer">
 <div id="footer-text">
 Last updated
- 2016-09-21 11:33:32 AEST
+ 2016-09-26 17:07:13 AEST
 </div>
 </div>
 </body>
