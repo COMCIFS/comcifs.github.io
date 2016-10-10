@@ -734,7 +734,7 @@ asciidoc.install(2);
 <body class="article">
 <div id="header">
 <h1>MAGNETIC_CIF</h1>
-<span id="revdate">2016-06-28</span>
+<span id="revdate">2016-10-10</span>
 </div>
 <div id="content">
 <div id="preamble">
@@ -742,7 +742,7 @@ asciidoc.install(2);
 <div class="paragraph"><p>The magnetic CIF dictionary is an extension to the core CIF dictionary.
       It defines datanames for describing magnetic structures.</p></div>
 <div class="paragraph"><p>This dictionary builds on definitions found in CIF_CORE and CIF_MS.</p></div>
-<div class="paragraph"><p>Generated from magCIF.dic, version 0.9.4</p></div>
+<div class="paragraph"><p>Generated from magCIF.dic, version 0.9.6</p></div>
 <div class="paragraph"><p>Categories that may have more than one row are called loop categories.
 Datanames making up the keys for these categories have a dot suffix.</p></div>
 <div id="toc">
@@ -754,8 +754,8 @@ Datanames making up the keys for these categories have a dot suffix.</p></div>
 <div class="sect1">
 <h2 id="_magnetic">MAGNETIC</h2>
 <div class="sectionbody">
-<div class="paragraph"><p>This category is the parent of all categories in the dictionary
-   that are not children of categories found in other CIF dictionaries.</p></div>
+<div class="paragraph"><p>This category is the parent of all categories in the dictionary. Head categories
+   from other dictionaries are reparented to this category.</p></div>
 </div>
 </div>
 <div class="sect1">
@@ -1388,6 +1388,231 @@ user-defined coordinate 3
 </div>
 </div>
 <div class="sect1">
+<h2 id="_space_group_magn">SPACE_GROUP_MAGN</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>Data items in the space_group_magn category are used
+     to uniquely identify the magnetic structure.</p></div>
+<div class="sect2">
+<h3 id="_space_group_magn_name_bns">_space_group_magn.name_BNS</h3>
+<div class="paragraph"><p>See _space_group_magn_number_OG for a description of magnetic
+     space groups (MSGs).
+     The Belov-Neronova-Smirnova (BNS) symbol for a MSG is based on
+     the short Hermann-Maguin space-group symbol of non-magnetic
+     space group F for MSGs of types 1-3 or its subgroup D for MSGs of
+     type 4. For a type-1 MSG, the symbol for the MSG is identical
+     with the unprimed symbol of F.  For a type-2 MSG, its symbol is
+     the symbol of the space group F followed by 1'.  For a type-3
+     MSG, one starts with the symbol for F and then primes any non-
+     translational  generators whose corresponding MSG elements are
+     time reversed. For a type-4 MSG, the non-translational generators
+     are never primed. A subscript always appears on the first
+     (lattice) character of the symbol of a type-4 MSG, and
+     communicates that a pure time-reversal element is included in the
+     point group of the MSG. The value of this subscript indicates the
+     magnetic lattice of the MSG, and specifically indicates the
+     translational part of the generator whose point part is the pure
+     time reversal. Note that OG and BNS symbols are identical for
+     MSGs of types 1-3, but differ substantially  for MSGs of type 4.
+     Analogous tags: symCIF:_space_group.name_H-M_ref
+     References: <em>Magnetic Group Tables</em> by D.B. Litvin at
+     <a href="http://www.iucr.org/publ/978-0-9553602-2-0">http://www.iucr.org/publ/978-0-9553602-2-0</a>. ISO-MAG tables of H.T.
+     Stokes and B.J. Campbell at <a href="http://iso.byu.edu">http://iso.byu.edu</a>.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_space_group_magn_name_og">_space_group_magn.name_OG</h3>
+<div class="paragraph"><p>See _space_group_magn.number_OG for more information on magnetic
+     space groups (MSGs). The Opechowski-Guccione (OG) symbol for an
+     MSG is based on the short Hermann-Mauguin space-group symbol of
+     non-magnetic space group F.   For a type-1 MSG, the OG symbol for
+     the MSG is identical with the unprimed symbol of F.  For a type-2
+     MSG, the OG symbol is the symbol of the non-magnetic space group
+     F followed by 1'.  For a type-3 or type-4 MSG, the OG symbol is
+     constructed by starting with the symbol for F and then  priming
+     the symbols of any non-translational generators whose
+     corresponding MSG elements are  time reversed.  When a non-
+     translational generator symbol could potentially represent both
+     time-reversed and non-time-reversed symmetry elements, the prime
+     placement is as described  in the Magnetic Group Tables of
+     Litvin. A subscript always appears on the first (lattice)
+     character of the symbol of a type-4 MSG, and communicates that a
+     pure time-reversal element is included in the point group of the
+     MSG. The value of this subscript indicates the magnetic lattice
+     of the MSG. Note that OG and BNS symbols are identical for MSGs
+     of types 1-3, but differ substantially  for MSGs of type 4.
+     Analogous tags: symCIF:_space_group.name_H-M_ref
+     References: <em>Magnetic Group Tables</em> by D.B. Litvin at
+     <a href="http://www.iucr.org/publ/978-0-9553602-2-0">http://www.iucr.org/publ/978-0-9553602-2-0</a>. ISO-MAG tables of H.T.
+     Stokes and B.J. Campbell at <a href="http://iso.byu.edu">http://iso.byu.edu</a>.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_space_group_magn_number_bns">_space_group_magn.number_BNS</h3>
+<div class="paragraph"><p>See _space_group_magn.number_OG for a description of magnetic
+     space groups (MSGs). The Belov-Neronova-Smirnova (BNS) number for
+     an MSG is comprised of two positive integers separated by a
+     period. The first integer lies in the range [1-230] and indicates
+     the non-magnetic space group F for MSGs of types 1-3 or the non-
+     magnetic space group of the subgroup D for MSGs of type 4.  The
+     second integer is sequential over all MSGs associated  with the
+     same crystal family.
+     There are 1651 distinct equivalence classes of MSGs, each of
+     which has a unique BNS number. These equivalence classes are most
+     accurately referred to as magnetic space-group "types",
+     following the usage in the International Tables of
+     Crystallography.  But the word "type"  is also commonly used to
+     indicate the four-fold classification of MSGs presented above.
+     To avoid confusion, the word "type" is only used in the latter
+     sense here.
+     Analogous tags: symCIF:_space_group.number_IT
+     References: <em>Magnetic Group Tables</em> by D.B. Litvin at
+     <a href="http://www.iucr.org/publ/978-0-9553602-2-0">http://www.iucr.org/publ/978-0-9553602-2-0</a>. ISO-MAG tables of H.T.
+     Stokes and B.J. Campbell at <a href="http://iso.byu.edu">http://iso.byu.edu</a>.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_space_group_magn_og_wavevector_kxkykz">_space_group_magn.OG_wavevector_kxkykz</h3>
+<div class="paragraph"><p>The magnetic propagation vector (k) of the OG(k)-supercell
+    description, which determines the time-reversal component of each
+    translation vector (x) of the OG lattice (including the centering
+    vectors if a centered setting is used) according to the expression
+    cos(2*pi*k.x) = +/-1, where x is defined in the unitless coordinates
+    of the direct-space OG lattice and k is defined in the unitless
+    coordinates of the corresponding reciprocal-space lattice.  If 2*k.x
+    has a non-integer value for any OG lattice (or centering) translation,
+    the definition of k is incorrect.  The value of OG wavevector is
+    essential to the OG(k) description of the magnetic space group
+    symmetry; it cannot be omitted from such a description without
+    ambiguity.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_space_group_magn_point_group_name">_space_group_magn.point_group_name</h3>
+<div class="paragraph"><p>Any magnetic point group (MPG) can be constructed by starting
+     with a non-magnetic point group P, and then by adding a time-
+     reversal component to some or all or none of its elements. For a
+     type-1 MPG, M = P, there are no time-reversed elements. For a
+     type-2 MPG, M = P + P1', there is both a time-reversed and a non-
+     time-reversed  copy of each element in P. For a type-3 MPG, M = Q
+     + (P - Q)1', there is a subgroup Q of P of index 2 whose elements
+     are not time reversed, whereas the remaining elements in P-Q are
+     time reversed. For a type-1 MPG, the symbol is identical with the
+     symbol for the non-magnetic point group P.  For a type 2 MPG, the
+     symbol is the symbol for P followed by the symbol 1'. For a type
+     3 MPG, the symbol is that of P with a prime added to each time-
+     reversed generator.
+     Analogous tags: symCIF:_space_group.point_group_H-M
+     References: <em>Magnetic Group Tables</em> by D.B. Litvin at
+     <a href="http://www.iucr.org/publ/978-0-9553602-2-0">http://www.iucr.org/publ/978-0-9553602-2-0</a></p></div>
+</div>
+<div class="sect2">
+<h3 id="_space_group_magn_point_group_number">_space_group_magn.point_group_number</h3>
+<div class="paragraph"><p>Each of the 122 crystallographic magnetic point groups can be associated with exactly one
+     crystallographic non-magnetic space group by removing the time-reversal component from
+     each group operator.  The identifying number for each such group is taken from the
+     "Survey of 3-dimensional magnetic point group types" from the "Magnetic Group Tables"
+     Of D.B. Litvin.  This number is comprised of three integers: (1) an integer from 1 to 32 that
+     Corresponds to the non-magnetic point group, (2) an integer that runs sequentially over
+     each of the magnetic point groups associated with a given non-magnetic point group, and
+     (3) a redundant third integer that runs from 1 to 122.
+     References: <em>Magnetic Group Tables</em> by D.B. Litvin at <a href="http://www.iucr.org/publ/978-0-9553602-2-0">http://www.iucr.org/publ/978-0-9553602-2-0</a></p></div>
+</div>
+<div class="sect2">
+<h3 id="_space_group_magn_ssg_name">_space_group_magn.ssg_name</h3>
+<div class="paragraph"><p>The Belov-Neronova-Smirnova (BNS) symbol for a magnetic
+     superspace-group (MSSG) is based on the symbol of the non-
+     magnetic superspace group (SSG) obtained by eliminating all time-
+     reversed  operators from the group, as listed in the ISO(3+d)D
+     tables of Stokes and Campbell. If the magnetic basic space group
+     (MBSG) is of type-1 or type-3 (a.k.a. type-3a), its BNS symbol
+     merely replaces that of the basic space-group (BSG).  If the MBSG
+     is of type-2 or type-4  (a.k.a. type-3b), an additional phase-
+     shift symbol associated with the time-reversal generator is added
+     to each modulation vector.  If the MBSG is of type-4, the BNS
+     symbol of the MSSG is further modified to explicity show the
+     time-reversal generator (1') at the end, and the anti-centering
+     subscript is moved from the lattice symbol to the 1' so as to
+     clearly indicate the fractional external-space translation of
+     this generator.
+     The examples are based on SSG 47.1.9.3 Pmmm(0,0,g)ss0 in (3+1)D.</p></div>
+<div class="paragraph"><p>Analogous tags: msCIF:_space_group.ssg_name
+     References: ISO-MAG tables of H.T. Stokes and B.J. Campbell at
+     <a href="http://iso.byu.edu">http://iso.byu.edu</a>. ISO(3+d)D tables of H.T. Stokes and B.J.
+     Campbell at <a href="http://iso.byu.edu">http://iso.byu.edu</a>.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_space_group_magn_ssg_number">_space_group_magn.ssg_number</h3>
+<div class="paragraph"><p>The Belov-Neronova-Smirnova (BNS) number for a magnetic
+     superspace-group. This tag is being held in reserve until a
+     future numbering scheme is approved.
+     Analogous tags: msCIF:_space_group.ssg_number</p></div>
+</div>
+<div class="sect2">
+<h3 id="_space_group_magn_transform_bns_pp">_space_group_magn.transform_BNS_Pp</h3>
+<div class="paragraph"><p>This item specifies the transformation matrix Pp of the basis vectors
+     and origin of the current setting to those of the Belov-Neronova-
+     Smirnova setting presented in the ISO-MAG tables. The basis vectors
+     (a',b',c') of the BNS setting are obtained as</p></div>
+<div class="literalblock">
+<div class="content">
+<pre><code>(a',b',c',1) = Pp (a,b,c,1)</code></pre>
+</div></div>
+<div class="paragraph"><p>where (a,b,c) are the current basis vectors.  See IT Vol 1 Section 5.
+     References: ISO-MAG tables of H.T. Stokes and B.J. Campbell at
+     <a href="http://iso.byu.edu">http://iso.byu.edu</a></p></div>
+</div>
+<div class="sect2">
+<h3 id="_space_group_magn_transform_bns_pp_abc">_space_group_magn.transform_BNS_Pp_abc</h3>
+<div class="paragraph"><p>This item specifies the transformation (P,p) of the basis vectors
+     and origin of the current setting to those of the Belov-Neronova-
+     Smirnova setting presented in the ISO-MAG tables. The basis
+     vectors (a',b',c') of the BNS setting are described as
+     linear combinations of the current basis vectors (a,b,c), and the
+     origin shift (ox,oy,oz)  is displayed in the lattice coordinates
+     of the current setting. The Jones-Faithful notation and possible
+     values are identical to those of symCIF:_space_group.transform_Pp_abc,
+     except that the point and tranlational components are separated
+     by a semicolon.</p></div>
+<div class="literalblock">
+<div class="content">
+<pre><code>Analogous tags: _symCIF:_space_group.transform_Pp_abc
+References: ISO-MAG tables of H.T. Stokes and B.J. Campbell at
+http://iso.byu.edu</code></pre>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_space_group_magn_transform_og_pp">_space_group_magn.transform_OG_Pp</h3>
+<div class="paragraph"><p>This item specifies the transformation (P,p) of the basis vectors
+     and origin of  the current setting to those of the Opechowski-
+     Guccione setting presented  in the Magnetic Group Tables of D.B.
+     Litvin.  The basis vectors
+     (a',b',c') of the OG setting are obtained as</p></div>
+<div class="literalblock">
+<div class="content">
+<pre><code>(a',b',c',1) = Pp (a,b,c,1)</code></pre>
+</div></div>
+<div class="paragraph"><p>where (a,b,c) are the current basis vectors.  See IT Vol 1 Section 5.
+     References: <em>Magnetic Group Tables</em> by D.B. Litvin at
+     <a href="http://www.iucr.org/publ/978-0-9553602-2-0">http://www.iucr.org/publ/978-0-9553602-2-0</a></p></div>
+</div>
+<div class="sect2">
+<h3 id="_space_group_magn_transform_og_pp_abc">_space_group_magn.transform_OG_Pp_abc</h3>
+<div class="paragraph"><p>This item specifies the transformation (P,p) of the basis vectors
+     and origin of  the current setting to those of the Opechowski-
+     Guccione setting presented  in the Magnetic Group Tables of D.B.
+     Litvin. The basis vectors (a',b',c') of the reference setting are
+     described as  linear combinations of the current basis vectors
+     (a,b,c), and the origin shift (ox,oy,oz)  is displayed in the
+     lattice coordinates of the current setting. The Jones-Faithful
+     notation and possible values are identical to those of
+     symCIF:_space_group.transform_Pp_abc, except that the point and
+     tranlational components are separated by a semicolon.</p></div>
+<div class="literalblock">
+<div class="content">
+<pre><code>Analogous tags: _symCIF:_space_group.transform_Pp_abc
+References: 'Magnetic Group Tables' by D.B. Litvin at
+http://www.iucr.org/publ/978-0-9553602-2-0</code></pre>
+</div></div>
+</div>
+</div>
+</div>
+<div class="sect1">
 <h2 id="_space_group_magn_ssg_transforms">SPACE_GROUP_MAGN_SSG_TRANSFORMS</h2>
 <div class="sectionbody">
 <div class="paragraph"><p>This loop provides a list of matrix transformations to one or
@@ -1651,7 +1876,7 @@ The Opechowski-Guccione group setting presented in the Magnetic Group Tables of
      vector.   This loop should include all centering and anti-centering
      translations, but does not include the time-reveral components,
      which are instead determined
-     using the value of the _space_group.magn_OG_wavevector_kxkykz tag.
+     using the value of the _space_group_magn.OG_wavevector_kxkykz tag.
      Because the centering translations are listed in a separate loop
      in the OG(k) description,
      only representative point operations remain in the main
@@ -1683,7 +1908,7 @@ The Opechowski-Guccione group setting presented in the Magnetic Group Tables of
      element. The magnetic component of the centering vector is not
      given in the value of this tag, but should instead be separately
      established using the value of the
-     _space_group.magn_OG_wavevector_kxkykz tag.</p></div>
+     _space_group_magn.OG_wavevector_kxkykz tag.</p></div>
 </div>
 </div>
 </div>
@@ -1854,16 +2079,6 @@ The Opechowski-Guccione group setting presented in the Magnetic Group Tables of
 </div></div>
 </div>
 <div class="sect2">
-<h3 id="_atom_site_moment_cartn_x">_atom_site_moment.Cartn_x</h3>
-<div class="paragraph"><p>The x component of the atom-site magnetic moment vector
-     (see _atom_site_moment.Cartn).</p></div>
-<div class="sidebarblock">
-<div class="content">
-<div class="title">Aliases</div>
-<div class="paragraph"><p>_atom_site_moment_Cartn_x<br /></p></div>
-</div></div>
-</div>
-<div class="sect2">
 <h3 id="_atom_site_moment_cartn_z">_atom_site_moment.Cartn_z</h3>
 <div class="paragraph"><p>The z component of the atom-site magnetic moment vector
      (see _atom_site_moment.Cartn).</p></div>
@@ -1871,6 +2086,16 @@ The Opechowski-Guccione group setting presented in the Magnetic Group Tables of
 <div class="content">
 <div class="title">Aliases</div>
 <div class="paragraph"><p>_atom_site_moment_Cartn_z<br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_atom_site_moment_cartn_x">_atom_site_moment.Cartn_x</h3>
+<div class="paragraph"><p>The x component of the atom-site magnetic moment vector
+     (see _atom_site_moment.Cartn).</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p>_atom_site_moment_Cartn_x<br /></p></div>
 </div></div>
 </div>
 <div class="sect2">
@@ -2083,380 +2308,6 @@ abbreviation for "no"
 </div>
 </div>
 <div class="sect1">
-<h2 id="_space_group_original_category_from_cif_core">SPACE_GROUP (Original category from: CIF_CORE)</h2>
-<div class="sectionbody">
-<div class="paragraph"><p>This category is defined in external dictionary CIF_CORE</p></div>
-<div class="sect2">
-<h3 id="_space_group_magn_ssg_number">_space_group.magn_ssg_number</h3>
-<div class="paragraph"><p>The Belov-Neronova-Smirnova (BNS) number for a magnetic
-     superspace-group. This tag is being held in reserve until a
-     future numbering scheme is approved.
-     Analogous tags: msCIF:_space_group.ssg_number</p></div>
-</div>
-<div class="sect2">
-<h3 id="_space_group_magn_og_wavevector_kxkykz">_space_group.magn_OG_wavevector_kxkykz</h3>
-<div class="paragraph"><p>The magnetic propagation vector (k) of the OG(k)-supercell
-    description, which determines the time-reversal component of each
-    translation vector (x) of the OG lattice (including the centering
-    vectors if a centered setting is used) according to the expression
-    cos(2*pi*k.x) = +/-1, where x is defined in the unitless coordinates
-    of the direct-space OG lattice and k is defined in the unitless
-    coordinates of the corresponding reciprocal-space lattice.  If 2*k.x
-    has a non-integer value for any OG lattice (or centering) translation,
-    the definition of k is incorrect.  The value of OG wavevector is
-    essential to the OG(k) description of the magnetic space group
-    symmetry; it cannot be omitted from such a description without
-    ambiguity.</p></div>
-</div>
-<div class="sect2">
-<h3 id="_space_group_magn_point_group_number">_space_group.magn_point_group_number</h3>
-<div class="paragraph"><p>Each of the 122 crystallographic magnetic point groups can be associated with exactly one
-     crystallographic non-magnetic space group by removing the time-reversal component from
-     each group operator.  The identifying number for each such group is taken from the
-     "Survey of 3-dimensional magnetic point group types" from the "Magnetic Group Tables"
-     Of D.B. Litvin.  This number is comprised of three integers: (1) an integer from 1 to 32 that
-     Corresponds to the non-magnetic point group, (2) an integer that runs sequentially over
-     each of the magnetic point groups associated with a given non-magnetic point group, and
-     (3) a redundant third integer that runs from 1 to 122.
-     References: <em>Magnetic Group Tables</em> by D.B. Litvin at <a href="http://www.iucr.org/publ/978-0-9553602-2-0">http://www.iucr.org/publ/978-0-9553602-2-0</a></p></div>
-</div>
-<div class="sect2">
-<h3 id="_space_group_magn_transform_og_pp">_space_group.magn_transform_OG_Pp</h3>
-<div class="paragraph"><p>This item specifies the transformation (P,p) of the basis vectors
-     and origin of  the current setting to those of the Opechowski-
-     Guccione setting presented  in the Magnetic Group Tables of D.B.
-     Litvin.  The basis vectors
-     (a',b',c') of the OG setting are obtained as</p></div>
-<div class="literalblock">
-<div class="content">
-<pre><code>(a',b',c',1) = Pp (a,b,c,1)</code></pre>
-</div></div>
-<div class="paragraph"><p>where (a,b,c) are the current basis vectors.  See IT Vol 1 Section 5.
-     References: <em>Magnetic Group Tables</em> by D.B. Litvin at
-     <a href="http://www.iucr.org/publ/978-0-9553602-2-0">http://www.iucr.org/publ/978-0-9553602-2-0</a></p></div>
-</div>
-<div class="sect2">
-<h3 id="_space_group_magn_point_group_name">_space_group.magn_point_group_name</h3>
-<div class="paragraph"><p>Any magnetic point group (MPG) can be constructed by starting
-     with a non-magnetic point group P, and then by adding a time-
-     reversal component to some or all or none of its elements. For a
-     type-1 MPG, M = P, there are no time-reversed elements. For a
-     type-2 MPG, M = P + P1', there is both a time-reversed and a non-
-     time-reversed  copy of each element in P. For a type-3 MPG, M = Q
-     + (P - Q)1', there is a subgroup Q of P of index 2 whose elements
-     are not time reversed, whereas the remaining elements in P-Q are
-     time reversed. For a type-1 MPG, the symbol is identical with the
-     symbol for the non-magnetic point group P.  For a type 2 MPG, the
-     symbol is the symbol for P followed by the symbol 1'. For a type
-     3 MPG, the symbol is that of P with a prime added to each time-
-     reversed generator.
-     Analogous tags: symCIF:_space_group.point_group_H-M
-     References: <em>Magnetic Group Tables</em> by D.B. Litvin at
-     <a href="http://www.iucr.org/publ/978-0-9553602-2-0">http://www.iucr.org/publ/978-0-9553602-2-0</a></p></div>
-</div>
-<div class="sect2">
-<h3 id="_space_group_magn_name_bns">_space_group.magn_name_BNS</h3>
-<div class="paragraph"><p>See _space_group_magn_number_OG for a description of magnetic
-     space groups (MSGs).
-     The Belov-Neronova-Smirnova (BNS) symbol for a MSG is based on
-     the short Hermann-Maguin space-group symbol of non-magnetic
-     space group F for MSGs of types 1-3 or its subgroup D for MSGs of
-     type 4. For a type-1 MSG, the symbol for the MSG is identical
-     with the unprimed symbol of F.  For a type-2 MSG, its symbol is
-     the symbol of the space group F followed by 1'.  For a type-3
-     MSG, one starts with the symbol for F and then primes any non-
-     translational  generators whose corresponding MSG elements are
-     time reversed. For a type-4 MSG, the non-translational generators
-     are never primed. A subscript always appears on the first
-     (lattice) character of the symbol of a type-4 MSG, and
-     communicates that a pure time-reversal element is included in the
-     point group of the MSG. The value of this subscript indicates the
-     magnetic lattice of the MSG, and specifically indicates the
-     translational part of the generator whose point part is the pure
-     time reversal. Note that OG and BNS symbols are identical for
-     MSGs of types 1-3, but differ substantially  for MSGs of type 4.
-     Analogous tags: symCIF:_space_group.name_H-M_ref
-     References: <em>Magnetic Group Tables</em> by D.B. Litvin at
-     <a href="http://www.iucr.org/publ/978-0-9553602-2-0">http://www.iucr.org/publ/978-0-9553602-2-0</a>. ISO-MAG tables of H.T.
-     Stokes and B.J. Campbell at <a href="http://iso.byu.edu">http://iso.byu.edu</a>.</p></div>
-</div>
-<div class="sect2">
-<h3 id="_space_group_magn_transform_bns_pp">_space_group.magn_transform_BNS_Pp</h3>
-<div class="paragraph"><p>This item specifies the transformation matrix Pp of the basis vectors
-     and origin of the current setting to those of the Belov-Neronova-
-     Smirnova setting presented in the ISO-MAG tables. The basis vectors
-     (a',b',c') of the BNS setting are obtained as</p></div>
-<div class="literalblock">
-<div class="content">
-<pre><code>(a',b',c',1) = Pp (a,b,c,1)</code></pre>
-</div></div>
-<div class="paragraph"><p>where (a,b,c) are the current basis vectors.  See IT Vol 1 Section 5.
-     References: ISO-MAG tables of H.T. Stokes and B.J. Campbell at
-     <a href="http://iso.byu.edu">http://iso.byu.edu</a></p></div>
-</div>
-<div class="sect2">
-<h3 id="_space_group_magn_transform_og_pp_abc">_space_group.magn_transform_OG_Pp_abc</h3>
-<div class="paragraph"><p>This item specifies the transformation (P,p) of the basis vectors
-     and origin of  the current setting to those of the Opechowski-
-     Guccione setting presented  in the Magnetic Group Tables of D.B.
-     Litvin. The basis vectors (a',b',c') of the reference setting are
-     described as  linear combinations of the current basis vectors
-     (a,b,c), and the origin shift (ox,oy,oz)  is displayed in the
-     lattice coordinates of the current setting. The Jones-Faithful
-     notation and possible values are identical to those of
-     symCIF:_space_group.transform_Pp_abc, except that the point and
-     tranlational components are separated by a semicolon.</p></div>
-<div class="literalblock">
-<div class="content">
-<pre><code>Analogous tags: _symCIF:_space_group.transform_Pp_abc
-References: 'Magnetic Group Tables' by D.B. Litvin at
-http://www.iucr.org/publ/978-0-9553602-2-0</code></pre>
-</div></div>
-</div>
-<div class="sect2">
-<h3 id="_space_group_magn_ssg_name">_space_group.magn_ssg_name</h3>
-<div class="paragraph"><p>The Belov-Neronova-Smirnova (BNS) symbol for a magnetic
-     superspace-group (MSSG) is based on the symbol of the non-
-     magnetic superspace group (SSG) obtained by eliminating all time-
-     reversed  operators from the group, as listed in the ISO(3+d)D
-     tables of Stokes and Campbell. If the magnetic basic space group
-     (MBSG) is of type-1 or type-3 (a.k.a. type-3a), its BNS symbol
-     merely replaces that of the basic space-group (BSG).  If the MBSG
-     is of type-2 or type-4  (a.k.a. type-3b), an additional phase-
-     shift symbol associated with the time-reversal generator is added
-     to each modulation vector.  If the MBSG is of type-4, the BNS
-     symbol of the MSSG is further modified to explicity show the
-     time-reversal generator (1') at the end, and the anti-centering
-     subscript is moved from the lattice symbol to the 1' so as to
-     clearly indicate the fractional external-space translation of
-     this generator.
-     The examples are based on SSG 47.1.9.3 Pmmm(0,0,g)ss0 in (3+1)D.</p></div>
-<div class="paragraph"><p>Analogous tags: msCIF:_space_group.ssg_name
-     References: ISO-MAG tables of H.T. Stokes and B.J. Campbell at
-     <a href="http://iso.byu.edu">http://iso.byu.edu</a>. ISO(3+d)D tables of H.T. Stokes and B.J.
-     Campbell at <a href="http://iso.byu.edu">http://iso.byu.edu</a>.</p></div>
-</div>
-<div class="sect2">
-<h3 id="_space_group_magn_number_bns">_space_group.magn_number_BNS</h3>
-<div class="paragraph"><p>See _space_group.magn_number_OG for a description of magnetic
-     space groups (MSGs). The Belov-Neronova-Smirnova (BNS) number for
-     an MSG is comprised of two positive integers separated by a
-     period. The first integer lies in the range [1-230] and indicates
-     the non-magnetic space group F for MSGs of types 1-3 or the non-
-     magnetic space group of the subgroup D for MSGs of type 4.  The
-     second integer is sequential over all MSGs associated  with the
-     same crystal family.
-     There are 1651 distinct equivalence classes of MSGs, each of
-     which has a unique BNS number. These equivalence classes are most
-     accurately referred to as magnetic space-group "types",
-     following the usage in the International Tables of
-     Crystallography.  But the word "type"  is also commonly used to
-     indicate the four-fold classification of MSGs presented above.
-     To avoid confusion, the word "type" is only used in the latter
-     sense here.
-     Analogous tags: symCIF:_space_group.number_IT
-     References: <em>Magnetic Group Tables</em> by D.B. Litvin at
-     <a href="http://www.iucr.org/publ/978-0-9553602-2-0">http://www.iucr.org/publ/978-0-9553602-2-0</a>. ISO-MAG tables of H.T.
-     Stokes and B.J. Campbell at <a href="http://iso.byu.edu">http://iso.byu.edu</a>.</p></div>
-</div>
-<div class="sect2">
-<h3 id="_space_group_magn_name_og">_space_group.magn_name_OG</h3>
-<div class="paragraph"><p>See _space_group.magn_number_OG for more information on magnetic
-     space groups (MSGs). The Opechowski-Guccione (OG) symbol for an
-     MSG is based on the short Hermann-Mauguin space-group symbol of
-     non-magnetic space group F.   For a type-1 MSG, the OG symbol for
-     the MSG is identical with the unprimed symbol of F.  For a type-2
-     MSG, the OG symbol is the symbol of the non-magnetic space group
-     F followed by 1'.  For a type-3 or type-4 MSG, the OG symbol is
-     constructed by starting with the symbol for F and then  priming
-     the symbols of any non-translational generators whose
-     corresponding MSG elements are  time reversed.  When a non-
-     translational generator symbol could potentially represent both
-     time-reversed and non-time-reversed symmetry elements, the prime
-     placement is as described  in the Magnetic Group Tables of
-     Litvin. A subscript always appears on the first (lattice)
-     character of the symbol of a type-4 MSG, and communicates that a
-     pure time-reversal element is included in the point group of the
-     MSG. The value of this subscript indicates the magnetic lattice
-     of the MSG. Note that OG and BNS symbols are identical for MSGs
-     of types 1-3, but differ substantially  for MSGs of type 4.
-     Analogous tags: symCIF:_space_group.name_H-M_ref
-     References: <em>Magnetic Group Tables</em> by D.B. Litvin at
-     <a href="http://www.iucr.org/publ/978-0-9553602-2-0">http://www.iucr.org/publ/978-0-9553602-2-0</a>. ISO-MAG tables of H.T.
-     Stokes and B.J. Campbell at <a href="http://iso.byu.edu">http://iso.byu.edu</a>.</p></div>
-</div>
-<div class="sect2">
-<h3 id="_space_group_magn_transform_bns_pp_abc">_space_group.magn_transform_BNS_Pp_abc</h3>
-<div class="paragraph"><p>This item specifies the transformation (P,p) of the basis vectors
-     and origin of the current setting to those of the Belov-Neronova-
-     Smirnova setting presented in the ISO-MAG tables. The basis
-     vectors (a',b',c') of the BNS setting are described as
-     linear combinations of the current basis vectors (a,b,c), and the
-     origin shift (ox,oy,oz)  is displayed in the lattice coordinates
-     of the current setting. The Jones-Faithful notation and possible
-     values are identical to those of symCIF:_space_group.transform_Pp_abc,
-     except that the point and tranlational components are separated
-     by a semicolon.</p></div>
-<div class="literalblock">
-<div class="content">
-<pre><code>Analogous tags: _symCIF:_space_group.transform_Pp_abc
-References: ISO-MAG tables of H.T. Stokes and B.J. Campbell at
-http://iso.byu.edu</code></pre>
-</div></div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_atom_type_scat_original_category_from_cif_core">ATOM_TYPE_SCAT (Original category from: CIF_CORE)</h2>
-<div class="sectionbody">
-<div class="paragraph"><p>This category is defined in external dictionary CIF_CORE</p></div>
-<div class="sect2">
-<h3 id="_atom_type_scat_neutron_magnetic_j0_d">_atom_type_scat.neutron_magnetic_j0_D</h3>
-<div class="paragraph"><p>See definition for _atom_type_scat.neutron_magnetic_j0_A1</p></div>
-</div>
-<div class="sect2">
-<h3 id="_atom_type_scat_neutron_magnetic_j0_e">_atom_type_scat.neutron_magnetic_j0_e</h3>
-<div class="paragraph"><p>See definition for _atom_type_scat.neutron_magnetic_j0_A1</p></div>
-</div>
-<div class="sect2">
-<h3 id="_atom_type_scat_neutron_magnetic_j2_a2">_atom_type_scat.neutron_magnetic_j2_a2</h3>
-<div class="paragraph"><p>See definition for _atom_type_scat.neutron_magnetic_j0_A1</p></div>
-</div>
-<div class="sect2">
-<h3 id="_atom_type_scat_neutron_magnetic_j2_a1">_atom_type_scat.neutron_magnetic_j2_A1</h3>
-<div class="paragraph"><p>See definition for _atom_type_scat.neutron_magnetic_j0_A1</p></div>
-</div>
-<div class="sect2">
-<h3 id="_atom_type_scat_neutron_magnetic_j2_d">_atom_type_scat.neutron_magnetic_j2_D</h3>
-<div class="paragraph"><p>See definition for _atom_type_scat.neutron_magnetic_j0_A1</p></div>
-</div>
-<div class="sect2">
-<h3 id="_atom_type_scat_neutron_magnetic_j2_e">_atom_type_scat.neutron_magnetic_j2_e</h3>
-<div class="paragraph"><p>See definition for _atom_type_scat.neutron_magnetic_j0_A1</p></div>
-</div>
-<div class="sect2">
-<h3 id="_atom_type_scat_neutron_magnetic_j4_d">_atom_type_scat.neutron_magnetic_j4_D</h3>
-<div class="paragraph"><p>See definition for _atom_type_scat.neutron_magnetic_j0_A1</p></div>
-</div>
-<div class="sect2">
-<h3 id="_atom_type_scat_neutron_magnetic_j4_e">_atom_type_scat.neutron_magnetic_j4_e</h3>
-<div class="paragraph"><p>See definition for _atom_type_scat.neutron_magnetic_j0_A1</p></div>
-</div>
-<div class="sect2">
-<h3 id="_atom_type_scat_neutron_magnetic_j4_c2">_atom_type_scat.neutron_magnetic_j4_c2</h3>
-<div class="paragraph"><p>See definition for _atom_type_scat.neutron_magnetic_j0_A1</p></div>
-</div>
-<div class="sect2">
-<h3 id="_atom_type_scat_neutron_magnetic_j6_c1">_atom_type_scat.neutron_magnetic_j6_C1</h3>
-<div class="paragraph"><p>See definition for _atom_type_scat.neutron_magnetic_j0_A1</p></div>
-</div>
-<div class="sect2">
-<h3 id="_atom_type_scat_neutron_magnetic_j6_c2">_atom_type_scat.neutron_magnetic_j6_c2</h3>
-<div class="paragraph"><p>See definition for _atom_type_scat.neutron_magnetic_j0_A1</p></div>
-</div>
-<div class="sect2">
-<h3 id="_atom_type_scat_neutron_magnetic_j6_a2">_atom_type_scat.neutron_magnetic_j6_a2</h3>
-<div class="paragraph"><p>See definition for _atom_type_scat.neutron_magnetic_j0_A1</p></div>
-</div>
-<div class="sect2">
-<h3 id="_atom_type_scat_neutron_magnetic_j6_a1">_atom_type_scat.neutron_magnetic_j6_A1</h3>
-<div class="paragraph"><p>See definition for _atom_type_scat.neutron_magnetic_j0_A1</p></div>
-</div>
-<div class="sect2">
-<h3 id="_atom_type_scat_neutron_magnetic_j4_a1">_atom_type_scat.neutron_magnetic_j4_A1</h3>
-<div class="paragraph"><p>See definition for _atom_type_scat.neutron_magnetic_j0_A1</p></div>
-</div>
-<div class="sect2">
-<h3 id="_atom_type_scat_neutron_magnetic_j4_a2">_atom_type_scat.neutron_magnetic_j4_a2</h3>
-<div class="paragraph"><p>See definition for _atom_type_scat.neutron_magnetic_j0_A1</p></div>
-</div>
-<div class="sect2">
-<h3 id="_atom_type_scat_neutron_magnetic_j6_d">_atom_type_scat.neutron_magnetic_j6_D</h3>
-<div class="paragraph"><p>See definition for _atom_type_scat.neutron_magnetic_j0_A1</p></div>
-</div>
-<div class="sect2">
-<h3 id="_atom_type_scat_neutron_magnetic_j6_e">_atom_type_scat.neutron_magnetic_j6_e</h3>
-<div class="paragraph"><p>See definition for _atom_type_scat.neutron_magnetic_j0_A1</p></div>
-</div>
-<div class="sect2">
-<h3 id="_atom_type_scat_neutron_magnetic_j0_b1">_atom_type_scat.neutron_magnetic_j0_B1</h3>
-<div class="paragraph"><p>See definition for _atom_type_scat.neutron_magnetic_j0_A1</p></div>
-</div>
-<div class="sect2">
-<h3 id="_atom_type_scat_neutron_magnetic_j2_c1">_atom_type_scat.neutron_magnetic_j2_C1</h3>
-<div class="paragraph"><p>See definition for _atom_type_scat.neutron_magnetic_j0_A1</p></div>
-</div>
-<div class="sect2">
-<h3 id="_atom_type_scat_neutron_magnetic_j0_b2">_atom_type_scat.neutron_magnetic_j0_b2</h3>
-<div class="paragraph"><p>See definition for _atom_type_scat.neutron_magnetic_j0_A1</p></div>
-</div>
-<div class="sect2">
-<h3 id="_atom_type_scat_neutron_magnetic_source">_atom_type_scat.neutron_magnetic_source</h3>
-<div class="paragraph"><p>Reference to the source of magnetic neutron scattering factors
-     for a given atom type.
-     Analogous tags: coreCIF:_atom_site.scat_source</p></div>
-</div>
-<div class="sect2">
-<h3 id="_atom_type_scat_neutron_magnetic_j2_c2">_atom_type_scat.neutron_magnetic_j2_c2</h3>
-<div class="paragraph"><p>See definition for _atom_type_scat.neutron_magnetic_j0_A1</p></div>
-</div>
-<div class="sect2">
-<h3 id="_atom_type_scat_neutron_magnetic_j0_a2">_atom_type_scat.neutron_magnetic_j0_a2</h3>
-<div class="paragraph"><p>See definition for _atom_type_scat.neutron_magnetic_j0_A1</p></div>
-</div>
-<div class="sect2">
-<h3 id="_atom_type_scat_neutron_magnetic_j4_c1">_atom_type_scat.neutron_magnetic_j4_C1</h3>
-<div class="paragraph"><p>See definition for _atom_type_scat.neutron_magnetic_j0_A1</p></div>
-</div>
-<div class="sect2">
-<h3 id="_atom_type_scat_neutron_magnetic_j4_b1">_atom_type_scat.neutron_magnetic_j4_B1</h3>
-<div class="paragraph"><p>See definition for _atom_type_scat.neutron_magnetic_j0_A1</p></div>
-</div>
-<div class="sect2">
-<h3 id="_atom_type_scat_neutron_magnetic_j4_b2">_atom_type_scat.neutron_magnetic_j4_b2</h3>
-<div class="paragraph"><p>See definition for _atom_type_scat.neutron_magnetic_j0_A1</p></div>
-</div>
-<div class="sect2">
-<h3 id="_atom_type_scat_neutron_magnetic_j6_b2">_atom_type_scat.neutron_magnetic_j6_b2</h3>
-<div class="paragraph"><p>See definition for _atom_type_scat.neutron_magnetic_j0_A1</p></div>
-</div>
-<div class="sect2">
-<h3 id="_atom_type_scat_neutron_magnetic_j6_b1">_atom_type_scat.neutron_magnetic_j6_B1</h3>
-<div class="paragraph"><p>See definition for _atom_type_scat.neutron_magnetic_j0_A1</p></div>
-</div>
-<div class="sect2">
-<h3 id="_atom_type_scat_neutron_magnetic_j2_b2">_atom_type_scat.neutron_magnetic_j2_b2</h3>
-<div class="paragraph"><p>See definition for _atom_type_scat.neutron_magnetic_j0_A1</p></div>
-</div>
-<div class="sect2">
-<h3 id="_atom_type_scat_neutron_magnetic_j2_b1">_atom_type_scat.neutron_magnetic_j2_B1</h3>
-<div class="paragraph"><p>See definition for _atom_type_scat.neutron_magnetic_j0_A1</p></div>
-</div>
-<div class="sect2">
-<h3 id="_atom_type_scat_neutron_magnetic_j0_c2">_atom_type_scat.neutron_magnetic_j0_c2</h3>
-<div class="paragraph"><p>See definition for _atom_type_scat.neutron_magnetic_j0_A1</p></div>
-</div>
-<div class="sect2">
-<h3 id="_atom_type_scat_neutron_magnetic_j0_c1">_atom_type_scat.neutron_magnetic_j0_C1</h3>
-<div class="paragraph"><p>See definition for _atom_type_scat.neutron_magnetic_j0_A1</p></div>
-</div>
-<div class="sect2">
-<h3 id="_atom_type_scat_neutron_magnetic_j0_a1">_atom_type_scat.neutron_magnetic_j0_A1</h3>
-<div class="paragraph"><p>First, the parameters are used directly to approximate spatial
-     averages of  spherical Bessel functions over the electronic wave
-     functions of unpaired  electrons of the given atom type as a
-     function of s = sin(theta)/lambda.
-     &lt;jn(s)&gt; = <strong><span class="A1*e<sup>(-a2*s</sup>2) + B1*e<sup>(-b2*s</sup>2) + C1*e<sup>(-c2*s</sup>2) +      D">[1 if n=0, s^2 if n=2,4,6]
-     The &lt;jn(s)&gt; are then combined to determine the spin and orbital
-     contributions to the magnetic form factor of the atom.  The "e"
-     parameter is a measure of error in the approximation.
-     Analogous tags: coreCIF:_atom_site.scat_Cromer_Mann_</span></strong>
-     References: International Tables for Crystallography (2006). Vol.
-     C, Sections 4.4.5 and 6.1.2.3 (and references therein).</p></div>
-</div>
-</div>
-</div>
-<div class="sect1">
 <h2 id="_atom_site_fourier_wave_vector_original_category_from_cif_ms">ATOM_SITE_FOURIER_WAVE_VECTOR (Original category from: CIF_MS)</h2>
 <div class="sectionbody">
 <div class="paragraph"><p>This category is defined in external dictionary CIF_MS</p></div>
@@ -2536,12 +2387,162 @@ http://iso.byu.edu</code></pre>
 </div>
 </div>
 </div>
+<div class="sect1">
+<h2 id="_atom_type_scat_original_category_from_cif_core">ATOM_TYPE_SCAT (Original category from: CIF_CORE)</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>This category is defined in external dictionary CIF_CORE</p></div>
+<div class="sect2">
+<h3 id="_atom_type_scat_neutron_magnetic_j0_d">_atom_type_scat.neutron_magnetic_j0_D</h3>
+<div class="paragraph"><p>See definition for _atom_type_scat.neutron_magnetic_j0_A1</p></div>
+</div>
+<div class="sect2">
+<h3 id="_atom_type_scat_neutron_magnetic_j0_e">_atom_type_scat.neutron_magnetic_j0_e</h3>
+<div class="paragraph"><p>See definition for _atom_type_scat.neutron_magnetic_j0_A1</p></div>
+</div>
+<div class="sect2">
+<h3 id="_atom_type_scat_neutron_magnetic_j2_a2">_atom_type_scat.neutron_magnetic_j2_a2</h3>
+<div class="paragraph"><p>See definition for _atom_type_scat.neutron_magnetic_j0_A1</p></div>
+</div>
+<div class="sect2">
+<h3 id="_atom_type_scat_neutron_magnetic_j2_a1">_atom_type_scat.neutron_magnetic_j2_A1</h3>
+<div class="paragraph"><p>See definition for _atom_type_scat.neutron_magnetic_j0_A1</p></div>
+</div>
+<div class="sect2">
+<h3 id="_atom_type_scat_neutron_magnetic_j2_d">_atom_type_scat.neutron_magnetic_j2_D</h3>
+<div class="paragraph"><p>See definition for _atom_type_scat.neutron_magnetic_j0_A1</p></div>
+</div>
+<div class="sect2">
+<h3 id="_atom_type_scat_neutron_magnetic_j2_e">_atom_type_scat.neutron_magnetic_j2_e</h3>
+<div class="paragraph"><p>See definition for _atom_type_scat.neutron_magnetic_j0_A1</p></div>
+</div>
+<div class="sect2">
+<h3 id="_atom_type_scat_neutron_magnetic_j4_d">_atom_type_scat.neutron_magnetic_j4_D</h3>
+<div class="paragraph"><p>See definition for _atom_type_scat.neutron_magnetic_j0_A1</p></div>
+</div>
+<div class="sect2">
+<h3 id="_atom_type_scat_neutron_magnetic_j4_e">_atom_type_scat.neutron_magnetic_j4_e</h3>
+<div class="paragraph"><p>See definition for _atom_type_scat.neutron_magnetic_j0_A1</p></div>
+</div>
+<div class="sect2">
+<h3 id="_atom_type_scat_neutron_magnetic_j4_c2">_atom_type_scat.neutron_magnetic_j4_c2</h3>
+<div class="paragraph"><p>See definition for _atom_type_scat.neutron_magnetic_j0_A1</p></div>
+</div>
+<div class="sect2">
+<h3 id="_atom_type_scat_neutron_magnetic_j6_c1">_atom_type_scat.neutron_magnetic_j6_C1</h3>
+<div class="paragraph"><p>See definition for _atom_type_scat.neutron_magnetic_j0_A1</p></div>
+</div>
+<div class="sect2">
+<h3 id="_atom_type_scat_neutron_magnetic_j6_c2">_atom_type_scat.neutron_magnetic_j6_c2</h3>
+<div class="paragraph"><p>See definition for _atom_type_scat.neutron_magnetic_j0_A1</p></div>
+</div>
+<div class="sect2">
+<h3 id="_atom_type_scat_neutron_magnetic_j4_c1">_atom_type_scat.neutron_magnetic_j4_C1</h3>
+<div class="paragraph"><p>See definition for _atom_type_scat.neutron_magnetic_j0_A1</p></div>
+</div>
+<div class="sect2">
+<h3 id="_atom_type_scat_neutron_magnetic_j6_a2">_atom_type_scat.neutron_magnetic_j6_a2</h3>
+<div class="paragraph"><p>See definition for _atom_type_scat.neutron_magnetic_j0_A1</p></div>
+</div>
+<div class="sect2">
+<h3 id="_atom_type_scat_neutron_magnetic_j6_a1">_atom_type_scat.neutron_magnetic_j6_A1</h3>
+<div class="paragraph"><p>See definition for _atom_type_scat.neutron_magnetic_j0_A1</p></div>
+</div>
+<div class="sect2">
+<h3 id="_atom_type_scat_neutron_magnetic_j4_a1">_atom_type_scat.neutron_magnetic_j4_A1</h3>
+<div class="paragraph"><p>See definition for _atom_type_scat.neutron_magnetic_j0_A1</p></div>
+</div>
+<div class="sect2">
+<h3 id="_atom_type_scat_neutron_magnetic_j4_a2">_atom_type_scat.neutron_magnetic_j4_a2</h3>
+<div class="paragraph"><p>See definition for _atom_type_scat.neutron_magnetic_j0_A1</p></div>
+</div>
+<div class="sect2">
+<h3 id="_atom_type_scat_neutron_magnetic_j0_a1">_atom_type_scat.neutron_magnetic_j0_A1</h3>
+<div class="paragraph"><p>First, the parameters are used directly to approximate spatial
+     averages of  spherical Bessel functions over the electronic wave
+     functions of unpaired  electrons of the given atom type as a
+     function of s = sin(theta)/lambda.
+     &lt;jn(s)&gt; = <strong><span class="A1*e<sup>(-a2*s</sup>2) + B1*e<sup>(-b2*s</sup>2) + C1*e<sup>(-c2*s</sup>2) +      D">[1 if n=0, s^2 if n=2,4,6]
+     The &lt;jn(s)&gt; are then combined to determine the spin and orbital
+     contributions to the magnetic form factor of the atom.  The "e"
+     parameter is a measure of error in the approximation.
+     Analogous tags: coreCIF:_atom_site.scat_Cromer_Mann_</span></strong>
+     References: International Tables for Crystallography (2006). Vol.
+     C, Sections 4.4.5 and 6.1.2.3 (and references therein).</p></div>
+</div>
+<div class="sect2">
+<h3 id="_atom_type_scat_neutron_magnetic_j6_d">_atom_type_scat.neutron_magnetic_j6_D</h3>
+<div class="paragraph"><p>See definition for _atom_type_scat.neutron_magnetic_j0_A1</p></div>
+</div>
+<div class="sect2">
+<h3 id="_atom_type_scat_neutron_magnetic_j6_e">_atom_type_scat.neutron_magnetic_j6_e</h3>
+<div class="paragraph"><p>See definition for _atom_type_scat.neutron_magnetic_j0_A1</p></div>
+</div>
+<div class="sect2">
+<h3 id="_atom_type_scat_neutron_magnetic_j0_b1">_atom_type_scat.neutron_magnetic_j0_B1</h3>
+<div class="paragraph"><p>See definition for _atom_type_scat.neutron_magnetic_j0_A1</p></div>
+</div>
+<div class="sect2">
+<h3 id="_atom_type_scat_neutron_magnetic_j2_c1">_atom_type_scat.neutron_magnetic_j2_C1</h3>
+<div class="paragraph"><p>See definition for _atom_type_scat.neutron_magnetic_j0_A1</p></div>
+</div>
+<div class="sect2">
+<h3 id="_atom_type_scat_neutron_magnetic_j0_b2">_atom_type_scat.neutron_magnetic_j0_b2</h3>
+<div class="paragraph"><p>See definition for _atom_type_scat.neutron_magnetic_j0_A1</p></div>
+</div>
+<div class="sect2">
+<h3 id="_atom_type_scat_neutron_magnetic_source">_atom_type_scat.neutron_magnetic_source</h3>
+<div class="paragraph"><p>Reference to the source of magnetic neutron scattering factors
+     for a given atom type.
+     Analogous tags: coreCIF:_atom_site.scat_source</p></div>
+</div>
+<div class="sect2">
+<h3 id="_atom_type_scat_neutron_magnetic_j2_c2">_atom_type_scat.neutron_magnetic_j2_c2</h3>
+<div class="paragraph"><p>See definition for _atom_type_scat.neutron_magnetic_j0_A1</p></div>
+</div>
+<div class="sect2">
+<h3 id="_atom_type_scat_neutron_magnetic_j0_a2">_atom_type_scat.neutron_magnetic_j0_a2</h3>
+<div class="paragraph"><p>See definition for _atom_type_scat.neutron_magnetic_j0_A1</p></div>
+</div>
+<div class="sect2">
+<h3 id="_atom_type_scat_neutron_magnetic_j4_b1">_atom_type_scat.neutron_magnetic_j4_B1</h3>
+<div class="paragraph"><p>See definition for _atom_type_scat.neutron_magnetic_j0_A1</p></div>
+</div>
+<div class="sect2">
+<h3 id="_atom_type_scat_neutron_magnetic_j4_b2">_atom_type_scat.neutron_magnetic_j4_b2</h3>
+<div class="paragraph"><p>See definition for _atom_type_scat.neutron_magnetic_j0_A1</p></div>
+</div>
+<div class="sect2">
+<h3 id="_atom_type_scat_neutron_magnetic_j6_b2">_atom_type_scat.neutron_magnetic_j6_b2</h3>
+<div class="paragraph"><p>See definition for _atom_type_scat.neutron_magnetic_j0_A1</p></div>
+</div>
+<div class="sect2">
+<h3 id="_atom_type_scat_neutron_magnetic_j6_b1">_atom_type_scat.neutron_magnetic_j6_B1</h3>
+<div class="paragraph"><p>See definition for _atom_type_scat.neutron_magnetic_j0_A1</p></div>
+</div>
+<div class="sect2">
+<h3 id="_atom_type_scat_neutron_magnetic_j2_b2">_atom_type_scat.neutron_magnetic_j2_b2</h3>
+<div class="paragraph"><p>See definition for _atom_type_scat.neutron_magnetic_j0_A1</p></div>
+</div>
+<div class="sect2">
+<h3 id="_atom_type_scat_neutron_magnetic_j2_b1">_atom_type_scat.neutron_magnetic_j2_B1</h3>
+<div class="paragraph"><p>See definition for _atom_type_scat.neutron_magnetic_j0_A1</p></div>
+</div>
+<div class="sect2">
+<h3 id="_atom_type_scat_neutron_magnetic_j0_c2">_atom_type_scat.neutron_magnetic_j0_c2</h3>
+<div class="paragraph"><p>See definition for _atom_type_scat.neutron_magnetic_j0_A1</p></div>
+</div>
+<div class="sect2">
+<h3 id="_atom_type_scat_neutron_magnetic_j0_c1">_atom_type_scat.neutron_magnetic_j0_C1</h3>
+<div class="paragraph"><p>See definition for _atom_type_scat.neutron_magnetic_j0_A1</p></div>
+</div>
+</div>
+</div>
 </div>
 <div id="footnotes"><hr /></div>
 <div id="footer">
 <div id="footer-text">
 Last updated
- 2016-09-26 17:07:13 AEST
+ 2016-10-10 11:33:01 AEDT
 </div>
 </div>
 </body>
