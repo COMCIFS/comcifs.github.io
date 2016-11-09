@@ -734,7 +734,7 @@ asciidoc.install(2);
 <body class="article">
 <div id="header">
 <h1>CIF_POW</h1>
-<span id="revdate">2016-10-17</span>
+<span id="revdate">2016-11-09</span>
 </div>
 <div id="content">
 <div id="preamble">
@@ -743,7 +743,8 @@ asciidoc.install(2);
 powder diffraction studies. Note that unlike most IUCr CIF
 dictionaries, the dataname is not always constructed as
 &lt;category&gt;.&lt;object&gt;</p></div>
-<div class="paragraph"><p>Generated from /home/jrh/COMCIFS/cif_core/cif_pow.dic, version 2.00.01</p></div>
+<div class="paragraph"><p>This dictionary builds on definitions found in CIF_CORE.</p></div>
+<div class="paragraph"><p>Generated from /home/jrh/COMCIFS/cif_core/cif_pow.dic, version 2.1</p></div>
 <div class="paragraph"><p>Categories that may have more than one row are called loop categories.
 Datanames making up the keys for these categories have a dot suffix.</p></div>
 <div id="toc">
@@ -1030,7 +1031,8 @@ used (for example, separately for angular and gain calibration).</p></div>
 <h3 id="_pd_calib_std_detector_id">_pd_calib_std.detector_id&#8226;</h3>
 <div class="paragraph"><p>A code which identifies the detector or channel number that the
 calibration data applies to. Note that this code should match a
-detector from <a href="#_pd_meas_detector_id"><code>_pd_meas.detector_id</code></a></p></div>
+detector from <a href="#_pd_meas_detector_id"><code>_pd_meas.detector_id</code></a> and may be omitted if only
+one detector is used.</p></div>
 </div>
 <div class="sect2">
 <h3 id="_pd_calib_std_external_block_id">_pd_calib_std.external_block_id&#8226;</h3>
@@ -1321,12 +1323,15 @@ not be corrected for nonlinearity,
 zero offset etc. Corrected values may be specified
 using <a href="#_pd_proc_2theta_corrected_"><code>_pd_proc.2theta_corrected.</code></a></p></div>
 <div class="paragraph"><p>Note that for data sets collected with constant step size,
-<a href="#_pd_meas_2theta_range_"><code>_pd_meas.2theta_range_</code></a> (<code>*_min</code>, <code>*_max</code> and <code>*_inc</code>) may be
-used instead of <a href="#_pd_meas_2theta_scan_"><code>_pd_meas.2theta_scan.</code></a></p></div>
+<a href="#_pd_meas_2theta_range_"><code>_pd_meas.2theta_range_</code></a> (<code>*_min</code>, <code>*_max</code> and <code>*_inc</code>) may be used
+instead of <a href="#_pd_meas_2theta_scan_"><code>_pd_meas.2theta_scan.</code></a> <a href="#_pd_meas_2theta_angle"><code>_pd_meas_2theta_angle</code></a> was
+originally a distinct but cognate definition and should not be
+used in new files.</p></div>
 <div class="sidebarblock">
 <div class="content">
 <div class="title">Aliases</div>
-<div class="paragraph"><p><code>_pd_meas_2theta_scan</code><br /></p></div>
+<div class="paragraph"><p><code>_pd_meas_2theta_scan</code><br />
+<code>_pd_meas_angle_2theta</code><br /></p></div>
 </div></div>
 </div>
 <div class="sect2">
@@ -3092,53 +3097,12 @@ related to the peak table that cannot be given elsewhere.</p></div>
 <div class="sect1">
 <h2 id="PD_PHASE">PD_PHASE</h2>
 <div class="sectionbody">
-<div class="paragraph"><p>This section contains a description of the crystalline phases
-contributing to the powder diffraction data set. Note that if
-multiple-phase Rietveld or other structural analysis is
-performed, the structural results will be placed in different
-data blocks, using CIF entries from the core CIF dictionary.</p></div>
-<div class="paragraph"><p>The <a href="#_pd_phase_block_id"><code>_pd_phase_block_id</code></a> entry points to the CIF block with
-structural parameters for each crystalline phase. The
-<a href="#_pd_phase_id"><code>_pd_phase_id</code></a> serves to link to <a href="#_pd_refln_phase_id"><code>_pd_refln_phase_id</code></a>, which is
-used to label peaks by phase.</p></div>
-<div class="sect2">
-<h3 id="_pd_phase_block_id">_pd_phase.block_id</h3>
-<div class="paragraph"><p>A block ID code identifying the phase contributing to
-the diffraction peak. The data block containing the
-crystallographic information for this phase will be
-identified with a <a href="#_pd_block_id"><code>_pd_block.id</code></a> code matching the
-code in <a href="#_pd_phase_block_id_"><code>_pd_phase.block_id.</code></a></p></div>
-<div class="sidebarblock">
-<div class="content">
-<div class="title">Aliases</div>
-<div class="paragraph"><p><code>_pd_phase_block_id</code><br /></p></div>
-</div></div>
-</div>
-<div class="sect2">
-<h3 id="_pd_phase_id">_pd_phase.id&#8226;</h3>
-<div class="paragraph"><p>A code for each crystal phase used to link with
-<a href="#_pd_refln_phase_id_"><code>_pd_refln.phase_id.</code></a></p></div>
-<div class="sidebarblock">
-<div class="content">
-<div class="title">Aliases</div>
-<div class="paragraph"><p><code>_pd_phase_id</code><br /></p></div>
-</div></div>
-</div>
-<div class="sect2">
-<h3 id="_pd_phase_mass_percent">_pd_phase.mass_percent</h3>
-<div class="paragraph"><p>Per cent composition of the specified crystal phase
-expressed as the total mass of the component
-with respect to the total mass of the specimen.</p></div>
-<div class="sidebarblock">
-<div class="content">
-<div class="title">Aliases</div>
-<div class="paragraph"><p><code>_pd_phase_mass_percent</code><br />
-<code>_pd_phase_mass_%</code><br /></p></div>
-</div></div>
-</div>
+<div class="paragraph"><p>This section contains definitions for labelling a single
+crystalline phase. Note that a separate extension dictionary
+is provided for multiple-phase Rietveld.</p></div>
 <div class="sect2">
 <h3 id="_pd_phase_name">_pd_phase.name</h3>
-<div class="paragraph"><p>The name of the crystal phase identified by <a href="#_pd_phase_id_"><code>_pd_phase.id.</code></a>
+<div class="paragraph"><p>The name of the crystal phase.
 It may be designated as unknown or by a structure type etc.</p></div>
 <div class="sidebarblock">
 <div class="content">
@@ -3344,17 +3308,6 @@ for the correction with s.u.\'s.</p></div>
 </div>
 <div class="sect2">
 <h3 id="_pd_proc_ls_prof_R_factor">_pd_proc_ls.prof_R_factor</h3>
-<div class="paragraph"><p>Rietveld/profile fit R factors.</p></div>
-<div class="paragraph"><p>Note that the R factor computed for Rietveld refinements
-using the extracted reflection intensity values (often
-called the Rietveld or Bragg R factor, R<sub>B</sub>) is not properly
-a profile R factor. This R factor may be specified using
-<a href="#_refine_ls_R_I_factor_"><code>_refine_ls.R_I_factor.</code></a> (Some authors report
-<a href="#_refine_ls_R_Fsqd_factor"><code>_refine_ls.R_Fsqd_factor</code></a> or <a href="#_refine_ls_R_factor_all"><code>_refine_ls_R_factor_all</code></a>
-as the Rietveld or Bragg R factor. While it is appropriate
-to compute and report any or all of these R factors,
-the names "Rietveld or Bragg R factor" refer strictly to
-<a href="#_refine_ls_R_I_factor_"><code>_refine_ls.R_I_factor.</code></a>)</p></div>
 <div class="paragraph"><p><a href="#_pd_proc_ls_prof_R_factor"><code>_pd_proc_ls.prof_R_factor</code></a>, often called R<sub>p</sub>, is an
 unweighted fitness metric for the agreement between the
 observed and computed diffraction patterns.
@@ -3384,17 +3337,6 @@ p is the total number of refined parameters.</p></div>
 </div>
 <div class="sect2">
 <h3 id="_pd_proc_ls_prof_wR_expected">_pd_proc_ls.prof_wR_expected</h3>
-<div class="paragraph"><p>Rietveld/profile fit R factors.</p></div>
-<div class="paragraph"><p>Note that the R factor computed for Rietveld refinements
-using the extracted reflection intensity values (often
-called the Rietveld or Bragg R factor, R<sub>B</sub>) is not properly
-a profile R factor. This R factor may be specified using
-<a href="#_refine_ls_R_I_factor_"><code>_refine_ls.R_I_factor.</code></a> (Some authors report
-<a href="#_refine_ls_R_Fsqd_factor"><code>_refine_ls.R_Fsqd_factor</code></a> or <a href="#_refine_ls_R_factor_all"><code>_refine_ls_R_factor_all</code></a>
-as the Rietveld or Bragg R factor. While it is appropriate
-to compute and report any or all of these R factors,
-the names "Rietveld or Bragg R factor" refer strictly to
-<a href="#_refine_ls_R_I_factor_"><code>_refine_ls.R_I_factor.</code></a>)</p></div>
 <div class="paragraph"><p><a href="#_pd_proc_ls_prof_wR_expected"><code>_pd_proc_ls.prof_wR_expected</code></a>, sometimes called the
 theoretical R<sub>wp</sub> or R<sub>exp</sub>, is a weighted fitness metric for
 the statistical precision of the data set. For an idealized fit,
@@ -3428,17 +3370,6 @@ p is the total number of refined parameters.</p></div>
 </div>
 <div class="sect2">
 <h3 id="_pd_proc_ls_prof_wR_factor">_pd_proc_ls.prof_wR_factor</h3>
-<div class="paragraph"><p>Rietveld/profile fit R factors.</p></div>
-<div class="paragraph"><p>Note that the R factor computed for Rietveld refinements
-using the extracted reflection intensity values (often
-called the Rietveld or Bragg R factor, R<sub>B</sub>) is not properly
-a profile R factor. This R factor may be specified using
-<a href="#_refine_ls_R_I_factor_"><code>_refine_ls.R_I_factor.</code></a> (Some authors report
-<a href="#_refine_ls_R_Fsqd_factor"><code>_refine_ls.R_Fsqd_factor</code></a> or <a href="#_refine_ls_R_factor_all"><code>_refine_ls_R_factor_all</code></a>
-as the Rietveld or Bragg R factor. While it is appropriate
-to compute and report any or all of these R factors,
-the names "Rietveld or Bragg R factor" refer strictly to
-<a href="#_refine_ls_R_I_factor_"><code>_refine_ls.R_I_factor.</code></a>)</p></div>
 <div class="paragraph"><p><a href="#_pd_proc_ls_prof_wR_factor"><code>_pd_proc_ls.prof_wR_factor</code></a>, often called R<sub>wp</sub>, is a
 weighted fitness metric for the agreement between the
 observed and computed diffraction patterns.
@@ -3611,50 +3542,6 @@ applied due to any irregularities in this particular data set.</p></div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="PD_REFLN">PD_REFLN</h2>
-<div class="sectionbody">
-<div class="paragraph"><p>This section provides a mechanism to identify each peak in the
-peak-table section (<a href="#_pd_peak_"><code>_pd_peak_</code></a>) with the phase(s) (<a href="#_pd_phase_id"><code>_pd_phase_id</code></a>)
-and the reflection indices (<a href="#_refln_index_"><code>_refln_index_</code></a>) associated with the
-peak.  There are no restrictions on the number of phases or
-reflections associated with an observed peak. Reflections may
-also be included that are not observed; use "." for the
-<a href="#_pd_refln_peak_id_"><code>_pd_refln_peak_id.</code></a></p></div>
-<div class="sect2">
-<h3 id="_pd_refln_peak_id">_pd_refln.peak_id&#8226;</h3>
-<div class="paragraph"><p>Code which identifies the powder diffraction peak that
-contains the current reflection. This code must match a
-<a href="#_pd_peak_id"><code>_pd_peak.id</code></a> code.</p></div>
-<div class="sidebarblock">
-<div class="content">
-<div class="title">Aliases</div>
-<div class="paragraph"><p><code>_pd_refln_peak_id</code><br /></p></div>
-</div></div>
-</div>
-<div class="sect2">
-<h3 id="_pd_refln_phase_id">_pd_refln.phase_id&#8226;</h3>
-<div class="paragraph"><p>Code which identifies the crystal phase associated with this
-reflection. This code must match a <a href="#_pd_phase_id"><code>_pd_phase.id</code></a> code.</p></div>
-<div class="sidebarblock">
-<div class="content">
-<div class="title">Aliases</div>
-<div class="paragraph"><p><code>_pd_refln_phase_id</code><br /></p></div>
-</div></div>
-</div>
-<div class="sect2">
-<h3 id="_pd_refln_wavelength_id">_pd_refln.wavelength_id</h3>
-<div class="paragraph"><p>Code which identifies the wavelength associated with the
-reflection and the peak pointed to by <a href="#_pd_refln_peak_id_"><code>_pd_refln_peak_id.</code></a>
-This code must match a <a href="#_diffrn_radiation_wavelength_id"><code>_diffrn_radiation_wavelength.id</code></a> code.</p></div>
-<div class="sidebarblock">
-<div class="content">
-<div class="title">Aliases</div>
-<div class="paragraph"><p><code>_pd_refln_wavelength_id</code><br /></p></div>
-</div></div>
-</div>
-</div>
-</div>
-<div class="sect1">
 <h2 id="PD_SPEC">PD_SPEC</h2>
 <div class="sectionbody">
 <div class="paragraph"><p>This section contains information about the specimen used
@@ -3806,12 +3693,40 @@ included in other data items.</p></div>
 </div>
 </div>
 </div>
+<div class="sect1">
+<h2 id="_refln_original_category_from_cif_core">REFLN (Original category from: CIF_CORE)</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>This category is defined in external dictionary CIF_CORE</p></div>
+<div class="sect2">
+<h3 id="_pd_refln_wavelength_id">_pd_refln.wavelength_id</h3>
+<div class="paragraph"><p>Code which identifies the wavelength associated with the
+reflection and the peak pointed to by <a href="#_pd_refln_peak_id_"><code>_pd_refln.peak_id.</code></a>
+This code must match a <a href="#_diffrn_radiation_wavelength_id"><code>_diffrn_radiation_wavelength.id</code></a> code.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p><code>_pd_refln_wavelength_id</code><br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_pd_refln_peak_id">_pd_refln.peak_id</h3>
+<div class="paragraph"><p>Code which identifies the powder diffraction peak that
+contains the current reflection. This code must match a
+<a href="#_pd_peak_id"><code>_pd_peak.id</code></a> code.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p><code>_pd_refln_peak_id</code><br /></p></div>
+</div></div>
+</div>
+</div>
+</div>
 </div>
 <div id="footnotes"><hr /></div>
 <div id="footer">
 <div id="footer-text">
 Last updated
- 2016-10-24 10:03:47 AEDT
+ 2016-11-09 16:29:35 AEDT
 </div>
 </div>
 </body>
