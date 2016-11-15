@@ -1,0 +1,2702 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+    "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
+<meta name="generator" content="AsciiDoc 8.6.9" />
+<title>CIF_RSTR</title>
+<style type="text/css">
+/* Shared CSS for AsciiDoc xhtml11 and html5 backends */
+
+/* Default font. */
+body {
+  font-family: Georgia,serif;
+}
+
+/* Title font. */
+h1, h2, h3, h4, h5, h6,
+div.title, caption.title,
+thead, p.table.header,
+#toctitle,
+#author, #revnumber, #revdate, #revremark,
+#footer {
+  font-family: Arial,Helvetica,sans-serif;
+}
+
+body {
+  margin: 1em 5% 1em 5%;
+}
+
+a {
+  color: blue;
+  text-decoration: underline;
+}
+a:visited {
+  color: fuchsia;
+}
+
+em {
+  font-style: italic;
+  color: navy;
+}
+
+strong {
+  font-weight: bold;
+  color: #083194;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #527bbd;
+  margin-top: 1.2em;
+  margin-bottom: 0.5em;
+  line-height: 1.3;
+}
+
+h1, h2, h3 {
+  border-bottom: 2px solid silver;
+}
+h2 {
+  padding-top: 0.5em;
+}
+h3 {
+  float: left;
+}
+h3 + * {
+  clear: left;
+}
+h5 {
+  font-size: 1.0em;
+}
+
+div.sectionbody {
+  margin-left: 0;
+}
+
+hr {
+  border: 1px solid silver;
+}
+
+p {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+ul, ol, li > p {
+  margin-top: 0;
+}
+ul > li     { color: #aaa; }
+ul > li > * { color: black; }
+
+.monospaced, code, pre {
+  font-family: "Courier New", Courier, monospace;
+  font-size: inherit;
+  color: navy;
+  padding: 0;
+  margin: 0;
+}
+pre {
+  white-space: pre-wrap;
+}
+
+#author {
+  color: #527bbd;
+  font-weight: bold;
+  font-size: 1.1em;
+}
+#email {
+}
+#revnumber, #revdate, #revremark {
+}
+
+#footer {
+  font-size: small;
+  border-top: 2px solid silver;
+  padding-top: 0.5em;
+  margin-top: 4.0em;
+}
+#footer-text {
+  float: left;
+  padding-bottom: 0.5em;
+}
+#footer-badges {
+  float: right;
+  padding-bottom: 0.5em;
+}
+
+#preamble {
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+}
+div.imageblock, div.exampleblock, div.verseblock,
+div.quoteblock, div.literalblock, div.listingblock, div.sidebarblock,
+div.admonitionblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+div.admonitionblock {
+  margin-top: 2.0em;
+  margin-bottom: 2.0em;
+  margin-right: 10%;
+  color: #606060;
+}
+
+div.content { /* Block element content. */
+  padding: 0;
+}
+
+/* Block element titles. */
+div.title, caption.title {
+  color: #527bbd;
+  font-weight: bold;
+  text-align: left;
+  margin-top: 1.0em;
+  margin-bottom: 0.5em;
+}
+div.title + * {
+  margin-top: 0;
+}
+
+td div.title:first-child {
+  margin-top: 0.0em;
+}
+div.content div.title:first-child {
+  margin-top: 0.0em;
+}
+div.content + div.title {
+  margin-top: 0.0em;
+}
+
+div.sidebarblock > div.content {
+  background: #ffffee;
+  border: 1px solid #dddddd;
+  border-left: 4px solid #f0f0f0;
+  padding: 0.5em;
+}
+
+div.listingblock > div.content {
+  border: 1px solid #dddddd;
+  border-left: 5px solid #f0f0f0;
+  background: #f8f8f8;
+  padding: 0.5em;
+}
+
+div.quoteblock, div.verseblock {
+  padding-left: 1.0em;
+  margin-left: 1.0em;
+  margin-right: 10%;
+  border-left: 5px solid #f0f0f0;
+  color: #888;
+}
+
+div.quoteblock > div.attribution {
+  padding-top: 0.5em;
+  text-align: right;
+}
+
+div.verseblock > pre.content {
+  font-family: inherit;
+  font-size: inherit;
+}
+div.verseblock > div.attribution {
+  padding-top: 0.75em;
+  text-align: left;
+}
+/* DEPRECATED: Pre version 8.2.7 verse style literal block. */
+div.verseblock + div.attribution {
+  text-align: left;
+}
+
+div.admonitionblock .icon {
+  vertical-align: top;
+  font-size: 1.1em;
+  font-weight: bold;
+  text-decoration: underline;
+  color: #527bbd;
+  padding-right: 0.5em;
+}
+div.admonitionblock td.content {
+  padding-left: 0.5em;
+  border-left: 3px solid #dddddd;
+}
+
+div.exampleblock > div.content {
+  border-left: 3px solid #dddddd;
+  padding-left: 0.5em;
+}
+
+div.imageblock div.content { padding-left: 0; }
+span.image img { border-style: none; vertical-align: text-bottom; }
+a.image:visited { color: white; }
+
+dl {
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+}
+dt {
+  margin-top: 0.5em;
+  margin-bottom: 0;
+  font-style: normal;
+  color: navy;
+}
+dd > *:first-child {
+  margin-top: 0.1em;
+}
+
+ul, ol {
+    list-style-position: outside;
+}
+ol.arabic {
+  list-style-type: decimal;
+}
+ol.loweralpha {
+  list-style-type: lower-alpha;
+}
+ol.upperalpha {
+  list-style-type: upper-alpha;
+}
+ol.lowerroman {
+  list-style-type: lower-roman;
+}
+ol.upperroman {
+  list-style-type: upper-roman;
+}
+
+div.compact ul, div.compact ol,
+div.compact p, div.compact p,
+div.compact div, div.compact div {
+  margin-top: 0.1em;
+  margin-bottom: 0.1em;
+}
+
+tfoot {
+  font-weight: bold;
+}
+td > div.verse {
+  white-space: pre;
+}
+
+div.hdlist {
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+}
+div.hdlist tr {
+  padding-bottom: 15px;
+}
+dt.hdlist1.strong, td.hdlist1.strong {
+  font-weight: bold;
+}
+td.hdlist1 {
+  vertical-align: top;
+  font-style: normal;
+  padding-right: 0.8em;
+  color: navy;
+}
+td.hdlist2 {
+  vertical-align: top;
+}
+div.hdlist.compact tr {
+  margin: 0;
+  padding-bottom: 0;
+}
+
+.comment {
+  background: yellow;
+}
+
+.footnote, .footnoteref {
+  font-size: 0.8em;
+}
+
+span.footnote, span.footnoteref {
+  vertical-align: super;
+}
+
+#footnotes {
+  margin: 20px 0 20px 0;
+  padding: 7px 0 0 0;
+}
+
+#footnotes div.footnote {
+  margin: 0 0 5px 0;
+}
+
+#footnotes hr {
+  border: none;
+  border-top: 1px solid silver;
+  height: 1px;
+  text-align: left;
+  margin-left: 0;
+  width: 20%;
+  min-width: 100px;
+}
+
+div.colist td {
+  padding-right: 0.5em;
+  padding-bottom: 0.3em;
+  vertical-align: top;
+}
+div.colist td img {
+  margin-top: 0.3em;
+}
+
+@media print {
+  #footer-badges { display: none; }
+}
+
+#toc {
+  margin-bottom: 2.5em;
+}
+
+#toctitle {
+  color: #527bbd;
+  font-size: 1.1em;
+  font-weight: bold;
+  margin-top: 1.0em;
+  margin-bottom: 0.1em;
+}
+
+div.toclevel0, div.toclevel1, div.toclevel2, div.toclevel3, div.toclevel4 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+div.toclevel2 {
+  margin-left: 2em;
+  font-size: 0.9em;
+}
+div.toclevel3 {
+  margin-left: 4em;
+  font-size: 0.9em;
+}
+div.toclevel4 {
+  margin-left: 6em;
+  font-size: 0.9em;
+}
+
+span.aqua { color: aqua; }
+span.black { color: black; }
+span.blue { color: blue; }
+span.fuchsia { color: fuchsia; }
+span.gray { color: gray; }
+span.green { color: green; }
+span.lime { color: lime; }
+span.maroon { color: maroon; }
+span.navy { color: navy; }
+span.olive { color: olive; }
+span.purple { color: purple; }
+span.red { color: red; }
+span.silver { color: silver; }
+span.teal { color: teal; }
+span.white { color: white; }
+span.yellow { color: yellow; }
+
+span.aqua-background { background: aqua; }
+span.black-background { background: black; }
+span.blue-background { background: blue; }
+span.fuchsia-background { background: fuchsia; }
+span.gray-background { background: gray; }
+span.green-background { background: green; }
+span.lime-background { background: lime; }
+span.maroon-background { background: maroon; }
+span.navy-background { background: navy; }
+span.olive-background { background: olive; }
+span.purple-background { background: purple; }
+span.red-background { background: red; }
+span.silver-background { background: silver; }
+span.teal-background { background: teal; }
+span.white-background { background: white; }
+span.yellow-background { background: yellow; }
+
+span.big { font-size: 2em; }
+span.small { font-size: 0.6em; }
+
+span.underline { text-decoration: underline; }
+span.overline { text-decoration: overline; }
+span.line-through { text-decoration: line-through; }
+
+div.unbreakable { page-break-inside: avoid; }
+
+
+/*
+ * xhtml11 specific
+ *
+ * */
+
+div.tableblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+div.tableblock > table {
+  border: 3px solid #527bbd;
+}
+thead, p.table.header {
+  font-weight: bold;
+  color: #527bbd;
+}
+p.table {
+  margin-top: 0;
+}
+/* Because the table frame attribute is overriden by CSS in most browsers. */
+div.tableblock > table[frame="void"] {
+  border-style: none;
+}
+div.tableblock > table[frame="hsides"] {
+  border-left-style: none;
+  border-right-style: none;
+}
+div.tableblock > table[frame="vsides"] {
+  border-top-style: none;
+  border-bottom-style: none;
+}
+
+
+/*
+ * html5 specific
+ *
+ * */
+
+table.tableblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+thead, p.tableblock.header {
+  font-weight: bold;
+  color: #527bbd;
+}
+p.tableblock {
+  margin-top: 0;
+}
+table.tableblock {
+  border-width: 3px;
+  border-spacing: 0px;
+  border-style: solid;
+  border-color: #527bbd;
+  border-collapse: collapse;
+}
+th.tableblock, td.tableblock {
+  border-width: 1px;
+  padding: 4px;
+  border-style: solid;
+  border-color: #527bbd;
+}
+
+table.tableblock.frame-topbot {
+  border-left-style: hidden;
+  border-right-style: hidden;
+}
+table.tableblock.frame-sides {
+  border-top-style: hidden;
+  border-bottom-style: hidden;
+}
+table.tableblock.frame-none {
+  border-style: hidden;
+}
+
+th.tableblock.halign-left, td.tableblock.halign-left {
+  text-align: left;
+}
+th.tableblock.halign-center, td.tableblock.halign-center {
+  text-align: center;
+}
+th.tableblock.halign-right, td.tableblock.halign-right {
+  text-align: right;
+}
+
+th.tableblock.valign-top, td.tableblock.valign-top {
+  vertical-align: top;
+}
+th.tableblock.valign-middle, td.tableblock.valign-middle {
+  vertical-align: middle;
+}
+th.tableblock.valign-bottom, td.tableblock.valign-bottom {
+  vertical-align: bottom;
+}
+
+
+/*
+ * manpage specific
+ *
+ * */
+
+body.manpage h1 {
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  border-top: 2px solid silver;
+  border-bottom: 2px solid silver;
+}
+body.manpage h2 {
+  border-style: none;
+}
+body.manpage div.sectionbody {
+  margin-left: 3em;
+}
+
+@media print {
+  body.manpage div#toc { display: none; }
+}
+
+
+</style>
+<script type="text/javascript">
+/*<![CDATA[*/
+var asciidoc = {  // Namespace.
+
+/////////////////////////////////////////////////////////////////////
+// Table Of Contents generator
+/////////////////////////////////////////////////////////////////////
+
+/* Author: Mihai Bazon, September 2002
+ * http://students.infoiasi.ro/~mishoo
+ *
+ * Table Of Content generator
+ * Version: 0.4
+ *
+ * Feel free to use this script under the terms of the GNU General Public
+ * License, as long as you do not remove or alter this notice.
+ */
+
+ /* modified by Troy D. Hanson, September 2006. License: GPL */
+ /* modified by Stuart Rackham, 2006, 2009. License: GPL */
+
+// toclevels = 1..4.
+toc: function (toclevels) {
+
+  function getText(el) {
+    var text = "";
+    for (var i = el.firstChild; i != null; i = i.nextSibling) {
+      if (i.nodeType == 3 /* Node.TEXT_NODE */) // IE doesn't speak constants.
+        text += i.data;
+      else if (i.firstChild != null)
+        text += getText(i);
+    }
+    return text;
+  }
+
+  function TocEntry(el, text, toclevel) {
+    this.element = el;
+    this.text = text;
+    this.toclevel = toclevel;
+  }
+
+  function tocEntries(el, toclevels) {
+    var result = new Array;
+    var re = new RegExp('[hH]([1-'+(toclevels+1)+'])');
+    // Function that scans the DOM tree for header elements (the DOM2
+    // nodeIterator API would be a better technique but not supported by all
+    // browsers).
+    var iterate = function (el) {
+      for (var i = el.firstChild; i != null; i = i.nextSibling) {
+        if (i.nodeType == 1 /* Node.ELEMENT_NODE */) {
+          var mo = re.exec(i.tagName);
+          if (mo && (i.getAttribute("class") || i.getAttribute("className")) != "float") {
+            result[result.length] = new TocEntry(i, getText(i), mo[1]-1);
+          }
+          iterate(i);
+        }
+      }
+    }
+    iterate(el);
+    return result;
+  }
+
+  var toc = document.getElementById("toc");
+  if (!toc) {
+    return;
+  }
+
+  // Delete existing TOC entries in case we're reloading the TOC.
+  var tocEntriesToRemove = [];
+  var i;
+  for (i = 0; i < toc.childNodes.length; i++) {
+    var entry = toc.childNodes[i];
+    if (entry.nodeName.toLowerCase() == 'div'
+     && entry.getAttribute("class")
+     && entry.getAttribute("class").match(/^toclevel/))
+      tocEntriesToRemove.push(entry);
+  }
+  for (i = 0; i < tocEntriesToRemove.length; i++) {
+    toc.removeChild(tocEntriesToRemove[i]);
+  }
+
+  // Rebuild TOC entries.
+  var entries = tocEntries(document.getElementById("content"), toclevels);
+  for (var i = 0; i < entries.length; ++i) {
+    var entry = entries[i];
+    if (entry.element.id == "")
+      entry.element.id = "_toc_" + i;
+    var a = document.createElement("a");
+    a.href = "#" + entry.element.id;
+    a.appendChild(document.createTextNode(entry.text));
+    var div = document.createElement("div");
+    div.appendChild(a);
+    div.className = "toclevel" + entry.toclevel;
+    toc.appendChild(div);
+  }
+  if (entries.length == 0)
+    toc.parentNode.removeChild(toc);
+},
+
+
+/////////////////////////////////////////////////////////////////////
+// Footnotes generator
+/////////////////////////////////////////////////////////////////////
+
+/* Based on footnote generation code from:
+ * http://www.brandspankingnew.net/archive/2005/07/format_footnote.html
+ */
+
+footnotes: function () {
+  // Delete existing footnote entries in case we're reloading the footnodes.
+  var i;
+  var noteholder = document.getElementById("footnotes");
+  if (!noteholder) {
+    return;
+  }
+  var entriesToRemove = [];
+  for (i = 0; i < noteholder.childNodes.length; i++) {
+    var entry = noteholder.childNodes[i];
+    if (entry.nodeName.toLowerCase() == 'div' && entry.getAttribute("class") == "footnote")
+      entriesToRemove.push(entry);
+  }
+  for (i = 0; i < entriesToRemove.length; i++) {
+    noteholder.removeChild(entriesToRemove[i]);
+  }
+
+  // Rebuild footnote entries.
+  var cont = document.getElementById("content");
+  var spans = cont.getElementsByTagName("span");
+  var refs = {};
+  var n = 0;
+  for (i=0; i<spans.length; i++) {
+    if (spans[i].className == "footnote") {
+      n++;
+      var note = spans[i].getAttribute("data-note");
+      if (!note) {
+        // Use [\s\S] in place of . so multi-line matches work.
+        // Because JavaScript has no s (dotall) regex flag.
+        note = spans[i].innerHTML.match(/\s*\[([\s\S]*)]\s*/)[1];
+        spans[i].innerHTML =
+          "[<a id='_footnoteref_" + n + "' href='#_footnote_" + n +
+          "' title='View footnote' class='footnote'>" + n + "</a>]";
+        spans[i].setAttribute("data-note", note);
+      }
+      noteholder.innerHTML +=
+        "<div class='footnote' id='_footnote_" + n + "'>" +
+        "<a href='#_footnoteref_" + n + "' title='Return to text'>" +
+        n + "</a>. " + note + "</div>";
+      var id =spans[i].getAttribute("id");
+      if (id != null) refs["#"+id] = n;
+    }
+  }
+  if (n == 0)
+    noteholder.parentNode.removeChild(noteholder);
+  else {
+    // Process footnoterefs.
+    for (i=0; i<spans.length; i++) {
+      if (spans[i].className == "footnoteref") {
+        var href = spans[i].getElementsByTagName("a")[0].getAttribute("href");
+        href = href.match(/#.*/)[0];  // Because IE return full URL.
+        n = refs[href];
+        spans[i].innerHTML =
+          "[<a href='#_footnote_" + n +
+          "' title='View footnote' class='footnote'>" + n + "</a>]";
+      }
+    }
+  }
+},
+
+install: function(toclevels) {
+  var timerId;
+
+  function reinstall() {
+    asciidoc.footnotes();
+    if (toclevels) {
+      asciidoc.toc(toclevels);
+    }
+  }
+
+  function reinstallAndRemoveTimer() {
+    clearInterval(timerId);
+    reinstall();
+  }
+
+  timerId = setInterval(reinstall, 500);
+  if (document.addEventListener)
+    document.addEventListener("DOMContentLoaded", reinstallAndRemoveTimer, false);
+  else
+    window.onload = reinstallAndRemoveTimer;
+}
+
+}
+asciidoc.install(2);
+/*]]>*/
+</script>
+</head>
+<body class="article">
+<div id="header">
+<h1>CIF_RSTR</h1>
+<span id="revdate">2016-11-15</span>
+</div>
+<div id="content">
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph"><p>The items in this dictionary are designed for reporting the restraints
+and constraints applied during the final refinement of a structure.
+They are not intended, nor are they suitable, for use as instructions
+to a refinement program.</p></div>
+<div class="paragraph"><p>A RESTRAINT is a condition used in the refinement of a crystal structure
+that requires one or more of the parameters of the refinement to lie
+within a certain range.</p></div>
+<div class="paragraph"><p>A CONSTRAINT is a condition used in the refinement of a crystal structure
+that requires one or more parameters of the refinement to have a
+specific value or be exactly equal to another refined parameter.</p></div>
+<div class="paragraph"><p>The range of values allowed in a restraint is given in this dictionary
+by a target value and a weighting parameter, the latter being the
+expectation value of the difference between the refined value and
+the target. Constraints are indicated by setting the weighting
+parameter to zero.</p></div>
+<div class="paragraph"><p>Restraints and constraints are handled in many different ways in different
+programs.  The actual parameters restrained are determined by the way the
+restraint is expressed within the program, and different programs
+express the same restraint in different ways.  In this dictionary the
+restraints are expressed in a way that is most natural to the description
+of the crystal structure, which means that the parameters given here
+may not correspond to the parameters that were actually restrained.
+For example, the rigid-body constraint is expressed here by listing the
+atoms in the rigid body. Distances and angles between them are constant.
+For a rigid body the target parameters are the same as the refined
+parameters, allowing the target geometry of the rigid body to be found
+from the reported atomic coordinates.  However, in order to apply
+this constraint in a refinement, either the coordinates of the atoms
+in some arbitrary coordinate system or a sufficient number of geometric
+parameters of the body must be specified. Since all these methods
+preserve the rigid body intact, it is only the result that needs to be
+reported, not the details of the method used. In this way the description
+of restraints and constraints has been kept as simple as possible.</p></div>
+<div class="paragraph"><p>The restraints and constraints used are many and varied, and not all
+can be given in the forms listed in this dictionary.
+For this reason a general item <a href="#_restr_special_details"><code>_restr_special_details</code></a> has been
+provided so that a text description can be given for
+a restraint or constraint that cannot be reported in any other way.</p></div>
+<div class="paragraph"><p>Attention is drawn to existing items in the core dictionary that flag
+whether items have been restrained or constrained:
+<a href="#_atom_site_refinement_flags_adp"><code>_atom_site_refinement_flags_adp</code></a>
+<a href="#_atom_site_refinement_flags_occupation"><code>_atom_site_refinement_flags_occupation</code></a>
+<a href="#_atom_site_refinement_flags_posn"><code>_atom_site_refinement_flags_posn</code></a>
+<a href="#_atom_site_restraints"><code>_atom_site_restraints</code></a></p></div>
+<div class="paragraph"><p>Generated from /home/jrh/COMCIFS/cif_core/cif_rstr.dic, version 3.1</p></div>
+<div class="paragraph"><p>Categories that may have more than one row are called loop categories.
+Datanames making up the keys for these categories have a dot suffix.</p></div>
+<div id="toc">
+  <div id="toctitle">Table of Contents</div>
+  <noscript><p><b>JavaScript must be enabled in your browser to display the table of contents.</b></p></noscript>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="CIF_RSTR">CIF_RSTR</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>The CIF_RSTR group contains the definitions of data items that
+are used to restrain and constrain crystallographic parameters.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="RESTR">RESTR</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>This category is for describing restraints that cannot be
+described elsewhere.</p></div>
+<div class="sect2">
+<h3 id="_restr_special_details">_restr.special_details</h3>
+<div class="paragraph"><p>Text describing any restraint or constraint that cannot be
+described using any of the the other restraint items.
+See also <a href="#_atom_site_restraints_"><code>_atom_site_restraints.</code></a></p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p><code>_restr_special_details</code><br /></p></div>
+</div></div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="RESTR_ANGLE">RESTR_ANGLE</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>Items in this category define angles that were restrained
+in the final refinement. Atom 2 is at the apex of the angle.</p></div>
+<div class="sect2">
+<h3 id="_restr_angle_atom_site_label_1">_restr_angle.atom_site_label_1&#8226;</h3>
+<div class="paragraph"><p>Label for the atom at the end of one arm of the restrained angle</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p><code>_restr_angle_atom_site_label_1</code><br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_restr_angle_atom_site_label_2">_restr_angle.atom_site_label_2&#8226;</h3>
+<div class="paragraph"><p>Label for the atom at the apex of the angle.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p><code>_restr_angle_atom_site_label_2</code><br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_restr_angle_atom_site_label_3">_restr_angle.atom_site_label_3&#8226;</h3>
+<div class="paragraph"><p>Label for the atom at the end of one arm of the restrained angle.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p><code>_restr_angle_atom_site_label_3</code><br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_restr_angle_details">_restr_angle.details</h3>
+<div class="paragraph"><p>A free-text description of the restraint.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p><code>_restr_angle_details</code><br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_restr_angle_diff">_restr_angle.diff</h3>
+<div class="paragraph"><p>The difference between the target and the refined angle.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p><code>_restr_angle_diff</code><br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_restr_angle_site_symmetry_1">_restr_angle.site_symmetry_1&#8226;</h3>
+<div class="paragraph"><p>(Generic definition) The set of data items which specify the symmetry operation codes
+which must be applied to the atom sites involved in the geometry angle.</p></div>
+<div class="paragraph"><p>The symmetry code of each atom site as the symmetry-equivalent position
+number "n" and the cell translation number <em>klm</em>. These numbers are
+combined to form the code <em>n klm</em> or n_klm.</p></div>
+<div class="paragraph"><p>The character string n_klm is composed as follows:</p></div>
+<div class="paragraph"><p>n refers to the symmetry operation that is applied to the
+coordinates stored in <a href="#_atom_site_fract_xyz_"><code>_atom_site.fract_xyz.</code></a> It must match a
+number given in <a href="#_symmetry_equiv_pos_site_id_"><code>_symmetry_equiv.pos_site_id.</code></a></p></div>
+<div class="paragraph"><p>k, l and m refer to the translations that are subsequently
+applied to the symmetry transformed coordinates to generate
+the atom used in calculating the angle. These translations
+(x,y,z) are related to (k,l,m) by the relations
+k = 5 + x
+l = 5 + y
+m = 5 + z</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p><code>_restr_angle_site_symmetry_1</code><br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_restr_angle_site_symmetry_2">_restr_angle.site_symmetry_2&#8226;</h3>
+<div class="paragraph"><p>(Generic definition) The set of data items which specify the symmetry operation codes
+which must be applied to the atom sites involved in the geometry angle.</p></div>
+<div class="paragraph"><p>The symmetry code of each atom site as the symmetry-equivalent position
+number "n" and the cell translation number <em>klm</em>. These numbers are
+combined to form the code <em>n klm</em> or n_klm.</p></div>
+<div class="paragraph"><p>The character string n_klm is composed as follows:</p></div>
+<div class="paragraph"><p>n refers to the symmetry operation that is applied to the
+coordinates stored in <a href="#_atom_site_fract_xyz_"><code>_atom_site.fract_xyz.</code></a> It must match a
+number given in <a href="#_symmetry_equiv_pos_site_id_"><code>_symmetry_equiv.pos_site_id.</code></a></p></div>
+<div class="paragraph"><p>k, l and m refer to the translations that are subsequently
+applied to the symmetry transformed coordinates to generate
+the atom used in calculating the angle. These translations
+(x,y,z) are related to (k,l,m) by the relations
+k = 5 + x
+l = 5 + y
+m = 5 + z</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p><code>_restr_angle_site_symmetry_2</code><br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_restr_angle_site_symmetry_3">_restr_angle.site_symmetry_3&#8226;</h3>
+<div class="paragraph"><p>(Generic definition) The set of data items which specify the symmetry operation codes
+which must be applied to the atom sites involved in the geometry angle.</p></div>
+<div class="paragraph"><p>The symmetry code of each atom site as the symmetry-equivalent position
+number "n" and the cell translation number <em>klm</em>. These numbers are
+combined to form the code <em>n klm</em> or n_klm.</p></div>
+<div class="paragraph"><p>The character string n_klm is composed as follows:</p></div>
+<div class="paragraph"><p>n refers to the symmetry operation that is applied to the
+coordinates stored in <a href="#_atom_site_fract_xyz_"><code>_atom_site.fract_xyz.</code></a> It must match a
+number given in <a href="#_symmetry_equiv_pos_site_id_"><code>_symmetry_equiv.pos_site_id.</code></a></p></div>
+<div class="paragraph"><p>k, l and m refer to the translations that are subsequently
+applied to the symmetry transformed coordinates to generate
+the atom used in calculating the angle. These translations
+(x,y,z) are related to (k,l,m) by the relations
+k = 5 + x
+l = 5 + y
+m = 5 + z</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p><code>_restr_angle_site_symmetry_3</code><br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_restr_angle_target">_restr_angle.target</h3>
+<div class="paragraph"><p>The expectation angle defined by the three atoms.
+This is the target angle for the restrained refinement.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p><code>_restr_angle_target</code><br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_restr_angle_target_weight_param">_restr_angle.target_weight_param</h3>
+<div class="paragraph"><p>Weighting parameter = sqrt(1/weight).
+It is the expectation value of the difference between
+the refined value and the target.
+If this parameter is set to zero, the angle will be constrained
+to refine to the target value.
+If this item is absent, its value will be taken as zero
+and the distance will be constrained.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p><code>_restr_angle_target_weight_param</code><br /></p></div>
+</div></div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="RESTR_DISTANCE">RESTR_DISTANCE</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>This category describes restraints applied to
+distances during the final refinement.</p></div>
+<div class="sect2">
+<h3 id="_restr_distance_atom_site_label_1">_restr_distance.atom_site_label_1&#8226;</h3>
+<div class="paragraph"><p>(Generic definition) Labels of atom sites subtending distance or angle. Atom 2 is the apex for
+angular restraints.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p><code>_restr_distance_atom_site_label_1</code><br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_restr_distance_atom_site_label_2">_restr_distance.atom_site_label_2&#8226;</h3>
+<div class="paragraph"><p>(Generic definition) Labels of atom sites subtending distance or angle. Atom 2 is the apex for
+angular restraints.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p><code>_restr_distance_atom_site_label_2</code><br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_restr_distance_details">_restr_distance.details</h3>
+<div class="paragraph"><p>A free-text description of the restraint.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p><code>_restr_distance_details</code><br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_restr_distance_diff">_restr_distance.diff</h3>
+<div class="paragraph"><p>The difference between the target and the refined distance.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p><code>_restr_distance_diff</code><br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_restr_distance_site_symmetry_1">_restr_distance.site_symmetry_1&#8226;</h3>
+<div class="paragraph"><p>(Generic definition) The set of data items which specify the symmetry operation codes
+which must be applied to the atom sites involved in the geometry angle.</p></div>
+<div class="paragraph"><p>The symmetry code of each atom site as the symmetry-equivalent position
+number "n" and the cell translation number <em>klm</em>. These numbers are
+combined to form the code <em>n klm</em> or n_klm.</p></div>
+<div class="paragraph"><p>The character string n_klm is composed as follows:</p></div>
+<div class="paragraph"><p>n refers to the symmetry operation that is applied to the
+coordinates stored in <a href="#_atom_site_fract_xyz_"><code>_atom_site.fract_xyz.</code></a> It must match a
+number given in <a href="#_symmetry_equiv_pos_site_id_"><code>_symmetry_equiv.pos_site_id.</code></a></p></div>
+<div class="paragraph"><p>k, l and m refer to the translations that are subsequently
+applied to the symmetry transformed coordinates to generate
+the atom used in calculating the angle. These translations
+(x,y,z) are related to (k,l,m) by the relations
+k = 5 + x
+l = 5 + y
+m = 5 + z</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p><code>_restr_distance_site_symmetry_1</code><br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_restr_distance_site_symmetry_2">_restr_distance.site_symmetry_2&#8226;</h3>
+<div class="paragraph"><p>(Generic definition) The set of data items which specify the symmetry operation codes
+which must be applied to the atom sites involved in the geometry angle.</p></div>
+<div class="paragraph"><p>The symmetry code of each atom site as the symmetry-equivalent position
+number "n" and the cell translation number <em>klm</em>. These numbers are
+combined to form the code <em>n klm</em> or n_klm.</p></div>
+<div class="paragraph"><p>The character string n_klm is composed as follows:</p></div>
+<div class="paragraph"><p>n refers to the symmetry operation that is applied to the
+coordinates stored in <a href="#_atom_site_fract_xyz_"><code>_atom_site.fract_xyz.</code></a> It must match a
+number given in <a href="#_symmetry_equiv_pos_site_id_"><code>_symmetry_equiv.pos_site_id.</code></a></p></div>
+<div class="paragraph"><p>k, l and m refer to the translations that are subsequently
+applied to the symmetry transformed coordinates to generate
+the atom used in calculating the angle. These translations
+(x,y,z) are related to (k,l,m) by the relations
+k = 5 + x
+l = 5 + y
+m = 5 + z</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p><code>_restr_distance_site_symmetry_2</code><br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_restr_distance_target">_restr_distance.target</h3>
+<div class="paragraph"><p>The expectation distance between the two atoms.
+This is the target distance for the restrained refinement.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p><code>_restr_distance_target</code><br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_restr_distance_target_weight_param">_restr_distance.target_weight_param</h3>
+<div class="paragraph"><p>Weighting parameter = sqrt(1/weight).
+It is the expectation value of the difference between
+the refined value and the target.
+If this parameter is set to zero, the distance will be
+constrained to refine to the target value.
+If this item is absent, its value will be taken as zero
+and the distance will be constrained.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p><code>_restr_distance_target_weight_param</code><br /></p></div>
+</div></div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="RESTR_DISTANCE_MIN">RESTR_DISTANCE_MIN</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>Items in this category offer power-law and exponential
+expressions for a function designed to prevent two atoms
+occupying the same location.</p></div>
+<div class="sect2">
+<h3 id="_restr_distance_min_A">_restr_distance_min.A</h3>
+<div class="paragraph"><p>The weight associated with the difference between the
+refined distance D and the prescribed minimum distance
+(B or F) is given by the expression</p></div>
+<div class="paragraph"><p>w = A*(B/D)<sup>C</sup> + E*exp((D-F)/G)</p></div>
+<div class="paragraph"><p>A and E are dimensionless weighting parameters.
+Either function could be used alone by setting A or E to zero.
+The default values of A and E are zero.</p></div>
+<div class="paragraph"><p>If A=0, B and C are undefined; if E=0, F and G are undefined.</p></div>
+<div class="paragraph"><p>A hard-sphere contact can be generated by setting E=1,
+F=prescribed minimum distance and G=0.  In this case G
+(combined with a non-zero E) should be treated as a flag
+indicating a hard-sphere interaction with a target distance
+of F so as to avoid division by zero.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p><code>_restr_distance_min_A</code><br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_restr_distance_min_atom_site_label_1">_restr_distance_min.atom_site_label_1&#8226;</h3>
+<div class="paragraph"><p>(Generic definition) Labels of atom sites subtending distance or angle. Atom 2 is the apex for
+angular restraints.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p><code>_restr_distance_min_atom_site_label_1</code><br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_restr_distance_min_atom_site_label_2">_restr_distance_min.atom_site_label_2&#8226;</h3>
+<div class="paragraph"><p>(Generic definition) Labels of atom sites subtending distance or angle. Atom 2 is the apex for
+angular restraints.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p><code>_restr_distance_min_atom_site_label_2</code><br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_restr_distance_min_B">_restr_distance_min.B</h3>
+<div class="paragraph"><p>See <a href="#_restr_distance_min_A"><code>_restr_distance_min.A</code></a> for description.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p><code>_restr_distance_min_B</code><br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_restr_distance_min_C">_restr_distance_min.C</h3>
+<div class="paragraph"><p>See <a href="#_restr_distance_min_A"><code>_restr_distance_min.A</code></a> for description.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p><code>_restr_distance_min_C</code><br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_restr_distance_min_details">_restr_distance_min.details</h3>
+<div class="paragraph"><p>A text description of the restraint giving details not
+given elsewhere.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p><code>_restr_distance_min_details</code><br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_restr_distance_min_difference">_restr_distance_min.difference</h3>
+<div class="paragraph"><p>The difference in angstroms between the refined distance
+of approach of the two atoms and the target distance B or F:</p></div>
+<div class="paragraph"><p>difference = D - B or D - F</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p><code>_restr_distance_min_difference</code><br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_restr_distance_min_distance">_restr_distance_min.distance</h3>
+<div class="paragraph"><p>The refined distance, D, between the two atoms.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p><code>_restr_distance_min_distance</code><br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_restr_distance_min_E">_restr_distance_min.E</h3>
+<div class="paragraph"><p>See <a href="#_restr_distance_min_A"><code>_restr_distance_min.A</code></a> for description.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p><code>_restr_distance_min_E</code><br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_restr_distance_min_F">_restr_distance_min.F</h3>
+<div class="paragraph"><p>See <a href="#_restr_distance_min_A"><code>_restr_distance_min.A</code></a> for description.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p><code>_restr_distance_min_F</code><br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_restr_distance_min_G">_restr_distance_min.G</h3>
+<div class="paragraph"><p>See <a href="#_restr_distance_min_A"><code>_restr_distance_min.A</code></a> for description.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p><code>_restr_distance_min_G</code><br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_restr_distance_min_site_symmetry_1">_restr_distance_min.site_symmetry_1&#8226;</h3>
+<div class="paragraph"><p>(Generic definition) The set of data items which specify the symmetry operation codes
+which must be applied to the atom sites involved in the geometry angle.</p></div>
+<div class="paragraph"><p>The symmetry code of each atom site as the symmetry-equivalent position
+number "n" and the cell translation number <em>klm</em>. These numbers are
+combined to form the code <em>n klm</em> or n_klm.</p></div>
+<div class="paragraph"><p>The character string n_klm is composed as follows:</p></div>
+<div class="paragraph"><p>n refers to the symmetry operation that is applied to the
+coordinates stored in <a href="#_atom_site_fract_xyz_"><code>_atom_site.fract_xyz.</code></a> It must match a
+number given in <a href="#_symmetry_equiv_pos_site_id_"><code>_symmetry_equiv.pos_site_id.</code></a></p></div>
+<div class="paragraph"><p>k, l and m refer to the translations that are subsequently
+applied to the symmetry transformed coordinates to generate
+the atom used in calculating the angle. These translations
+(x,y,z) are related to (k,l,m) by the relations
+k = 5 + x
+l = 5 + y
+m = 5 + z</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p><code>_restr_distance_min_site_symmetry_1</code><br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_restr_distance_min_site_symmetry_2">_restr_distance_min.site_symmetry_2&#8226;</h3>
+<div class="paragraph"><p>(Generic definition) The set of data items which specify the symmetry operation codes
+which must be applied to the atom sites involved in the geometry angle.</p></div>
+<div class="paragraph"><p>The symmetry code of each atom site as the symmetry-equivalent position
+number "n" and the cell translation number <em>klm</em>. These numbers are
+combined to form the code <em>n klm</em> or n_klm.</p></div>
+<div class="paragraph"><p>The character string n_klm is composed as follows:</p></div>
+<div class="paragraph"><p>n refers to the symmetry operation that is applied to the
+coordinates stored in <a href="#_atom_site_fract_xyz_"><code>_atom_site.fract_xyz.</code></a> It must match a
+number given in <a href="#_symmetry_equiv_pos_site_id_"><code>_symmetry_equiv.pos_site_id.</code></a></p></div>
+<div class="paragraph"><p>k, l and m refer to the translations that are subsequently
+applied to the symmetry transformed coordinates to generate
+the atom used in calculating the angle. These translations
+(x,y,z) are related to (k,l,m) by the relations
+k = 5 + x
+l = 5 + y
+m = 5 + z</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p><code>_restr_distance_min_site_symmetry_2</code><br /></p></div>
+</div></div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="RESTR_EQUAL_ANGLE">RESTR_EQUAL_ANGLE</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>Items in this category list the atoms defining the angles
+that are restrained to be equal in the final refinement.
+<a href="#_atom_site_label_2"><code>_atom_site_label_2</code></a> is at the apex of the angle.</p></div>
+<div class="sect2">
+<h3 id="_restr_equal_angle_atom_site_label_1">_restr_equal_angle.atom_site_label_1&#8226;</h3>
+<div class="paragraph"><p>(Generic definition) Labels of atom sites subtending distance or angle. Atom 2 is the apex for
+angular restraints.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p><code>_restr_equal_angle_atom_site_label_1</code><br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_restr_equal_angle_atom_site_label_2">_restr_equal_angle.atom_site_label_2&#8226;</h3>
+<div class="paragraph"><p>(Generic definition) Labels of atom sites subtending distance or angle. Atom 2 is the apex for
+angular restraints.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p><code>_restr_equal_angle_atom_site_label_2</code><br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_restr_equal_angle_atom_site_label_3">_restr_equal_angle.atom_site_label_3&#8226;</h3>
+<div class="paragraph"><p>(Generic definition) Labels of atom sites subtending distance or angle. Atom 2 is the apex for
+angular restraints.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p><code>_restr_equal_angle_atom_site_label_3</code><br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_restr_equal_angle_class_id">_restr_equal_angle.class_id</h3>
+<div class="paragraph"><p>A character string identifying the class of equal angles
+to which this angle belongs.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p><code>_restr_equal_angle_class_id</code><br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_restr_equal_angle_details">_restr_equal_angle.details</h3>
+<div class="paragraph"><p>A text description giving details of an angle in
+a class of angles that are restrained to be equal.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p><code>_restr_equal_angle_details</code><br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_restr_equal_angle_site_symmetry_1">_restr_equal_angle.site_symmetry_1&#8226;</h3>
+<div class="paragraph"><p>(Generic definition) The set of data items which specify the symmetry operation codes
+which must be applied to the atom sites involved in the geometry angle.</p></div>
+<div class="paragraph"><p>The symmetry code of each atom site as the symmetry-equivalent position
+number "n" and the cell translation number <em>klm</em>. These numbers are
+combined to form the code <em>n klm</em> or n_klm.</p></div>
+<div class="paragraph"><p>The character string n_klm is composed as follows:</p></div>
+<div class="paragraph"><p>n refers to the symmetry operation that is applied to the
+coordinates stored in <a href="#_atom_site_fract_xyz_"><code>_atom_site.fract_xyz.</code></a> It must match a
+number given in <a href="#_symmetry_equiv_pos_site_id_"><code>_symmetry_equiv.pos_site_id.</code></a></p></div>
+<div class="paragraph"><p>k, l and m refer to the translations that are subsequently
+applied to the symmetry transformed coordinates to generate
+the atom used in calculating the angle. These translations
+(x,y,z) are related to (k,l,m) by the relations
+k = 5 + x
+l = 5 + y
+m = 5 + z</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p><code>_restr_equal_angle_site_symmetry_1</code><br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_restr_equal_angle_site_symmetry_2">_restr_equal_angle.site_symmetry_2&#8226;</h3>
+<div class="paragraph"><p>(Generic definition) The set of data items which specify the symmetry operation codes
+which must be applied to the atom sites involved in the geometry angle.</p></div>
+<div class="paragraph"><p>The symmetry code of each atom site as the symmetry-equivalent position
+number "n" and the cell translation number <em>klm</em>. These numbers are
+combined to form the code <em>n klm</em> or n_klm.</p></div>
+<div class="paragraph"><p>The character string n_klm is composed as follows:</p></div>
+<div class="paragraph"><p>n refers to the symmetry operation that is applied to the
+coordinates stored in <a href="#_atom_site_fract_xyz_"><code>_atom_site.fract_xyz.</code></a> It must match a
+number given in <a href="#_symmetry_equiv_pos_site_id_"><code>_symmetry_equiv.pos_site_id.</code></a></p></div>
+<div class="paragraph"><p>k, l and m refer to the translations that are subsequently
+applied to the symmetry transformed coordinates to generate
+the atom used in calculating the angle. These translations
+(x,y,z) are related to (k,l,m) by the relations
+k = 5 + x
+l = 5 + y
+m = 5 + z</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p><code>_restr_equal_angle_site_symmetry_2</code><br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_restr_equal_angle_site_symmetry_3">_restr_equal_angle.site_symmetry_3&#8226;</h3>
+<div class="paragraph"><p>(Generic definition) The set of data items which specify the symmetry operation codes
+which must be applied to the atom sites involved in the geometry angle.</p></div>
+<div class="paragraph"><p>The symmetry code of each atom site as the symmetry-equivalent position
+number "n" and the cell translation number <em>klm</em>. These numbers are
+combined to form the code <em>n klm</em> or n_klm.</p></div>
+<div class="paragraph"><p>The character string n_klm is composed as follows:</p></div>
+<div class="paragraph"><p>n refers to the symmetry operation that is applied to the
+coordinates stored in <a href="#_atom_site_fract_xyz_"><code>_atom_site.fract_xyz.</code></a> It must match a
+number given in <a href="#_symmetry_equiv_pos_site_id_"><code>_symmetry_equiv.pos_site_id.</code></a></p></div>
+<div class="paragraph"><p>k, l and m refer to the translations that are subsequently
+applied to the symmetry transformed coordinates to generate
+the atom used in calculating the angle. These translations
+(x,y,z) are related to (k,l,m) by the relations
+k = 5 + x
+l = 5 + y
+m = 5 + z</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p><code>_restr_equal_angle_site_symmetry_3</code><br /></p></div>
+</div></div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="RESTR_EQUAL_ANGLE_CLASS">RESTR_EQUAL_ANGLE_CLASS</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>Items in this category give details of the target angles
+for each class of angles that are restrained to be equal
+in the final refinement.</p></div>
+<div class="sect2">
+<h3 id="_restr_equal_angle_class_average">_restr_equal_angle_class.average</h3>
+<div class="paragraph"><p>The average angle in the class of angles restrained to
+be the same after refinement.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p><code>_restr_equal_angle_class_average</code><br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_restr_equal_angle_class_average_su">_restr_equal_angle_class.average_su</h3>
+<div class="paragraph"><p>The actual estimated standard deviation of the angles in the
+class from their average after refinement.
+This number is expected to be similar to the value set for
+<a href="#_restr_equal_angle_class_target_weight_param_"><code>_restr_equal_angle_class.target_weight_param.</code></a></p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p><code>_restr_equal_angle_class_esd</code><br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_restr_equal_angle_class_class_id">_restr_equal_angle_class.class_id&#8226;</h3>
+<div class="paragraph"><p>A character string that identifies the class of angles
+whose properties are described.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p><code>_restr_equal_angle_class_class_id</code><br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_restr_equal_angle_class_detail">_restr_equal_angle_class.detail</h3>
+<div class="paragraph"><p>A text description giving details of the class of angles that
+are restrained to be equal.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p><code>_restr_equal_angle_class_detail</code><br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_restr_equal_angle_class_diff_max">_restr_equal_angle_class.diff_max</h3>
+<div class="paragraph"><p>The maximum deviation of an angle in the class from the
+class average after refinement.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p><code>_restr_equal_angle_class_diff_max</code><br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_restr_equal_angle_class_target_weight_param">_restr_equal_angle_class.target_weight_param</h3>
+<div class="paragraph"><p>The weighting parameter = sqrt(1/weight).
+The expectation value of the estimated standard deviation of
+the angles in the class from their average after refinement.
+This value determines the weight assigned to the restraint.
+If it is zero the angles are constrained to be equal.
+The default value is zero.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p><code>_restr_equal_angle_class_target_weight_param</code><br /></p></div>
+</div></div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="RESTR_EQUAL_DISTANCE">RESTR_EQUAL_DISTANCE</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>Items in this category list the atoms defining the distances
+that are restrained to be equal in the final refinement.</p></div>
+<div class="sect2">
+<h3 id="_restr_equal_distance_atom_site_label_1">_restr_equal_distance.atom_site_label_1&#8226;</h3>
+<div class="paragraph"><p>(Generic definition) Labels of atom sites subtending distance or angle. Atom 2 is the apex for
+angular restraints.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p><code>_restr_equal_distance_atom_site_label_1</code><br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_restr_equal_distance_atom_site_label_2">_restr_equal_distance.atom_site_label_2&#8226;</h3>
+<div class="paragraph"><p>(Generic definition) Labels of atom sites subtending distance or angle. Atom 2 is the apex for
+angular restraints.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p><code>_restr_equal_distance_atom_site_label_2</code><br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_restr_equal_distance_class_id">_restr_equal_distance.class_id</h3>
+<div class="paragraph"><p>A character string identifying the class of equal distances
+to which this distance belongs.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p><code>_restr_equal_distance_class_id</code><br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_restr_equal_distance_details">_restr_equal_distance.details</h3>
+<div class="paragraph"><p>A text description giving details of a distance in
+a class of distances that are restrained to be equal.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p><code>_restr_equal_distance_details</code><br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_restr_equal_distance_site_symmetry_1">_restr_equal_distance.site_symmetry_1&#8226;</h3>
+<div class="paragraph"><p>(Generic definition) The set of data items which specify the symmetry operation codes
+which must be applied to the atom sites involved in the geometry angle.</p></div>
+<div class="paragraph"><p>The symmetry code of each atom site as the symmetry-equivalent position
+number "n" and the cell translation number <em>klm</em>. These numbers are
+combined to form the code <em>n klm</em> or n_klm.</p></div>
+<div class="paragraph"><p>The character string n_klm is composed as follows:</p></div>
+<div class="paragraph"><p>n refers to the symmetry operation that is applied to the
+coordinates stored in <a href="#_atom_site_fract_xyz_"><code>_atom_site.fract_xyz.</code></a> It must match a
+number given in <a href="#_symmetry_equiv_pos_site_id_"><code>_symmetry_equiv.pos_site_id.</code></a></p></div>
+<div class="paragraph"><p>k, l and m refer to the translations that are subsequently
+applied to the symmetry transformed coordinates to generate
+the atom used in calculating the angle. These translations
+(x,y,z) are related to (k,l,m) by the relations
+k = 5 + x
+l = 5 + y
+m = 5 + z</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p><code>_restr_equal_distance_site_symmetry_1</code><br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_restr_equal_distance_site_symmetry_2">_restr_equal_distance.site_symmetry_2&#8226;</h3>
+<div class="paragraph"><p>(Generic definition) The set of data items which specify the symmetry operation codes
+which must be applied to the atom sites involved in the geometry angle.</p></div>
+<div class="paragraph"><p>The symmetry code of each atom site as the symmetry-equivalent position
+number "n" and the cell translation number <em>klm</em>. These numbers are
+combined to form the code <em>n klm</em> or n_klm.</p></div>
+<div class="paragraph"><p>The character string n_klm is composed as follows:</p></div>
+<div class="paragraph"><p>n refers to the symmetry operation that is applied to the
+coordinates stored in <a href="#_atom_site_fract_xyz_"><code>_atom_site.fract_xyz.</code></a> It must match a
+number given in <a href="#_symmetry_equiv_pos_site_id_"><code>_symmetry_equiv.pos_site_id.</code></a></p></div>
+<div class="paragraph"><p>k, l and m refer to the translations that are subsequently
+applied to the symmetry transformed coordinates to generate
+the atom used in calculating the angle. These translations
+(x,y,z) are related to (k,l,m) by the relations
+k = 5 + x
+l = 5 + y
+m = 5 + z</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p><code>_restr_equal_distance_site_symmetry_2</code><br /></p></div>
+</div></div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="RESTR_EQUAL_DISTANCE_CLASS">RESTR_EQUAL_DISTANCE_CLASS</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>Items in this category give details of the target distances
+for each class of distances that are restrained to be equal
+in the final refinement.</p></div>
+<div class="sect2">
+<h3 id="_restr_equal_distance_class_average">_restr_equal_distance_class.average</h3>
+<div class="paragraph"><p>The average distance in the class of distances restrained to
+be the same after refinement.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p><code>_restr_equal_distance_class_average</code><br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_restr_equal_distance_class_average_su">_restr_equal_distance_class.average_su</h3>
+<div class="paragraph"><p>The actual estimated standard deviation of the distances in the
+class from their average after refinement.
+This number is expected to be similar to the value set for
+<a href="#_restr_equal_distance_class_target_weight_param_"><code>_restr_equal_distance_class.target_weight_param.</code></a></p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p><code>_restr_equal_distance_class_esd</code><br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_restr_equal_distance_class_class_id">_restr_equal_distance_class.class_id&#8226;</h3>
+<div class="paragraph"><p>A character string that identifies the class of distances
+whose properties are described.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p><code>_restr_equal_distance_class_class_id</code><br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_restr_equal_distance_class_details">_restr_equal_distance_class.details</h3>
+<div class="paragraph"><p>A text description giving details of the class of distances that
+are restrained to be equal.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p><code>_restr_equal_distance_class_details</code><br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_restr_equal_distance_class_diff_max">_restr_equal_distance_class.diff_max</h3>
+<div class="paragraph"><p>The maximum deviation of a distance in the class from the
+class average after refinement.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p><code>_restr_equal_distance_class_diff_max</code><br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_restr_equal_distance_class_target_weight_param">_restr_equal_distance_class.target_weight_param</h3>
+<div class="paragraph"><p>The weighting parameter = sqrt(1/weight).
+The expectation value of the estimated standard deviation of the
+distances in the class from their average after refinement.
+This value determines the weight assigned to the restraint.
+If it is zero the distances are constrained to be equal.
+The default value is zero.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p><code>_restr_equal_distance_class_target_weight_param</code><br /></p></div>
+</div></div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="RESTR_EQUAL_TORSION">RESTR_EQUAL_TORSION</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>Items in this category list the atoms defining the
+torsion angles that are restrained to be equal in
+the final refinement. The torsion angle is the dihedral
+angle between the plane defined by atoms 1, 2 and 3, and
+the plane defined by atoms 2, 3 and 4.</p></div>
+<div class="sect2">
+<h3 id="_restr_equal_torsion_atom_site_label_1">_restr_equal_torsion.atom_site_label_1&#8226;</h3>
+<div class="paragraph"><p>(Generic definition) Labels of atom sites subtending distance or angle. Atom 2 is the apex for
+angular restraints.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p><code>_restr_equal_torsion_atom_site_label_1</code><br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_restr_equal_torsion_atom_site_label_2">_restr_equal_torsion.atom_site_label_2&#8226;</h3>
+<div class="paragraph"><p>(Generic definition) Labels of atom sites subtending distance or angle. Atom 2 is the apex for
+angular restraints.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p><code>_restr_equal_torsion_atom_site_label_2</code><br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_restr_equal_torsion_atom_site_label_3">_restr_equal_torsion.atom_site_label_3&#8226;</h3>
+<div class="paragraph"><p>(Generic definition) Labels of atom sites subtending distance or angle. Atom 2 is the apex for
+angular restraints.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p><code>_restr_equal_torsion_atom_site_label_3</code><br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_restr_equal_torsion_atom_site_label_4">_restr_equal_torsion.atom_site_label_4&#8226;</h3>
+<div class="paragraph"><p>(Generic definition) Labels of atom sites subtending distance or angle. Atom 2 is the apex for
+angular restraints.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p><code>_restr_equal_torsion_atom_site_label_4</code><br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_restr_equal_torsion_class_id">_restr_equal_torsion.class_id</h3>
+<div class="paragraph"><p>A character string identifying the class of equal torsion
+angles to which this torsion angle belongs.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p><code>_restr_equal_torsion_class_id</code><br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_restr_equal_torsion_details">_restr_equal_torsion.details</h3>
+<div class="paragraph"><p>A text description giving details of a torsion angle in
+a class of torsion angles that are restrained to be equal.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p><code>_restr_equal_torsion_details</code><br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_restr_equal_torsion_site_symmetry_1">_restr_equal_torsion.site_symmetry_1&#8226;</h3>
+<div class="paragraph"><p>(Generic definition) The set of data items which specify the symmetry operation codes
+which must be applied to the atom sites involved in the geometry angle.</p></div>
+<div class="paragraph"><p>The symmetry code of each atom site as the symmetry-equivalent position
+number "n" and the cell translation number <em>klm</em>. These numbers are
+combined to form the code <em>n klm</em> or n_klm.</p></div>
+<div class="paragraph"><p>The character string n_klm is composed as follows:</p></div>
+<div class="paragraph"><p>n refers to the symmetry operation that is applied to the
+coordinates stored in <a href="#_atom_site_fract_xyz_"><code>_atom_site.fract_xyz.</code></a> It must match a
+number given in <a href="#_symmetry_equiv_pos_site_id_"><code>_symmetry_equiv.pos_site_id.</code></a></p></div>
+<div class="paragraph"><p>k, l and m refer to the translations that are subsequently
+applied to the symmetry transformed coordinates to generate
+the atom used in calculating the angle. These translations
+(x,y,z) are related to (k,l,m) by the relations
+k = 5 + x
+l = 5 + y
+m = 5 + z</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p><code>_restr_equal_torsion_site_symmetry_1</code><br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_restr_equal_torsion_site_symmetry_2">_restr_equal_torsion.site_symmetry_2&#8226;</h3>
+<div class="paragraph"><p>(Generic definition) The set of data items which specify the symmetry operation codes
+which must be applied to the atom sites involved in the geometry angle.</p></div>
+<div class="paragraph"><p>The symmetry code of each atom site as the symmetry-equivalent position
+number "n" and the cell translation number <em>klm</em>. These numbers are
+combined to form the code <em>n klm</em> or n_klm.</p></div>
+<div class="paragraph"><p>The character string n_klm is composed as follows:</p></div>
+<div class="paragraph"><p>n refers to the symmetry operation that is applied to the
+coordinates stored in <a href="#_atom_site_fract_xyz_"><code>_atom_site.fract_xyz.</code></a> It must match a
+number given in <a href="#_symmetry_equiv_pos_site_id_"><code>_symmetry_equiv.pos_site_id.</code></a></p></div>
+<div class="paragraph"><p>k, l and m refer to the translations that are subsequently
+applied to the symmetry transformed coordinates to generate
+the atom used in calculating the angle. These translations
+(x,y,z) are related to (k,l,m) by the relations
+k = 5 + x
+l = 5 + y
+m = 5 + z</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p><code>_restr_equal_torsion_site_symmetry_2</code><br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_restr_equal_torsion_site_symmetry_3">_restr_equal_torsion.site_symmetry_3&#8226;</h3>
+<div class="paragraph"><p>(Generic definition) The set of data items which specify the symmetry operation codes
+which must be applied to the atom sites involved in the geometry angle.</p></div>
+<div class="paragraph"><p>The symmetry code of each atom site as the symmetry-equivalent position
+number "n" and the cell translation number <em>klm</em>. These numbers are
+combined to form the code <em>n klm</em> or n_klm.</p></div>
+<div class="paragraph"><p>The character string n_klm is composed as follows:</p></div>
+<div class="paragraph"><p>n refers to the symmetry operation that is applied to the
+coordinates stored in <a href="#_atom_site_fract_xyz_"><code>_atom_site.fract_xyz.</code></a> It must match a
+number given in <a href="#_symmetry_equiv_pos_site_id_"><code>_symmetry_equiv.pos_site_id.</code></a></p></div>
+<div class="paragraph"><p>k, l and m refer to the translations that are subsequently
+applied to the symmetry transformed coordinates to generate
+the atom used in calculating the angle. These translations
+(x,y,z) are related to (k,l,m) by the relations
+k = 5 + x
+l = 5 + y
+m = 5 + z</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p><code>_restr_equal_torsion_site_symmetry_3</code><br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_restr_equal_torsion_site_symmetry_4">_restr_equal_torsion.site_symmetry_4&#8226;</h3>
+<div class="paragraph"><p>(Generic definition) The set of data items which specify the symmetry operation codes
+which must be applied to the atom sites involved in the geometry angle.</p></div>
+<div class="paragraph"><p>The symmetry code of each atom site as the symmetry-equivalent position
+number "n" and the cell translation number <em>klm</em>. These numbers are
+combined to form the code <em>n klm</em> or n_klm.</p></div>
+<div class="paragraph"><p>The character string n_klm is composed as follows:</p></div>
+<div class="paragraph"><p>n refers to the symmetry operation that is applied to the
+coordinates stored in <a href="#_atom_site_fract_xyz_"><code>_atom_site.fract_xyz.</code></a> It must match a
+number given in <a href="#_symmetry_equiv_pos_site_id_"><code>_symmetry_equiv.pos_site_id.</code></a></p></div>
+<div class="paragraph"><p>k, l and m refer to the translations that are subsequently
+applied to the symmetry transformed coordinates to generate
+the atom used in calculating the angle. These translations
+(x,y,z) are related to (k,l,m) by the relations
+k = 5 + x
+l = 5 + y
+m = 5 + z</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p><code>_restr_equal_torsion_site_symmetry_4</code><br /></p></div>
+</div></div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="RESTR_EQUAL_TORSION_CLASS">RESTR_EQUAL_TORSION_CLASS</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>Items in this category give details of the target torsion
+angles for each class of torsion angles that are restrained
+to be equal in the final refinement.</p></div>
+<div class="sect2">
+<h3 id="_restr_equal_torsion_class_average">_restr_equal_torsion_class.average</h3>
+<div class="paragraph"><p>The average torsion angle in the class of torsion angles
+restrained to be the same after refinement.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p><code>_restr_equal_torsion_class_average</code><br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_restr_equal_torsion_class_average_su">_restr_equal_torsion_class.average_su</h3>
+<div class="paragraph"><p>The actual estimated standard deviation of the distances in the
+class from their average after refinement.
+This number is expected to be similar to the value set for
+<a href="#_restr_equal_torsion_class_target_weight_param_"><code>_restr_equal_torsion_class.target_weight_param.</code></a></p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p><code>_restr_equal_torsion_class_esd</code><br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_restr_equal_torsion_class_class_id">_restr_equal_torsion_class.class_id&#8226;</h3>
+<div class="paragraph"><p>A character string that identifies the class of torsion
+angles whose properties are described.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p><code>_restr_equal_torsion_class_class_id</code><br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_restr_equal_torsion_class_details">_restr_equal_torsion_class.details</h3>
+<div class="paragraph"><p>A text description giving details of the class of torsion
+angles that are restrained to be equal.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p><code>_restr_equal_torsion_class_details</code><br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_restr_equal_torsion_class_diff_max">_restr_equal_torsion_class.diff_max</h3>
+<div class="paragraph"><p>The maximum deviation of a torsion angle in the class
+from the class average after refinement.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p><code>_restr_equal_torsion_class_diff_max</code><br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_restr_equal_torsion_class_target_weight_param">_restr_equal_torsion_class.target_weight_param</h3>
+<div class="paragraph"><p>The weighting parameter = sqrt(1/weight).  This is the
+expectation value of the estimated standard deviation
+(given in <a href="#_restr_equal_torsion_class_average_su"><code>_restr_equal_torsion_class.average_su</code></a>)
+of the torsion angles in the class from their
+average after refinement.
+This value determines the weight assigned to the target.
+If it is zero the torsion angles are constrained to be equal.
+The default value is zero.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p><code>_restr_equal_torsion_class_target_weight_param</code><br /></p></div>
+</div></div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="RESTR_PARAMETER">RESTR_PARAMETER</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>This restraint, which will normally be used to restrain
+the total occupancy of an atom site, can be used to
+restrain the value of
+SUM(over the specified atoms){PARAMETER*COEFFICIENT}
+where PARAMETER will usually be the value of the
+occupancy (but other allowed quantities such as x, y
+and z can be specified in the enumeration) and
+COEFFICIENT is a user-defined number with a default
+value of 1.0. The restraint requires two loops; the
+first defines the atoms in each sum (class) and the
+second describes the properties of the class.</p></div>
+<div class="sect2">
+<h3 id="_restr_parameter_atom_coefficient">_restr_parameter.atom_coefficient</h3>
+<div class="paragraph"><p>A parameter that scales the quantity being restrained.
+It can be used to convert a constraint on occupancy to
+a constraint on ionic charge.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p><code>_restr_parameter_atom_coefficient</code><br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_restr_parameter_atom_site_label">_restr_parameter_atom.site_label</h3>
+<div class="paragraph"><p>The atom-site label for an atom in this class.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p><code>_restr_parameter_atom_site_label</code><br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_restr_parameter_class_id">_restr_parameter.class_id</h3>
+<div class="paragraph"><p>The identifier of the class of restraint applied to the atoms.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p><code>_restr_parameter_class_id</code><br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_restr_parameter_id">_restr_parameter.id&#8226;</h3>
+<div class="paragraph"><p>A unique identifier for each parameter.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p><code>_restr_parameter_id</code><br /></p></div>
+</div></div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="RESTR_PARAMETER_CLASS">RESTR_PARAMETER_CLASS</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>This restraint, which will normally be used to restrain
+the total occupancy of an atom site, can be used to
+restrain the value of
+SUM(over the specified atoms){PARAMETER*COEFFICIENT}
+where PARAMETER will usually be the value of the occupancy
+(but other allowed quantities such as x, y and z can be
+specified in the enumeration) and COEFFICIENT is a user-defined
+number with a default value of 1.0.
+The restraint requires two loops, the first defines the
+atoms in each sum (class) and the second describes the
+properties of the class.</p></div>
+<div class="sect2">
+<h3 id="_restr_parameter_class_class_id">_restr_parameter_class.class_id&#8226;</h3>
+<div class="paragraph"><p>The class ID of the restraint described in this category.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p><code>_restr_parameter_class_class_id</code><br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_restr_parameter_class_details">_restr_parameter_class.details</h3>
+<div class="paragraph"><p>A text description of the restraint.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p><code>_restr_parameter_class_details</code><br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_restr_parameter_class_parameter_type">_restr_parameter_class.parameter_type</h3>
+<div class="paragraph"><p>A flag that indicates the nature of the restrained value.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Possible values:</div>
+<div class="dlist"><dl>
+<dt class="hdlist1">
+<code>occupancy</code>
+</dt>
+<dd>
+<p>
+atom_site.occupancy
+</p>
+</dd>
+<dt class="hdlist1">
+<code>position_x</code>
+</dt>
+<dd>
+<p>
+atom_site.fract_x
+</p>
+</dd>
+<dt class="hdlist1">
+<code>position_y</code>
+</dt>
+<dd>
+<p>
+atom_site.fract_y
+</p>
+</dd>
+<dt class="hdlist1">
+<code>position_z</code>
+</dt>
+<dd>
+<p>
+atom_site.fract_z
+</p>
+</dd>
+</dl></div>
+</div></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p><code>_restr_parameter_class_parameter_type</code><br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_restr_parameter_class_target">_restr_parameter_class.target</h3>
+<div class="paragraph"><p>The target value for the sum of values of the appropriate
+parameter type multiplied by the _*.target_weight_param.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p><code>_restr_parameter_class_target</code><br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_restr_parameter_class_target_weight_param">_restr_parameter_class.target_weight_param</h3>
+<div class="paragraph"><p>Weighting parameter = sqrt(1/weight).
+It is the expectation value of the difference between
+the refined value of the sum(parameter*coefficient)
+and the _`*_target`.
+If this parameter is set to zero, the sum will be constrained
+to refine to the target value.
+If this item is absent, its value will be taken as zero
+and the distance will be constrained.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p><code>_restr_parameter_class_target_weight_param</code><br /></p></div>
+</div></div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="RESTR_PLANE">RESTR_PLANE</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>Items in this category define the atoms that make up
+each class of plane.</p></div>
+<div class="sect2">
+<h3 id="_restr_plane_atom_site_label">_restr_plane.atom_site_label</h3>
+<div class="paragraph"><p>An atom-site label of one of the atoms that form the plane.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p><code>_restr_plane_atom_site_label</code><br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_restr_plane_class_id">_restr_plane.class_id</h3>
+<div class="paragraph"><p>A character string that identifies the plane
+to which this atom is constrained.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p><code>_restr_plane_class_id</code><br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_restr_plane_details">_restr_plane.details</h3>
+<div class="paragraph"><p>A text string giving details not described elsewhere.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p><code>_restr_plane_details</code><br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_restr_plane_displacement">_restr_plane.displacement</h3>
+<div class="paragraph"><p>The distance between this atom and the best plane through
+all the atoms.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p><code>_restr_plane_displacement</code><br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_restr_plane_id">_restr_plane.id&#8226;</h3>
+<div class="paragraph"><p>A unique identifier for each line in the list.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p><code>_restr_plane_id</code><br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_restr_plane_site_symmetry">_restr_plane.site_symmetry</h3>
+<div class="paragraph"><p>The site symmetry of the atom that helps to define the plane
+to which it is restrained.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p><code>_restr_plane_site_symmetry</code><br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_restr_plane_target_weight_param">_restr_plane.target_weight_param</h3>
+<div class="paragraph"><p>The weighting parameter = sqrt(1/weight).
+The expectation value of the distance in angstroms
+between this atom and the best plane through all
+the atoms of the class.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p><code>_restr_plane_target_weight_param</code><br /></p></div>
+</div></div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="RESTR_PLANE_CLASS">RESTR_PLANE_CLASS</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>Items in this category describe the properties of
+the different groups of atoms that are restrained
+to form a plane.</p></div>
+<div class="sect2">
+<h3 id="_restr_plane_class_class_id">_restr_plane_class.class_id&#8226;</h3>
+<div class="paragraph"><p>Class identifier for the plane whose properties are described.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p><code>_restr_plane_class_class_id</code><br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_restr_plane_class_details">_restr_plane_class.details</h3>
+<div class="paragraph"><p>Text describing any special features of the restraint.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p><code>_restr_plane_class_details</code><br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_restr_plane_class_displacement_avsu">_restr_plane_class.displacement_avsu</h3>
+<div class="paragraph"><p>The average standard uncertainty of atoms in this plane.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p><code>_restr_plane_class_displacement_esd</code><br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_restr_plane_class_displacement_max">_restr_plane_class.displacement_max</h3>
+<div class="paragraph"><p>The distance in angstroms from the plane to the atom furthest
+removed from the plane.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p><code>_restr_plane_class_displacement_max</code><br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_restr_plane_class_displacement_max_atom_site_label">_restr_plane_class.displacement_max_atom_site_label</h3>
+<div class="paragraph"><p>The atom-site label of the atom that lies furthest
+from the plane defined by this class.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p><code>_restr_plane_class_displacement_max_atom_site_label</code><br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_restr_plane_class_displacement_max_site_symmetry">_restr_plane_class.displacement_max_site_symmetry</h3>
+<div class="paragraph"><p>The site symmetry of the atom lying furthest from the plane
+to which it is restrained.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p><code>_restr_plane_class_displacement_max_site_symmetry</code><br /></p></div>
+</div></div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="RESTR_RIGID_BODY">RESTR_RIGID_BODY</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>Items in this category list the atoms defining one or
+more bodies that are constrained to be rigid in the final
+refinement.  This is done by listing the atom-site label
+and symmetry operation for each atom in each rigid body.</p></div>
+<div class="paragraph"><p>Since rigid bodies are only constrained, not restrained,
+the rigid body is adequately defined by the refined coordinate
+in the atom_site list. A second category,
+RESTR_RIGID_BODY_CLASS, permits a description
+of each rigid body to be given in a <code>*_details</code> item.</p></div>
+<div class="sect2">
+<h3 id="_restr_rigid_body_atom_site_label">_restr_rigid_body.atom_site_label</h3>
+<div class="paragraph"><p>The atom-site labels of an atom in a rigid body.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p><code>_restr_rigid_body_atom_site_label</code><br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_restr_rigid_body_class_id">_restr_rigid_body.class_id</h3>
+<div class="paragraph"><p>A character string identifying a rigid body.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p><code>_restr_rigid_body_class_id</code><br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_restr_rigid_body_details">_restr_rigid_body.details</h3>
+<div class="paragraph"><p>A text description giving details of a rigid body in
+a class of rigid bodies that are constrained to be equal.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p><code>_restr_rigid_body_details</code><br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_restr_rigid_body_id">_restr_rigid_body.id&#8226;</h3>
+<div class="paragraph"><p>A unique identifier for each atom in the list of atoms in the
+RESTR_RIGID_BODY category.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p><code>_restr_rigid_body_id</code><br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_restr_rigid_body_site_symmetry">_restr_rigid_body.site_symmetry</h3>
+<div class="paragraph"><p>The site symmetry of an atom in a rigid body.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p><code>_restr_rigid_body_site_symmetry</code><br /></p></div>
+</div></div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="RESTR_RIGID_BODY_CLASS">RESTR_RIGID_BODY_CLASS</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>Items in this category give details of the different rigid
+bodies as defined by <a href="#_restr_rigid_body_class_id"><code>_restr_rigid_body.class_id</code></a></p></div>
+<div class="sect2">
+<h3 id="_restr_rigid_body_class_class_id">_restr_rigid_body_class.class_id&#8226;</h3>
+<div class="paragraph"><p>A character string that identifies the rigid body.
+It must match one of the values of <a href="#_restr_rigid_body_class_id_"><code>_restr_rigid_body.class_id.</code></a></p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p><code>_restr_rigid_body_class_class_id</code><br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_restr_rigid_body_class_details">_restr_rigid_body_class.details</h3>
+<div class="paragraph"><p>A text description giving details of a rigid body.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p><code>_restr_rigid_body_class_details</code><br /></p></div>
+</div></div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="RESTR_TORSION">RESTR_TORSION</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>Items in this category define torsion angles that were
+restrained in the final refinement. The torsion angle is the dihedral
+angle between the plane defined by atoms 1, 2 and 3, and
+the plane defined by atoms 2, 3 and 4.</p></div>
+<div class="sect2">
+<h3 id="_restr_torsion_angle_target">_restr_torsion.angle_target</h3>
+<div class="paragraph"><p>The angle in degrees to which the torsion angle is restrained.
+The torsion angle is the dihedral angle between the plane defined
+by atoms 1, 2 and 3, and the plane defined by atoms 2, 3 and 4.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p><code>_restr_torsion_angle_target</code><br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_restr_torsion_atom_site_label_1">_restr_torsion.atom_site_label_1&#8226;</h3>
+<div class="paragraph"><p>(Generic definition) Labels of atom sites subtending distance or angle. Atom 2 is the apex for
+angular restraints.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p><code>_restr_torsion_atom_site_label_1</code><br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_restr_torsion_atom_site_label_2">_restr_torsion.atom_site_label_2&#8226;</h3>
+<div class="paragraph"><p>(Generic definition) Labels of atom sites subtending distance or angle. Atom 2 is the apex for
+angular restraints.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p><code>_restr_torsion_atom_site_label_2</code><br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_restr_torsion_atom_site_label_3">_restr_torsion.atom_site_label_3&#8226;</h3>
+<div class="paragraph"><p>(Generic definition) Labels of atom sites subtending distance or angle. Atom 2 is the apex for
+angular restraints.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p><code>_restr_torsion_atom_site_label_3</code><br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_restr_torsion_atom_site_label_4">_restr_torsion.atom_site_label_4&#8226;</h3>
+<div class="paragraph"><p>(Generic definition) Labels of atom sites subtending distance or angle. Atom 2 is the apex for
+angular restraints.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p><code>_restr_torsion_atom_site_label_4</code><br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_restr_torsion_details">_restr_torsion.details</h3>
+<div class="paragraph"><p>A free-text description of the restraint.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p><code>_restr_torsion_details</code><br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_restr_torsion_diff">_restr_torsion.diff</h3>
+<div class="paragraph"><p>The difference between the target and the refined torsion angle.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p><code>_restr_torsion_diff</code><br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_restr_torsion_site_symmetry_1">_restr_torsion.site_symmetry_1&#8226;</h3>
+<div class="paragraph"><p>(Generic definition) The set of data items which specify the symmetry operation codes
+which must be applied to the atom sites involved in the geometry angle.</p></div>
+<div class="paragraph"><p>The symmetry code of each atom site as the symmetry-equivalent position
+number "n" and the cell translation number <em>klm</em>. These numbers are
+combined to form the code <em>n klm</em> or n_klm.</p></div>
+<div class="paragraph"><p>The character string n_klm is composed as follows:</p></div>
+<div class="paragraph"><p>n refers to the symmetry operation that is applied to the
+coordinates stored in <a href="#_atom_site_fract_xyz_"><code>_atom_site.fract_xyz.</code></a> It must match a
+number given in <a href="#_symmetry_equiv_pos_site_id_"><code>_symmetry_equiv.pos_site_id.</code></a></p></div>
+<div class="paragraph"><p>k, l and m refer to the translations that are subsequently
+applied to the symmetry transformed coordinates to generate
+the atom used in calculating the angle. These translations
+(x,y,z) are related to (k,l,m) by the relations
+k = 5 + x
+l = 5 + y
+m = 5 + z</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p><code>_restr_torsion_site_symmetry_1</code><br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_restr_torsion_site_symmetry_2">_restr_torsion.site_symmetry_2&#8226;</h3>
+<div class="paragraph"><p>(Generic definition) The set of data items which specify the symmetry operation codes
+which must be applied to the atom sites involved in the geometry angle.</p></div>
+<div class="paragraph"><p>The symmetry code of each atom site as the symmetry-equivalent position
+number "n" and the cell translation number <em>klm</em>. These numbers are
+combined to form the code <em>n klm</em> or n_klm.</p></div>
+<div class="paragraph"><p>The character string n_klm is composed as follows:</p></div>
+<div class="paragraph"><p>n refers to the symmetry operation that is applied to the
+coordinates stored in <a href="#_atom_site_fract_xyz_"><code>_atom_site.fract_xyz.</code></a> It must match a
+number given in <a href="#_symmetry_equiv_pos_site_id_"><code>_symmetry_equiv.pos_site_id.</code></a></p></div>
+<div class="paragraph"><p>k, l and m refer to the translations that are subsequently
+applied to the symmetry transformed coordinates to generate
+the atom used in calculating the angle. These translations
+(x,y,z) are related to (k,l,m) by the relations
+k = 5 + x
+l = 5 + y
+m = 5 + z</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p><code>_restr_torsion_site_symmetry_2</code><br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_restr_torsion_site_symmetry_3">_restr_torsion.site_symmetry_3&#8226;</h3>
+<div class="paragraph"><p>(Generic definition) The set of data items which specify the symmetry operation codes
+which must be applied to the atom sites involved in the geometry angle.</p></div>
+<div class="paragraph"><p>The symmetry code of each atom site as the symmetry-equivalent position
+number "n" and the cell translation number <em>klm</em>. These numbers are
+combined to form the code <em>n klm</em> or n_klm.</p></div>
+<div class="paragraph"><p>The character string n_klm is composed as follows:</p></div>
+<div class="paragraph"><p>n refers to the symmetry operation that is applied to the
+coordinates stored in <a href="#_atom_site_fract_xyz_"><code>_atom_site.fract_xyz.</code></a> It must match a
+number given in <a href="#_symmetry_equiv_pos_site_id_"><code>_symmetry_equiv.pos_site_id.</code></a></p></div>
+<div class="paragraph"><p>k, l and m refer to the translations that are subsequently
+applied to the symmetry transformed coordinates to generate
+the atom used in calculating the angle. These translations
+(x,y,z) are related to (k,l,m) by the relations
+k = 5 + x
+l = 5 + y
+m = 5 + z</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p><code>_restr_torsion_site_symmetry_3</code><br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_restr_torsion_site_symmetry_4">_restr_torsion.site_symmetry_4&#8226;</h3>
+<div class="paragraph"><p>(Generic definition) The set of data items which specify the symmetry operation codes
+which must be applied to the atom sites involved in the geometry angle.</p></div>
+<div class="paragraph"><p>The symmetry code of each atom site as the symmetry-equivalent position
+number "n" and the cell translation number <em>klm</em>. These numbers are
+combined to form the code <em>n klm</em> or n_klm.</p></div>
+<div class="paragraph"><p>The character string n_klm is composed as follows:</p></div>
+<div class="paragraph"><p>n refers to the symmetry operation that is applied to the
+coordinates stored in <a href="#_atom_site_fract_xyz_"><code>_atom_site.fract_xyz.</code></a> It must match a
+number given in <a href="#_symmetry_equiv_pos_site_id_"><code>_symmetry_equiv.pos_site_id.</code></a></p></div>
+<div class="paragraph"><p>k, l and m refer to the translations that are subsequently
+applied to the symmetry transformed coordinates to generate
+the atom used in calculating the angle. These translations
+(x,y,z) are related to (k,l,m) by the relations
+k = 5 + x
+l = 5 + y
+m = 5 + z</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p><code>_restr_torsion_site_symmetry_4</code><br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_restr_torsion_weight_param">_restr_torsion.weight_param</h3>
+<div class="paragraph"><p>Weighting parameter = sqrt(1/weight).
+It is the expectation value of the difference between
+the refined value and the target.
+If this parameter is set to zero, the angle will be constrained
+to refine to the target value.
+If this item is absent, its value will be taken as zero
+and the angle will be constrained.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p><code>_restr_torsion_weight_param</code><br /></p></div>
+</div></div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="RESTR_U_ISO">RESTR_U_ISO</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>This restraint attempts to make an anisotropic
+atomic displacement isotropic within the range of the
+weighting parameter.  It corresponds to SHELX ISO.</p></div>
+<div class="sect2">
+<h3 id="_restr_U_iso_atom_site_label">_restr_U_iso.atom_site_label&#8226;</h3>
+<div class="paragraph"><p>Label of the atom whose atomic displacement parameters
+are restrained.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p><code>_restr_U_iso_atom_site_label</code><br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_restr_U_iso_weight_param">_restr_U_iso.weight_param</h3>
+<div class="paragraph"><p>The expectation value of the difference between
+the refined and the isotropic equivalent of the
+anisotropic atomic displacement parameters.
+The default value of zero indicates a constraint.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p><code>_restr_U_iso_weight_param</code><br /></p></div>
+</div></div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="RESTR_U_RIGID">RESTR_U_RIGID</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>The items in this category restrains the anisotropic
+displacement parameters of two atoms to be equal
+within a certain <code>*_target_weight_param</code> along the
+direction of the vector joining the atoms.</p></div>
+<div class="sect2">
+<h3 id="_restr_U_rigid_atom_site_label_1">_restr_U_rigid.atom_site_label_1&#8226;</h3>
+<div class="paragraph"><p>(Generic definition) Labels of atom sites subtending distance or angle. Atom 2 is the apex for
+angular restraints.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p><code>_restr_U_rigid_atom_site_label_1</code><br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_restr_U_rigid_atom_site_label_2">_restr_U_rigid.atom_site_label_2&#8226;</h3>
+<div class="paragraph"><p>(Generic definition) Labels of atom sites subtending distance or angle. Atom 2 is the apex for
+angular restraints.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p><code>_restr_U_rigid_atom_site_label_2</code><br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_restr_U_rigid_details">_restr_U_rigid.details</h3>
+<div class="paragraph"><p>Free-text information about the rigid-bond restraint.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p><code>_restr_U_rigid_details</code><br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_restr_U_rigid_diff">_restr_U_rigid.diff</h3>
+<div class="paragraph"><p>The difference between the components along the bond direction
+of the atomic displacement parameters, U, of the two atoms.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p><code>_restr_U_rigid_diff</code><br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_restr_U_rigid_site_symmetry_1">_restr_U_rigid.site_symmetry_1&#8226;</h3>
+<div class="paragraph"><p>(Generic definition) The set of data items which specify the symmetry operation codes
+which must be applied to the atom sites involved in the geometry angle.</p></div>
+<div class="paragraph"><p>The symmetry code of each atom site as the symmetry-equivalent position
+number "n" and the cell translation number <em>klm</em>. These numbers are
+combined to form the code <em>n klm</em> or n_klm.</p></div>
+<div class="paragraph"><p>The character string n_klm is composed as follows:</p></div>
+<div class="paragraph"><p>n refers to the symmetry operation that is applied to the
+coordinates stored in <a href="#_atom_site_fract_xyz_"><code>_atom_site.fract_xyz.</code></a> It must match a
+number given in <a href="#_symmetry_equiv_pos_site_id_"><code>_symmetry_equiv.pos_site_id.</code></a></p></div>
+<div class="paragraph"><p>k, l and m refer to the translations that are subsequently
+applied to the symmetry transformed coordinates to generate
+the atom used in calculating the angle. These translations
+(x,y,z) are related to (k,l,m) by the relations
+k = 5 + x
+l = 5 + y
+m = 5 + z</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p><code>_restr_U_rigid_site_symmetry_1</code><br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_restr_U_rigid_site_symmetry_2">_restr_U_rigid.site_symmetry_2&#8226;</h3>
+<div class="paragraph"><p>(Generic definition) The set of data items which specify the symmetry operation codes
+which must be applied to the atom sites involved in the geometry angle.</p></div>
+<div class="paragraph"><p>The symmetry code of each atom site as the symmetry-equivalent position
+number "n" and the cell translation number <em>klm</em>. These numbers are
+combined to form the code <em>n klm</em> or n_klm.</p></div>
+<div class="paragraph"><p>The character string n_klm is composed as follows:</p></div>
+<div class="paragraph"><p>n refers to the symmetry operation that is applied to the
+coordinates stored in <a href="#_atom_site_fract_xyz_"><code>_atom_site.fract_xyz.</code></a> It must match a
+number given in <a href="#_symmetry_equiv_pos_site_id_"><code>_symmetry_equiv.pos_site_id.</code></a></p></div>
+<div class="paragraph"><p>k, l and m refer to the translations that are subsequently
+applied to the symmetry transformed coordinates to generate
+the atom used in calculating the angle. These translations
+(x,y,z) are related to (k,l,m) by the relations
+k = 5 + x
+l = 5 + y
+m = 5 + z</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p><code>_restr_U_rigid_site_symmetry_2</code><br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_restr_U_rigid_target_weight_param">_restr_U_rigid.target_weight_param</h3>
+<div class="paragraph"><p>The weighting parameter = sqrt(1/weight).
+The expectation value of the difference between the components
+of the atomic displacement parameter, U,
+along the bond direction of the two atoms that define the bond.
+This number is used to assign a weight during refinement.
+A value of zero causes the restraint to become a constraint.
+This item has a default value of zero.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p><code>_restr_U_rigid_target_weight_param</code><br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_restr_U_rigid_U_parallel">_restr_U_rigid.U_parallel</h3>
+<div class="paragraph"><p>The average value of the components parallel to the bond
+of the atomic displacement parameters of the two atoms
+that define the bond.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p><code>_restr_U_rigid_U_parallel</code><br /></p></div>
+</div></div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="RESTR_U_SIMILAR">RESTR_U_SIMILAR</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>This category forces the atomic displacement ellipsoids
+of atom 2 to be equal to that of atom 1 within the range
+of the weighting parameter.
+This is the same as SHELX SIMU.</p></div>
+<div class="sect2">
+<h3 id="_restr_U_similar_atom_site_label_1">_restr_U_similar.atom_site_label_1&#8226;</h3>
+<div class="paragraph"><p>(Generic definition) Labels of atom sites subtending distance or angle. Atom 2 is the apex for
+angular restraints.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p><code>_restr_U_similar_atom_site_label_1</code><br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_restr_U_similar_atom_site_label_2">_restr_U_similar.atom_site_label_2&#8226;</h3>
+<div class="paragraph"><p>(Generic definition) Labels of atom sites subtending distance or angle. Atom 2 is the apex for
+angular restraints.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p><code>_restr_U_similar_atom_site_label_2</code><br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_restr_U_similar_site_symmetry_1">_restr_U_similar.site_symmetry_1&#8226;</h3>
+<div class="paragraph"><p>(Generic definition) The set of data items which specify the symmetry operation codes
+which must be applied to the atom sites involved in the geometry angle.</p></div>
+<div class="paragraph"><p>The symmetry code of each atom site as the symmetry-equivalent position
+number "n" and the cell translation number <em>klm</em>. These numbers are
+combined to form the code <em>n klm</em> or n_klm.</p></div>
+<div class="paragraph"><p>The character string n_klm is composed as follows:</p></div>
+<div class="paragraph"><p>n refers to the symmetry operation that is applied to the
+coordinates stored in <a href="#_atom_site_fract_xyz_"><code>_atom_site.fract_xyz.</code></a> It must match a
+number given in <a href="#_symmetry_equiv_pos_site_id_"><code>_symmetry_equiv.pos_site_id.</code></a></p></div>
+<div class="paragraph"><p>k, l and m refer to the translations that are subsequently
+applied to the symmetry transformed coordinates to generate
+the atom used in calculating the angle. These translations
+(x,y,z) are related to (k,l,m) by the relations
+k = 5 + x
+l = 5 + y
+m = 5 + z</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p><code>_restr_U_similar_site_symmetry_1</code><br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_restr_U_similar_site_symmetry_2">_restr_U_similar.site_symmetry_2&#8226;</h3>
+<div class="paragraph"><p>(Generic definition) The set of data items which specify the symmetry operation codes
+which must be applied to the atom sites involved in the geometry angle.</p></div>
+<div class="paragraph"><p>The symmetry code of each atom site as the symmetry-equivalent position
+number "n" and the cell translation number <em>klm</em>. These numbers are
+combined to form the code <em>n klm</em> or n_klm.</p></div>
+<div class="paragraph"><p>The character string n_klm is composed as follows:</p></div>
+<div class="paragraph"><p>n refers to the symmetry operation that is applied to the
+coordinates stored in <a href="#_atom_site_fract_xyz_"><code>_atom_site.fract_xyz.</code></a> It must match a
+number given in <a href="#_symmetry_equiv_pos_site_id_"><code>_symmetry_equiv.pos_site_id.</code></a></p></div>
+<div class="paragraph"><p>k, l and m refer to the translations that are subsequently
+applied to the symmetry transformed coordinates to generate
+the atom used in calculating the angle. These translations
+(x,y,z) are related to (k,l,m) by the relations
+k = 5 + x
+l = 5 + y
+m = 5 + z</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p><code>_restr_U_similar_site_symmetry_2</code><br /></p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_restr_U_similar_weight_param">_restr_U_similar.weight_param</h3>
+<div class="paragraph"><p>The expectation value of the difference between the
+anisotropic atomic displacement parameters
+of the two atoms.
+The default value of zero represents a constraint.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Aliases</div>
+<div class="paragraph"><p><code>_restr_U_similar_weight_param</code><br /></p></div>
+</div></div>
+</div>
+</div>
+</div>
+</div>
+<div id="footnotes"><hr /></div>
+<div id="footer">
+<div id="footer-text">
+Last updated
+ 2016-11-15 15:23:24 AEDT
+</div>
+</div>
+</body>
+</html>
