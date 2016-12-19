@@ -2,9 +2,10 @@
 
 ## Introduction
 
-The following proposal implements part of a solution to incorporating multiple models 
-into CIF, discussed in [[xx]].  It should be read in conjunction with that document,
-and with the proposal for a new category at [[xx]]. 
+The following proposal implements part of a solution to incorporating
+multiple models into CIF, discussed
+[here](changing_meanings_discussion_paper.md).  It should be read in
+conjunction with that document.
 
 ## New datanames: `_audit.formalism` and `_audit.formalism_version`
 
