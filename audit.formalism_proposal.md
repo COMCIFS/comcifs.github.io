@@ -357,6 +357,10 @@ _type.container                         Single
 _type.contents                          Complex
 _enumeration.default                    0.
 
+#
+#  A complete dREL expression for F_complex can be provided here, using all of the
+#  parameters provided in the powder and modulated structure dictionaries.
+#
 save_
 
 save__refln.F_meas
@@ -380,5 +384,7 @@ _type.source                            Derived
 _type.container                         Single
 _type.contents                          Real
 _enumeration.default                    0.
-
+#
+# A complete dREL expression for calculating F_meas from an observed powder diffractogram can be given here.
+#
 save_
