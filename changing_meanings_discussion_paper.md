@@ -195,20 +195,20 @@ operation.
 
 To avoid random or contrary redefinitions, datanames in a category may
 be redefined if and only if, for specified values of some other
-datanames, the redefined datanames take the values that they would
-have taken before the category was replaced.  In other words, the old
-datanames are special cases of the new datanames. For example, a
-magnetic model reduces to the core model when the atomic moments are
-all zero, or a modulated model reduces to the core model when the
-modulation waves have zero period. It follows from this stipulation
-that datanames whose values do not depend on other datanames may not
-be redefined.
+datanames introduced in the same dictionary, the redefined datanames
+take the values that they would have taken before the category was
+replaced.  In other words, the old datanames are special cases of the
+new datanames. For example, a magnetic model reduces to the core model
+when the atomic moments are all zero, or a modulated model reduces to
+the core model when the modulation waves have zero period. It follows
+from this stipulation that datanames whose values do not depend on
+other datanames may not be redefined.
 
 One or more items in both the `refln` category and the
 `refine_agreement` category will require redefinition when the model
 or experiment changes.  In general, any category to which extra key
 datanames are added will require redefinition of at least one non-key
-dataname.
+dataname if no new datanames are introduced.
 
 ### Usage example: core CIF
 
