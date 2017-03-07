@@ -12,12 +12,13 @@ conjunction with that document.
 Each value of `_audit.formalism` corresponds to a particular way of
 deriving some set of CIF datanames from other datanames defined in the
 same, or imported, dictionaries.  For better interoperability, we
-stipulate that datanames may only be redefined by dictionaries if, for
-some values of the datanames from which the redefined datanames are
-calculated, the derived dataname takes the values that the original
-dataname would have taken. So, for example, if `_atom_site.moment` is
-zero, `_refln.F_complex` has the same values as in core CIF, so it is
-acceptable for a magnetic dictionary to redefine `_refln.F_complex`.
+stipulate that datanames may only be redefined by dictionaries if the
+redefined datanames take values with the same units and domain as the
+original datanames.  So, for example, `_refln.F_complex` for magnetic
+structures is calculated differently to `_refln.F.complex` for core
+CIF, but has the same units and domain (positive real numbers), so it
+is acceptable for a magnetic dictionary to redefine
+`_refln.F_complex`.
 
 `_audit.formalism_version` is provided to allow secondary parameters
 to be added to the model without changing the overall formalism. As a
@@ -27,9 +28,9 @@ change the final calculated values in "typical" cases.
 
 All CIF datablocks should include these new datanames when they take
 non-default values; the default values correspond to the
-single-crystal model described in core CIF.  Most CIF reading programs
-should check these datanames in order to avoid miscalculating derived
-values.  
+single-crystal model described in core CIF.  Any CIF reading programs
+that perform calculations should check `_audit.formalism` and `_audit.formalism_version` 
+datanames in order to avoid miscalculating derived values.  
 
 The choice of the word `formalism` is purely to avoid clashing with
 the widespread use of `model` in core CIF to refer to the particular
@@ -59,7 +60,7 @@ only.
 The powder dictionary calculates structure factors from information
 that may be held in a different datablock.  It therefore redefines
 `_refln.F_complex`.  `_refln.F_meas` is also redefined as the
-determination of this from the powder observations is clearly
+determination of this from the powder observations is markedly
 different to the way in which it is derived from single-crystal spots,
 not least because of pervasive overlap.
 
@@ -71,9 +72,7 @@ take values `powder-magnetic`, `powder-modulated` and
 ### Electron density
 
 The electron density dictionary allows parameterisation of the
-electron density around each atom in terms of multipoles.  With
-appropriate choice of coefficients this reduces to the spherical atom
-model used in core CIF, so is an acceptable redefinition.
+electron density around each atom in terms of multipoles.
 `_refln.F_complex` is redefined, and a formalism of `multipole` is
 assigned.
 
@@ -85,8 +84,8 @@ the final datanames.
 
 ### Twinning
 
-Twinning does not change the structural model, but it does change the
-way of determining `_refln.F_meas` from the observations. A formalism
+Twinning does not change the structural model, but it may change the
+way `_refln.F_meas` is calculated from the observations. A formalism
 of `twinning` is assigned, and as for powder separate formalisms need
 to be assigned for each distinct structural model.
 
@@ -143,7 +142,7 @@ dictionary or dictionaries a datablock conforms to.  This appears almost
 as simple as the proposed `_audit.formalism` tag, so the need for a
 separate tag may not be apparent.
 
-However, while the `_audit_conform` mechanism must remain the
+While the `_audit_conform` mechanism must remain the
 canonical source of information, the proposed dataname provides a
 simplified route to the same information. In order for a CIF reading
 program to confirm that none of the dictionaries listed in a CIF block
@@ -155,13 +154,14 @@ procedure, the `_audit.formalism` tag is a much simpler way for the
 datablock writer to specify to the datablock reader a particular set
 of dataname interpretations that may never change.
 
-Notably, the `_audit_conform_*` mechanism is almost never used. As of
+Note that the `_audit_conform_*` mechanism is almost never used. As of
 May 28, 2016, there were 195 modulated structures in the
 Crystallographic Open Database (as determined by the presence of
 `Fourier_wave_vector` in a file). Of these, zero had an
-`_audit_conform` entry.  We conclude that introduction of
-`_audit.formalism` should be accompanied by an education and outreach
-program as well.
+`_audit_conform` entry, which in theory would be required to explain
+the adjusted interpretation of the `refln` category and new datanames.
+We conclude that introduction of `_audit.formalism` should be
+accompanied by an education and outreach program as well.
 
 ### Interaction with `_audit.schema`
 
@@ -174,7 +174,7 @@ In other words, a suitably-written program can handle a variety of
 schemas for a single formalism without needing to change the way in
 which any dataname is calculated, whereas a program must change the way
 in which the redefined datanames are calculated if the formalism
-expands.
+changes.
 
 # Appendix I: New core definitions
 
