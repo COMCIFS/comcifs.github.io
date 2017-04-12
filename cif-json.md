@@ -36,7 +36,7 @@ code-point sequence presented in the JSON file
   not an error to instead represent such a datavalue as a JSON string. Note that
   the CIF `<Number>` production is identical to the JSON number format.
   1. The special CIF value `.` (period) is represented as the JSON `null` value
-  1. The special CIF value `?` (question mark) is represented as the JSON string `\?`. Datanames
+  1. The special CIF value `?` (question mark) is represented as the JSON string `"\?"`. Datanames
   with a value of `?` may be omitted from the JSON datablock object. The reverse solidus
   (`\`) must be escaped if the actual two-character string `\?` needs to be represented.
   1. (CIF2 only).  CIF2 list datavalues are represented as JSON lists. The datavalues appearing
@@ -74,11 +74,11 @@ as for normal CIF data blocks.
 ## Comments
 
 1. A JSON list is used both for columns and CIF2 lists.  Where a
-dataname is known to occur in a loop (either through the `loops` name
+dataname is known to occur in a loop (either through the `loop tags` name
 or as stated in the relevant CIF dictionary), the JSON parser may assume
 that each entry in the outermost list level is the column entry.
 1. Any list-valued name that does not appear in a loop is a CIF2 list.
-1. The use of `\?` to represent CIF `?`, and thus the need for reading
+1. The use of `"\?"` to represent CIF `?`, and thus the need for reading
 programs to allow for an arbitrary number of reverse soliduses escaping
 question marks, may be unwieldy to program.  Alternative suggestions welcome.
 1. The order in which datanames appear in the JSON datablock object is not significant. In particular,
