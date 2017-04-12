@@ -24,32 +24,36 @@ of these block objects is the CIF data block name, that is, the characters follo
 `data_` in the CIF file. This object is referred to here as the *JSON datablock object*.
 4. Each dataname in the CIF block is a name in that block's JSON datablock object. The JSON name
 is the CIF dataname, including the underscore.
+
 5. Datavalues are converted as follows:
-  1. CIF string values are represented as JSON string values. The
+
+   1. CIF string values are represented as JSON string values. The
   code-point sequence obtained *after* the text prefix protocol and line ending
   protocols have been applied to the CIF value will be the
   code-point sequence presented in the JSON file
-  2. If the CIF datavalue should be interpreted as a number, it is
+  
+   2. If the CIF datavalue should be interpreted as a number, it is
   that number obtained by parsing the character string found in the
   CIF according to the `<Number>` production in International Tables
   for Crystallography, Volume G, Section 2.2.7.3 paragraph 57. It is
   not an error to instead represent such a datavalue as a JSON string. Note that
   the CIF `<Number>` production is identical to the JSON number format.
-  3. The special CIF value `.` (period) is represented as the JSON `null` value
-  4. The special CIF value `?` (question mark) is represented as the JSON string `"\\?"`. Datanames
-  with a value of `?` may be omitted from the JSON datablock object.
-  5. (CIF2 only).  CIF2 list datavalues are represented as JSON lists. The datavalues appearing
+   3. The special CIF value `.` (null) is represented as the JSON `null` value
+   4. The special CIF value `?` (unknown) is represented as the JSON string `"\\?"`. Datanames
+  with a CIF value of `?` may be omitted from the JSON datablock object.
+   5. (CIF2 only).  CIF2 list datavalues are represented as JSON lists. The datavalues appearing
   in the list are converted in the same way as non-list datavalues.
-  6. (CIF2 only).  CIF2 table datavalues are represented as JSON objects. The names in the object
+   6. (CIF2 only).  CIF2 table datavalues are represented as JSON objects. The names in the object
   are the same as the names in the CIF2 table. The values in the CIF table are converted in the same
   way as other CIF datavalues
-  7. (Looped values). The column of values corresponding to a looped
+   7. (Looped values). The column of values corresponding to a looped
   CIF dataname is represented as a JSON list. This list is the value of
   the JSON name corresponding to that dataname. Each value in the list
   is converted as for unlooped datanames
-  8. (Looped values). Treatment of numeric values in a single loop column must
+   8. (Looped values). Treatment of numeric values in a single loop column must
   be consistent. Either all non-null values must be strings, or else all values must
   be JSON numbers.
+  
 6. A JSON datablock object may contain a special name: `loop tags`.  If this name
 appears, its value will be a list of lists.  For each loop in the CIF block,
 a list of the datanames appearing in the loop will be included in the `loop tags` value.
