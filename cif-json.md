@@ -92,6 +92,7 @@ does not have to match the order of presentation in the CIF block.
 ### CIF file:
 
 
+    #\#CIF_2.0
     data_example
       _dataname.a   syzygy
       _flight.vector    [0.25 1.2(15) -0.01(12)]
