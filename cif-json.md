@@ -34,7 +34,7 @@ are described in the introduction.
 CIF information is represented in JSON as follows:
 
 1. A CIF datafile is represented as a single JSON object
-1. The JSON file must conform to the i-JSON standard (RFC7493)[https://tools.ietf.org/html/rfc7493]
+1. The JSON file must conform to the i-JSON standard [RFC7493](https://tools.ietf.org/html/rfc7493)
 1. A CIF datablock is represented by a JSON object within the top-level object. This object is referred 
 to here as the *JSON datablock object*.  The name of this object must be in Unicode case-normal form (which
 means lower-case for Western scripts), and 
@@ -42,20 +42,20 @@ conform to the characterset restrictions of the CIF2 syntax for datablock names.
 1. A CIF dataname is a name in the JSON datablock object. The JSON name
 is the CIF dataname, including the underscore.
 1. Datavalues are represented as follows:
-  1. CIF string values are represented as JSON string values
-  1. CIF number values are represented as JSON string values formatted according to the 
+   1. CIF string values are represented as JSON string values
+   1. CIF number values are represented as JSON string values formatted according to the 
    `<Numeric>` production in International Tables
-  for Crystallography, Volume G, Section 2.2.7.3 paragraph 57. Note that
-  this CIF `<Numeric>` production is identical to the JSON number format with optional
-  standard uncertainty appended in round brackets.
-   3. The special CIF value `.` (null) is represented as the JSON `null` value
-   4. The special CIF value `?` (unknown) is represented as a JSON string containing the single Unicode code point `0xFFFF`.
-   5. (CIF2 only).  CIF2 list datavalues are represented as JSON lists. The datavalues appearing
+   for Crystallography, Volume G, Section 2.2.7.3 paragraph 57. Note that
+   this CIF `<Numeric>` production is identical to the JSON number format with optional
+   standard uncertainty appended in round brackets.
+    3. The special CIF value `.` (null) is represented as the JSON `null` value
+    4. The special CIF value `?` (unknown) is represented as a JSON string containing the single Unicode code point `0xFFFF`.
+    5. (CIF2 only).  CIF2 list datavalues are represented as JSON lists. The datavalues appearing
   in the list are represented in the same way as non-list datavalues.
-   6. (CIF2 only).  CIF2 table datavalues are represented as JSON objects. The names in the object
+    6. (CIF2 only).  CIF2 table datavalues are represented as JSON objects. The names in the object
   are the same as the names in the CIF table. The values in the CIF table are represented in the same
   way as other CIF datavalues
-   7. (Looped values). The column of values corresponding to a looped
+    7. (Looped values). The column of values corresponding to a looped
   CIF dataname is represented as a JSON list. This list becomes the value of
   the JSON name corresponding to that dataname. Each value in the list
   is represented as for unlooped datanames
@@ -94,7 +94,7 @@ used by CIF dictionaries. In particular, block and dataname order, and
 the type of delimiters used, if any, are not expressed in CIF-JSON. If
 such high-fidelity transformation is required (for example, for CIF
 syntax validation) the COD-JSON format used by the freely available
-(COD tools)[http://wiki.crystallography.net/cod-tools/] is
+[COD tools](http://wiki.crystallography.net/cod-tools/) is
 recommended.
 
 ## Example
@@ -150,7 +150,7 @@ recommended.
                  "schema-name":"CIF-JSON",
                  "schema-version":"1.0",
                  "schema-uri":"http://www.iucr.org/resources/cif/cif-json.txt"
-                 }
+                 },
      "example":
         {"_dataname.a":"syzygy",
          "_flight.vector":["0.25","1.2(15)","-0.01(12)"],
