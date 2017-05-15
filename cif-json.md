@@ -166,7 +166,7 @@ against previous versions to function incorrectly.
          "_q.key":["xxp","yyx"],
          "_q.access":[{"s":"2",  "k":"-5"},{"s":"1",  "k":"-2"}],
          "_dataname.chapter":["1.2"],
-         "_dataname.verylong":["This contains one very long line that we wrap around using the excellent CIF2 line expansion protocol."],
+         "_dataname.verylong":["This contains one very long line that we wrap around using the excellent CIF2 line expansion protocol."]
          },
      "another_block":{
         "_abc":["xyz"],
