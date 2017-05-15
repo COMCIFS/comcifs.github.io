@@ -71,7 +71,8 @@ information that is useful for conversion of CIF-JSON objects to other syntaxes
     1. `schema-version`: a JSON string giving the version of the CIF-JSON schema that this JSON object conforms to. CIF-JSON
     versioning follows [semantic versioning priniciples](http://semver.org/spec/v2.0.0.html).
     1. `schema-uri`: a URI for the CIF-JSON schema.
-10. (Reserved names). All JSON names starting with an upper-case letter are reserved for future development.
+10. (Reserved names). All JSON names starting with an upper-case letter and appearing in JSON datablock 
+objects are reserved for future development.
 
 ## Comments
 
