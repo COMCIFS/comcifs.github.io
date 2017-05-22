@@ -3,10 +3,10 @@
 ## Introduction
 
 The Crystallographic Information Framework (CIF) is a set of specifications for describing
-scientific information.  One or more *datavalues* are attached to *datanames* to form
-*dataitems*. Dataitems are collected together into *datablocks*.  Datablocks are in turn
-collected into *datafiles*.  Datanames, the possible values that can be attached to
-them, and dataname membership in *categories* (tabulations), are described in CIF 
+scientific information.  One or more *data values* are attached to *data names* to form
+*data items*. Data items are collected together into *data blocks*.  Data blocks are in turn
+collected into *data files*.  Data names, the possible values that can be attached to
+them, and data name membership in *categories* (tabulations), are described in CIF 
 *dictionaries*. In the following standard, *CIF information* refers to any scientific
 information that can be defined and encapsulated using the above model.  The CIF1 and CIF2
 syntaxes describe closely related file formats for expressing CIF information in a
@@ -16,7 +16,7 @@ JSON is a lightweight language for serialisation and transfer of data.
 JSON is often used as a "pipeline" language to transfer information
 between programs within a single system, and also as a way of
 transferring information between internet applications.  JSON
-libraries are widely available and therefore it is relatively simple
+libraries are widely available and therefore it is relatively simple to
 implement parsing and output of JSON.
 
 A standard way of expressing CIF information in JSON would allow
@@ -26,46 +26,56 @@ CIF-JSON standard is intended to facilitate such interoperability.
 
 ## The JSON representation of CIF information
 
-In the following, *name* refers to a JSON name and *value* to a JSON value. A
-JSON *object* is a collection of `name:value` pairs. CIF-related datastructures
+In the following, *name* refers to a JSON name, which is double-quoted. *Value* refers to a JSON value, which may be a quoted
+string or one of the JSON values `false` or `null`. *Item* refers to a JSON name:value pair. *Object* refers to a JSON  object,
+a comma-separated collection of items, starting with `{` and ending with `}`. *Array* refers to a JSON array, a comma-separated
+collection of values, starting with `[` and ending with `]`. CIF-related datastructures
 are described in the introduction.
 
-CIF information is represented in JSON as follows:
+### Encoding and characterset requirements
 
-1. A CIF datafile is represented as a single JSON object
 1. The JSON file must conform to the i-JSON standard [RFC7493](https://tools.ietf.org/html/rfc7493)
-1. A CIF datablock is represented by a JSON object within the top-level object. This object is referred 
-to here as the *JSON datablock object*.  The name of this object must be in Unicode case-normal form (which
-means lower-case for Western scripts), and 
-conform to the characterset restrictions of the CIF2 syntax for datablock names.
-1. A CIF dataname is a name in the JSON datablock object. The JSON name
-is the CIF dataname, including the underscore.
-1. The value attached to the JSON name is a JSON list (referred to as the "JSON list datavalue" below).
-1. The JSON list datavalue contains the one or more CIF datavalues associated with the CIF dataname. 
-1. Entries at the same position in JSON list datavalues correspond to one another if the datanames belong to the same
-category.
-1. CIF datavalues are represented within JSON list datavalues as follows:
+1. All names used for CIF data block headers, CIF data names, and CIF save block headers must be represented in CIF-JSON in
+Unicode case-normal form (also referred to as “lower-case” below), and otherwise conform to the characterset restrictions
+of the CIF2 syntax.
+
+### The CIF-JSON object
+
+1. A CIF data file (a collection of CIF data blocks) is represented as a single JSON object (the *top-level object*).
+1. The top-level object contains a single JSON item, which must be named `CIF-JSON`. The value of this item is a
+JSON object, referred to below as the *CIF-JSON object*.
+1. A CIF data block is represented by an item within the CIF-JSON object. This item is referred 
+to here as the *JSON datablock item*.  As noted above, the name of this item must 
+be in case-normal form and conform to the characterset restrictions of the CIF2 syntax for data block headers.
+1. The CIF-JSON object may contain multiple JSON datablock items.
+1. A CIF data item is an item in a JSON datablock object (*JSON data item*). The item name is the CIF data name, 
+including the underscore, in case-normal form.
+1. The value of the JSON data item is a JSON array (referred to as the "JSON array data value" below).
+1. The JSON array data value contains the one or more CIF data values associated with the CIF data name. 
+1. Entries at the same position in JSON array data values correspond to one another if the data names belong to the same
+category. In other words, such entries would belong to the same row if these data items were tabulated.
+1. CIF data values are represented within JSON array data values as follows:
    1. CIF string values are represented as JSON string values
    1. CIF number values are represented as JSON string values formatted according to the 
    `<Numeric>` production in International Tables
    for Crystallography, Volume G, Section 2.2.7.3 paragraph 57. 
     3. The special CIF value `.` (null) is represented as JSON `false`.
     4. The special CIF value `?` (unknown) is represented as JSON `null`.
-    5. (CIF2 only).  CIF2 list datavalues are represented as JSON lists. The datavalues appearing
-  in the list are represented in the same way as non-list datavalues.
-    6. (CIF2 only).  CIF2 table datavalues are represented as JSON objects. The names in the object
-  are the same as the names in the CIF table. The values in the CIF table are represented in the same
-  way as other CIF datavalues
+    5. (CIF2 only).  CIF2 list data values are represented as JSON arrays. The data values appearing
+  in the array are represented in the same way as non-list data values.
+    6. (CIF2 only).  CIF2 table data values are represented as JSON objects. The names in the object
+  are the same as the names in the CIF table, including case. The values in the CIF table are represented in the same
+  way as other CIF data values
 
-9. If the CIF data block includes save frames (currently only used in dictionaries), 
-the JSON datablock object must contain the special name `frames`. The value of this name
-is a JSON object. Each name in this object is the name of a save frame
-found in the datablock. The value for each of these names is a JSON datablock object, represented
-as for normal CIF data blocks.
-10. An optional object named `Metadata` may be present in the top-level object. The object name
-must begin with a capital 'M' to distinguish it from a normal datablock name. The `Metadata` object contains
+1. If the CIF data block includes save frames (currently only used in dictionaries), 
+the JSON datablock object must contain the special item named `Frames`. The value of this item
+is a JSON object. Each item in this object corresponds to a save frame
+found in the data block. The value for each of these save frame items is a JSON datablock object, represented
+in the same way as a CIF data block.
+10. An optional item named `Metadata` may be present in the CIF-JSON object. The item name
+must begin with a capital 'M' to distinguish it from a normal data block name. The `Metadata` item contains
 information that is useful for conversion of CIF-JSON objects to other syntaxes
-(for example, CIF syntax files) and information about the CIF-JSON version.  The following names are defined for the `Metadata` object:
+(for example, CIF syntax files) and information about the CIF-JSON version.  The following items are defined for the `Metadata` object:
     1. `cif-version`: a JSON string giving the minimum CIF syntax version required to express the contents of the object; currently `1.1` or `2.0` are available
     1. `schema-name`: always `CIF-JSON`
     1. `schema-version`: a JSON string giving the version of the CIF-JSON schema that this JSON object conforms to. CIF-JSON
@@ -82,7 +92,7 @@ and DDLm dictionaries.
 1. This specification contains some features to allow straightforward
 conversion to JSON from files in CIF syntax. However, round-tripping
 through CIF-JSON will not preserve features of CIF syntax that are not
-used by CIF dictionaries. In particular, block and dataname order, and
+used by CIF dictionaries. In particular, block and data name order, and
 the type of delimiters used, if any, are not expressed in CIF-JSON. If
 such high-fidelity transformation is required (for example, for CIF
 syntax validation) the COD-JSON format used by the freely available
@@ -90,12 +100,21 @@ syntax validation) the COD-JSON format used by the freely available
 recommended.
 1. JSON numbers are not used to represent CIF numbers as it is generally
 impossible to determine whether 
-or not an arbitrary datavalue appearing in a CIF syntax file is a number. Future
+or not an arbitrary data value appearing in a CIF syntax file is a number. Future
 versions of this standard may offer a mechanism for selective encoding of CIF 
-datavalues as numbers.
+data values as numbers.
+1.  When translating from CIF syntax files, there is no requirement to copy the
+data block header names when creating the corresponding JSON item names, as
+these header names have no significance in the CIF standards.  A conservative
+approach would be to maintain a straightforward correspondence with the original CIF
+file, perhaps even preserving the initial `data_` string for easy visual identification.
 1.  Implementers should always check `schema-version` when reading CIF-JSON objects. 
 Any changes in the major version number imply changes that may cause software written
 against previous versions to function incorrectly.
+1.  The single top-level item named 'CIF-JSON' is intended to allow rapid identification of
+CIF-JSON files before the whole stream is parsed.
+1.  Multiple top-level objects may be included in a single JSON array to facilitate
+transmission of multiple CIF-JSON objects.
 
 ## Example
 
@@ -105,9 +124,9 @@ against previous versions to function incorrectly.
     #\#CIF_2.0
     data_example
       _dataname.a   syzygy
-      _flight.vector    [0.25 1.2(15) -0.01(12)]
+      _Flight.vector    [0.25 1.2(15) -0.01(12)]
       _dataname.table   {"save":222 "mode":full "url":"http:/bit.ly/2"}
-      _flight.bearing  221.45(7)
+      _Flight.Bearing  221.45(7)
       loop_
         _x.id
         _y
@@ -119,8 +138,8 @@ against previous versions to function incorrectly.
         4     .              .             ?
         
       loop_
-        _q.key
-        _q.access
+        _Q.key
+        _Q.access
         xxp     {"s":2  "k":-5}
         yyx     {"s":1  "k":-2}
         
@@ -132,7 +151,7 @@ against previous versions to function incorrectly.
     <whatever>excellent CIF2 line expansion protocol.
     ;
  
-     data_another_block
+     data_Another_Block
        _abc    xyz
        save_internal
           _abc   yzx
@@ -146,6 +165,7 @@ against previous versions to function incorrectly.
 ### Equivalent CIF-JSON:
 
 ```json
+{"CIF-JSON:
     {"Metadata":{"cif-version":"2.0",
                  "schema-name":"CIF-JSON",
                  "schema-version":"1.0",
@@ -170,11 +190,12 @@ against previous versions to function incorrectly.
          },
      "another_block":{
         "_abc":["xyz"],
-        "frames":
+        "Frames":
            {"internal":{"_abc":["yzx"],
                         "_r.fruit":["apple","pear"],
                         "_r.colour":["red","green"]}
                         }
            }
     }
+}
 ```
