@@ -165,7 +165,7 @@ transmission of multiple CIF-JSON objects.
 ### Equivalent CIF-JSON:
 
 ```json
-{"CIF-JSON:
+{"CIF-JSON":
     {"Metadata":{"cif-version":"2.0",
                  "schema-name":"CIF-JSON",
                  "schema-version":"1.0",
