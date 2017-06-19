@@ -168,7 +168,7 @@ transmission of multiple CIF-JSON objects.
 {"CIF-JSON":
     {"Metadata":{"cif-version":"2.0",
                  "schema-name":"CIF-JSON",
-                 "schema-version":"1.0",
+                 "schema-version":"1.0.0",
                  "schema-uri":"http://www.iucr.org/resources/cif/cif-json.txt"
                  },
      "example":
