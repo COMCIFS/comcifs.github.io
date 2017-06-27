@@ -18,7 +18,7 @@ values of `Base` and `Base` respectively, no further software changes
 are required.  If the values of either of these data names is not
 `Base`, the meanings of certain data names may be different and it is
 possible that your software will therefore misinterpret the contents
-of the CIF file. You should read the dataname definitions [1],[2]
+of the CIF file. You should read the [dataname][1] [definitions][2]
 in detail to determine further actions.
 
 ## Changes to CIF writing software
@@ -29,14 +29,14 @@ dictionary need do nothing. If your software outputs data names from
 the powder, magnetism, electron density or modulated structures
 dictionaries you should include data name `_audit.formalism` in your
 data block to communicate to the reading software that some data names
-have a different meaning.  Consult the `_audit.formalism` definition
-[1] for the appropriate value for this data name.
+have a different meaning.  Consult [the `_audit.formalism` definition][1]
+for the appropriate value for this data name.
 
 Software that outputs data files that give multiple values for data
 names that are normally single-valued (e.g. multiple crystals or
 multiple space groups in CIF core) should include a non-default value
-of `_audit.schema` in the data block.  Consult the `_audit.schema`
-definition [2] for further information.
+of `_audit.schema` in the data block.  Consult [the `_audit.schema`
+definition][2] for further information.
 
 ## Frequently asked questions
 
@@ -106,11 +106,10 @@ Please advise COMCIFS (secretary: bm@iucr.org) or use the `Custom` value.
 
 8. Where can I find out more information?
 
-The proposals as accepted by COMCIFS are at [3],[4].
-
-## References
+The proposals as accepted by COMCIFS are [here][3] and [here][4].
 
 [1]: https://github.com/COMCIFS/comcifs.github.io/blob/master/audit.formalism_proposal.md#_auditformalism
 [2]: https://github.com/COMCIFS/comcifs.github.io/blob/master/looping_proposal.md#appendix-i-definition-of-_auditschema
+"the `_audit.schema` definition"
 [3]: https://github.com/COMCIFS/comcifs.github.io/blob/master/audit.formalism_proposal.md
 [4]: https://github.com/COMCIFS/comcifs.github.io/blob/master/looping_proposal.md
