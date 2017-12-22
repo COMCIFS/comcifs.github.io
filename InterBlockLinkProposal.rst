@@ -1,8 +1,8 @@
 Proposal to Improve Inter Block Linking
-=======================================
+***************************************
 
 Introduction
-------------
+============
 
 A number of current CIF dictionaries rely on pointers to other
 data blocks. In particular:
@@ -21,7 +21,7 @@ data blocks. In particular:
   descriptions of the same magnetic structure could be described in
   separate data blocks.
 
-In addition, cif core defines the _audit_link.* data names, which allow listing of
+In addition, cif core defines the ``_audit_link.*`` data names, which allow listing of
 datablock identifiers together with some plain text description of the nature of
 the relationship between the blocks.
 
@@ -39,12 +39,15 @@ nature of the relationships between data blocks machine-readable in
 all situations.
 
 General idea
-------------
+============
 
-Definition: "projection" - choosing a single value for a key data
-name, and then selecting only those rows of categories that correspond
-to that particular value, ignoring any categories for which that data
-name is irrelevant.
+First a definition:
+
+**projection**
+   choosing a single value for a key data name, and then
+   selecting only those rows of categories that correspond to that
+   particular value, ignoring any categories for which that data name
+   is irrelevant.
 
 Any data collection can be split by projecting over the individual
 values of a data name that forms part of a key, and putting the result
@@ -57,7 +60,7 @@ be described as projections of one or more data names we have
 completely defined their relationship.
 
 Proposal for a Universal System for Linking Data Blocks
--------------------------------------------------------
+=======================================================
 
 In order to completely define data block interrelationships, data
 blocks resulting from projection over a key value must be:
@@ -66,14 +69,14 @@ blocks resulting from projection over a key value must be:
 (2) the key data name used for the projection indicated and correct values assigned.
 
 Linkage
-~~~~~~~
+-------
 
 This is accomplished by including a dataname which has the same,
 unique value in all linked blocks.  I propose calling this dataname
-`_audit_dataset.id`
+``_audit_dataset.id``
 
 Key values
-~~~~~~~~~~
+----------
 
 Each data block must explicitly state the value of the parent key
 against which it has been projected, by providing the parent key's
@@ -81,7 +84,7 @@ data name and value.
 
 
 Effect on existing dictionaries
--------------------------------
+===============================
 
 The following examines changes or enhancements required to implement
 this approach in those dictionaries that already use inter-block
@@ -89,88 +92,91 @@ references. In no case do existing data names require redefinition or
 removal; the new system can exist alongside the old system.
 
 Comparison for msCIF
-~~~~~~~~~~~~~~~~~~~~
+--------------------
 
 The current msCIF arrangement splits the information for composite
 structures over a number of data blocks. The 'master' block contains a
-loop indexed by `_cell_subsystem.code`, the value of which is used to
+loop indexed by ``_cell_subsystem.code``, the value of which is used to
 find structural data in a separate data block that has an
-`_audit_link.block_code` identifier composed as
-`<arbitrary>REFRNCE_<code>`. 
-`<arbitrary>` is a string common to all linked blocks and `<code>` is the
-value of `_cell_subsystem.code` appearing in a row of the
-`_cell_subsystem` loop. If the word MOD is used instead of REFRNCE, the
+``_audit_link.block_code`` identifier composed as
+``<arbitrary>REFRNCE_<code>``. 
+``<arbitrary>`` is a string common to all linked blocks and ``<code>`` is the
+value of ``_cell_subsystem.code`` appearing in a row of the
+``_cell_subsystem`` loop. If the word MOD is used instead of REFRNCE, the
 data block contains a description of the modulated structure of this
-component. If no trailing `<code>` is present, the data block contains
+component. If no trailing ``<code>`` is present, the data block contains
 either common structural features (REFRNCE) or the whole modulated
 structure (MOD). If neither REFRNCE or MOD are present, the data block
 contains common data items. In this approach, the links between data blocks
-are created through the `_audit_link.block_code` value matching, and
+are created through the ``_audit_link.block_code`` value matching, and
 the nature of the link is signalled by the reserved words MOD and
 REFRNCE.
 
 In the proposed approach (see example at end):
-1. `<arbitrary>` becomes the value of `_audit_dataset.id`
-2. `_cell_subsystem.code` should be given in each data block for which
+
+1. ``<arbitrary>`` becomes the value of ``_audit_dataset.id``
+2. ``_cell_subsystem.code`` should be given in each data block for which
    it is relevant
-3. the loop over `_cell_subsystem.code` in the "master" block should
+3. the loop over ``_cell_subsystem.code`` in the "master" block should
    either be removed, or else a new child data name defined for use
    in projection (choice of dictionary authors).
-4. The msCIF dictionary should include child data names of `_cell_subsystem.code`
-   in the `space_group`, `cell` and all `_atom_site_*` categories
+4. The msCIF dictionary should include child data names of ``_cell_subsystem.code``
+   in the ``space_group``, ``cell`` and all ``_atom_site_*`` categories
 
 Comparison for pdCIF
-~~~~~~~~~~~~~~~~~~~~
+--------------------
 
-pdCIF defines a `_pd.block_id` and then links to blocks via this ID
+pdCIF defines a ``_pd.block_id`` and then links to blocks via this ID
 in three distinct ways: (Vol G p 124):
+
 (1) To refer to a block containing a diffraction measurement
 (2) To refer to a block containing a structure description
 (3) To refer to a block containing calibration information
 
 In the proposed approach:
-1. `_audit_dataset.id` can be used instead, or alongside, `_pd.block_id`. Whereas
-   `_pd.block_id` is different for every block, `_audit_dataset.id` is identical for
+
+1. ``_audit_dataset.id`` can be used instead, or alongside, ``_pd.block_id``. Whereas
+   ``_pd.block_id`` is different for every block, ``_audit_dataset.id`` is identical for
    blocks belonging to a single dataset.
-2. A new (key) data name, e.g. `_pd_diffractogram.id` is created and stated in any
+2. A new (key) data name, e.g. ``_pd_diffractogram.id`` is created and stated in any
    data blocks containing diffractograms.
-3. The value of `_pd.phase_id` is stated in any data blocks containing structures
+3. The value of ``_pd.phase_id`` is stated in any data blocks containing structures
 4. New child key data names are added to any categories that could appear in the
-   separate `_pd.phase_id` or `_pd_diffractogram.id` blocks
+   separate ``_pd.phase_id`` or ``_pd_diffractogram.id`` blocks
 5. Calibration: an external calibration dataset is a combination of a
-   diffractogram and a phase. A `_pd_calib_std_external.phase_id` and
-   `_pd_calib_std_external.diffractogram_id` should be additionally
+   diffractogram and a phase. A ``_pd_calib_std_external.phase_id`` and
+   ``_pd_calib_std_external.diffractogram_id`` should be additionally
    defined. (1),(2) and (3) are carried out as relevant for the
    calibration dataset and phase. If calibrations involve more than
    powder diffraction measurements, further data names describing
    these measurements should be defined.
 
 magCIF
-~~~~~~
+------
 
 The magnetic structures dictionary wishes to link to alternative descriptions of
 the same magnetic structure in separate data blocks. In this case:
 
-1. `_audit.dataset_id` is set to be identical in all relevant data
+1. ``_audit.dataset_id`` is set to be identical in all relevant data
    blocks
-2. a dataname along the lines of `_magn_structure_transform.id` is set in each of
+2. a dataname along the lines of ``_magn_structure_transform.id`` is set in each of
    these data blocks
-3. Child data names of `_magn_structure_transform.id` are added to all categories
+3. Child data names of ``_magn_structure_transform.id`` are added to all categories
    that might be used in describing an alternative structure.
 
 Advantages
-----------
+==========
 
 1. To a large extent, data can be added to datasets by simply creating
-   a new data block with the same `_audit_dataset.id`.  For example,
+   a new data block with the same ``_audit_dataset.id``.  For example,
    an extra measurement on a new sample of the same compound will
    automatically be (semantically) incorporated into a dataset simply
    by becoming present, whether in a separate file or an appended block
 2. dREL methods can be written in complete ignorance of the way in
    which data have been distributed over data blocks. In effect, a dREL
    method operates in the context of all data available for a given value of
-   `_audit_dataset.id`.
-3. The effects of unexpected looping over 'Set' datanames that `_audit.schema`
+   ``_audit_dataset.id``.
+3. The effects of unexpected looping over 'Set' datanames that ``_audit.schema``
    addresses can be reduced by using separate data blocks. So the choice
    exists to split multiple crystals, multiple space-groups etc. over
    multiple data blocks, without changing the underlying semantics.
@@ -186,7 +192,8 @@ Advantages
    double-checking where possible.
 
 Disadvantages
--------------
+=============
+
 
 1. Flexibility in how data from complex datasets is distributed over
    data blocks may cause unnecessary work for data reading software
@@ -194,36 +201,36 @@ Disadvantages
    remedied by individual dictionaries recommending particular
    approaches.
 
-   Interaction with `_audit.schema`
------------------------------------
+Interaction with ``_audit.schema``
+==================================
 
-We have recently defined a data name, `_audit.schema`, that signals
+We have recently defined a data name, ``_audit.schema``, that signals
 when 'Set' categories have become looped in a data block. The present
 proposal allows 'Set' categories to be always single-valued in a
 single data block, yet take multiple values for the dataset as a
 whole.  We must therefore choose between alternative meanings of
-`_audit.schema`: does it mean that 'Set' categories are looped
+``_audit.schema``: does it mean that 'Set' categories are looped
 semantically or both semantically and syntactically (obviously if Set
 categories are looped in a single data block (syntactically) then they
 are also semantically looped)?  I propose that, even if all data
 blocks conform to the default schema, at least some values in related
 data blocks are likely to be materially significant for interpretation
 of one another (for example, multiple crystal measurements feed into
-final values of I_meas) and so `_audit.schema` should indicate
+final values of I_meas) and so ``_audit.schema`` should indicate
 semantic looping, i.e.
 
-* `_audit.schema` **must** take a non-default value where Set categories
-   can take multiple values **and** a data block contains loops over
-   these Set categories.
+* ``_audit.schema`` **must** take a non-default value where Set categories
+  can take multiple values **and** a data block contains loops over
+  these Set categories.
 
-* `_audit.schema` **must** take the appropriate non-default value if
+* ``_audit.schema`` **must** take the appropriate non-default value if
   information for a dataset has been spread over several data blocks.
 
-* `_audit.schema` **must** only take the default value if the dataset
+* ``_audit.schema`` **must** only take the default value if the dataset
   consists of a single block conforming to the core CIF dictionary.
 
 On datasets
------------
+===========
 
 Note that a single data block can belong to multiple data sets, for example
 calibration information may be relevant to multiple data collections, or a single
@@ -232,7 +239,7 @@ single refinement of X-ray and neutron data) and therefore have different
 dataset identifiers in each case.
 
 Discussion
-----------
+==========
 
 This approach is close in spirit to the work of Nick Spadaccini and
 Syd Hall in creating DDLm Ref-loops, which were projections of specified
@@ -241,7 +248,7 @@ syntactical element, exposes the behaviour of the keys, and adopts a
 global relational view of the underlying semantics.
 
 Example
--------
+=======
 
 The following example shows part of a CIF for a modulated structure
 composed of two components, LaS and NbS2. (based on `Example 3, p 271,
