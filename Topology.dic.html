@@ -1,0 +1,1398 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+    "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
+<meta name="generator" content="AsciiDoc 8.6.10" />
+<title>TOPOLOGY_CIF</title>
+<style type="text/css">
+/* Shared CSS for AsciiDoc xhtml11 and html5 backends */
+
+/* Default font. */
+body {
+  font-family: Georgia,serif;
+}
+
+/* Title font. */
+h1, h2, h3, h4, h5, h6,
+div.title, caption.title,
+thead, p.table.header,
+#toctitle,
+#author, #revnumber, #revdate, #revremark,
+#footer {
+  font-family: Arial,Helvetica,sans-serif;
+}
+
+body {
+  margin: 1em 5% 1em 5%;
+}
+
+a {
+  color: blue;
+  text-decoration: underline;
+}
+a:visited {
+  color: fuchsia;
+}
+
+em {
+  font-style: italic;
+  color: navy;
+}
+
+strong {
+  font-weight: bold;
+  color: #083194;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #527bbd;
+  margin-top: 1.2em;
+  margin-bottom: 0.5em;
+  line-height: 1.3;
+}
+
+h1, h2, h3 {
+  border-bottom: 2px solid silver;
+}
+h2 {
+  padding-top: 0.5em;
+}
+h3 {
+  float: left;
+}
+h3 + * {
+  clear: left;
+}
+h5 {
+  font-size: 1.0em;
+}
+
+div.sectionbody {
+  margin-left: 0;
+}
+
+hr {
+  border: 1px solid silver;
+}
+
+p {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+ul, ol, li > p {
+  margin-top: 0;
+}
+ul > li     { color: #aaa; }
+ul > li > * { color: black; }
+
+.monospaced, code, pre {
+  font-family: "Courier New", Courier, monospace;
+  font-size: inherit;
+  color: navy;
+  padding: 0;
+  margin: 0;
+}
+pre {
+  white-space: pre-wrap;
+}
+
+#author {
+  color: #527bbd;
+  font-weight: bold;
+  font-size: 1.1em;
+}
+#email {
+}
+#revnumber, #revdate, #revremark {
+}
+
+#footer {
+  font-size: small;
+  border-top: 2px solid silver;
+  padding-top: 0.5em;
+  margin-top: 4.0em;
+}
+#footer-text {
+  float: left;
+  padding-bottom: 0.5em;
+}
+#footer-badges {
+  float: right;
+  padding-bottom: 0.5em;
+}
+
+#preamble {
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+}
+div.imageblock, div.exampleblock, div.verseblock,
+div.quoteblock, div.literalblock, div.listingblock, div.sidebarblock,
+div.admonitionblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+div.admonitionblock {
+  margin-top: 2.0em;
+  margin-bottom: 2.0em;
+  margin-right: 10%;
+  color: #606060;
+}
+
+div.content { /* Block element content. */
+  padding: 0;
+}
+
+/* Block element titles. */
+div.title, caption.title {
+  color: #527bbd;
+  font-weight: bold;
+  text-align: left;
+  margin-top: 1.0em;
+  margin-bottom: 0.5em;
+}
+div.title + * {
+  margin-top: 0;
+}
+
+td div.title:first-child {
+  margin-top: 0.0em;
+}
+div.content div.title:first-child {
+  margin-top: 0.0em;
+}
+div.content + div.title {
+  margin-top: 0.0em;
+}
+
+div.sidebarblock > div.content {
+  background: #ffffee;
+  border: 1px solid #dddddd;
+  border-left: 4px solid #f0f0f0;
+  padding: 0.5em;
+}
+
+div.listingblock > div.content {
+  border: 1px solid #dddddd;
+  border-left: 5px solid #f0f0f0;
+  background: #f8f8f8;
+  padding: 0.5em;
+}
+
+div.quoteblock, div.verseblock {
+  padding-left: 1.0em;
+  margin-left: 1.0em;
+  margin-right: 10%;
+  border-left: 5px solid #f0f0f0;
+  color: #888;
+}
+
+div.quoteblock > div.attribution {
+  padding-top: 0.5em;
+  text-align: right;
+}
+
+div.verseblock > pre.content {
+  font-family: inherit;
+  font-size: inherit;
+}
+div.verseblock > div.attribution {
+  padding-top: 0.75em;
+  text-align: left;
+}
+/* DEPRECATED: Pre version 8.2.7 verse style literal block. */
+div.verseblock + div.attribution {
+  text-align: left;
+}
+
+div.admonitionblock .icon {
+  vertical-align: top;
+  font-size: 1.1em;
+  font-weight: bold;
+  text-decoration: underline;
+  color: #527bbd;
+  padding-right: 0.5em;
+}
+div.admonitionblock td.content {
+  padding-left: 0.5em;
+  border-left: 3px solid #dddddd;
+}
+
+div.exampleblock > div.content {
+  border-left: 3px solid #dddddd;
+  padding-left: 0.5em;
+}
+
+div.imageblock div.content { padding-left: 0; }
+span.image img { border-style: none; vertical-align: text-bottom; }
+a.image:visited { color: white; }
+
+dl {
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+}
+dt {
+  margin-top: 0.5em;
+  margin-bottom: 0;
+  font-style: normal;
+  color: navy;
+}
+dd > *:first-child {
+  margin-top: 0.1em;
+}
+
+ul, ol {
+    list-style-position: outside;
+}
+ol.arabic {
+  list-style-type: decimal;
+}
+ol.loweralpha {
+  list-style-type: lower-alpha;
+}
+ol.upperalpha {
+  list-style-type: upper-alpha;
+}
+ol.lowerroman {
+  list-style-type: lower-roman;
+}
+ol.upperroman {
+  list-style-type: upper-roman;
+}
+
+div.compact ul, div.compact ol,
+div.compact p, div.compact p,
+div.compact div, div.compact div {
+  margin-top: 0.1em;
+  margin-bottom: 0.1em;
+}
+
+tfoot {
+  font-weight: bold;
+}
+td > div.verse {
+  white-space: pre;
+}
+
+div.hdlist {
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+}
+div.hdlist tr {
+  padding-bottom: 15px;
+}
+dt.hdlist1.strong, td.hdlist1.strong {
+  font-weight: bold;
+}
+td.hdlist1 {
+  vertical-align: top;
+  font-style: normal;
+  padding-right: 0.8em;
+  color: navy;
+}
+td.hdlist2 {
+  vertical-align: top;
+}
+div.hdlist.compact tr {
+  margin: 0;
+  padding-bottom: 0;
+}
+
+.comment {
+  background: yellow;
+}
+
+.footnote, .footnoteref {
+  font-size: 0.8em;
+}
+
+span.footnote, span.footnoteref {
+  vertical-align: super;
+}
+
+#footnotes {
+  margin: 20px 0 20px 0;
+  padding: 7px 0 0 0;
+}
+
+#footnotes div.footnote {
+  margin: 0 0 5px 0;
+}
+
+#footnotes hr {
+  border: none;
+  border-top: 1px solid silver;
+  height: 1px;
+  text-align: left;
+  margin-left: 0;
+  width: 20%;
+  min-width: 100px;
+}
+
+div.colist td {
+  padding-right: 0.5em;
+  padding-bottom: 0.3em;
+  vertical-align: top;
+}
+div.colist td img {
+  margin-top: 0.3em;
+}
+
+@media print {
+  #footer-badges { display: none; }
+}
+
+#toc {
+  margin-bottom: 2.5em;
+}
+
+#toctitle {
+  color: #527bbd;
+  font-size: 1.1em;
+  font-weight: bold;
+  margin-top: 1.0em;
+  margin-bottom: 0.1em;
+}
+
+div.toclevel0, div.toclevel1, div.toclevel2, div.toclevel3, div.toclevel4 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+div.toclevel2 {
+  margin-left: 2em;
+  font-size: 0.9em;
+}
+div.toclevel3 {
+  margin-left: 4em;
+  font-size: 0.9em;
+}
+div.toclevel4 {
+  margin-left: 6em;
+  font-size: 0.9em;
+}
+
+span.aqua { color: aqua; }
+span.black { color: black; }
+span.blue { color: blue; }
+span.fuchsia { color: fuchsia; }
+span.gray { color: gray; }
+span.green { color: green; }
+span.lime { color: lime; }
+span.maroon { color: maroon; }
+span.navy { color: navy; }
+span.olive { color: olive; }
+span.purple { color: purple; }
+span.red { color: red; }
+span.silver { color: silver; }
+span.teal { color: teal; }
+span.white { color: white; }
+span.yellow { color: yellow; }
+
+span.aqua-background { background: aqua; }
+span.black-background { background: black; }
+span.blue-background { background: blue; }
+span.fuchsia-background { background: fuchsia; }
+span.gray-background { background: gray; }
+span.green-background { background: green; }
+span.lime-background { background: lime; }
+span.maroon-background { background: maroon; }
+span.navy-background { background: navy; }
+span.olive-background { background: olive; }
+span.purple-background { background: purple; }
+span.red-background { background: red; }
+span.silver-background { background: silver; }
+span.teal-background { background: teal; }
+span.white-background { background: white; }
+span.yellow-background { background: yellow; }
+
+span.big { font-size: 2em; }
+span.small { font-size: 0.6em; }
+
+span.underline { text-decoration: underline; }
+span.overline { text-decoration: overline; }
+span.line-through { text-decoration: line-through; }
+
+div.unbreakable { page-break-inside: avoid; }
+
+
+/*
+ * xhtml11 specific
+ *
+ * */
+
+div.tableblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+div.tableblock > table {
+  border: 3px solid #527bbd;
+}
+thead, p.table.header {
+  font-weight: bold;
+  color: #527bbd;
+}
+p.table {
+  margin-top: 0;
+}
+/* Because the table frame attribute is overriden by CSS in most browsers. */
+div.tableblock > table[frame="void"] {
+  border-style: none;
+}
+div.tableblock > table[frame="hsides"] {
+  border-left-style: none;
+  border-right-style: none;
+}
+div.tableblock > table[frame="vsides"] {
+  border-top-style: none;
+  border-bottom-style: none;
+}
+
+
+/*
+ * html5 specific
+ *
+ * */
+
+table.tableblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+thead, p.tableblock.header {
+  font-weight: bold;
+  color: #527bbd;
+}
+p.tableblock {
+  margin-top: 0;
+}
+table.tableblock {
+  border-width: 3px;
+  border-spacing: 0px;
+  border-style: solid;
+  border-color: #527bbd;
+  border-collapse: collapse;
+}
+th.tableblock, td.tableblock {
+  border-width: 1px;
+  padding: 4px;
+  border-style: solid;
+  border-color: #527bbd;
+}
+
+table.tableblock.frame-topbot {
+  border-left-style: hidden;
+  border-right-style: hidden;
+}
+table.tableblock.frame-sides {
+  border-top-style: hidden;
+  border-bottom-style: hidden;
+}
+table.tableblock.frame-none {
+  border-style: hidden;
+}
+
+th.tableblock.halign-left, td.tableblock.halign-left {
+  text-align: left;
+}
+th.tableblock.halign-center, td.tableblock.halign-center {
+  text-align: center;
+}
+th.tableblock.halign-right, td.tableblock.halign-right {
+  text-align: right;
+}
+
+th.tableblock.valign-top, td.tableblock.valign-top {
+  vertical-align: top;
+}
+th.tableblock.valign-middle, td.tableblock.valign-middle {
+  vertical-align: middle;
+}
+th.tableblock.valign-bottom, td.tableblock.valign-bottom {
+  vertical-align: bottom;
+}
+
+
+/*
+ * manpage specific
+ *
+ * */
+
+body.manpage h1 {
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  border-top: 2px solid silver;
+  border-bottom: 2px solid silver;
+}
+body.manpage h2 {
+  border-style: none;
+}
+body.manpage div.sectionbody {
+  margin-left: 3em;
+}
+
+@media print {
+  body.manpage div#toc { display: none; }
+}
+
+
+</style>
+<script type="text/javascript">
+/*<![CDATA[*/
+var asciidoc = {  // Namespace.
+
+/////////////////////////////////////////////////////////////////////
+// Table Of Contents generator
+/////////////////////////////////////////////////////////////////////
+
+/* Author: Mihai Bazon, September 2002
+ * http://students.infoiasi.ro/~mishoo
+ *
+ * Table Of Content generator
+ * Version: 0.4
+ *
+ * Feel free to use this script under the terms of the GNU General Public
+ * License, as long as you do not remove or alter this notice.
+ */
+
+ /* modified by Troy D. Hanson, September 2006. License: GPL */
+ /* modified by Stuart Rackham, 2006, 2009. License: GPL */
+
+// toclevels = 1..4.
+toc: function (toclevels) {
+
+  function getText(el) {
+    var text = "";
+    for (var i = el.firstChild; i != null; i = i.nextSibling) {
+      if (i.nodeType == 3 /* Node.TEXT_NODE */) // IE doesn't speak constants.
+        text += i.data;
+      else if (i.firstChild != null)
+        text += getText(i);
+    }
+    return text;
+  }
+
+  function TocEntry(el, text, toclevel) {
+    this.element = el;
+    this.text = text;
+    this.toclevel = toclevel;
+  }
+
+  function tocEntries(el, toclevels) {
+    var result = new Array;
+    var re = new RegExp('[hH]([1-'+(toclevels+1)+'])');
+    // Function that scans the DOM tree for header elements (the DOM2
+    // nodeIterator API would be a better technique but not supported by all
+    // browsers).
+    var iterate = function (el) {
+      for (var i = el.firstChild; i != null; i = i.nextSibling) {
+        if (i.nodeType == 1 /* Node.ELEMENT_NODE */) {
+          var mo = re.exec(i.tagName);
+          if (mo && (i.getAttribute("class") || i.getAttribute("className")) != "float") {
+            result[result.length] = new TocEntry(i, getText(i), mo[1]-1);
+          }
+          iterate(i);
+        }
+      }
+    }
+    iterate(el);
+    return result;
+  }
+
+  var toc = document.getElementById("toc");
+  if (!toc) {
+    return;
+  }
+
+  // Delete existing TOC entries in case we're reloading the TOC.
+  var tocEntriesToRemove = [];
+  var i;
+  for (i = 0; i < toc.childNodes.length; i++) {
+    var entry = toc.childNodes[i];
+    if (entry.nodeName.toLowerCase() == 'div'
+     && entry.getAttribute("class")
+     && entry.getAttribute("class").match(/^toclevel/))
+      tocEntriesToRemove.push(entry);
+  }
+  for (i = 0; i < tocEntriesToRemove.length; i++) {
+    toc.removeChild(tocEntriesToRemove[i]);
+  }
+
+  // Rebuild TOC entries.
+  var entries = tocEntries(document.getElementById("content"), toclevels);
+  for (var i = 0; i < entries.length; ++i) {
+    var entry = entries[i];
+    if (entry.element.id == "")
+      entry.element.id = "_toc_" + i;
+    var a = document.createElement("a");
+    a.href = "#" + entry.element.id;
+    a.appendChild(document.createTextNode(entry.text));
+    var div = document.createElement("div");
+    div.appendChild(a);
+    div.className = "toclevel" + entry.toclevel;
+    toc.appendChild(div);
+  }
+  if (entries.length == 0)
+    toc.parentNode.removeChild(toc);
+},
+
+
+/////////////////////////////////////////////////////////////////////
+// Footnotes generator
+/////////////////////////////////////////////////////////////////////
+
+/* Based on footnote generation code from:
+ * http://www.brandspankingnew.net/archive/2005/07/format_footnote.html
+ */
+
+footnotes: function () {
+  // Delete existing footnote entries in case we're reloading the footnodes.
+  var i;
+  var noteholder = document.getElementById("footnotes");
+  if (!noteholder) {
+    return;
+  }
+  var entriesToRemove = [];
+  for (i = 0; i < noteholder.childNodes.length; i++) {
+    var entry = noteholder.childNodes[i];
+    if (entry.nodeName.toLowerCase() == 'div' && entry.getAttribute("class") == "footnote")
+      entriesToRemove.push(entry);
+  }
+  for (i = 0; i < entriesToRemove.length; i++) {
+    noteholder.removeChild(entriesToRemove[i]);
+  }
+
+  // Rebuild footnote entries.
+  var cont = document.getElementById("content");
+  var spans = cont.getElementsByTagName("span");
+  var refs = {};
+  var n = 0;
+  for (i=0; i<spans.length; i++) {
+    if (spans[i].className == "footnote") {
+      n++;
+      var note = spans[i].getAttribute("data-note");
+      if (!note) {
+        // Use [\s\S] in place of . so multi-line matches work.
+        // Because JavaScript has no s (dotall) regex flag.
+        note = spans[i].innerHTML.match(/\s*\[([\s\S]*)]\s*/)[1];
+        spans[i].innerHTML =
+          "[<a id='_footnoteref_" + n + "' href='#_footnote_" + n +
+          "' title='View footnote' class='footnote'>" + n + "</a>]";
+        spans[i].setAttribute("data-note", note);
+      }
+      noteholder.innerHTML +=
+        "<div class='footnote' id='_footnote_" + n + "'>" +
+        "<a href='#_footnoteref_" + n + "' title='Return to text'>" +
+        n + "</a>. " + note + "</div>";
+      var id =spans[i].getAttribute("id");
+      if (id != null) refs["#"+id] = n;
+    }
+  }
+  if (n == 0)
+    noteholder.parentNode.removeChild(noteholder);
+  else {
+    // Process footnoterefs.
+    for (i=0; i<spans.length; i++) {
+      if (spans[i].className == "footnoteref") {
+        var href = spans[i].getElementsByTagName("a")[0].getAttribute("href");
+        href = href.match(/#.*/)[0];  // Because IE return full URL.
+        n = refs[href];
+        spans[i].innerHTML =
+          "[<a href='#_footnote_" + n +
+          "' title='View footnote' class='footnote'>" + n + "</a>]";
+      }
+    }
+  }
+},
+
+install: function(toclevels) {
+  var timerId;
+
+  function reinstall() {
+    asciidoc.footnotes();
+    if (toclevels) {
+      asciidoc.toc(toclevels);
+    }
+  }
+
+  function reinstallAndRemoveTimer() {
+    clearInterval(timerId);
+    reinstall();
+  }
+
+  timerId = setInterval(reinstall, 500);
+  if (document.addEventListener)
+    document.addEventListener("DOMContentLoaded", reinstallAndRemoveTimer, false);
+  else
+    window.onload = reinstallAndRemoveTimer;
+}
+
+}
+asciidoc.install(2);
+/*]]>*/
+</script>
+</head>
+<body class="article">
+<div id="header">
+<h1>TOPOLOGY_CIF</h1>
+<span id="revdate">2018-02-06</span>
+</div>
+<div id="content">
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph"><p>The Topology CIF dictionary provides datanames for describing crystal structure
+topology.</p></div>
+<div class="paragraph"><p>Generated from /home/jrh/COMCIFS/Topology/TopoCif/Topology.dic, version 0.1</p></div>
+<div class="paragraph"><p>Categories that may have more than one row are called loop categories.
+Datanames making up the keys for these categories have a dot suffix.</p></div>
+<div id="toc">
+  <div id="toctitle">Table of Contents</div>
+  <noscript><p><b>JavaScript must be enabled in your browser to display the table of contents.</b></p></noscript>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="TOPOLOGY">TOPOLOGY</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>This category is the parent of all categories in the dictionary</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="topol">TOPOL</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>The TOPOL category covers data on connectivity
+between atoms and structural groups and the
+related structural properties as calculated from
+the ATOM, CELL and SYMMETRY data.</p></div>
+<div class="sect2">
+<h3 id="_topol_special_details">_topol.special_details</h3>
+<div class="paragraph"><p>The description of topological information not covered by the
+existing data names in the topology categories.</p></div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="topol_bond">TOPOL_BOND</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>The TOPOL_BOND category describes the crystal structure
+connectivity and encode the weighted colored labeled quotient
+graph, from which the whole periodic net describing the
+overall topology of the crystal structure can be restored.
+Compared to the geometrical information of the GEOM_BOND
+and GEOM_CONTACT categories, the TOPOL_BOND tags are intended
+to be read by software that works with periodic nets.</p></div>
+<div class="sect2">
+<h3 id="_topol_bond_atom_site_label_1">_topol_bond.atom_site_label_1</h3>
+<div class="paragraph"><p>The labels of two atom sites that form a bond. These must match
+labels specified as <a href="#_atom_site_label"><code>_atom_site_label</code></a> in the atom list.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_topol_bond_atom_site_label_2">_topol_bond.atom_site_label_2</h3>
+<div class="paragraph"><p>The labels of two atom sites that form a bond. These must match
+labels specified as <a href="#_atom_site_label"><code>_atom_site_label</code></a> in the atom list.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_topol_bond_distance">_topol_bond.distance</h3>
+<div class="paragraph"><p>The bond distance in angstroms.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_topol_bond_id">_topol_bond.id</h3>
+<div class="paragraph"><p>The identifier of the bond.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_topol_bond_multiplicity">_topol_bond.multiplicity</h3>
+<div class="paragraph"><p>The number of the bonds in the unit cell.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_topol_bond_site_symmetry_1">_topol_bond.site_symmetry_1</h3>
+<div class="paragraph"><p>The symmetry code of each atom site as the symmetry-equivalent
+position number n and the cell translation number xyz. These
+numbers are combined to form the code n_x_y_z. The character
+string n_x_y_z is composed as follows: n refers to the symmetry
+operation that is applied to the coordinates stored in
+<a href="#_atom_site_fract_x"><code>_atom_site_fract_x</code></a>, <a href="#_atom_site_fract_y"><code>_atom_site_fract_y</code></a> and <a href="#_atom_site_fract_z_"><code>_atom_site_fract_z.</code></a> It
+must match a number given in <a href="#_space_group_symop_id_"><code>_space_group_symop_id.</code></a> x, y and z
+are the translations that are subsequently applied to the
+symmetry-transformed coordinates to generate the atom used in
+calculating the bond. x, y and z can be any integer values.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_topol_bond_site_symmetry_2">_topol_bond.site_symmetry_2</h3>
+<div class="paragraph"><p>The symmetry code of each atom site as the symmetry-equivalent
+position number n and the cell translation number xyz. These
+numbers are combined to form the code n_x_y_z. The character
+string n_x_y_z is composed as follows: n refers to the symmetry
+operation that is applied to the coordinates stored in
+<a href="#_atom_site_fract_x"><code>_atom_site_fract_x</code></a>, <a href="#_atom_site_fract_y"><code>_atom_site_fract_y</code></a> and <a href="#_atom_site_fract_z_"><code>_atom_site_fract_z.</code></a> It
+must match a number given in <a href="#_space_group_symop_id_"><code>_space_group_symop_id.</code></a> x, y and z
+are the translations that are subsequently applied to the
+symmetry-transformed coordinates to generate the atom used in
+calculating the bond. x, y and z can be any integer values.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_topol_bond_type">_topol_bond.type</h3>
+<div class="paragraph"><p>The chemical bond type associated with the connection between the
+two sites. The data value must be one of the following:</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Possible values:</div>
+<div class="dlist"><dl>
+<dt class="hdlist1">
+<code>sing</code>
+</dt>
+<dd>
+<p>
+single bond
+</p>
+</dd>
+<dt class="hdlist1">
+<code>doub</code>
+</dt>
+<dd>
+<p>
+double bond
+</p>
+</dd>
+<dt class="hdlist1">
+<code>trip</code>
+</dt>
+<dd>
+<p>
+triple bond
+</p>
+</dd>
+<dt class="hdlist1">
+<code>quad</code>
+</dt>
+<dd>
+<p>
+quadruple bond
+</p>
+</dd>
+<dt class="hdlist1">
+<code>arom</code>
+</dt>
+<dd>
+<p>
+aromatic bond
+</p>
+</dd>
+<dt class="hdlist1">
+<code>delo</code>
+</dt>
+<dd>
+<p>
+delocalized double bond
+</p>
+</dd>
+<dt class="hdlist1">
+<code>val</code>
+</dt>
+<dd>
+<p>
+valence bond
+</p>
+</dd>
+<dt class="hdlist1">
+<code>pi</code>
+</dt>
+<dd>
+<p>
+pi bond
+</p>
+</dd>
+<dt class="hdlist1">
+<code>hbnd</code>
+</dt>
+<dd>
+<p>
+hydrogen bond
+</p>
+</dd>
+<dt class="hdlist1">
+<code>spec</code>
+</dt>
+<dd>
+<p>
+specific bond
+</p>
+</dd>
+<dt class="hdlist1">
+<code>halg</code>
+</dt>
+<dd>
+<p>
+halogen bond
+</p>
+</dd>
+<dt class="hdlist1">
+<code>vdw</code>
+</dt>
+<dd>
+<p>
+van der Waals contact
+</p>
+</dd>
+<dt class="hdlist1">
+<code>nobd</code>
+</dt>
+<dd>
+<p>
+no bond
+</p>
+</dd>
+<dt class="hdlist1">
+<code>any</code>
+</dt>
+<dd>
+<p>
+any kind of bond (unspecified)
+</p>
+</dd>
+</dl></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_topol_bond_voronoi_solidangle">_topol_bond.voronoi_solidangle</h3>
+<div class="paragraph"><p>The solid angle of the interatomic contact, which is the part of the
+sphere of unit radius cut by the pyramid with the basal face of the
+Voronoi polyhedron.  The face used is that corresponding to the
+interatomic contact.</p></div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="topol_repres">TOPOL_REPRES</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>The TOPOL_REPRES category describes a particular crystal
+structure representation, which corresponds to the periodic
+(underlying) net topology specified in the TOPOL_BOND
+category. The underlying net is the net of centroids of
+structural units. The edges of this net represent the links
+between the units.</p></div>
+<div class="sect2">
+<h3 id="_topol_repres_genus">_topol_repres.genus</h3>
+<div class="paragraph"><p>The genus of the underlying net, defined as the cyclomatic number of its
+own quotient graph: g = 1 + e - v, where e and v are the number of
+edges and vertices in the quotient graph.  The quotient graph is a finite
+graph that contains all of the information of the periodic net: the vertices
+of the graph are the vertices of a translational repeat unit and the edges
+are all the edges of the repeat unit.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_topol_repres_overall_topology">_topol_repres.overall_topology</h3>
+<div class="paragraph"><p>The overall topology symbol in an arbitrary form.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_topol_repres_overall_topology_EPINET">_topol_repres.overall_topology_EPINET</h3>
+<div class="paragraph"><p>The identifier for the overall topology as listed
+in the EPINET database at <a href="http://epinet.anu.edu.au">http://epinet.anu.edu.au</a></p></div>
+</div>
+<div class="sect2">
+<h3 id="_topol_repres_overall_topology_RCSR">_topol_repres.overall_topology_RCSR</h3>
+<div class="paragraph"><p>The overall topology symbol according to the RCSR nomenclature described
+by O&#8217;Keeffe, M., Peskov, M.A., Ramsden S. J., Yaghi O.M. (2008) Acc. Chem.
+Res. 41, 1782-1789.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_topol_repres_overall_topology_SP">_topol_repres.overall_topology_SP</h3>
+<div class="paragraph"><p>The overall topology symbol according to the nomenclature of
+Fischer for sphere packings described in Koch, E., Fischer, W.
+and Sowa, H. (2006) Acta Cryst. A62, 152-167.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_topol_repres_overall_topology_TOPOS">_topol_repres.overall_topology_TOPOS</h3>
+<div class="paragraph"><p>The overall topology symbol according to the TOPOS nomenclature. TOPOS
+symbols NDn are interpreted as follows: N is a sequence of degrees
+(coordination numbers) of all independent nodes; D is one of the letters
+C (chain), L (layer) or T (three-periodic) designating the dimensionality
+of the net; and n enumerates non-isomorphic nets with a given ND sequence.
+For finite (molecular) graphs the symbols NMK-n are used, where k is the
+number of vertices (atoms) in the graph.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_topol_repres_period">_topol_repres.period</h3>
+<div class="paragraph"><p>Periodicity of the underlying net.  The allowed data values
+have the following meaning:
+0         0-periodic (finite)
+1         1-periodic (chain)
+2         2-periodic (layer)
+3         3-periodic (framework)</p></div>
+</div>
+<div class="sect2">
+<h3 id="_topol_repres_td10">_topol_repres.td10</h3>
+<div class="paragraph"><p>The topological density TD10 of the underlying net. This is the cumulative
+sum of the first ten shells of topological neighbours including the central
+atom. For structures with more than one kind of vertex in the asymmetric
+unit the value given is a weighted average over the vertices.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_topol_repres_total_point_symbol">_topol_repres.total_point_symbol</h3>
+<div class="paragraph"><p>The total point symbol of the underlying net.  This value summarizes all the
+point symbols for the non-equivalent nodes with their stoichiometric
+coefficients.</p></div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="topol_repres_edge">TOPOL_REPRES_EDGE</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>The TOPOL_REPRES_EDGE category describes the chemical composition of
+the edges of the underlying net.</p></div>
+<div class="sect2">
+<h3 id="_topol_repres_edge_chemical_formula_iupac">_topol_repres_edge.chemical_formula_iupac</h3>
+<div class="paragraph"><p>Formula of the residue or ion, which corresponds to the node
+expressed in conformance with IUPAC rules.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_topol_repres_edge_chemical_formula_moiety">_topol_repres_edge.chemical_formula_moiety</h3>
+<div class="paragraph"><p>Formula of the residue or ion, which corresponds to the node.
+The formula is written in accordance with the rules of  the
+<a href="#_chemical_formula_moiety"><code>_chemical_formula_moiety</code></a> tag.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_topol_repres_edge_chemical_formula_sum">_topol_repres_edge.chemical_formula_sum</h3>
+<div class="paragraph"><p>Formula of the residue or ion, which corresponds to the node.
+The formula is written in accordance with the rules of  the
+<a href="#_chemical_formula_sum"><code>_chemical_formula_sum</code></a> tag.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_topol_repres_edge_id">_topol_repres_edge.id&#8226;</h3>
+<div class="paragraph"><p>The label of the edge, which corresponds to a particular  node of
+the crystal structure representation. These must  match labels
+specified as <a href="#_topol_bond_id"><code>_topol_bond.id</code></a> in the bond list.</p></div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="topol_repres_entangl">TOPOL_REPRES_ENTANGL</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>The TOPOL_REPRES_ENTANGL category describes entanglements in the
+underlying net.  An entangled net can be separated into two or
+more motifs.</p></div>
+<div class="sect2">
+<h3 id="_topol_repres_entangl_interp_class">_topol_repres_entangl.interp_class</h3>
+<div class="paragraph"><p>The class of the interpenetration as defined in Baburin I. A.,
+Blatov V. A., Carlucci L., Ciani G., Proserpio D. M. J. (2005)
+Solid State Chem., 178, 2452-2474.  The classes are determined
+based on the way in which the overall net is generated from
+individual identical motifs using combinations of translations
+and symmetry elements.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Possible values:</div>
+<div class="dlist"><dl>
+<dt class="hdlist1">
+<code>Ia</code>
+</dt>
+<dd>
+<p>
+all nets generated by a single translation
+</p>
+</dd>
+<dt class="hdlist1">
+<code>Ib</code>
+</dt>
+<dd>
+<p>
+at least two vectors required to generate all nets
+</p>
+</dd>
+<dt class="hdlist1">
+<code>IIa</code>
+</dt>
+<dd>
+<p>
+all nets related by a single symmetry element
+</p>
+</dd>
+<dt class="hdlist1">
+<code>IIb</code>
+</dt>
+<dd>
+<p>
+at least two symmetry elements required to generate all nets
+</p>
+</dd>
+<dt class="hdlist1">
+<code>IIIa</code>
+</dt>
+<dd>
+<p>
+all nets generated by a combination of a single translation and single non-translating symmetry element
+</p>
+</dd>
+<dt class="hdlist1">
+<code>IIIb</code>
+</dt>
+<dd>
+<p>
+all nets generated by a combination of at least two translations and a single non-translating symmetry element
+</p>
+</dd>
+<dt class="hdlist1">
+<code>IIIc</code>
+</dt>
+<dd>
+<p>
+all nets generated by a combination of a single translation and at least two non-translating symmetry elements
+</p>
+</dd>
+<dt class="hdlist1">
+<code>IIId</code>
+</dt>
+<dd>
+<p>
+a combination of at least two translations and at least two non-translating symmetry elements required to generate all nets
+</p>
+</dd>
+</dl></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_topol_repres_entangl_interp_deg">_topol_repres_entangl.interp_deg</h3>
+<div class="paragraph"><p>The finite number of interpenetrating nets.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_topol_repres_entangl_period">_topol_repres_entangl.period</h3>
+<div class="paragraph"><p>Periodicity of the entangled array. Integers are interpreted as
+follows:
+0         <em>0-periodic (finite)</em>
+1         <em>1-periodic (chain)</em>
+2         <em>2-periodic (layer)</em>
+3         <em>3-periodic (framework)</em></p></div>
+</div>
+<div class="sect2">
+<h3 id="_topol_repres_entangl_topology_ERN">_topol_repres_entangl.topology_ERN</h3>
+<div class="paragraph"><p>Topology of the entanglement described as an extended ring  net.
+The name of the extended ring net is specified in one  of the
+nomenclatures of the periodic nets.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_topol_repres_entangl_topology_HRN">_topol_repres_entangl.topology_HRN</h3>
+<div class="paragraph"><p>Topology of the entanglement described as a Hopf ring net.  The
+name of the Hopf ring net is specified in one of  the
+nomenclatures of the periodic nets.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_topol_repres_entangl_type">_topol_repres_entangl.type</h3>
+<div class="paragraph"><p>The type of the entanglement as described in Properpio, D. M.
+(2010) Nat. Chem. 2, 435-436 and Carlucci L., Ciani G.,
+Proserpio D. M., Mitina T. G., Blatov V. A. (2014) Chem.
+Rev. 114, 7557-7580</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Possible values:</div>
+<div class="dlist"><dl>
+<dt class="hdlist1">
+<code>borr</code>
+</dt>
+<dd>
+<p>
+Borromean
+</p>
+</dd>
+<dt class="hdlist1">
+<code>brun</code>
+</dt>
+<dd>
+<p>
+Brunnian
+</p>
+</dd>
+<dt class="hdlist1">
+<code>caten</code>
+</dt>
+<dd>
+<p>
+catenation
+</p>
+</dd>
+<dt class="hdlist1">
+<code>interp</code>
+</dt>
+<dd>
+<p>
+interpenetration
+</p>
+</dd>
+<dt class="hdlist1">
+<code>polycat_inc</code>
+</dt>
+<dd>
+<p>
+inclined polycatenation
+</p>
+</dd>
+<dt class="hdlist1">
+<code>polycat_par</code>
+</dt>
+<dd>
+<p>
+parallel polycatenation
+</p>
+</dd>
+<dt class="hdlist1">
+<code>polythread</code>
+</dt>
+<dd>
+<p>
+polythreading
+</p>
+</dd>
+<dt class="hdlist1">
+<code>selfcat</code>
+</dt>
+<dd>
+<p>
+self-catenation
+</p>
+</dd>
+<dt class="hdlist1">
+<code>undef</code>
+</dt>
+<dd>
+<p>
+no special type is assigned
+</p>
+</dd>
+</dl></div>
+</div></div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="topol_repres_node">TOPOL_REPRES_NODE</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>The TOPOL_REPRES_NODE cateogry describes the chemical composition, structure
+and topological properties of the nodes of the underlying net.</p></div>
+<div class="sect2">
+<h3 id="_topol_repres_node_chemical_formula_iupac">_topol_repres_node.chemical_formula_iupac</h3>
+<div class="paragraph"><p>Formula of the residue or ion, which corresponds to the node
+expressed in conformance with IUPAC rules.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_topol_repres_node_chemical_formula_moiety">_topol_repres_node.chemical_formula_moiety</h3>
+<div class="paragraph"><p>Formula of the residue or ion, which corresponds to the node.
+The formula is written in accordance with the rules of  the
+<a href="#_chemical_formula_moiety"><code>_chemical_formula_moiety</code></a> tag.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_topol_repres_node_chemical_formula_sum">_topol_repres_node.chemical_formula_sum</h3>
+<div class="paragraph"><p>Formula of the residue or ion, which corresponds to the node.
+The formula is written in accordance with the rules of  the
+<a href="#_chemical_formula_sum"><code>_chemical_formula_sum</code></a> tag.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_topol_repres_node_CS">_topol_repres_node.CS</h3>
+<div class="paragraph"><p>The coordination sequence is a sequence of numbers counting the
+atoms in the 1st, 2nd, 3rd etc. coordination shells of any given
+atom in the net. In other words, the kth entry in the list is the
+number of vertices linked to the node by a path of exactly k
+steps.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_topol_repres_node_ES">_topol_repres_node.ES</h3>
+<div class="paragraph"><p>The extended point symbol of the node lists all shortest circuits for each
+angle for each non-equivalent atom.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_topol_repres_node_label">_topol_repres_node.label</h3>
+<div class="paragraph"><p>The label of the node site, which corresponds to a particular
+node of the crystal structure representation. These must match
+labels specified as <a href="#_atom_site_label"><code>_atom_site_label</code></a> in the atom list.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_topol_repres_node_point_symbol">_topol_repres_node.point_symbol</h3>
+<div class="paragraph"><p>The (short) point symbol of the node. This lists the number and size of
+the shortest closed chains of connected nodes (circuits) starting from
+any non-equivalent node in the net.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_topol_repres_node_VS">_topol_repres_node.VS</h3>
+<div class="paragraph"><p>The vertex symbol of the node. A vertex symbol provides similar information
+to the extended point symbol, but only for rings, which are circuits that
+contain no shortcuts, that is, may not be built from smaller circuits.</p></div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="topol_repres_occurrence">TOPOL_REPRES_OCCURRENCE</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>The TOPOL_REPRES_OCCURRENCE category describes the occurrence of the
+underlying net topology in crystal structures.</p></div>
+<div class="sect2">
+<h3 id="_topol_repres_occurrence_refcode">_topol_repres_occurrence.refcode</h3>
+<div class="paragraph"><p>Reference code in a crystallographic database  to the
+crystallographic data of the crystal  structure with the
+underlying net topology.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_topol_repres_occurrence_reference">_topol_repres_occurrence.reference</h3>
+<div class="paragraph"><p>Reference to a publication, where a crystal  structure with the
+underlying net topology  was characterized.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_topol_repres_occurrence_total">_topol_repres_occurrence.total</h3>
+<div class="paragraph"><p>The total number of occurrences of the underlying  net topology.</p></div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="topol_repres_tiling">TOPOL_REPRES_TILING</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>The TOPOL_REPRES_TILING category describes the natural tiling
+corresponding to the underlying net.  A tiling is a
+partition of crystal space using generalised polyhedra, and a
+natural tiling is one for which tiles are the smallest possible
+that conserve the full symmetry of the net and for which the
+faces are all locally strong rings. This means that there is no
+single largest face (face with the largest number of vertices)
+as such a face will be the some of the other smaller faces.</p></div>
+<div class="paragraph"><p>The tile signature contains the sizes of the tile faces and
+the number of faces of a given size in the tile.</p></div>
+<div class="sect2">
+<h3 id="_topol_repres_tiling_Dsize">_topol_repres_tiling.Dsize</h3>
+<div class="paragraph"><p>The number of distinct (not symmetry-related) chambers  in the
+tiling.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_topol_repres_tiling_dual">_topol_repres_tiling.dual</h3>
+<div class="paragraph"><p>The overall topology symbol of the dual net, which  corresponds
+to the net of the dual of the natural tiling.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_topol_repres_tiling_edges">_topol_repres_tiling.edges</h3>
+<div class="paragraph"><p>Number of independent tile edges in the natural tiling.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_topol_repres_tiling_faces">_topol_repres_tiling.faces</h3>
+<div class="paragraph"><p>Number of independent tile faces in the natural tiling.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_topol_repres_tiling_signature">_topol_repres_tiling.signature</h3>
+<div class="paragraph"><p>The tiling signature, written in the form &#945;[A<sup>a</sup> . B<sup>b</sup> &#8230;]<code>&#946;[C<sup>c</sup> . D<sup>d</sup> &#8230;]</code>&#8230;,
+where square brackets envelop tile symbols, &#945;,&#946;,&#8230; are stoichiometric
+coefficients, A, B, C, D, &#8230; are sizes of tile faces, a,b,c,d, &#8230; are
+numbers of the faces of a given size in the tile.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_topol_repres_tiling_tiles">_topol_repres_tiling.tiles</h3>
+<div class="paragraph"><p>Number of independent tiles in the natural tiling.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_topol_repres_tiling_vertices">_topol_repres_tiling.vertices</h3>
+<div class="paragraph"><p>Number of independent tile vertices in the natural tiling.</p></div>
+</div>
+</div>
+</div>
+</div>
+<div id="footnotes"><hr /></div>
+<div id="footer">
+<div id="footer-text">
+Last updated
+ 2018-02-05 15:15:08 AEDT
+</div>
+</div>
+</body>
+</html>
