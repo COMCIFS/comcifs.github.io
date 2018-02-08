@@ -41,12 +41,16 @@ all situations.
 General idea
 ============
 
-First a definition:
+First some definitions:
 
+**key**
+   the set of datanames whose values together define a unique
+   row
+   
 **projection**
-   choosing a single value for a key data name, and then
-   selecting only those rows of categories that correspond to that
-   particular value, ignoring any categories for which that data name
+   choosing a single value for each key data name, and then
+   selecting only those rows of categories that correspond to those
+   particular values, ignoring any categories for which that data name
    is irrelevant.
 
 Any data collection can be split by projecting over the individual
@@ -246,6 +250,14 @@ Syd Hall in creating DDLm Ref-loops, which were projections of specified
 Set categories into save frames. The current proposal removes the
 syntactical element, exposes the behaviour of the keys, and adopts a
 global relational view of the underlying semantics.
+
+Note that ``_audit.dataset_id`` is a grouping mechanism. The
+particular value
+taken by this data name is only relevant if the dataset is referred to
+externally to that dataset. Therefore, if a data format allows data blocks
+to be grouped in some other way (e.g. files in a directory, nodes in a
+hierarchy) there is no need to explicitly assign a value to this dataname
+during data block creation.
 
 Example
 =======
