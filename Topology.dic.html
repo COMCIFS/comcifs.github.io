@@ -735,7 +735,7 @@ asciidoc.install(2);
 <body class="article">
 <div id="header">
 <h1>TOPOLOGY_CIF</h1>
-<span id="revdate">2018-02-06</span>
+<span id="revdate">2018-02-23</span>
 </div>
 <div id="content">
 <div id="preamble">
@@ -743,7 +743,7 @@ asciidoc.install(2);
 <div class="paragraph"><p>The Topology CIF dictionary provides datanames for describing crystal structure
 topology.  This is a DRAFT version and datanames in this dictionary should not
 be used until approval by COMCIFS.</p></div>
-<div class="paragraph"><p>Generated from /home/jrh/COMCIFS/Topology/TopoCif/Topology.dic, version 0.1</p></div>
+<div class="paragraph"><p>Generated from Topology.dic, version 0.3</p></div>
 <div class="paragraph"><p>Categories that may have more than one row are called loop categories.
 Datanames making up the keys for these categories have a dot suffix.</p></div>
 <div id="toc">
@@ -766,6 +766,11 @@ between atoms and structural groups and the
 related structural properties as calculated from
 the ATOM, CELL and SYMMETRY data.</p></div>
 <div class="sect2">
+<h3 id="_topol_repres_occurrence_total">_topol.repres_occurrence_total</h3>
+<div class="paragraph"><p>The total number of occurrences in literature and databases of the
+underlying net topology at the time the data file was prepared.</p></div>
+</div>
+<div class="sect2">
 <h3 id="_topol_special_details">_topol.special_details</h3>
 <div class="paragraph"><p>The description of topological information not covered by the
 existing data names in the topology categories.</p></div>
@@ -773,73 +778,71 @@ existing data names in the topology categories.</p></div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="topol_bond">TOPOL_BOND</h2>
+<h2 id="topol_link">TOPOL_LINK</h2>
 <div class="sectionbody">
-<div class="paragraph"><p>The TOPOL_BOND category describes the crystal structure
-connectivity and encode the weighted colored labeled quotient
+<div class="paragraph"><p>The TOPOL_LINK category describes the crystal structure
+connectivity and encodes the weighted colored labeled quotient
 graph, from which the whole periodic net describing the
 overall topology of the crystal structure can be restored.
-Compared to the geometrical information of the GEOM_BOND
-and GEOM_CONTACT categories, the TOPOL_BOND tags are intended
-to be read by software that works with periodic nets.</p></div>
+The connections described in TOPOL_LINK may correspond to
+any vectors in the structure, not just bonds or contacts. The
+nodes that are linked are listed in TOPOL_REPRES_NODE.</p></div>
 <div class="sect2">
-<h3 id="_topol_bond_atom_site_label_1">_topol_bond.atom_site_label_1</h3>
-<div class="paragraph"><p>The labels of two atom sites that form a bond. These must match
-labels specified as <a href="#_atom_site_label"><code>_atom_site_label</code></a> in the atom list.</p></div>
+<h3 id="_topol_link_node_label_1">_topol_link.node_label_1</h3>
+<div class="paragraph"><p>The labels of two nodes that form a link. These must match
+nodes specified in topol_repres_node</p></div>
 </div>
 <div class="sect2">
-<h3 id="_topol_bond_atom_site_label_2">_topol_bond.atom_site_label_2</h3>
-<div class="paragraph"><p>The labels of two atom sites that form a bond. These must match
-labels specified as <a href="#_atom_site_label"><code>_atom_site_label</code></a> in the atom list.</p></div>
+<h3 id="_topol_link_node_label_2">_topol_link.node_label_2</h3>
+<div class="paragraph"><p>The labels of two nodes that form a link. These must match
+nodes specified in topol_repres_node</p></div>
 </div>
 <div class="sect2">
-<h3 id="_topol_bond_distance">_topol_bond.distance</h3>
-<div class="paragraph"><p>The bond distance in angstroms.</p></div>
+<h3 id="_topol_link_distance">_topol_link.distance</h3>
+<div class="paragraph"><p>The link length in angstroms.</p></div>
 </div>
 <div class="sect2">
-<h3 id="_topol_bond_id">_topol_bond.id</h3>
-<div class="paragraph"><p>The identifier of the bond.</p></div>
+<h3 id="_topol_link_id">_topol_link.id&#8226;</h3>
+<div class="paragraph"><p>The identifier of the link.</p></div>
 </div>
 <div class="sect2">
-<h3 id="_topol_bond_multiplicity">_topol_bond.multiplicity</h3>
-<div class="paragraph"><p>The number of the bonds in the unit cell.</p></div>
+<h3 id="_topol_link_multiplicity">_topol_link.multiplicity</h3>
+<div class="paragraph"><p>The number of these links in the unit cell.</p></div>
 </div>
 <div class="sect2">
-<h3 id="_topol_bond_site_symmetry_1">_topol_bond.site_symmetry_1</h3>
-<div class="paragraph"><p>The symmetry code of each atom site as the symmetry-equivalent
+<h3 id="_topol_link_site_symmetry_1">_topol_link.site_symmetry_1</h3>
+<div class="paragraph"><p>The symmetry code of each node as the symmetry-equivalent
 position number n and the cell translation number xyz. These
 numbers are combined to form the code n_x_y_z. The character
 string n_x_y_z is composed as follows: n refers to the symmetry
-operation that is applied to the coordinates stored in
-<a href="#_atom_site_fract_x"><code>_atom_site_fract_x</code></a>, <a href="#_atom_site_fract_y"><code>_atom_site_fract_y</code></a> and <a href="#_atom_site_fract_z_"><code>_atom_site_fract_z.</code></a> It
-must match a number given in <a href="#_space_group_symop_id_"><code>_space_group_symop_id.</code></a> x, y and z
+operation that is applied to the coordinates of the node. It
+must match a number given in <a href="#_space_group_symop_id_"><code>_space_group.symop_id.</code></a> x, y and z
 are the translations that are subsequently applied to the
-symmetry-transformed coordinates to generate the atom used in
-calculating the bond. x, y and z can be any integer values.</p></div>
+symmetry-transformed coordinates to generate the node used in
+calculating the link. x, y and z can be any integer values.</p></div>
 </div>
 <div class="sect2">
-<h3 id="_topol_bond_site_symmetry_2">_topol_bond.site_symmetry_2</h3>
-<div class="paragraph"><p>The symmetry code of each atom site as the symmetry-equivalent
+<h3 id="_topol_link_site_symmetry_2">_topol_link.site_symmetry_2</h3>
+<div class="paragraph"><p>The symmetry code of each node as the symmetry-equivalent
 position number n and the cell translation number xyz. These
 numbers are combined to form the code n_x_y_z. The character
 string n_x_y_z is composed as follows: n refers to the symmetry
-operation that is applied to the coordinates stored in
-<a href="#_atom_site_fract_x"><code>_atom_site_fract_x</code></a>, <a href="#_atom_site_fract_y"><code>_atom_site_fract_y</code></a> and <a href="#_atom_site_fract_z_"><code>_atom_site_fract_z.</code></a> It
+operation that is applied to the coordinates of the node. It
 must match a number given in <a href="#_space_group_symop_id_"><code>_space_group_symop_id.</code></a> x, y and z
 are the translations that are subsequently applied to the
-symmetry-transformed coordinates to generate the atom used in
-calculating the bond. x, y and z can be any integer values.</p></div>
+symmetry-transformed coordinates to generate the node used in
+calculating the link. x, y and z can be any integer values.</p></div>
 </div>
 <div class="sect2">
-<h3 id="_topol_bond_type">_topol_bond.type</h3>
+<h3 id="_topol_link_type">_topol_link.type</h3>
 <div class="paragraph"><p>The chemical bond type associated with the connection between the
-two sites. The data value must be one of the following:</p></div>
+two sites.</p></div>
 <div class="sidebarblock">
 <div class="content">
 <div class="title">Possible values:</div>
 <div class="dlist"><dl>
 <dt class="hdlist1">
-<code>sing</code>
+<code>sg</code>
 </dt>
 <dd>
 <p>
@@ -847,7 +850,7 @@ single bond
 </p>
 </dd>
 <dt class="hdlist1">
-<code>doub</code>
+<code>db</code>
 </dt>
 <dd>
 <p>
@@ -855,7 +858,7 @@ double bond
 </p>
 </dd>
 <dt class="hdlist1">
-<code>trip</code>
+<code>tr</code>
 </dt>
 <dd>
 <p>
@@ -863,7 +866,7 @@ triple bond
 </p>
 </dd>
 <dt class="hdlist1">
-<code>quad</code>
+<code>qd</code>
 </dt>
 <dd>
 <p>
@@ -871,7 +874,7 @@ quadruple bond
 </p>
 </dd>
 <dt class="hdlist1">
-<code>arom</code>
+<code>ar</code>
 </dt>
 <dd>
 <p>
@@ -879,7 +882,7 @@ aromatic bond
 </p>
 </dd>
 <dt class="hdlist1">
-<code>delo</code>
+<code>dl</code>
 </dt>
 <dd>
 <p>
@@ -887,7 +890,7 @@ delocalized double bond
 </p>
 </dd>
 <dt class="hdlist1">
-<code>val</code>
+<code>v</code>
 </dt>
 <dd>
 <p>
@@ -903,7 +906,7 @@ pi bond
 </p>
 </dd>
 <dt class="hdlist1">
-<code>hbnd</code>
+<code>hb</code>
 </dt>
 <dd>
 <p>
@@ -911,7 +914,7 @@ hydrogen bond
 </p>
 </dd>
 <dt class="hdlist1">
-<code>spec</code>
+<code>s</code>
 </dt>
 <dd>
 <p>
@@ -919,7 +922,7 @@ specific bond
 </p>
 </dd>
 <dt class="hdlist1">
-<code>halg</code>
+<code>hg</code>
 </dt>
 <dd>
 <p>
@@ -927,7 +930,7 @@ halogen bond
 </p>
 </dd>
 <dt class="hdlist1">
-<code>vdw</code>
+<code>vw</code>
 </dt>
 <dd>
 <p>
@@ -935,7 +938,7 @@ van der Waals contact
 </p>
 </dd>
 <dt class="hdlist1">
-<code>nobd</code>
+<code>no</code>
 </dt>
 <dd>
 <p>
@@ -943,7 +946,7 @@ no bond
 </p>
 </dd>
 <dt class="hdlist1">
-<code>any</code>
+<code>ab</code>
 </dt>
 <dd>
 <p>
@@ -954,11 +957,12 @@ any kind of bond (unspecified)
 </div></div>
 </div>
 <div class="sect2">
-<h3 id="_topol_bond_voronoi_solidangle">_topol_bond.voronoi_solidangle</h3>
-<div class="paragraph"><p>The solid angle of the interatomic contact, which is the part of the
-sphere of unit radius cut by the pyramid with the basal face of the
-Voronoi polyhedron.  The face used is that corresponding to the
-interatomic contact.</p></div>
+<h3 id="_topol_link_voronoi_solidangle">_topol_link.voronoi_solidangle</h3>
+<div class="paragraph"><p>The solid angle fraction of the interatomic contact A-X, which is
+the percentage of the sphere of unit radius cut by the pyramid with the
+basal face of the Voronoi polyhedron of A or X, the two atoms defining
+the contact. The total solid angle (the whole sphere) is equal to 100.
+The face used is that corresponding to the A-X interatomic contact.</p></div>
 </div>
 </div>
 </div>
@@ -978,7 +982,8 @@ own quotient graph: g = 1 + e - v, where e and v are the number of
 edges and vertices in the quotient graph.  The quotient graph is a finite
 graph that contains all of the information of the periodic net: the vertices
 of the graph are the vertices of a translational repeat unit and the edges
-are all the edges of the repeat unit.</p></div>
+are all the edges of the repeat unit. See O. Delgado_Friedrichs, M. O&#8217;Keeffe
+J. Sol. State Chem. 178 (2005) 2480-2485</p></div>
 </div>
 <div class="sect2">
 <h3 id="_topol_repres_overall_topology">_topol_repres.overall_topology</h3>
@@ -1009,7 +1014,8 @@ symbols NDn are interpreted as follows: N is a sequence of degrees
 C (chain), L (layer) or T (three-periodic) designating the dimensionality
 of the net; and n enumerates non-isomorphic nets with a given ND sequence.
 For finite (molecular) graphs the symbols NMK-n are used, where k is the
-number of vertices (atoms) in the graph.</p></div>
+number of vertices (atoms) in the graph. See Alexandrov, E.V., Blatov, V.A.,
+Kochetkov, A.V. &amp; Proserpio, D.M. (2011) CrystEngComm, 13, 3947-3958.</p></div>
 </div>
 <div class="sect2">
 <h3 id="_topol_repres_period">_topol_repres.period</h3>
@@ -1059,9 +1065,8 @@ The formula is written in accordance with the rules of  the
 </div>
 <div class="sect2">
 <h3 id="_topol_repres_edge_id">_topol_repres_edge.id&#8226;</h3>
-<div class="paragraph"><p>The label of the edge, which corresponds to a particular  node of
-the crystal structure representation. These must  match labels
-specified as <a href="#_topol_bond_id"><code>_topol_bond.id</code></a> in the bond list.</p></div>
+<div class="paragraph"><p>The label of the edge. These must  match labels
+specified as <a href="#_topol_link_id"><code>_topol_link.id</code></a> in the topol_link list.</p></div>
 </div>
 </div>
 </div>
@@ -1164,20 +1169,8 @@ follows:
 3         <em>3-periodic (framework)</em></p></div>
 </div>
 <div class="sect2">
-<h3 id="_topol_repres_entangl_topology_ERN">_topol_repres_entangl.topology_ERN</h3>
-<div class="paragraph"><p>Topology of the entanglement described as an extended ring  net.
-The name of the extended ring net is specified in one  of the
-nomenclatures of the periodic nets.</p></div>
-</div>
-<div class="sect2">
-<h3 id="_topol_repres_entangl_topology_HRN">_topol_repres_entangl.topology_HRN</h3>
-<div class="paragraph"><p>Topology of the entanglement described as a Hopf ring net.  The
-name of the Hopf ring net is specified in one of  the
-nomenclatures of the periodic nets.</p></div>
-</div>
-<div class="sect2">
 <h3 id="_topol_repres_entangl_type">_topol_repres_entangl.type</h3>
-<div class="paragraph"><p>The type of the entanglement as described in Properpio, D. M.
+<div class="paragraph"><p>The type of the entanglement as described in Proserpio, D. M.
 (2010) Nat. Chem. 2, 435-436 and Carlucci L., Ciani G.,
 Proserpio D. M., Mitina T. G., Blatov V. A. (2014) Chem.
 Rev. 114, 7557-7580</p></div>
@@ -1263,10 +1256,143 @@ no special type is assigned
 </div>
 </div>
 <div class="sect1">
+<h2 id="topol_repres_entangl_ERN">TOPOL_REPRES_ENTANGL_ERN</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>Topology of the entanglement described as an extended ring  net (ERN).
+The name of the extended ring net is specified in one or more of the
+standard nomenclatures.</p></div>
+<div class="sect2">
+<h3 id="_topol_repres_entangl_ERN_name">_topol_repres_entangl_ERN.name</h3>
+<div class="paragraph"><p>The symbol or name of the extended ring net in the specified nomenclature.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_topol_repres_entangl_ERN_nomenclature">_topol_repres_entangl_ERN.nomenclature&#8226;</h3>
+<div class="paragraph"><p>The nomenclature used to describe the extended ring net.  See the TOPOL_REPRES
+category for detailed information on the source for the nomenclatures.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Possible values:</div>
+<div class="dlist"><dl>
+<dt class="hdlist1">
+<code>TOPOS</code>
+</dt>
+<dd>
+<p>
+The TOPOS nomenclature
+</p>
+</dd>
+<dt class="hdlist1">
+<code>SP</code>
+</dt>
+<dd>
+<p>
+Sphere packing
+</p>
+</dd>
+<dt class="hdlist1">
+<code>RCSR</code>
+</dt>
+<dd>
+<p>
+RCSR nomenclature
+</p>
+</dd>
+<dt class="hdlist1">
+<code>Epinet</code>
+</dt>
+<dd>
+<p>
+Epinet database identifier
+</p>
+</dd>
+<dt class="hdlist1">
+<code>Arbitrary</code>
+</dt>
+<dd>
+<p>
+Non-standard identifier
+</p>
+</dd>
+</dl></div>
+</div></div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="topol_repres_entangl_HRN">TOPOL_REPRES_ENTANGL_HRN</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>Topology of the entanglement described as a Hopf ring  net (HRN).
+The name of the extended ring net is specified in one or more of the
+standard nomenclatures.</p></div>
+<div class="sect2">
+<h3 id="_topol_repres_entangl_HRN_name">_topol_repres_entangl_HRN.name</h3>
+<div class="paragraph"><p>The symbol or name of the Hopf ring net in the specified nomenclature.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_topol_repres_entangl_HRN_nomenclature">_topol_repres_entangl_HRN.nomenclature&#8226;</h3>
+<div class="paragraph"><p>The nomenclature used to describe the Hopf ring net.  See the TOPOL_REPRES
+category for detailed information on the source for the nomenclatures.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Possible values:</div>
+<div class="dlist"><dl>
+<dt class="hdlist1">
+<code>TOPOS</code>
+</dt>
+<dd>
+<p>
+The TOPOS nomenclature
+</p>
+</dd>
+<dt class="hdlist1">
+<code>SP</code>
+</dt>
+<dd>
+<p>
+Sphere packing
+</p>
+</dd>
+<dt class="hdlist1">
+<code>RCSR</code>
+</dt>
+<dd>
+<p>
+RCSR nomenclature
+</p>
+</dd>
+<dt class="hdlist1">
+<code>Epinet</code>
+</dt>
+<dd>
+<p>
+Epinet database identifier
+</p>
+</dd>
+<dt class="hdlist1">
+<code>Arbitrary</code>
+</dt>
+<dd>
+<p>
+Non-standard identifier
+</p>
+</dd>
+</dl></div>
+</div></div>
+</div>
+</div>
+</div>
+<div class="sect1">
 <h2 id="topol_repres_node">TOPOL_REPRES_NODE</h2>
 <div class="sectionbody">
-<div class="paragraph"><p>The TOPOL_REPRES_NODE cateogry describes the chemical composition, structure
-and topological properties of the nodes of the underlying net.</p></div>
+<div class="paragraph"><p>The TOPOL_REPRES_NODE category describes the chemical composition, structure
+and topological properties of the nodes of the underlying net.
+See Blatov V.A., O&#8217;Keeffe M., Proserpio D. M. CrystEngComm, 2010, 12, 44-48.
+Nodes may be specified by reference to atom sites, or by explicitly giving their
+coordinates.</p></div>
+<div class="sect2">
+<h3 id="_topol_repres_node_atom_label">_topol_repres_node.atom_label</h3>
+<div class="paragraph"><p>The atom label corresponding to this node. Not all nodes have to coincide with atom sites.</p></div>
+</div>
 <div class="sect2">
 <h3 id="_topol_repres_node_chemical_formula_iupac">_topol_repres_node.chemical_formula_iupac</h3>
 <div class="paragraph"><p>Formula of the residue or ion, which corresponds to the node
@@ -1288,32 +1414,69 @@ The formula is written in accordance with the rules of  the
 <h3 id="_topol_repres_node_CS">_topol_repres_node.CS</h3>
 <div class="paragraph"><p>The coordination sequence is a sequence of numbers counting the
 atoms in the 1st, 2nd, 3rd etc. coordination shells of any given
-atom in the net. In other words, the kth entry in the list is the
+node in the net. In other words, the kth entry in the list is the
 number of vertices linked to the node by a path of exactly k
-steps.</p></div>
+steps. It is usually listed up to k=10</p></div>
 </div>
 <div class="sect2">
 <h3 id="_topol_repres_node_ES">_topol_repres_node.ES</h3>
-<div class="paragraph"><p>The extended point symbol of the node lists all shortest circuits for each
-angle for each non-equivalent atom.</p></div>
+<div class="paragraph"><p>The extended point symbol of the node lists all shortest circuits
+for each angle for each non-equivalent atom. A(b).B(c)&#8230; there
+are b A-rings and c B-rings for all the N(N-1) circuits per node.
+It is sorted so shortest rings came first For 4-coordinated
+nodess only, the  angles are grouped in opposite pairs; ab,cd and
+ac,bd and ad,bc (written in lexicographic order smallest numbers
+first).</p></div>
 </div>
 <div class="sect2">
-<h3 id="_topol_repres_node_label">_topol_repres_node.label</h3>
-<div class="paragraph"><p>The label of the node site, which corresponds to a particular
-node of the crystal structure representation. These must match
-labels specified as <a href="#_atom_site_label"><code>_atom_site_label</code></a> in the atom list.</p></div>
+<h3 id="_topol_repres_node_fract_x">_topol_repres_node.fract_x</h3>
+<div class="paragraph"><p>Atom site coordinates as fractions of the cell length values.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_topol_repres_node_fract_y">_topol_repres_node.fract_y</h3>
+<div class="paragraph"><p>Atom site coordinates as fractions of the cell length values.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_topol_repres_node_fract_z">_topol_repres_node.fract_z</h3>
+<div class="paragraph"><p>Atom site coordinates as fractions of the cell length values.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_topol_repres_node_label">_topol_repres_node.label&#8226;</h3>
+<div class="paragraph"><p>The label of the node, which corresponds to a particular
+node of the crystal structure representation.</p></div>
 </div>
 <div class="sect2">
 <h3 id="_topol_repres_node_point_symbol">_topol_repres_node.point_symbol</h3>
 <div class="paragraph"><p>The (short) point symbol of the node. This lists the number and size of
 the shortest closed chains of connected nodes (circuits) starting from
-any non-equivalent node in the net.</p></div>
+any non-equivalent node in the net. For a N-coordinated node there are
+N(N-1) circuits</p></div>
+</div>
+<div class="sect2">
+<h3 id="_topol_repres_node_symmetry_multiplicity">_topol_repres_node.symmetry_multiplicity</h3>
+<div class="paragraph"><p>The number of different sites that are generated by the
+application of the space-group symmetry to the coordinates
+given for this site. It is equal to the multiplicity given
+for this Wyckoff site in International Tables for Cryst.
+Vol. A (2002).</p></div>
 </div>
 <div class="sect2">
 <h3 id="_topol_repres_node_VS">_topol_repres_node.VS</h3>
-<div class="paragraph"><p>The vertex symbol of the node. A vertex symbol provides similar information
-to the extended point symbol, but only for rings, which are circuits that
-contain no shortcuts, that is, may not be built from smaller circuits.</p></div>
+<div class="paragraph"><p>The vertex symbol of a node provides similar information to the
+extended point symbol, but only for rings, which are circuits
+that contain no shortcuts, that is, are not the sum of  two
+smaller circuits. There may be circuits that cannot be rings. If
+there are no rings meeting at a particular angle of the node, the
+symbol "*" is used instead of the A^a symbol. It is sorted so
+shortest rings came first For 4-coordinated nodess only, the
+angles are grouped in opposite pairs; ab,cd and ac,bd and ad,bc
+(written in lexicographic order smallest numbers first). In the
+ordering the symbol "\*" is equivalent to zero.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_topol_repres_node_Wyckoff_symbol">_topol_repres_node.Wyckoff_symbol</h3>
+<div class="paragraph"><p>The Wyckoff symbol (letter) as listed in the space-group section
+of International Tables for Crystallography, Vol. A (1987).</p></div>
 </div>
 </div>
 </div>
@@ -1334,8 +1497,8 @@ underlying net topology.</p></div>
 underlying net topology  was characterized.</p></div>
 </div>
 <div class="sect2">
-<h3 id="_topol_repres_occurrence_total">_topol_repres_occurrence.total</h3>
-<div class="paragraph"><p>The total number of occurrences of the underlying  net topology.</p></div>
+<h3 id="_topol_repres_occurrence_id">_topol_repres_occurrence.id&#8226;</h3>
+<div class="paragraph"><p>A unique identifier for the literature or database reference</p></div>
 </div>
 </div>
 </div>
@@ -1352,6 +1515,8 @@ single largest face (face with the largest number of vertices)
 as such a face will be the some of the other smaller faces.</p></div>
 <div class="paragraph"><p>The tile signature contains the sizes of the tile faces and
 the number of faces of a given size in the tile.</p></div>
+<div class="paragraph"><p>See: Blatov V. A., Delgado-Friedrichs, O., O&#8217;Keeffe M.,
+Proserpio D. M.   Acta Cryst. 2007, A63, 418-425</p></div>
 <div class="sect2">
 <h3 id="_topol_repres_tiling_Dsize">_topol_repres_tiling.Dsize</h3>
 <div class="paragraph"><p>The number of distinct (not symmetry-related) chambers  in the
@@ -1375,7 +1540,9 @@ to the net of the dual of the natural tiling.</p></div>
 <div class="paragraph"><p>The tiling signature, written in the form &#945;[A<sup>a</sup> . B<sup>b</sup> &#8230;]<code>&#946;[C<sup>c</sup> . D<sup>d</sup> &#8230;]</code>&#8230;,
 where square brackets envelop tile symbols, &#945;,&#946;,&#8230; are stoichiometric
 coefficients, A, B, C, D, &#8230; are sizes of tile faces, a,b,c,d, &#8230; are
-numbers of the faces of a given size in the tile.</p></div>
+numbers of the faces of a given size in the tile.
+The signature is written in a  lexicographic order, smallest numbers first:
+5[6<sup>4</sup>]+[6<sup>3</sup>] = 56463 better than [6<sup>3</sup>]+5[6<sup>4</sup>] = 63564</p></div>
 </div>
 <div class="sect2">
 <h3 id="_topol_repres_tiling_tiles">_topol_repres_tiling.tiles</h3>
@@ -1387,12 +1554,53 @@ numbers of the faces of a given size in the tile.</p></div>
 </div>
 </div>
 </div>
+<div class="sect1">
+<h2 id="topol_repres_tiling_faces">TOPOL_REPRES_TILING_FACES</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>The TOPOL_REPRES_TILING_FACES category tabulates the faces
+belonging to each tile in the tiling.  Together with the
+TOPOL_REPRES_TILING_TILES category it tabulates the information
+contained in <a href="#_topol_repres_tiling_signature_"><code>_topol_repres_tiling.signature.</code></a> See the
+TOPOL_REPRES_TILING category for further information.</p></div>
+<div class="sect2">
+<h3 id="_topol_repres_tiling_faces_count">_topol_repres_tiling_faces.count</h3>
+<div class="paragraph"><p>The number of faces of this size in the tile</p></div>
+</div>
+<div class="sect2">
+<h3 id="_topol_repres_tiling_faces_size">_topol_repres_tiling_faces.size&#8226;</h3>
+<div class="paragraph"><p>The size of the tile face.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_topol_repres_tiling_faces_tile_id">_topol_repres_tiling_faces.tile_id&#8226;</h3>
+<div class="paragraph"><p>The tile to which this face belongs. It must be one of the values provided
+in <a href="#_topol_repres_tiling_tile_id"><code>_topol_repres_tiling_tile.id</code></a></p></div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="topol_repres_tiling_tile">TOPOL_REPRES_TILING_TILE</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>The TOPOL_REPRES_TILING_TILE category provides information on
+each of the tiles in the tiling. Together with the
+TOPOL_REPRES_TILING_FACES category it tabulates the information
+contained in <a href="#_topol_repres_tiling_signature_"><code>_topol_repres_tiling.signature.</code></a> See the
+TOPOL_REPRES_TILING category for further information.</p></div>
+<div class="sect2">
+<h3 id="_topol_repres_tiling_tile_count">_topol_repres_tiling_tile.count</h3>
+<div class="paragraph"><p>The number of this kind of tile in the tiling.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_topol_repres_tiling_tile_id">_topol_repres_tiling_tile.id&#8226;</h3>
+<div class="paragraph"><p>An arbitrary, unique identifier for this tile type.</p></div>
+</div>
+</div>
+</div>
 </div>
 <div id="footnotes"><hr /></div>
 <div id="footer">
 <div id="footer-text">
 Last updated
- 2018-02-05 15:18:49 AEDT
+ 2018-02-23 16:02:48 AEDT
 </div>
 </div>
 </body>
