@@ -765,6 +765,143 @@ Datanames making up the keys for these categories have a dot suffix.</p></div>
 between atoms and structural groups and the
 related structural properties as calculated from
 the ATOM, CELL and SYMMETRY data.</p></div>
+<div class="paragraph"><div class="title">Example:Connectivity of the diamond crystal structure.</div><p>All atoms coincide with the nodes and all bonds coincide
+with the edges, so the atomic network coincides with the
+underlying net.</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><code>loop_
+_symmetry_equiv_pos_site_id
+_symmetry_equiv_pos_as_xyz
+1 x,y,z
+2 1/4-x,1/4-y,z
+13 -y,-x,-z
+192 3/4-z,1/2+y,1/4-x
+
+loop_
+_atom_site_label
+_atom_site_type_symbol
+_atom_site_symmetry_multiplicity
+_atom_site_fract_x
+_atom_site_fract_y
+_atom_site_fract_z
+_atom_site_occupancy
+C1 C 8 0.12500 0.12500 0.12500 1.0000
+
+loop_
+_topol_repres_node.label
+_topol_repres_node.atom_label
+C1 C1
+
+loop_
+_topol_link.node_label_1
+_topol_link.node_label_2
+_topol_link.site_symmetry_1
+_topol_link.site_symmetry_2
+_topol_link.distance
+_topol_link.voronoi_solidangle
+_topol_link.type
+_topol_link.multiplicity
+C1 C1 1_0_0_0 13_0_0_0 1.5446 22.04 v 16
+
+_topol_repres.overall_topology_RCSR dia</code></pre>
+</div></div>
+<div class="paragraph"><div class="title">Example:Connectivity of an underlying net of the calcite</div><p>(CaCO3) crystal structure. The nodes of the underlying
+net correspond to Ca atoms and carbonate (CO3) groups.
+The underlying net has the NaCl (pcu-b in the RCSR
+nomenclature) topology.</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><code>loop_
+_symmetry_equiv_pos_site_id
+_symmetry_equiv_pos_as_xyz
+1 x,y,z
+2 -y,x-y,z
+20 1/3+x-y,2/3-y,1/6-z
+36 1/3-y,2/3-x,1/6+z
+
+loop_
+_atom_site_label
+_atom_site_type_symbol
+_atom_site_symmetry_multiplicity
+_atom_site_fract_x
+_atom_site_fract_y
+_atom_site_fract_z
+_atom_site_occupancy
+C1 C 6 0.00000 0.00000 0.25000 1.0000
+O1 O 18 0.25930 0.00000 0.25000 1.0000
+Ca1 Ca 6 0.00000 0.00000 0.00000 1.0000
+
+loop_
+_topol_repres_node.label
+_topol_repres_node.chemical_formula_sum
+_topol_repres_node.fract_x
+_topol_repres_node.fract_y
+_topol_repres_node.fract_z
+ZA1 Ca 0.00000 0.00000 0.25000
+ZB1 CO3 0.00000 0.00000 0.00000
+
+loop_
+_topol_link.node_label_1
+_topol_link.node_label_2
+_topol_link.site_symmetry_1
+_topol_link.site_symmetry_2
+_topol_link.distance
+_topol_link.type
+_topol_link.multiplicity
+ZA1 ZB1 1_0_0_0 20_-1_-1_0 3.2122 v 36
+
+_topol_repres.overall_topology_RCSR pcu-b</code></pre>
+</div></div>
+<div class="paragraph"><div class="title">Example:Connectivity of an underlying net of the cuprite (Cu2O)</div><p>crystal structure. Oxygen atoms coincide with the nodes,
+while copper atoms represent the edges. There are two
+interpenetrating networks of the diamond topology.</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><code>loop_
+_symmetry_equiv_pos_site_id
+_symmetry_equiv_pos_as_xyz
+1 x,y,z
+2 1/2-x,1/2-y,z
+13 -y,-x,-z
+48 1/2-z,y,1/2-x
+
+loop_
+_atom_site_label
+_atom_site_type_symbol
+_atom_site_symmetry_multiplicity
+_atom_site_fract_x
+_atom_site_fract_y
+_atom_site_fract_z
+_atom_site_occupancy
+O1 O 2 0.25000 0.25000 0.25000 1.0000
+Cu1 Cu 4 0.00000 0.00000 0.00000 1.0000
+
+loop_
+_topol_repres_node.label
+_topol_repres_node.atom_label
+Node1 O1
+
+loop_
+_topol_link.id
+_topol_link.node_label_1
+_topol_link.node_label_2
+_topol_link.site_symmetry_1
+_topol_link.site_symmetry_2
+_topol_link.type
+_topol_link.multiplicity
+1 Node1 Node1 1_0_0_0 13_0_0_0 v 4
+
+loop_
+_topol_repres_edge.id
+_topol_repres_edge.chemical_formula_sum
+1 Cu1
+
+_topol_repres.overall_topology_RCSR dia
+_topol_repres_entangl.type interp
+_topol_repres_entangl.interp_deg 2
+_topol_repres_entangl.interp_class Ia</code></pre>
+</div></div>
 <div class="sect2">
 <h3 id="_topol_repres_occurrence_total">_topol.repres_occurrence_total</h3>
 <div class="paragraph"><p>The total number of occurrences in literature and databases of the
@@ -820,6 +957,11 @@ must match a number given in <a href="#_space_group_symop_id_"><code>_space_grou
 are the translations that are subsequently applied to the
 symmetry-transformed coordinates to generate the node used in
 calculating the link. x, y and z can be any integer values.</p></div>
+<div class="listingblock">
+<div class="title">Example:</div>
+<div class="content">
+<pre><code>21_1_1_0</code></pre>
+</div></div>
 </div>
 <div class="sect2">
 <h3 id="_topol_link_site_symmetry_2">_topol_link.site_symmetry_2</h3>
@@ -832,6 +974,11 @@ must match a number given in <a href="#_space_group_symop_id_"><code>_space_grou
 are the translations that are subsequently applied to the
 symmetry-transformed coordinates to generate the node used in
 calculating the link. x, y and z can be any integer values.</p></div>
+<div class="listingblock">
+<div class="title">Example:</div>
+<div class="content">
+<pre><code>21_1_1_0</code></pre>
+</div></div>
 </div>
 <div class="sect2">
 <h3 id="_topol_link_type">_topol_link.type</h3>
@@ -988,23 +1135,43 @@ J. Sol. State Chem. 178 (2005) 2480-2485</p></div>
 <div class="sect2">
 <h3 id="_topol_repres_overall_topology">_topol_repres.overall_topology</h3>
 <div class="paragraph"><p>The overall topology symbol in an arbitrary form.</p></div>
+<div class="listingblock">
+<div class="title">Example:</div>
+<div class="content">
+<pre><code>'face-centered cubic topology'</code></pre>
+</div></div>
 </div>
 <div class="sect2">
 <h3 id="_topol_repres_overall_topology_EPINET">_topol_repres.overall_topology_EPINET</h3>
 <div class="paragraph"><p>The identifier for the overall topology as listed
 in the EPINET database at <a href="http://epinet.anu.edu.au">http://epinet.anu.edu.au</a></p></div>
+<div class="listingblock">
+<div class="title">Example:</div>
+<div class="content">
+<pre><code>sqc6</code></pre>
+</div></div>
 </div>
 <div class="sect2">
 <h3 id="_topol_repres_overall_topology_RCSR">_topol_repres.overall_topology_RCSR</h3>
 <div class="paragraph"><p>The overall topology symbol according to the RCSR nomenclature described
 by O&#8217;Keeffe, M., Peskov, M.A., Ramsden S. J., Yaghi O.M. (2008) Acc. Chem.
 Res. 41, 1782-1789.</p></div>
+<div class="listingblock">
+<div class="title">Example:</div>
+<div class="content">
+<pre><code>dia</code></pre>
+</div></div>
 </div>
 <div class="sect2">
 <h3 id="_topol_repres_overall_topology_SP">_topol_repres.overall_topology_SP</h3>
 <div class="paragraph"><p>The overall topology symbol according to the nomenclature of
 Fischer for sphere packings described in Koch, E., Fischer, W.
 and Sowa, H. (2006) Acta Cryst. A62, 152-167.</p></div>
+<div class="listingblock">
+<div class="title">Example:</div>
+<div class="content">
+<pre><code>4/6/c1</code></pre>
+</div></div>
 </div>
 <div class="sect2">
 <h3 id="_topol_repres_overall_topology_TOPOS">_topol_repres.overall_topology_TOPOS</h3>
@@ -1016,6 +1183,11 @@ of the net; and n enumerates non-isomorphic nets with a given ND sequence.
 For finite (molecular) graphs the symbols NMK-n are used, where k is the
 number of vertices (atoms) in the graph. See Alexandrov, E.V., Blatov, V.A.,
 Kochetkov, A.V. &amp; Proserpio, D.M. (2011) CrystEngComm, 13, 3947-3958.</p></div>
+<div class="listingblock">
+<div class="title">Example:</div>
+<div class="content">
+<pre><code>'3,3,4T3'</code></pre>
+</div></div>
 </div>
 <div class="sect2">
 <h3 id="_topol_repres_period">_topol_repres.period</h3>
@@ -1038,6 +1210,16 @@ unit the value given is a weighted average over the vertices.</p></div>
 <div class="paragraph"><p>The total point symbol of the underlying net.  This value summarizes all the
 point symbols for the non-equivalent nodes with their stoichiometric
 coefficients.</p></div>
+<div class="listingblock">
+<div class="title">Example:Point symbol for diamond</div>
+<div class="content">
+<pre><code>'{6^6}'</code></pre>
+</div></div>
+<div class="listingblock">
+<div class="title">Example:3,6-coordinated underlying net of TiO2</div>
+<div class="content">
+<pre><code>'{4.6^2}_2{4^2.6^10.8^3}'</code></pre>
+</div></div>
 </div>
 </div>
 </div>
@@ -1417,6 +1599,11 @@ atoms in the 1st, 2nd, 3rd etc. coordination shells of any given
 node in the net. In other words, the kth entry in the list is the
 number of vertices linked to the node by a path of exactly k
 steps. It is usually listed up to k=10</p></div>
+<div class="listingblock">
+<div class="title">Example:The diamond coordination sequence</div>
+<div class="content">
+<pre><code>[4  12  24  42  64  92  124  162  204  252]</code></pre>
+</div></div>
 </div>
 <div class="sect2">
 <h3 id="_topol_repres_node_ES">_topol_repres_node.ES</h3>
@@ -1427,6 +1614,26 @@ It is sorted so shortest rings came first For 4-coordinated
 nodess only, the  angles are grouped in opposite pairs; ab,cd and
 ac,bd and ad,bc (written in lexicographic order smallest numbers
 first).</p></div>
+<div class="listingblock">
+<div class="title">Example:ES for a vertex in the diamond structure</div>
+<div class="content">
+<pre><code>6(2).6(2).6(2).6(2).6(2).6(2)</code></pre>
+</div></div>
+<div class="listingblock">
+<div class="title">Example:ES for one vertex of feldspar net</div>
+<div class="content">
+<pre><code>4.6(2).4.8(3).6(2).6(2)</code></pre>
+</div></div>
+<div class="listingblock">
+<div class="title">Example:ES for the vertex of qzd net</div>
+<div class="content">
+<pre><code>7(2).9(2).7(3).7(3).7(3).7(3)</code></pre>
+</div></div>
+<div class="listingblock">
+<div class="title">Example:ES for the vertex of 5-c sqp net</div>
+<div class="content">
+<pre><code>4.4.4.4.6(3).6(3).6(5).6(5).6(5).6(5)</code></pre>
+</div></div>
 </div>
 <div class="sect2">
 <h3 id="_topol_repres_node_fract_x">_topol_repres_node.fract_x</h3>
@@ -1451,6 +1658,26 @@ node of the crystal structure representation.</p></div>
 the shortest closed chains of connected nodes (circuits) starting from
 any non-equivalent node in the net. For a N-coordinated node there are
 N(N-1) circuits</p></div>
+<div class="listingblock">
+<div class="title">Example:Point symbol for a diamond vertex</div>
+<div class="content">
+<pre><code>6^6</code></pre>
+</div></div>
+<div class="listingblock">
+<div class="title">Example:Point symbol for a feldspar 4-coordinated vertex</div>
+<div class="content">
+<pre><code>4^2.6^3.8</code></pre>
+</div></div>
+<div class="listingblock">
+<div class="title">Example:Point symbol for the vertex of 4-c qzd net</div>
+<div class="content">
+<pre><code>7^5.9</code></pre>
+</div></div>
+<div class="listingblock">
+<div class="title">Example:Point symbol for the vertex of 5-c sqp net</div>
+<div class="content">
+<pre><code>4^4.6^6</code></pre>
+</div></div>
 </div>
 <div class="sect2">
 <h3 id="_topol_repres_node_symmetry_multiplicity">_topol_repres_node.symmetry_multiplicity</h3>
@@ -1472,6 +1699,26 @@ shortest rings came first For 4-coordinated nodess only, the
 angles are grouped in opposite pairs; ab,cd and ac,bd and ad,bc
 (written in lexicographic order smallest numbers first). In the
 ordering the symbol "\*" is equivalent to zero.</p></div>
+<div class="listingblock">
+<div class="title">Example:Vertex symbol for diamond</div>
+<div class="content">
+<pre><code>6(2).6(2).6(2).6(2).6(2).6(2)</code></pre>
+</div></div>
+<div class="listingblock">
+<div class="title">Example:VS for one vertex of feldspar net</div>
+<div class="content">
+<pre><code>4.6(2).4.8.6.6(2)</code></pre>
+</div></div>
+<div class="listingblock">
+<div class="title">Example:VS for the vertex of qzd net</div>
+<div class="content">
+<pre><code>7(2).*.7(3).7(3).7(3).7(3)</code></pre>
+</div></div>
+<div class="listingblock">
+<div class="title">Example:VS for the vertex of 5-c sqp net</div>
+<div class="content">
+<pre><code>4.4.4.4.6.6.6(5).6(5).6(5).6(5)</code></pre>
+</div></div>
 </div>
 <div class="sect2">
 <h3 id="_topol_repres_node_Wyckoff_symbol">_topol_repres_node.Wyckoff_symbol</h3>
@@ -1543,6 +1790,16 @@ coefficients, A, B, C, D, &#8230; are sizes of tile faces, a,b,c,d, &#8230; are
 numbers of the faces of a given size in the tile.
 The signature is written in a  lexicographic order, smallest numbers first:
 5[6<sup>4</sup>]+[6<sup>3</sup>] = 56463 better than [6<sup>3</sup>]+5[6<sup>4</sup>] = 63564</p></div>
+<div class="listingblock">
+<div class="title">Example:Natural tiling for diamond</div>
+<div class="content">
+<pre><code>'[6^4]'</code></pre>
+</div></div>
+<div class="listingblock">
+<div class="title">Example:Natural tiling for zeolite LTA</div>
+<div class="content">
+<pre><code>'3[4^6]+[4^6.6^8]+[4^12.6^8.8^6]'</code></pre>
+</div></div>
 </div>
 <div class="sect2">
 <h3 id="_topol_repres_tiling_tiles">_topol_repres_tiling.tiles</h3>
@@ -1562,6 +1819,27 @@ belonging to each tile in the tiling.  Together with the
 TOPOL_REPRES_TILING_TILES category it tabulates the information
 contained in <a href="#_topol_repres_tiling_signature_"><code>_topol_repres_tiling.signature.</code></a> See the
 TOPOL_REPRES_TILING category for further information.</p></div>
+<div class="listingblock">
+<div class="title">Example:Expanded description of 3[4<sup>6</sup>]<code>[4<sup>6</sup>.6<sup>8</sup>]</code>[4<sup>12</sup>.6<sup>8</sup>.8<sup>6</sup>] tiling</div>
+<div class="content">
+<pre><code>    loop_
+      _topol_repres_tiling_tile.id
+      _topol_repres_tiling_tile.count
+      a     3
+      b     1
+      c     1
+
+    loop_
+      _topol_repres_tiling_faces.tile_id
+      _topol_repres_tiling_faces.size
+      _topol_repres_tiling_faces.count
+      a    4   6
+      b    4   6
+      b    6   8
+      c    4   12
+      c    6   8
+      c    8   6</code></pre>
+</div></div>
 <div class="sect2">
 <h3 id="_topol_repres_tiling_faces_count">_topol_repres_tiling_faces.count</h3>
 <div class="paragraph"><p>The number of faces of this size in the tile</p></div>
@@ -1600,7 +1878,7 @@ TOPOL_REPRES_TILING category for further information.</p></div>
 <div id="footer">
 <div id="footer-text">
 Last updated
- 2018-02-23 16:02:48 AEDT
+ 2018-02-27 14:03:31 AEDT
 </div>
 </div>
 </body>
