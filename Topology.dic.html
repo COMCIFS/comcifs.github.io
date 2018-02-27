@@ -735,7 +735,7 @@ asciidoc.install(2);
 <body class="article">
 <div id="header">
 <h1>TOPOLOGY_CIF</h1>
-<span id="revdate">2018-02-23</span>
+<span id="revdate">2018-02-27</span>
 </div>
 <div id="content">
 <div id="preamble">
@@ -743,7 +743,7 @@ asciidoc.install(2);
 <div class="paragraph"><p>The Topology CIF dictionary provides datanames for describing crystal structure
 topology.  This is a DRAFT version and datanames in this dictionary should not
 be used until approval by COMCIFS.</p></div>
-<div class="paragraph"><p>Generated from Topology.dic, version 0.3</p></div>
+<div class="paragraph"><p>Generated from Topology.dic, version 0.4</p></div>
 <div class="paragraph"><p>Categories that may have more than one row are called loop categories.
 Datanames making up the keys for these categories have a dot suffix.</p></div>
 <div id="toc">
@@ -956,7 +956,9 @@ operation that is applied to the coordinates of the node. It
 must match a number given in <a href="#_space_group_symop_id_"><code>_space_group.symop_id.</code></a> x, y and z
 are the translations that are subsequently applied to the
 symmetry-transformed coordinates to generate the node used in
-calculating the link. x, y and z can be any integer values.</p></div>
+calculating the link. x, y and z can be any integer values.
+Note that this is a different convention to that used in the
+core dictionary.</p></div>
 <div class="listingblock">
 <div class="title">Example:</div>
 <div class="content">
@@ -973,7 +975,9 @@ operation that is applied to the coordinates of the node. It
 must match a number given in <a href="#_space_group_symop_id_"><code>_space_group_symop_id.</code></a> x, y and z
 are the translations that are subsequently applied to the
 symmetry-transformed coordinates to generate the node used in
-calculating the link. x, y and z can be any integer values.</p></div>
+calculating the link. x, y and z can be any integer values.
+Note that this is a different convention to that used in the
+core dictionary.</p></div>
 <div class="listingblock">
 <div class="title">Example:</div>
 <div class="content">
@@ -1181,8 +1185,9 @@ symbols NDn are interpreted as follows: N is a sequence of degrees
 C (chain), L (layer) or T (three-periodic) designating the dimensionality
 of the net; and n enumerates non-isomorphic nets with a given ND sequence.
 For finite (molecular) graphs the symbols NMK-n are used, where k is the
-number of vertices (atoms) in the graph. See Alexandrov, E.V., Blatov, V.A.,
-Kochetkov, A.V. &amp; Proserpio, D.M. (2011) CrystEngComm, 13, 3947-3958.</p></div>
+number of vertices (atoms) in the graph. See Aman, F., Asiri, A. M.,
+Siddiqui, W. A., Arshad, M. N., Ashraf, A., Zakharov, N. S., Blatov, V. A.
+(2014) CrystEngComm, 16, 1963-1970.</p></div>
 <div class="listingblock">
 <div class="title">Example:</div>
 <div class="content">
@@ -1878,7 +1883,7 @@ TOPOL_REPRES_TILING category for further information.</p></div>
 <div id="footer">
 <div id="footer-text">
 Last updated
- 2018-02-27 14:03:31 AEDT
+ 2018-02-27 15:56:33 AEDT
 </div>
 </div>
 </body>
