@@ -735,7 +735,7 @@ asciidoc.install(2);
 <body class="article">
 <div id="header">
 <h1>TOPOLOGY_CIF</h1>
-<span id="revdate">2018-02-27</span>
+<span id="revdate">2018-04-05</span>
 </div>
 <div id="content">
 <div id="preamble">
@@ -743,7 +743,7 @@ asciidoc.install(2);
 <div class="paragraph"><p>The Topology CIF dictionary provides datanames for describing crystal structure
 topology.  This is a DRAFT version and datanames in this dictionary should not
 be used until approval by COMCIFS.</p></div>
-<div class="paragraph"><p>Generated from Topology.dic, version 0.4</p></div>
+<div class="paragraph"><p>Generated from Topology.dic, version 0.5</p></div>
 <div class="paragraph"><p>Categories that may have more than one row are called loop categories.
 Datanames making up the keys for these categories have a dot suffix.</p></div>
 <div id="toc">
@@ -796,13 +796,15 @@ C1 C1
 loop_
 _topol_link.node_label_1
 _topol_link.node_label_2
-_topol_link.site_symmetry_1
-_topol_link.site_symmetry_2
+_topol_link.site_symmetry_symop_1
+_topol_link.site_symmetry_translation_1
+_topol_link.site_symmetry_symop_2
+_topol_link.site_symmetry_translation_2
 _topol_link.distance
 _topol_link.voronoi_solidangle
 _topol_link.type
 _topol_link.multiplicity
-C1 C1 1_0_0_0 13_0_0_0 1.5446 22.04 v 16
+C1 C1 1 [0 0 0] 13 [0 0 0] 1.5446 22.04 v 16
 
 _topol_repres.overall_topology_RCSR dia</code></pre>
 </div></div>
@@ -844,12 +846,14 @@ ZB1 CO3 0.00000 0.00000 0.00000
 loop_
 _topol_link.node_label_1
 _topol_link.node_label_2
-_topol_link.site_symmetry_1
-_topol_link.site_symmetry_2
+_topol_link.site_symmetry_symop_1
+_topol_link.site_symmetry_translation_1
+_topol_link.site_symmetry_symop_2
+_topol_link.site_symmetry_translation_2
 _topol_link.distance
 _topol_link.type
 _topol_link.multiplicity
-ZA1 ZB1 1_0_0_0 20_-1_-1_0 3.2122 v 36
+ZA1 ZB1 1 [0 0 0] 20 [-1 -1 0] 3.2122 v 36
 
 _topol_repres.overall_topology_RCSR pcu-b</code></pre>
 </div></div>
@@ -886,16 +890,18 @@ loop_
 _topol_link.id
 _topol_link.node_label_1
 _topol_link.node_label_2
-_topol_link.site_symmetry_1
-_topol_link.site_symmetry_2
+_topol_link.site_symmetry_symop_1
+_topol_link.site_symmetry_translation_1
+_topol_link.site_symmetry_symop_2
+_topol_link.site_symmetry_translation_2
 _topol_link.type
 _topol_link.multiplicity
-1 Node1 Node1 1_0_0_0 13_0_0_0 v 4
+1 Node1 Node1 1 [0 0 0] 13 [0 0 0] v 4
 
 loop_
 _topol_repres_edge.id
 _topol_repres_edge.chemical_formula_sum
-1 Cu1
+1 Cu
 
 _topol_repres.overall_topology_RCSR dia
 _topol_repres_entangl.type interp
@@ -947,47 +953,54 @@ nodes specified in topol_repres_node</p></div>
 <div class="paragraph"><p>The number of these links in the unit cell.</p></div>
 </div>
 <div class="sect2">
-<h3 id="_topol_link_site_symmetry_1">_topol_link.site_symmetry_1</h3>
-<div class="paragraph"><p>The symmetry code of each node as the symmetry-equivalent
-position number n and the cell translation number xyz. These
-numbers are combined to form the code n_x_y_z. The character
-string n_x_y_z is composed as follows: n refers to the symmetry
-operation that is applied to the coordinates of the node. It
-must match a number given in <a href="#_space_group_symop_id_"><code>_space_group.symop_id.</code></a> x, y and z
-are the translations that are subsequently applied to the
-symmetry-transformed coordinates to generate the node used in
-calculating the link. x, y and z can be any integer values.
-Note that this is a different convention to that used in the
-core dictionary.</p></div>
-<div class="listingblock">
-<div class="title">Example:</div>
-<div class="content">
-<pre><code>21_1_1_0</code></pre>
-</div></div>
+<h3 id="_topol_link_site_symmetry_symop_1">_topol_link.site_symmetry_symop_1</h3>
+<div class="paragraph"><p>The symmetry operation that is applied to the coordinates of
+the node given by <a href="#_topol_link_node_label_1"><code>_topol_link.node_label_1</code></a> before addition of
+the translations in
+<a href="#_topol_link_site_symmetry_translation_1_"><code>_topol_link.site_symmetry_translation_1.</code></a> The value must match
+a value of <a href="#_space_group_symop_id_"><code>_space_group_symop.id.</code></a> No normalisation of the
+resulting coordinates into the interval [0,1) is carried
+out. For example, (x+1/2, y+1/2,z) is not the same as (x-1/2,
+y+1/2,z) for these purposes.</p></div>
 </div>
 <div class="sect2">
-<h3 id="_topol_link_site_symmetry_2">_topol_link.site_symmetry_2</h3>
-<div class="paragraph"><p>The symmetry code of each node as the symmetry-equivalent
-position number n and the cell translation number xyz. These
-numbers are combined to form the code n_x_y_z. The character
-string n_x_y_z is composed as follows: n refers to the symmetry
-operation that is applied to the coordinates of the node. It
-must match a number given in <a href="#_space_group_symop_id_"><code>_space_group_symop_id.</code></a> x, y and z
-are the translations that are subsequently applied to the
-symmetry-transformed coordinates to generate the node used in
-calculating the link. x, y and z can be any integer values.
-Note that this is a different convention to that used in the
-core dictionary.</p></div>
-<div class="listingblock">
-<div class="title">Example:</div>
-<div class="content">
-<pre><code>21_1_1_0</code></pre>
-</div></div>
+<h3 id="_topol_link_site_symmetry_symop_2">_topol_link.site_symmetry_symop_2</h3>
+<div class="paragraph"><p>The symmetry operation that is applied to the coordinates of
+the node given by <a href="#_topol_link_node_label_2"><code>_topol_link.node_label_2</code></a> before addition of
+the translations in
+<a href="#_topol_link_site_symmetry_translation_2_"><code>_topol_link.site_symmetry_translation_2.</code></a> The value must match
+a value of <a href="#_space_group_symop_id_"><code>_space_group_symop.id.</code></a> No normalisation of the
+resulting coordinates into the interval [0,1) is carried
+out. For example, (x+1/2, y+1/2,z) is not the same as (x-1/2,
+y+1/2,z) for these purposes.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_topol_link_site_symmetry_translation_1">_topol_link.site_symmetry_translation_1</h3>
+<div class="paragraph"><p>A vector of lattice translations that are added to the
+coordinates after application of the symmetry operation given by
+<a href="#_topol_link_site_symmetry_symop_1"><code>_topol_link.site_symmetry_symop_1</code></a> to generate the node used in
+calculating the link.  For example, if the symmetry operation
+referred to by <a href="#_topol_link_site_symmetry_symop_id"><code>_topol_link.site_symmetry_symop_id</code></a> is
+(x-1/2,y+1/2,z), the translation vector is [0, 1, 0] and the
+original position is (0.2,0.7,1.0) in fractional coordinates,
+then the resultant position is (-0.3,1.2,1.0).</p></div>
+</div>
+<div class="sect2">
+<h3 id="_topol_link_site_symmetry_translation_2">_topol_link.site_symmetry_translation_2</h3>
+<div class="paragraph"><p>A vector of lattice translations that are added to the
+coordinates after application of the symmetry operation given by
+<a href="#_topol_link_site_symmetry_symop_2"><code>_topol_link.site_symmetry_symop_2</code></a> to generate the node used in
+calculating the link.  For example, if the symmetry operation
+referred to by <a href="#_topol_link_site_symmetry_symop_2"><code>_topol_link.site_symmetry_symop_2</code></a> is
+(x-1/2,y+1/2,z), the translation vector is [0, 1, 0] and the
+original position is (0.2,0.7,1.0) in fractional coordinates,
+then the resultant position is (-0.3,1.2,1.0).</p></div>
 </div>
 <div class="sect2">
 <h3 id="_topol_link_type">_topol_link.type</h3>
 <div class="paragraph"><p>The chemical bond type associated with the connection between the
-two sites.</p></div>
+two sites.  If no bond exists, use an undelimited period character.
+If the bond type is unknown, use ? or leave out the data name.</p></div>
 <div class="sidebarblock">
 <div class="content">
 <div class="title">Possible values:</div>
@@ -1089,19 +1102,11 @@ van der Waals contact
 </p>
 </dd>
 <dt class="hdlist1">
-<code>no</code>
+<code>.</code>
 </dt>
 <dd>
 <p>
 no bond
-</p>
-</dd>
-<dt class="hdlist1">
-<code>ab</code>
-</dt>
-<dd>
-<p>
-any kind of bond (unspecified)
 </p>
 </dd>
 </dl></div>
@@ -1188,8 +1193,8 @@ For finite (molecular) graphs the symbols NMK-n are used, where k is the
 number of vertices (atoms) in the graph. See Aman, F., Asiri, A. M.,
 Siddiqui, W. A., Arshad, M. N., Ashraf, A., Zakharov, N. S., Blatov, V. A.
 (2014) CrystEngComm, 16, 1963-1970.</p></div>
+<div class="paragraph"><div class="title">Example:The third three-periodic trinodal net with two 3-coordinated and one</div><p>4-coordinated independent nodes</p></div>
 <div class="listingblock">
-<div class="title">Example:</div>
 <div class="content">
 <pre><code>'3,3,4T3'</code></pre>
 </div></div>
@@ -1235,18 +1240,18 @@ coefficients.</p></div>
 the edges of the underlying net.</p></div>
 <div class="sect2">
 <h3 id="_topol_repres_edge_chemical_formula_iupac">_topol_repres_edge.chemical_formula_iupac</h3>
-<div class="paragraph"><p>Formula of the residue or ion, which corresponds to the node
+<div class="paragraph"><p>Formula of the residue or ion, which corresponds to the edge
 expressed in conformance with IUPAC rules.</p></div>
 </div>
 <div class="sect2">
 <h3 id="_topol_repres_edge_chemical_formula_moiety">_topol_repres_edge.chemical_formula_moiety</h3>
-<div class="paragraph"><p>Formula of the residue or ion, which corresponds to the node.
+<div class="paragraph"><p>Formula of the residue or ion, which corresponds to the edge.
 The formula is written in accordance with the rules of  the
 <a href="#_chemical_formula_moiety"><code>_chemical_formula_moiety</code></a> tag.</p></div>
 </div>
 <div class="sect2">
 <h3 id="_topol_repres_edge_chemical_formula_sum">_topol_repres_edge.chemical_formula_sum</h3>
-<div class="paragraph"><p>Formula of the residue or ion, which corresponds to the node.
+<div class="paragraph"><p>Formula of the residue or ion, which corresponds to the edge.
 The formula is written in accordance with the rules of  the
 <a href="#_chemical_formula_sum"><code>_chemical_formula_sum</code></a> tag.</p></div>
 </div>
@@ -1598,7 +1603,7 @@ The formula is written in accordance with the rules of  the
 <a href="#_chemical_formula_sum"><code>_chemical_formula_sum</code></a> tag.</p></div>
 </div>
 <div class="sect2">
-<h3 id="_topol_repres_node_CS">_topol_repres_node.CS</h3>
+<h3 id="_topol_repres_node_coordination_sequence">_topol_repres_node.coordination_sequence</h3>
 <div class="paragraph"><p>The coordination sequence is a sequence of numbers counting the
 atoms in the 1st, 2nd, 3rd etc. coordination shells of any given
 node in the net. In other words, the kth entry in the list is the
@@ -1611,7 +1616,7 @@ steps. It is usually listed up to k=10</p></div>
 </div></div>
 </div>
 <div class="sect2">
-<h3 id="_topol_repres_node_ES">_topol_repres_node.ES</h3>
+<h3 id="_topol_repres_node_extended_point_symbol">_topol_repres_node.extended_point_symbol</h3>
 <div class="paragraph"><p>The extended point symbol of the node lists all shortest circuits
 for each angle for each non-equivalent atom. A(b).B(c)&#8230; there
 are b A-rings and c B-rings for all the N(N-1) circuits per node.
@@ -1685,6 +1690,21 @@ N(N-1) circuits</p></div>
 </div></div>
 </div>
 <div class="sect2">
+<h3 id="_topol_repres_node_structural_formula_InChi">_topol_repres_node.structural_formula_InChi</h3>
+<div class="paragraph"><p>Formula of the residue or ion, which corresponds to the node.
+The formula is written in accordance with the rules for IUPAC
+international chemical identifiers (InChi) as described
+by Heller et al. Journal of Cheminformatics (2015) 7:23 ,
+DOI:10.1186/s13321-015-0068-4.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_topol_repres_node_structural_formula_SMILES">_topol_repres_node.structural_formula_SMILES</h3>
+<div class="paragraph"><p>Formula of the residue or ion, which corresponds to the node.
+The formula is written in SMILES notation for describing
+chemical structure as formalised by the OpenSMILES group
+(<a href="https://www.opensmiles.org">https://www.opensmiles.org</a>).</p></div>
+</div>
+<div class="sect2">
 <h3 id="_topol_repres_node_symmetry_multiplicity">_topol_repres_node.symmetry_multiplicity</h3>
 <div class="paragraph"><p>The number of different sites that are generated by the
 application of the space-group symmetry to the coordinates
@@ -1693,7 +1713,7 @@ for this Wyckoff site in International Tables for Cryst.
 Vol. A (2002).</p></div>
 </div>
 <div class="sect2">
-<h3 id="_topol_repres_node_VS">_topol_repres_node.VS</h3>
+<h3 id="_topol_repres_node_vertex_symbol">_topol_repres_node.vertex_symbol</h3>
 <div class="paragraph"><p>The vertex symbol of a node provides similar information to the
 extended point symbol, but only for rings, which are circuits
 that contain no shortcuts, that is, are not the sum of  two
@@ -1883,7 +1903,7 @@ TOPOL_REPRES_TILING category for further information.</p></div>
 <div id="footer">
 <div id="footer-text">
 Last updated
- 2018-02-27 15:56:33 AEDT
+ 2018-04-05 11:45:14 AEST
 </div>
 </div>
 </body>
