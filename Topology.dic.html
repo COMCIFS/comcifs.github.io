@@ -771,21 +771,21 @@ underlying net.</p></div>
 <div class="listingblock">
 <div class="content">
 <pre><code>loop_
-_symmetry_equiv_pos_site_id
-_symmetry_equiv_pos_as_xyz
+_space_group_symop.id
+_space_group_symop.operation_xyz
 1 x,y,z
 2 1/4-x,1/4-y,z
 13 -y,-x,-z
 192 3/4-z,1/2+y,1/4-x
 
 loop_
-_atom_site_label
-_atom_site_type_symbol
-_atom_site_symmetry_multiplicity
-_atom_site_fract_x
-_atom_site_fract_y
-_atom_site_fract_z
-_atom_site_occupancy
+_atom_site.label
+_atom_site.type_symbol
+_atom_site.symmetry_multiplicity
+_atom_site.fract_x
+_atom_site.fract_y
+_atom_site.fract_z
+_atom_site.occupancy
 C1 C 8 0.12500 0.12500 0.12500 1.0000
 
 loop_
@@ -815,21 +815,21 @@ nomenclature) topology.</p></div>
 <div class="listingblock">
 <div class="content">
 <pre><code>loop_
-_symmetry_equiv_pos_site_id
-_symmetry_equiv_pos_as_xyz
+_space_group_symop.id
+_space_group_symop.operation_xyz
 1 x,y,z
 2 -y,x-y,z
 20 1/3+x-y,2/3-y,1/6-z
 36 1/3-y,2/3-x,1/6+z
 
 loop_
-_atom_site_label
-_atom_site_type_symbol
-_atom_site_symmetry_multiplicity
-_atom_site_fract_x
-_atom_site_fract_y
-_atom_site_fract_z
-_atom_site_occupancy
+_atom_site.label
+_atom_site.type_symbol
+_atom_site.site_symmetry_multiplicity
+_atom_site.fract_x
+_atom_site.fract_y
+_atom_site.fract_z
+_atom_site.occupancy
 C1 C 6 0.00000 0.00000 0.25000 1.0000
 O1 O 18 0.25930 0.00000 0.25000 1.0000
 Ca1 Ca 6 0.00000 0.00000 0.00000 1.0000
@@ -863,21 +863,21 @@ interpenetrating networks of the diamond topology.</p></div>
 <div class="listingblock">
 <div class="content">
 <pre><code>loop_
-_symmetry_equiv_pos_site_id
-_symmetry_equiv_pos_as_xyz
+_space_group_symop.id
+_space_group_symop.operation_xyz
 1 x,y,z
 2 1/2-x,1/2-y,z
 13 -y,-x,-z
 48 1/2-z,y,1/2-x
 
 loop_
-_atom_site_label
-_atom_site_type_symbol
-_atom_site_symmetry_multiplicity
-_atom_site_fract_x
-_atom_site_fract_y
-_atom_site_fract_z
-_atom_site_occupancy
+_atom_site.label
+_atom_site.type_symbol
+_atom_site.site_symmetry_multiplicity
+_atom_site.fract_x
+_atom_site.fract_y
+_atom_site.fract_z
+_atom_site.occupancy
 O1 O 2 0.25000 0.25000 0.25000 1.0000
 Cu1 Cu 4 0.00000 0.00000 0.00000 1.0000
 
@@ -1247,13 +1247,13 @@ expressed in conformance with IUPAC rules.</p></div>
 <h3 id="_topol_repres_edge_chemical_formula_moiety">_topol_repres_edge.chemical_formula_moiety</h3>
 <div class="paragraph"><p>Formula of the residue or ion, which corresponds to the edge.
 The formula is written in accordance with the rules of  the
-<a href="#_chemical_formula_moiety"><code>_chemical_formula_moiety</code></a> tag.</p></div>
+<a href="#_chemical_formula_moiety"><code>_chemical_formula.moiety</code></a> tag.</p></div>
 </div>
 <div class="sect2">
 <h3 id="_topol_repres_edge_chemical_formula_sum">_topol_repres_edge.chemical_formula_sum</h3>
 <div class="paragraph"><p>Formula of the residue or ion, which corresponds to the edge.
 The formula is written in accordance with the rules of  the
-<a href="#_chemical_formula_sum"><code>_chemical_formula_sum</code></a> tag.</p></div>
+<a href="#_chemical_formula_sum"><code>_chemical_formula.sum</code></a> tag.</p></div>
 </div>
 <div class="sect2">
 <h3 id="_topol_repres_edge_id">_topol_repres_edge.id&#8226;</h3>
@@ -1598,13 +1598,13 @@ expressed in conformance with IUPAC rules.</p></div>
 <h3 id="_topol_repres_node_chemical_formula_moiety">_topol_repres_node.chemical_formula_moiety</h3>
 <div class="paragraph"><p>Formula of the residue or ion, which corresponds to the node.
 The formula is written in accordance with the rules of  the
-<a href="#_chemical_formula_moiety"><code>_chemical_formula_moiety</code></a> tag.</p></div>
+<a href="#_chemical_formula_moiety"><code>_chemical_formula.moiety</code></a> tag.</p></div>
 </div>
 <div class="sect2">
 <h3 id="_topol_repres_node_chemical_formula_sum">_topol_repres_node.chemical_formula_sum</h3>
 <div class="paragraph"><p>Formula of the residue or ion, which corresponds to the node.
 The formula is written in accordance with the rules of  the
-<a href="#_chemical_formula_sum"><code>_chemical_formula_sum</code></a> tag.</p></div>
+<a href="#_chemical_formula_sum"><code>_chemical_formula.sum</code></a> tag.</p></div>
 </div>
 <div class="sect2">
 <h3 id="_topol_repres_node_coordination_sequence">_topol_repres_node.coordination_sequence</h3>
@@ -1694,10 +1694,10 @@ N(N-1) circuits</p></div>
 </div></div>
 </div>
 <div class="sect2">
-<h3 id="_topol_repres_node_structural_formula_InChi">_topol_repres_node.structural_formula_InChi</h3>
+<h3 id="_topol_repres_node_structural_formula_InChI">_topol_repres_node.structural_formula_InChI</h3>
 <div class="paragraph"><p>Formula of the residue or ion, which corresponds to the node.
 The formula is written in accordance with the rules for IUPAC
-international chemical identifiers (InChi) as described
+international chemical identifiers (InChI) as described
 by Heller et al. Journal of Cheminformatics (2015) 7:23 ,
 DOI:10.1186/s13321-015-0068-4.</p></div>
 </div>
@@ -1759,18 +1759,15 @@ of International Tables for Crystallography, Vol. A (1987).</p></div>
 <div class="sect1">
 <h2 id="topol_repres_occurrence">TOPOL_REPRES_OCCURRENCE</h2>
 <div class="sectionbody">
-<div class="paragraph"><p>The TOPOL_REPRES_OCCURRENCE category describes the occurrence of the
+<div class="paragraph"><p>The TOPOL_REPRES_OCCURRENCE category lists the appearances of the
 underlying net topology in crystal structures.</p></div>
 <div class="sect2">
-<h3 id="_topol_repres_occurrence_refcode">_topol_repres_occurrence.refcode</h3>
-<div class="paragraph"><p>Reference code in a crystallographic database  to the
-crystallographic data of the crystal  structure with the
-underlying net topology.</p></div>
-</div>
-<div class="sect2">
-<h3 id="_topol_repres_occurrence_reference">_topol_repres_occurrence.reference</h3>
+<h3 id="_topol_repres_occurrence_citation_id">_topol_repres_occurrence.citation_id</h3>
 <div class="paragraph"><p>Reference to a publication, where a crystal  structure with the
-underlying net topology  was characterized.</p></div>
+underlying net topology  was characterized.  This item is a pointer
+to an item described in the core CITATION category. If a publication
+and database entry are not directly related, they should be listed
+in separate rows.</p></div>
 </div>
 <div class="sect2">
 <h3 id="_topol_repres_occurrence_id">_topol_repres_occurrence.id&#8226;</h3>
@@ -1907,7 +1904,7 @@ TOPOL_REPRES_TILING category for further information.</p></div>
 <div id="footer">
 <div id="footer-text">
 Last updated
- 2018-04-05 14:44:56 AEST
+ 2018-04-23 16:26:46 AEST
 </div>
 </div>
 </body>
