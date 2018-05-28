@@ -735,7 +735,7 @@ asciidoc.install(2);
 <body class="article">
 <div id="header">
 <h1>TOPOLOGY_CIF</h1>
-<span id="revdate">2018-04-05</span>
+<span id="revdate">2018-05-28</span>
 </div>
 <div id="content">
 <div id="preamble">
@@ -743,7 +743,8 @@ asciidoc.install(2);
 <div class="paragraph"><p>The Topology CIF dictionary provides datanames for describing crystal structure
 topology.  This is a DRAFT version and datanames in this dictionary should not
 be used until approval by COMCIFS.</p></div>
-<div class="paragraph"><p>Generated from Topology.dic, version 0.5</p></div>
+<div class="paragraph"><p>This dictionary builds on definitions found in CORE_DIC.</p></div>
+<div class="paragraph"><p>Generated from Topology.dic, version 0.9</p></div>
 <div class="paragraph"><p>Categories that may have more than one row are called loop categories.
 Datanames making up the keys for these categories have a dot suffix.</p></div>
 <div id="toc">
@@ -801,7 +802,7 @@ _topol_link.site_symmetry_translation_1
 _topol_link.site_symmetry_symop_2
 _topol_link.site_symmetry_translation_2
 _topol_link.distance
-_topol_link.voronoi_solidangle
+_topol_link.Voronoi_solidangle
 _topol_link.type
 _topol_link.multiplicity
 C1 C1 1 [0 0 0] 13 [0 0 0] 1.5446 22.04 v 16
@@ -903,10 +904,7 @@ _topol_repres_edge.id
 _topol_repres_edge.chemical_formula_sum
 1 Cu
 
-_topol_repres.overall_topology_RCSR dia
-_topol_repres_entangl.type interp
-_topol_repres_entangl.interp_deg 2
-_topol_repres_entangl.interp_class Ia</code></pre>
+_topol_repres.overall_topology_RCSR dia</code></pre>
 </div></div>
 <div class="sect2">
 <h3 id="_topol_repres_occurrence_total">_topol.repres_occurrence_total</h3>
@@ -924,12 +922,27 @@ existing data names in the topology categories.</p></div>
 <h2 id="topol_link">TOPOL_LINK</h2>
 <div class="sectionbody">
 <div class="paragraph"><p>The TOPOL_LINK category describes the crystal structure
-connectivity and encodes the weighted colored labeled quotient
-graph, from which the whole periodic net describing the
-overall topology of the crystal structure can be restored.
-The connections described in TOPOL_LINK may correspond to
-any vectors in the structure, not just bonds or contacts. The
-nodes that are linked are listed in TOPOL_REPRES_NODE.</p></div>
+connectivity and encodes the weighted colored
+symmetry-labeled quotient graph, from which the whole
+periodic net describing the overall topology of the crystal
+structure can be restored. The definition of
+symmetry-labeled quotient graph was given by Klein,
+H.-J. "Systematic generation of models for crystal
+structures" Math. Modelling Scientific Computing 6 (1996)
+325-330 and examples of weights and colors for the
+graph edges and vertices are provided by Blatov, V.A. "A
+method for hierarchical comparative analysis of crystal
+structures." (2006) Acta Cryst. A62, 356-364.  The
+connections described in TOPOL_LINK may correspond to any
+vectors in the structure, not just bonds or contacts. The
+nodes that are linked are listed in TOPOL_REPRES_NODE. In
+order to properly describe the connectivity,
+<a href="#_topol_link_node_label_1"><code>_topol_link.node_label_1</code></a>
+<a href="#_topol_link_node_label_2"><code>_topol_link.node_label_2</code></a>,<a href="#_topol_link_site_symmetry_symop_1"><code>_topol_link.site_symmetry_symop_1</code></a>,
+<a href="#_topol_link_site_symmetry_translation_1"><code>_topol_link.site_symmetry_translation_1</code></a>,<a href="#_topol_link_site_symmetry_symop_2"><code>_topol_link.site_symmetry_symop_2</code></a>,
+and_topol_link.site_symmetry_translation_2 must be given
+for each link, which is identified by <a href="#_topol_link_id_"><code>_topol_link.id.</code></a> Other
+items in this category are optional.</p></div>
 <div class="sect2">
 <h3 id="_topol_link_node_label_1">_topol_link.node_label_1</h3>
 <div class="paragraph"><p>The labels of two nodes that form a link. These must match
@@ -951,6 +964,11 @@ nodes specified in topol_repres_node</p></div>
 <div class="sect2">
 <h3 id="_topol_link_multiplicity">_topol_link.multiplicity</h3>
 <div class="paragraph"><p>The number of these links in the unit cell.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_topol_link_order">_topol_link.order</h3>
+<div class="paragraph"><p>The number of electron pairs participating in the bond described by
+<a href="#_topol_link_type_"><code>_topol_link.type.</code></a></p></div>
 </div>
 <div class="sect2">
 <h3 id="_topol_link_site_symmetry_symop_1">_topol_link.site_symmetry_symop_1</h3>
@@ -997,60 +1015,28 @@ original position is (0.2,0.7,1.0) in fractional coordinates,
 then the resultant position is (-0.3,0.2,1.0).</p></div>
 </div>
 <div class="sect2">
+<h3 id="_topol_link_special_details">_topol_link.special_details</h3>
+<div class="paragraph"><p>Information about the link that is not expressed using other
+data names, for example, bond subtypes and explanations
+of links with <a href="#_topol_link_type">&#8216;_topol_link.type`</a> of 'sb&#8217;.</p></div>
+</div>
+<div class="sect2">
 <h3 id="_topol_link_type">_topol_link.type</h3>
 <div class="paragraph"><p>The chemical bond type associated with the connection between the
 two sites.  If no bond exists, use an undelimited period character.
-If the bond type is unknown, use ? or leave out the data name.</p></div>
+If the bond type is unknown, use ? or leave out the data name. The
+number of electron pairs participating in the bond can be indicated
+using <a href="#_topol_link_order_"><code>_topol_link.order.</code></a></p></div>
 <div class="sidebarblock">
 <div class="content">
 <div class="title">Possible values:</div>
 <div class="dlist"><dl>
-<dt class="hdlist1">
-<code>sg</code>
-</dt>
-<dd>
-<p>
-single bond
-</p>
-</dd>
-<dt class="hdlist1">
-<code>db</code>
-</dt>
-<dd>
-<p>
-double bond
-</p>
-</dd>
-<dt class="hdlist1">
-<code>tr</code>
-</dt>
-<dd>
-<p>
-triple bond
-</p>
-</dd>
-<dt class="hdlist1">
-<code>qd</code>
-</dt>
-<dd>
-<p>
-quadruple bond
-</p>
-</dd>
 <dt class="hdlist1">
 <code>ar</code>
 </dt>
 <dd>
 <p>
 aromatic bond
-</p>
-</dd>
-<dt class="hdlist1">
-<code>dl</code>
-</dt>
-<dd>
-<p>
-delocalized double bond
 </p>
 </dd>
 <dt class="hdlist1">
@@ -1078,27 +1064,19 @@ hydrogen bond
 </p>
 </dd>
 <dt class="hdlist1">
-<code>s</code>
-</dt>
-<dd>
-<p>
-specific bond
-</p>
-</dd>
-<dt class="hdlist1">
-<code>hg</code>
-</dt>
-<dd>
-<p>
-halogen bond
-</p>
-</dd>
-<dt class="hdlist1">
 <code>vw</code>
 </dt>
 <dd>
 <p>
 van der Waals contact
+</p>
+</dd>
+<dt class="hdlist1">
+<code>sb</code>
+</dt>
+<dd>
+<p>
+special bond type described in <a href="#_topol_link_special_details"><code>_topol_link.special_details</code></a>
 </p>
 </dd>
 <dt class="hdlist1">
@@ -1113,7 +1091,7 @@ no bond
 </div></div>
 </div>
 <div class="sect2">
-<h3 id="_topol_link_voronoi_solidangle">_topol_link.voronoi_solidangle</h3>
+<h3 id="_topol_link_Voronoi_solidangle">_topol_link.Voronoi_solidangle</h3>
 <div class="paragraph"><p>The solid angle fraction of the interatomic contact A-X, which is
 the percentage of the sphere of unit radius cut by the pyramid with the
 basal face of the Voronoi polyhedron of A or X, the two atoms defining
@@ -1266,315 +1244,8 @@ specified as <a href="#_topol_link_id"><code>_topol_link.id</code></a> in the to
 <h2 id="topol_repres_entangl">TOPOL_REPRES_ENTANGL</h2>
 <div class="sectionbody">
 <div class="paragraph"><p>The TOPOL_REPRES_ENTANGL category describes entanglements in the
-underlying net.  An entangled net can be separated into two or
-more motifs.</p></div>
-<div class="sect2">
-<h3 id="_topol_repres_entangl_interp_class">_topol_repres_entangl.interp_class</h3>
-<div class="paragraph"><p>The class of the interpenetration as defined in Baburin I. A.,
-Blatov V. A., Carlucci L., Ciani G., Proserpio D. M. J. (2005)
-Solid State Chem., 178, 2452-2474.  The classes are determined
-based on the way in which the overall net is generated from
-individual identical motifs using combinations of translations
-and symmetry elements.</p></div>
-<div class="sidebarblock">
-<div class="content">
-<div class="title">Possible values:</div>
-<div class="dlist"><dl>
-<dt class="hdlist1">
-<code>Ia</code>
-</dt>
-<dd>
-<p>
-all nets generated by a single translation
-</p>
-</dd>
-<dt class="hdlist1">
-<code>Ib</code>
-</dt>
-<dd>
-<p>
-at least two vectors required to generate all nets
-</p>
-</dd>
-<dt class="hdlist1">
-<code>IIa</code>
-</dt>
-<dd>
-<p>
-all nets related by a single symmetry element
-</p>
-</dd>
-<dt class="hdlist1">
-<code>IIb</code>
-</dt>
-<dd>
-<p>
-at least two symmetry elements required to generate all nets
-</p>
-</dd>
-<dt class="hdlist1">
-<code>IIIa</code>
-</dt>
-<dd>
-<p>
-all nets generated by a combination of a single translation and single non-translating symmetry element
-</p>
-</dd>
-<dt class="hdlist1">
-<code>IIIb</code>
-</dt>
-<dd>
-<p>
-all nets generated by a combination of at least two translations and a single non-translating symmetry element
-</p>
-</dd>
-<dt class="hdlist1">
-<code>IIIc</code>
-</dt>
-<dd>
-<p>
-all nets generated by a combination of a single translation and at least two non-translating symmetry elements
-</p>
-</dd>
-<dt class="hdlist1">
-<code>IIId</code>
-</dt>
-<dd>
-<p>
-a combination of at least two translations and at least two non-translating symmetry elements required to generate all nets
-</p>
-</dd>
-</dl></div>
-</div></div>
-</div>
-<div class="sect2">
-<h3 id="_topol_repres_entangl_interp_deg">_topol_repres_entangl.interp_deg</h3>
-<div class="paragraph"><p>The finite number of interpenetrating nets.</p></div>
-</div>
-<div class="sect2">
-<h3 id="_topol_repres_entangl_period">_topol_repres_entangl.period</h3>
-<div class="paragraph"><p>Periodicity of the entangled array. Integers are interpreted as
-follows:
-0         <em>0-periodic (finite)</em>
-1         <em>1-periodic (chain)</em>
-2         <em>2-periodic (layer)</em>
-3         <em>3-periodic (framework)</em></p></div>
-</div>
-<div class="sect2">
-<h3 id="_topol_repres_entangl_type">_topol_repres_entangl.type</h3>
-<div class="paragraph"><p>The type of the entanglement as described in Proserpio, D. M.
-(2010) Nat. Chem. 2, 435-436 and Carlucci L., Ciani G.,
-Proserpio D. M., Mitina T. G., Blatov V. A. (2014) Chem.
-Rev. 114, 7557-7580</p></div>
-<div class="sidebarblock">
-<div class="content">
-<div class="title">Possible values:</div>
-<div class="dlist"><dl>
-<dt class="hdlist1">
-<code>borr</code>
-</dt>
-<dd>
-<p>
-Borromean
-</p>
-</dd>
-<dt class="hdlist1">
-<code>brun</code>
-</dt>
-<dd>
-<p>
-Brunnian
-</p>
-</dd>
-<dt class="hdlist1">
-<code>caten</code>
-</dt>
-<dd>
-<p>
-catenation
-</p>
-</dd>
-<dt class="hdlist1">
-<code>interp</code>
-</dt>
-<dd>
-<p>
-interpenetration
-</p>
-</dd>
-<dt class="hdlist1">
-<code>polycat_inc</code>
-</dt>
-<dd>
-<p>
-inclined polycatenation
-</p>
-</dd>
-<dt class="hdlist1">
-<code>polycat_par</code>
-</dt>
-<dd>
-<p>
-parallel polycatenation
-</p>
-</dd>
-<dt class="hdlist1">
-<code>polythread</code>
-</dt>
-<dd>
-<p>
-polythreading
-</p>
-</dd>
-<dt class="hdlist1">
-<code>selfcat</code>
-</dt>
-<dd>
-<p>
-self-catenation
-</p>
-</dd>
-<dt class="hdlist1">
-<code>undef</code>
-</dt>
-<dd>
-<p>
-no special type is assigned
-</p>
-</dd>
-</dl></div>
-</div></div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="topol_repres_entangl_ERN">TOPOL_REPRES_ENTANGL_ERN</h2>
-<div class="sectionbody">
-<div class="paragraph"><p>Topology of the entanglement described as an extended ring net
-(ERN).  The name of the extended ring net is specified in one or
-more of the standard nomenclatures.For more information on ERN
-see Alexandrov E.V., Blatov V.A., Proserpio D.M. CrystEngComm,
-2017, 19, 1993-2006.</p></div>
-<div class="sect2">
-<h3 id="_topol_repres_entangl_ERN_name">_topol_repres_entangl_ERN.name</h3>
-<div class="paragraph"><p>The symbol or name of the extended ring net in the specified nomenclature.</p></div>
-</div>
-<div class="sect2">
-<h3 id="_topol_repres_entangl_ERN_nomenclature">_topol_repres_entangl_ERN.nomenclature&#8226;</h3>
-<div class="paragraph"><p>The nomenclature used to describe the extended ring net.  See the TOPOL_REPRES
-category for detailed information on the source for the nomenclatures.</p></div>
-<div class="sidebarblock">
-<div class="content">
-<div class="title">Possible values:</div>
-<div class="dlist"><dl>
-<dt class="hdlist1">
-<code>TOPOS</code>
-</dt>
-<dd>
-<p>
-The TOPOS nomenclature
-</p>
-</dd>
-<dt class="hdlist1">
-<code>SP</code>
-</dt>
-<dd>
-<p>
-Sphere packing
-</p>
-</dd>
-<dt class="hdlist1">
-<code>RCSR</code>
-</dt>
-<dd>
-<p>
-RCSR nomenclature
-</p>
-</dd>
-<dt class="hdlist1">
-<code>Epinet</code>
-</dt>
-<dd>
-<p>
-Epinet database identifier
-</p>
-</dd>
-<dt class="hdlist1">
-<code>Arbitrary</code>
-</dt>
-<dd>
-<p>
-Non-standard identifier
-</p>
-</dd>
-</dl></div>
-</div></div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="topol_repres_entangl_HRN">TOPOL_REPRES_ENTANGL_HRN</h2>
-<div class="sectionbody">
-<div class="paragraph"><p>Topology of the entanglement described as a Hopf ring net (HRN).
-The name of the extended ring net is specified in one or more of
-the standard nomenclatures.For more information on HRN see
-Alexandrov E.V., Blatov V.A., Proserpio D.M. Acta Cryst. 2012,
-A68, 484-493.</p></div>
-<div class="sect2">
-<h3 id="_topol_repres_entangl_HRN_name">_topol_repres_entangl_HRN.name</h3>
-<div class="paragraph"><p>The symbol or name of the Hopf ring net in the specified nomenclature.</p></div>
-</div>
-<div class="sect2">
-<h3 id="_topol_repres_entangl_HRN_nomenclature">_topol_repres_entangl_HRN.nomenclature&#8226;</h3>
-<div class="paragraph"><p>The nomenclature used to describe the Hopf ring net.  See the TOPOL_REPRES
-category for detailed information on the source for the nomenclatures.</p></div>
-<div class="sidebarblock">
-<div class="content">
-<div class="title">Possible values:</div>
-<div class="dlist"><dl>
-<dt class="hdlist1">
-<code>TOPOS</code>
-</dt>
-<dd>
-<p>
-The TOPOS nomenclature
-</p>
-</dd>
-<dt class="hdlist1">
-<code>SP</code>
-</dt>
-<dd>
-<p>
-Sphere packing
-</p>
-</dd>
-<dt class="hdlist1">
-<code>RCSR</code>
-</dt>
-<dd>
-<p>
-RCSR nomenclature
-</p>
-</dd>
-<dt class="hdlist1">
-<code>Epinet</code>
-</dt>
-<dd>
-<p>
-Epinet database identifier
-</p>
-</dd>
-<dt class="hdlist1">
-<code>Arbitrary</code>
-</dt>
-<dd>
-<p>
-Non-standard identifier
-</p>
-</dd>
-</dl></div>
-</div></div>
-</div>
+underlying net.  This category is a placeholder for future development
+of descriptions of entanglement.</p></div>
 </div>
 </div>
 <div class="sect1">
@@ -1904,7 +1575,7 @@ TOPOL_REPRES_TILING category for further information.</p></div>
 <div id="footer">
 <div id="footer-text">
 Last updated
- 2018-04-23 16:26:46 AEST
+ 2018-05-28 15:08:24 AEST
 </div>
 </div>
 </body>
