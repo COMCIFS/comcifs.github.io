@@ -38,10 +38,10 @@ An example of a version number change sequence that may occur during a single di
 
 ## Releasing a stable dictionary version
 
-The following changes should be applied to developmental version in preparation for its release as a stable version:
+The following changes should be applied to a developmental version in preparation for its release as a stable version:
 
 1. The version number should be updated to reflect the stable release version. This should generally only require the removal of the '-dev-*n*' postfix from the developmental version number. The change should be applied both to the `_dictionary.version` data item and the `_dictionary_audit.version` data item;
-2. The release date should be updated to reflect the release date of the stable version. This changed should be applied both to the `_dictionary.date` data item and the `_dictionary_audit.date` data item;
+2. The release date should be updated to reflect the release date of the stable version. The change should be applied both to the `_dictionary.date` data item and the `_dictionary_audit.date` data item;
 3. The `_dictionary_audit.revision` data item value associated with the current release may should be reviewed and simplified if needed.
 
-The release is considered finalised once the a stable version is placed in a separate Git tag. After this it can be distributed to other official IUCr resources (website, ftp).
+The release is considered finalised once the a stable version is placed in a separate Git tag. After this it can be distributed to other official IUCr resources (website, FTP).
