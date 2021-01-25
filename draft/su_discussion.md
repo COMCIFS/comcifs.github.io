@@ -68,11 +68,14 @@ The above questions are then answered as follows:
 always followed (e.g. `_refln.F_sigma`) and therefore not
 appropriate for the DDLm attribute dictionary to specify.
 
-3. Yes, it is legal to have both forms. The CIF syntax can have no
-embedded understanding of the meaning of the data names, including
-`*_su` data names, and therefore duplication cannot be detected 
-as a syntax error.  It is instead a semantic error in the same 
-way as a cell volume - cell parameter mismatch would be.
+3. Yes, it is *syntactically* legal to have both forms, as the CIF
+syntax can have no embedded understanding of the meaning of the data
+names, including `*_su` data names, and therefore duplication cannot
+be detected as a syntax error.  It is instead a semantic error in the
+same way as a cell volume - cell parameter mismatch would be. Thus
+if the two values provided agree, there is no error, and if they
+disagree, the software can take steps based on the importance of 
+the mismatch to the particular computation.
 
 4. No, the value of a `Measurand` data name includes the main
 value only.
@@ -80,11 +83,11 @@ value only.
 ## Discussion
 
 In order for DDLm to be format-agnostic, each format needs to
-associate some location in that format with a data name. For CIF this
-association is trivial due to the data name appearing in the format
-itself. The appearance of a value in a CIF file without the data name
-appearing as well (as is being proposed above) is thus not unusual
-in general.
+associate some location in that format with a data name. The
+appearance of a value in a CIF file without the data name appearing as
+well (as is being proposed above) is thus not unusual in general,
+simply for CIF this association is usually transparent due to the data
+name appearing in the format itself.
 
 ### Compatibility
 
@@ -97,11 +100,11 @@ Authoring software remains free to append SU in parentheses.
 Legacy CIF reading software will have the same problems that it presumably has
 with the new 'dotted' data names, in the sense that a data name that was
 unknown at the time of software preparation has been used to provide a value. 
-This is a cost that we have accepted.
+This is a cost that we have accepted. It seems unlikely that 
 
 ### Other comments
 
 The su of a data item must always have been treated separately in
 software, as software must handle the su differently to the main value
 due at least to the differences in the way errors are propagated. 
-The creation of a separate data name simply captures this fact.
+The creation of a separate data name captures this fact.
