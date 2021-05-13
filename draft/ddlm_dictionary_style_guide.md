@@ -96,7 +96,7 @@ A multi-line compound object is a list or table containing newlines.
 2. A value with character length <= `<line length>` - `<value col>` starts 
    in column `<value col>`
 3. A value with character length between `<line length>` - `<value col>` and
-   and `<line length>` - `<value indent>` begins in column `<value indent>` of
+   `<line length>` - `<value indent>` begins in column `<value indent>` of
    the next line
 4. A value with character length greater than `<line length>` - `<value indent>` 
    is presented as a semicolon-delimited text string or as a multi-line compound
