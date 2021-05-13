@@ -111,7 +111,7 @@ data name, including delimiters.
 1. The `loop_` keyword appears on a new line with no indentation.
 2. The looped data names appear on separate lines starting at column `<loop indent>`
 3. Each packet starts on a new line
-4. The first character of the first value of a packet is placed in column `<loop align>'`
+4. The first character of the first value of a packet is placed in column `<loop align>`
 5. The second column begins at the first multiple of `<loop align>` following the end of
    the first column + `<min whitespace>`, or 2 * `<loop align>`, whichever is greater.
 5. However, if the resulting line length would be greater than `<line length>`, the first 
