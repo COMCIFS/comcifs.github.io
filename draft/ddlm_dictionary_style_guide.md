@@ -80,19 +80,19 @@ comment, consisting of a series of lines commencing with a hash character
 
 1. All non-looped attributes describing the dictionary appear before the
 first save frame, in the following order:
-  1. _dictionary.title
-  2. _dictionary.class
-  3. _dictionary.version
-  4. _dictionary.date
-  5. _dictionary.uri
-  6. _dictionary.ddl_conformance
-  7. _dictionary.namespace
-  8. _description.text
+   1. _dictionary.title
+   2. _dictionary.class
+   3. _dictionary.version
+   4. _dictionary.date
+   5. _dictionary.uri
+   6. _dictionary.ddl_conformance
+   7. _dictionary.namespace
+   8. _description.text
 
 2. All looped attributes describing the dictionary appear after the final
 save frame, in the following category order:
-  1. DICTIONARY_VALID (application, attributes)
-  2. DICTIONARY_AUDIT (version, date, revision)
+   1. DICTIONARY_VALID (application, attributes)
+   2. DICTIONARY_AUDIT (version, date, revision)
   
 ### Definition layout
 
