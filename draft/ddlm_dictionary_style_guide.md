@@ -54,7 +54,7 @@ that is, there should be no sequences of more than one blank line.
 10. The first line of a semi-colon delimited text field should be blank, except
    for line folding and prefixing characters where necessary
 11. An EOL always follows the final semicolon of a semicolon-delimited text field
-12. Looped datanames should use the same delimiter for all items in the same column
+12. Looped data names should use the same delimiter for all items in the same column
 
 ### Lists
 
@@ -130,7 +130,7 @@ comment, consisting of a series of lines commencing with a hash character
 4. The final character is a new line (`\n`).
 5. The first definition is the `Head` category
 6. A category is presented in order of category definition, followed by
-   all datanames in alphabetical order, followed by child categories
+   all data names in alphabetical order, followed by child categories
 7. Categories with the same parent category are presented in alphabetical
    order
 
