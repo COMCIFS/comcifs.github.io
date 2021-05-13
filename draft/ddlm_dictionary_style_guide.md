@@ -47,7 +47,7 @@ that is, there should be no sequences of more than one blank line.
    triple-double-quote is used
 6. Otherwise, semicolon delimiters are used
 7. Where necessary, the text-prefix protocol character is `<text prefix>`
-8. Multi-line text fields should contain at least `<text prefix>` spaces at the beginning of
+8. Multi-line text fields should contain at least `<text indent>` spaces at the beginning of
    each new line. Tab characters must not be used for this purpose.
 9. No tab characters may appear in data values. Where they appear, they
    should be transformed to `<tab size>` spaces.
