@@ -61,13 +61,14 @@ part of the meaning of the data value.
 6. Otherwise, semicolon delimiters are used.
 7. Text fields containing newline characters are always semicolon-delimited.
 7. Where necessary, the text-prefix protocol character is `<text prefix>`.
-8. Multi-line text fields should contain at least `<text indent>` spaces at the beginning of
-   each new line. Tab characters must not be used for this purpose. A separate rule
-   applies to multi-line text fields appearing in loops (see below).
+8. Each non-blank line of multi-line text fields not appearing as part of loops should
+   contain `<text indent>` spaces at the beginning. Tab characters must not 
+   be used for this purpose. Paragraphs are separated by a single blank line
+   which must contain only a new line character.
 9. No tab characters may be used for formatting data values.
 10. The first line of a semi-colon delimited text field should be blank, except
    for line folding and prefixing characters where necessary.
-11. An new line character always follows the final semicolon of a semicolon-delimited text field.
+11. A new line character always follows the final semicolon of a semicolon-delimited text field.
 12. Looped data names should use the same delimiter for all items in the same column.
 
 ### 2.2 Lists
@@ -181,10 +182,11 @@ that columns align on their first character.
    in column `<loop step>`.
 7. If the second column is longer than `<line length>` - `<loop step>` 
    characters, it is presented as a semicolon-delimited text string.
-8. Semicolon-delimited text strings in loops are indented so that the first non-blank
-   character of each line aligns with the first alphabetic
-   character of the data name header, that is, the first non blank character appears
-   in column `<text indent>` + `<loop_indent>` + 2
+8. Semicolon-delimited text strings in loops are formatted as for
+   section 2.1, except that they are indented so that the first
+   non-blank character of each line aligns with the first alphabetic
+   character of the data name header, that is, the first non blank
+   character appears in column `<text indent>` + `<loop_indent>` + 2
 9. Subsequent columns follow the rules for the second column.
 
 #### Examples
