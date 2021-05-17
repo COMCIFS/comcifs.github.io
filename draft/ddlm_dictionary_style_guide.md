@@ -51,7 +51,7 @@ part of the meaning of the data value.
 ### 2.1 Text strings
 
 1. Values that can be presented undelimited should not be delimited, unless rule
-12 applies.
+13 applies.
 2. The default delimiter for single-line values is the single quote (`'`).
 3. Where a single-line value contains a quote, the double quote (`"`) is used.
 4. Where a single-line value contains both quote and double-quote, the
@@ -60,22 +60,22 @@ part of the meaning of the data value.
    triple-double-quote is used.
 6. Otherwise, semicolon delimiters are used.
 7. Text fields containing newline characters are always semicolon-delimited.
-7. Where necessary, the text-prefix protocol character is `<text prefix>`.
-8. Each non-blank line of multi-line text fields not appearing as part of loops should
+8. Where necessary, the text-prefix protocol character is `<text prefix>`.
+9. Each non-blank line of multi-line text fields not appearing as part of loops should
    contain `<text indent>` spaces at the beginning. Tab characters must not 
    be used for this purpose. Paragraphs are separated by a single blank line
    which must contain only a new line character.
-9. No tab characters may be used for formatting data values.
-10. The first line of a semi-colon delimited text field should be blank, except
+10. No tab characters may be used for formatting data values.
+11. The first line of a semi-colon delimited text field should be blank, except
    for line folding and prefixing characters where necessary.
-11. A new line character always follows the final semicolon of a semicolon-delimited text field.
-12. Looped data names should use the same delimiter for all items in the same column.
+12. A new line character always follows the final semicolon of a semicolon-delimited text field.
+13. Looped data names should use the same delimiter for all items in the same column.
 
 ### 2.2 Lists
 
 1. The first and last values of a list are not separated from the delimiters by whitespace.
 2. Each element of the list is separated by `<min whitespace>` from the next element.
-3. Where application of the rules for loop or attribute-value layout require a internal 
+3. Where application of the rules for loop or attribute-value layout require an internal 
    line break, the list should be presented as a multi-line compound object.
 4. Where more than one level of nesting is present, the list must be presented as a
    multi-line compound object, in which case rule 2 is ignored.
@@ -98,7 +98,7 @@ part of the meaning of the data value.
 5. Where application of the rules for loop or attribute-value layout require an 
    internal line break, the list should be presented as a multi-line compound object.
 6. Where more than one level of nesting is present, the list must be presented as a
-   multi-line compound object, in which case rule 2 is ignored.
+   multi-line compound object, in which case rule 3 is ignored.
    
 #### Examples
 ```
@@ -209,6 +209,8 @@ that columns align on their first character.
        definitions used only in dREL methods scripts.
        These items never appear in data instance files.
 ;
+
+# Alignment of single-line values
 
     loop_
       _enumeration_set.state
