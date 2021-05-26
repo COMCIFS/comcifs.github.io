@@ -25,7 +25,7 @@ The following values are used in the description.
 `<text indent>`: 4
 `<text prefix>`: `>`
 `<value col>`: 33
-`<value indent>`: 5
+`<value indent>`: `<text indent>` + `<loop indent>`
 `<loop indent>`: 2
 `<loop align>`: 10
 `<loop step>`: 5
@@ -50,6 +50,10 @@ part of the meaning of the data value.
 
 ### 2.1 Text strings
 
+In general multi-line text strings can include formatting like centering or ASCII
+equations. The rules below aim to minimise disruption to such formatting where
+present in the supplied value.
+
 1. Values that can be presented undelimited should not be delimited, unless rule
 13 applies.
 2. The default delimiter for single-line values is the single quote (`'`).
@@ -64,7 +68,9 @@ part of the meaning of the data value.
 9. Each non-blank line of multi-line text fields not appearing as part of loops should
    contain `<text indent>` spaces at the beginning. Tab characters must not 
    be used for this purpose. Paragraphs are separated by a single blank line
-   which must contain only a new line character.
+   which must contain only a new line character. Lines may contain more than
+   `<text indent>` spaces at the beginning, for example for ASCII equations or 
+   centering purposes.
 10. No tab characters may be used for formatting data values.
 11. The first line of a semi-colon delimited text field should be blank, except
    for line folding and prefixing characters where necessary.
@@ -146,6 +152,9 @@ One level of nesting, but the nested data do not fit on a single line:
 
 ### 3.1 Attribute-value pairs
 
+Note the following rule assumes that no DDLm attributes are longer than 
+`<value col>` - `<text indent>` - `<min whitespace>`
+
 1. DDLm attributes appear at the beginning of a line after `<text indent>` spaces.
 2. A value with character length <= `<line length>` - `<value col>` starts 
    in column `<value col>`.
@@ -164,30 +173,46 @@ One level of nesting, but the nested data do not fit on a single line:
 
 ### 3.2 Loops
 
-Note that loops in dictionaries rarely have more than 2 columns. The "length"
-of a column is the length of the longest data value for the corresponding
+Note that loops in dictionaries rarely have more than 2 columns. The "width"
+of a column is the width of the longest data value for the corresponding
 data name, including delimiters. The rules below are designed to make sure
 that columns align on their first character.
 
 1. A loop containing a single packet is presented as attribute - value pairs.
-1. The `loop_` keyword appears on a new line after `<text indent>` spaces
-2. The looped data names appear on separate lines starting at column 
+2. The `loop_` keyword appears on a new line after `<text indent>` spaces
+3. The `n` looped data names appear on separate lines starting at column 
    `<text indent>` + `<loop indent>` + 1
-3. Each packet starts on a new line.
-4. The first character of the first value of a packet is placed in column `<loop align>`.
-5. The second column begins at the first multiple of `<loop align>` following the end of
-   the first column + `<min whitespace>`, or 2 * `<loop align>`, whichever is greater.
-6. However, if the resulting line length would be greater than `<line length>`, the first 
-   character of the second column is placed on a new line with first character 
-   in column `<loop step>`.
-7. If the second column is longer than `<line length>` - `<loop step>` 
-   characters, it is presented as a semicolon-delimited text string.
-8. Semicolon-delimited text strings in loops are formatted as for
+4. Each packet starts on a new line.
+5. The first character of the first value of a packet is placed in column `<loop align>`.
+6. Non-compound values in any column that are longer than `<line
+   length>` - `<loop step>` characters are presented as a
+   semicolon-delimited text strings.
+7. Semicolon-delimited text strings in loops are formatted as for
    section 2.1, except that they are indented so that the first
-   non-blank character of each line aligns with the first alphabetic
+   non-blank,non-prefix character of each line aligns with the first alphabetic
    character of the data name header, that is, the first non blank
    character appears in column `<text indent>` + `<loop_indent>` + 2
-9. Subsequent columns follow the rules for the second column.
+
+8. If the number of looped data names `n` > 1, values in packets are
+   separated by `<min whitespace>` together with any whitespace
+   remaining at the end of the line distributed evenly between the
+   columns.  The following algorithm achieves this:
+    1. Find largest integer `p` such that no data values before column
+      `p` on the current line contain a new line and the sum of widths
+      of next `p` values in the packet, separated by `<min
+      whitespace>` is less than `<line length>`.Call this total width.
+    2. Calculate "remaining whitespace" as `floor(<line length> - total width)/(p-1)`
+    3. The start position of values for data name number `d+1` is start position of data name 
+    `d` + width of data name `d` + `<min whitespace>` + `remaining whitespace`.
+    4. If p < n, the next value is placed in column `<loop step>` on a new line and
+    procedure repeated from step 1
+    5. If any values for a data name contain a new line, data values following that
+    data value start from step 4.
+
+9. If there are two values on a single line and the rules above would yield a starting column
+for the second value that is greater than `<value col>`, the calculated value is replaced by
+`<value col>` unless it would be separated by less than `<min whitespace>` from the
+first value in the packet.
 
 #### Examples
 
@@ -227,12 +252,14 @@ that columns align on their first character.
 1. The first line contains the CIF2.0 identifier with no trailing whitespace.
 2. Between the first line and the data block header is an arbitrary multi-line
 comment, consisting of a series of lines commencing with a hash character.
+The comment-folding convention is not used.
 3. A single blank line precedes the data block header.
 4. The final character in the file is a new line (`\n`).
-5. The first definition is the `Head` category.
-6. A category is presented in order: category definition, followed by
+5. A single blank line follows data frame header.
+6. The first definition is the `Head` category.
+7. A category is presented in order: category definition, followed by
    all data names in alphabetical order, followed by child categories.
-7. Categories with the same parent category are presented in alphabetical
+8. Categories with the same parent category are presented in alphabetical
    order.
 
 ### 4.2 Layout of non-save-frame information
