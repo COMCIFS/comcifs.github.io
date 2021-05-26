@@ -45,6 +45,7 @@ that is, there should be no sequences of more than one blank line.
 5. All lines are terminated by a newline character (`\n`) as per CIF2 specifications.
 6. Tab characters may not be used either as whitespace or within data values, unless
 part of the meaning of the data value.
+7. No comments appear within, or after, the data block
    
 ## 2. Value formatting
 
@@ -99,6 +100,7 @@ present in the supplied value.
 2. The key is delimited by single quotes (`'`). If this is not possible, the rules
    for text strings are followed.
 3. Key:value pairs are separated by `<min whitespace>`.
+4. Keys appear in alphabetical order.
 4. There is no whitespace between the opening and closing braces and the first/last
    key:value pair.
 5. Where application of the rules for loop or attribute-value layout require an 
@@ -153,12 +155,13 @@ One level of nesting, but the nested data do not fit on a single line:
 ### 3.1 Attribute-value pairs
 
 Note the following rule assumes that no DDLm attributes are longer than 
-`<value col>` - `<text indent>` - `<min whitespace>`
+`<value col>` - `<text indent>` - `<min whitespace>`. The length of a value
+includes the delimiters.
 
 1. DDLm attributes appear at the beginning of a line after `<text indent>` spaces.
-2. A value with character length <= `<line length>` - `<value col>` starts 
+2. A value with character length <= `<line length>` - `<value col>` +1 starts 
    in column `<value col>`.
-3. A value with character length between `<line length>` - `<value col>` and
+3. A value with character length equal to or greater than `<line length>` - `<value col>` and
    `<line length>` - `<value indent>` begins in column `<value indent>` of
    the next line.
 4. A value with character length greater than `<line length>` - `<value indent>` 
@@ -178,8 +181,9 @@ of a column is the width of the longest data value for the corresponding
 data name, including delimiters. The rules below are designed to make sure
 that columns align on their first character.
 
-1. A loop containing a single packet is presented as attribute - value pairs.
-2. The `loop_` keyword appears on a new line after `<text indent>` spaces
+1. A loop containing a single data name and single packet is presented as an 
+   attribute - value pair.
+2. The lowercase `loop_` keyword appears on a new line after `<text indent>` spaces
 3. The `n` looped data names appear on separate lines starting at column 
    `<text indent>` + `<loop indent>` + 1
 4. Each packet starts on a new line.
@@ -222,13 +226,13 @@ first value in the packet.
     loop_
       _enumeration_set.state
       _enumeration_set.detail
-          Attribute
+         Attribute
 ;
        Item used as an attribute in the definition
        of other data items in DDLm dictionaries.
        These items never appear in data instance files.
 ;
-          Functions
+         Functions
 ;
        Category of items that are transient function
        definitions used only in dREL methods scripts.
@@ -240,9 +244,9 @@ first value in the packet.
     loop_
       _enumeration_set.state
       _enumeration_set.detail
-          Dictionary          'applies to all defined items in the dictionary'
-          Category            'applies to all defined items in the category'
-          Item                'applies to a single item definition'
+         Dictionary             'applies to all defined items in the dictionary'
+         Category               'applies to all defined items in the category'
+         Item                   'applies to a single item definition'
 
 ```
 ## 4. Ordering
@@ -255,12 +259,15 @@ comment, consisting of a series of lines commencing with a hash character.
 The comment-folding convention is not used.
 3. A single blank line precedes the data block header.
 4. The final character in the file is a new line (`\n`).
-5. A single blank line follows data frame header.
-6. The first definition is the `Head` category.
-7. A category is presented in order: category definition, followed by
+5. A single blank line follows data block header.
+6. `data` is lowercase in the data block header.
+7. The first definition is the `Head` category.
+8. A category is presented in order: category definition, followed by
    all data names in alphabetical order, followed by child categories.
-8. Categories with the same parent category are presented in alphabetical
+9. Categories with the same parent category are presented in alphabetical
    order.
+10. Notwithstanding (8), SU definitions always follow the definitions of 
+their corresponding Measurand data names.
 
 ### 4.2 Layout of non-save-frame information
 
@@ -275,16 +282,27 @@ first save frame, in the following order:
    7. `_dictionary.namespace`
    8. `_description.text`
 
-2. All looped attributes describing the dictionary appear after the final
-save frame, in the following category order:
+2. All looped attributes describing the dictionary are presented as loops
+appearing after the final save frame, in the following category order:
    1. DICTIONARY_VALID (application, attributes)
    2. DICTIONARY_AUDIT (version, date, revision)
-  
+
+3. `_dictionary_audit.revision` is always presented as a semicolon-delimited
+text string
+
+3. Non-looped attributes not covered in rule 1 appear in alphabetical order
+after `_dictionary.namespace`.
+
+4. Looped attributes not covered in rule 2 appear before DICTIONARY_VALID in
+alphabetical order of category.
+
 ### 4.3 Definition layout
 
-1. 1 blank line appears before and after the save frame begin and end codes.
-2. _import.get attributes are separated by 1 blank line above and below.
-3. Attributes in a definition appear in the following order, where present:
+1. 1 blank line appears before and after the save frame begin and end codes,
+which are lowercase
+2. `_import.get` attributes are separated by 1 blank line above and below.
+3. IMPORT_DETAILS attributes are not used
+4. Attributes in a definition appear in the following order, where present:
    1. DEFINITION(id, scope, class)
    2. ALIAS (definition_id)
    3. `_definition.update`
@@ -300,6 +318,8 @@ save frame, in the following category order:
    10. `_import.get`
    11. METHOD(purpose, expression)
    
-4. Any attributes not included in this list appear in alphabetical order after
-the last item in their category provided above, or else in alphabetical order
-of category and then `object_id` after DESCRIPTION_EXAMPLE.
+5. Any attributes not included in this list should be treated as if they appear 
+in alphabetical order after the items already listed for their (capitalised)
+categories above. If the category does not appear, the attributes are 
+presented in alphabetical order of category and then `object_id` after 
+DESCRIPTION_EXAMPLE.
