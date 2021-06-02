@@ -130,13 +130,13 @@ A multi-line compound object is a list or table containing newlines. DDLm
 does not define attributes with more than one level of nesting. These
 rules will be extended if and when such items are defined.
 
-1. The opening delimiter is placed on a new line at `<value indent>`.
+1. The opening delimiter is placed on a new line at `<value col>`.
 2. Each subsequent value is formatted according to the present rules
    until the final character of the next value would be beyond `<line length>`.
-3. The next value is placed on a new line indented by `<value indent>` + n, where
+3. The next value is placed on a new line indented by `<value col>` + n, where
    n is the nesting level.
 4. A nested opening delimiter followed immediately by a primitive value is placed on a
-   new line indented by `<value indent>` + n, where n is the nesting
+   new line indented by `<value col>` + n, where n is the nesting
    level.
 5. A closing delimiter immediately following a primitive value is placed on the
    same line.
@@ -204,9 +204,11 @@ are readable.
 1. A loop containing a single data name and single packet is presented as an 
    attribute - value pair.
 2. The lowercase `loop_` keyword appears on a new line after `<text indent>` spaces
+   and is preceded by a single blank line.
 3. The `n` looped data names appear on separate lines starting at column 
    `<text indent>` + `<loop indent>` + 1
-4. Each packet starts on a new line.
+4. Each packet starts on a new line. The final packet is followed by a single 
+   blank line.
 5. The first character of the first value of a packet is placed in column `<loop align>`.
 6. Non-compound values in any column that are longer than `<line
    length>` - `<loop step>` characters are presented as
