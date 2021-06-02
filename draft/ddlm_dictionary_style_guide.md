@@ -65,7 +65,8 @@ present in the supplied value.
    triple-double-quote is used.
 6. Otherwise, semicolon delimiters are used.
 7. Text fields containing newline characters are always semicolon-delimited.
-8. Where necessary, the text-prefix protocol character is `<text prefix>`.
+8. If a text field contains the newline-semicolon sequence the text-prefix 
+   protocol is used with `<text prefix>` as the prefix.
 9. Each non-blank line of multi-line text fields not appearing as part of loops should
    contain `<text indent>` spaces at the beginning. Tab characters must not 
    be used for this purpose. Paragraphs are separated by a single blank line
@@ -80,33 +81,41 @@ present in the supplied value.
 
 ### 2.2 Lists
 
+No DDLm attributes are currently defined that require more than one level of nesting.
+If such attributes are defined, these rules will be extended.
+
 1. The first and last values of a list are not separated from the delimiters by whitespace.
 2. Each element of the list is separated by `<min whitespace>` from the next element.
 3. Where application of the rules for loop or attribute-value layout require an internal 
    line break, the list should be presented as a multi-line compound object.
-4. Where more than one level of nesting is present, the list must be presented as a
-   multi-line compound object, in which case rule 2 is ignored.
+4. These rules do not cover lists containing multi-line simple data values or lists
+   with more than one level of nesting.
 
 #### Examples
 ```
 [112  128  144]
+
+# One level of nesting, can stay on single line
 
 [[t.11  t.12  t.13]  [t.21  t.22  t.23]  [t.31  t.32  t.33]]
 ```
 
 ### 2.3 Tables
 
+No DDLm attributes are currently defined that require more than one level of nesting.
+If such attributes are defined, these guidelines will be extended.
+
 1. Key:value pairs are presented with no internal whitespace around the `:` character.
 2. The key is delimited by single quotes (`'`). If this is not possible, the rules
    for text strings are followed.
 3. Key:value pairs are separated by `<min whitespace>`.
 4. Keys appear in alphabetical order.
-4. There is no whitespace between the opening and closing braces and the first/last
+5. There is no whitespace between the opening and closing braces and the first/last
    key:value pair.
-5. Where application of the rules for loop or attribute-value layout require an 
+6. Where application of the rules for loop or attribute-value layout require an 
    internal line break, the list should be presented as a multi-line compound object.
-6. Where more than one level of nesting is present, the list must be presented as a
-   multi-line compound object, in which case rule 3 is ignored.
+7. These rules do not cover tables containing multi-line simple data values or
+   tables with more than one level of nesting.
    
 #### Examples
 ```
@@ -117,20 +126,30 @@ present in the supplied value.
 
 ### 2.4 Multi-line compound object
 
-A multi-line compound object is a list or table containing newlines.
+A multi-line compound object is a list or table containing newlines. DDLm
+does not define attributes with more than one level of nesting. These
+rules will be extended if and when such items are defined.
 
 1. The opening delimiter is placed on a new line at `<value indent>`.
 2. Each subsequent value is formatted according to the present rules
    until the final character of the next value would be beyond `<line length>`.
 3. The next value is placed on a new line indented by `<value indent>` + n, where
    n is the nesting level.
-4. The closing delimiter of a compound value is placed on a new line with
-   the same indentation as its opening delimiter, immediately followed by a
-   new line character.
-5. Corresponding values must be vertically aligned on their first character such
-   that a minimum spacing of `<min whitespace>` is maintained, and at least
-   one whitespace gap between each column is exactly `<min whitespace>` for
-   at least one row.
+4. A nested opening delimiter followed immediately by a primitive value is placed on a
+   new line indented by `<value indent>` + n, where n is the nesting
+   level.
+5. A closing delimiter immediately following a primitive value is placed on the
+   same line.
+6. Except when immediately following a primitive value, closing delimiters are
+   placed on a separate line indented by the same amount as their corresponding
+   opening delimiter.
+7. A "corresponding value" is either a list entry at the same position
+   in each list of a list of lists, or a table value with the same key
+   in a list of tables. Corresponding values must be vertically
+   aligned on their first character such that a minimum spacing of
+   `<min whitespace>` is maintained, and at least one whitespace gap
+   between each column is exactly `<min whitespace>` for at least one
+   row.
 
 #### Examples
 
@@ -179,7 +198,8 @@ includes the delimiters.
 Note that loops in dictionaries rarely have more than 2 columns. The "width"
 of a column is the width of the longest data value for the corresponding
 data name, including delimiters. The rules below are designed to make sure
-that columns align on their first character.
+that columns align on their first character, and that two-column tables
+are readable.
 
 1. A loop containing a single data name and single packet is presented as an 
    attribute - value pair.
@@ -189,14 +209,13 @@ that columns align on their first character.
 4. Each packet starts on a new line.
 5. The first character of the first value of a packet is placed in column `<loop align>`.
 6. Non-compound values in any column that are longer than `<line
-   length>` - `<loop step>` characters are presented as a
+   length>` - `<loop step>` characters are presented as
    semicolon-delimited text strings.
 7. Semicolon-delimited text strings in loops are formatted as for
    section 2.1, except that they are indented so that the first
    non-blank,non-prefix character of each line aligns with the first alphabetic
    character of the data name header, that is, the first non blank
-   character appears in column `<text indent>` + `<loop_indent>` + 2
-
+   character appears in column `<text indent>` + `<loop indent>` + 2
 8. If the number of looped data names `n` > 1, values in packets are
    separated by `<min whitespace>` together with any whitespace
    remaining at the end of the line distributed evenly between the
@@ -212,11 +231,18 @@ that columns align on their first character.
     procedure repeated from step 1
     5. If any values for a data name contain a new line, data values following that
     data value start from step 4.
+    6. Notwithstanding (4), the starting column for multi-line
+    compound data values is that given in section 2.4.
 
 9. If there are two values on a single line and the rules above would yield a starting column
 for the second value that is greater than `<value col>`, the calculated value is replaced by
 `<value col>` unless it would be separated by less than `<min whitespace>` from the
 first value in the packet.
+
+10. If there are two values in a packet and the second value would appear on a separate
+line, `<loop step>` in rule 8.4 above is replaced by `<loop align>` + `<text indent>`. If
+the second value is semicolon-delimited and the first is not, the second value has
+an internal indent of 2*`<text indent>` + `<loop indent>`.
 
 #### Examples
 
