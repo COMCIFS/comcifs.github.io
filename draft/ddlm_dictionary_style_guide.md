@@ -4,7 +4,7 @@
 
 The following rules describe the preferred layout of DDLm dictionaries. Following
 these rules should allow generic dictionary manipulation software to ingest,
-edit and re-output dictionaries with minimal irrelevant changes to whitespace. 
+semantically edit and re-output dictionaries with minimal irrelevant changes to whitespace. 
 
 These rules are not intended to apply to CIF data files.
 
@@ -14,8 +14,9 @@ DDLm dictionaries, and will be expanded as new situations arise.
 
 ## Terminology
 
-"Attribute" refers to a DDLm attribute (a syntactic data name).
-Columns are numbered from 1.
+"Attribute" refers to a DDLm attribute (a "data name" in CIF syntax terms).
+Columns are numbered from 1. "Starting at column x" means that the first
+non-whitespace character (which may be a delimiter) appears in column x.
 
 ## Magic numbers
 
@@ -24,7 +25,7 @@ The following values are used in the description.
 `<line length>`: 80
 `<text indent>`: 4
 `<text prefix>`: `>`
-`<value col>`: 33
+`<value col>`: 35
 `<value indent>`: `<text indent>` + `<loop indent>`
 `<loop indent>`: 2
 `<loop align>`: 10
@@ -78,6 +79,12 @@ present in the supplied value.
    for line folding and prefixing characters where necessary.
 12. A new line character always follows the final semicolon of a semicolon-delimited text field.
 13. Looped data names should use the same delimiter for all items in the same column.
+14. Category names in a category definition should be presented CAPITALISED in 
+    `_name.category_id`, `_name.object_id` and `_definition.id`
+15. Category names in data item definitions should be presented in canonical case,
+    that is, with proper names (e.g. Wyckoff) capitalised and no leading capital letter.
+16. Enumerated values for case-insensitive data items should be output
+    with a leading capital letter.
 
 ### 2.2 Lists
 
@@ -87,7 +94,7 @@ If such attributes are defined, these rules will be extended.
 1. The first and last values of a list are not separated from the delimiters by whitespace.
 2. Each element of the list is separated by `<min whitespace>` from the next element.
 3. Where application of the rules for loop or attribute-value layout require an internal 
-   line break, the list should be presented as a multi-line compound object.
+   line break, the list should be presented as a multi-line compound object (see below).
 4. These rules do not cover lists containing multi-line simple data values or lists
    with more than one level of nesting.
 
