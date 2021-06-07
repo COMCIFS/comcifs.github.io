@@ -191,8 +191,8 @@ includes the delimiters.
    `<line length>` - `<value col>` + 1 and lesser or equal to
    `<line length>` - `<value indent>` + 1 starts in column `<value indent>`
    of the next line.
-4. A value with character length greater than `<line length>` - `<value indent>`
-   + 1 is presented as a semicolon-delimited text string or as a multi-line
+4. A value with character length greater than `<line length>` - `<value indent>` + 1
+   is presented as a semicolon-delimited text string or as a multi-line
    compound object.
 5. `_description.text` is always presented as a semicolon-delimited text string.
 
@@ -207,16 +207,15 @@ includes the delimiters.
     _description_example.case
      'Quoted value with padding: ++++++++++++++++++++'
 
-# Maximum length value that does not require semicolon quotes (75 characters)
+# Maximum length value that can appear on the next line (75 characters)
     _description_example.case
      'Quoted value with padding: ++++++++++++++++++++++++++++++++++++++++++++++'
 
-# Minimum length value that requires semicolon quotes (76 characters)
+# Minimum length value that requires semicolon delimiters (76 characters)
     _description_example.case
 ;
     Quoted value with padding: +++++++++++++++++++++++++++++++++++++++++++++++
 ;
-
 ```
 
 ### 3.2 Loops
