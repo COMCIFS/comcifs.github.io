@@ -185,19 +185,37 @@ Note the following rule assumes that no DDLm attributes are longer than
 includes the delimiters.
 
 1. DDLm attributes appear at the beginning of a line after `<text indent>` spaces.
-2. A value with character length <= `<line length>` - `<value col>` +1 starts 
-   in column `<value col>`.
-3. A value with character length equal to or greater than `<line length>` - `<value col>` and
-   `<line length>` - `<value indent>` begins in column `<value indent>` of
-   the next line.
-4. A value with character length greater than `<line length>` - `<value indent>` 
-   is presented as a semicolon-delimited text string or as a multi-line compound
-   object.
+2. A value with character length that is lesser or equal to
+   `<line length>` - `<value col>` + 1 starts in column `<value col>`.
+3. A value with character length that is greater than
+   `<line length>` - `<value col>` + 1 and lesser or equal to
+   `<line length>` - `<value indent>` + 1 starts in column `<value indent>`
+   of the next line.
+4. A value with character length greater than `<line length>` - `<value indent>` + 1
+   is presented as a semicolon-delimited text string or as a multi-line
+   compound object.
 5. `_description.text` is always presented as a semicolon-delimited text string.
 
 #### Examples
 ```
-    _definition.id               '_alias.deprecation_date'
+    _definition.id              '_alias.deprecation_date'
+
+# Maximum length value that can still appear on the same line (48 characters)
+    _description_example.case   'Quoted value with padding: +++++++++++++++++++'
+
+# Minimum length value that must appear on the next line (49 characters)
+    _description_example.case
+     'Quoted value with padding: ++++++++++++++++++++'
+
+# Maximum length value that can appear on the next line (75 characters)
+    _description_example.case
+     'Quoted value with padding: ++++++++++++++++++++++++++++++++++++++++++++++'
+
+# Minimum length value that requires semicolon delimiters (76 characters)
+    _description_example.case
+;
+    Quoted value with padding: +++++++++++++++++++++++++++++++++++++++++++++++
+;
 ```
 
 ### 3.2 Loops
