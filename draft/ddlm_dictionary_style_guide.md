@@ -37,9 +37,11 @@ The following values are used in the description.
 1. Lines are a maximum of `<line length>` characters long. Multi-line character strings should
 be broken after the last whitespace character preceding this limit and trailing whitespace
 removed.
-2. Data values with no internal whitespace that would overflow the line length limit
-should be presented in semicolon-delimited text fields and folded so that the 
-backslash appears in column `<line length>`, except for dREL expressions.
+2. Data values with no internal whitespace that would overflow the
+line length limit if formatted according to the following rules should
+be presented in semicolon-delimited text fields with leading blank
+line, no indentation and folded, if necessary, so that the backslash
+appears in column `<line length>`.
 3. (No trailing whitespace) The last character in a line should not be whitespace.
 4. Blank lines are inserted only as specified below. Blank lines do not accumulate,
 that is, there should be no sequences of more than one blank line.
@@ -194,6 +196,10 @@ includes the delimiters.
    is presented as a semicolon-delimited text string or as a multi-line compound
    object.
 5. `_description.text` is always presented as a semicolon-delimited text string.
+6. Attributes that take default values (as listed in `ddl.dic`) are
+   not output, except for the following attributes from category TYPE:
+   `_type.purpose`, `_type.source`, `_type.container`,
+   `_type.contents`.
 
 #### Examples
 ```
@@ -318,7 +324,8 @@ first save frame, in the following order:
    8. `_description.text`
 
 2. All looped attributes describing the dictionary are presented as loops
-appearing after the final save frame, in the following category order:
+appearing after the final save frame, in the following category order.
+Looped data names appear in the order provided in brackets.
    1. DICTIONARY_VALID (application, attributes)
    2. DICTIONARY_AUDIT (version, date, revision)
 
@@ -328,8 +335,10 @@ text string
 3. Non-looped attributes not covered in rule 1 appear in alphabetical order
 after `_dictionary.namespace`.
 
-4. Looped attributes not covered in rule 2 appear before DICTIONARY_VALID in
-alphabetical order of category.
+4. Looped attributes not covered in rule 2 appear before
+DICTIONARY_VALID in alphabetical order of category, with data names in
+each loop provided in the order: key data names in alphabetical order,
+followed by other data names in alphabetical order.
 
 ### 4.3 Definition layout
 
@@ -337,14 +346,18 @@ alphabetical order of category.
 which are lowercase
 2. `_import.get` attributes are separated by 1 blank line above and below.
 3. IMPORT_DETAILS attributes are not used
-4. Attributes in a definition appear in the following order, where present:
+4. Attributes in a definition appear in the following order, where
+   present. The names in brackets give the order in which attributes
+   in the given category are presented.
    1. DEFINITION(id, scope, class)
+   1. DEFINITION_REPLACED(id,by)
    2. ALIAS (definition_id)
    3. `_definition.update`
    4. `_description.text`
    5. NAME(category_id,object_id,linked_item_id)
    6. `_category_key.name`
-   7. TYPE (purpose,source,container,contents)
+   7. TYPE (purpose,source,container,dimension,contents,
+            contents_referenced_id,indices,indices_referenced_id)
    8. ENUMERATION(range)
    9. ENUMERATION_SET(state,detail)
    9. `_enumeration.default`
@@ -354,7 +367,7 @@ which are lowercase
    11. METHOD(purpose, expression)
    
 5. Any attributes not included in this list should be treated as if they appear 
-in alphabetical order after the items already listed for their (capitalised)
+in alphabetical order after the last item already listed for their (capitalised)
 categories above. If the category does not appear, the attributes are 
 presented in alphabetical order of category and then `object_id` after 
 DESCRIPTION_EXAMPLE.
