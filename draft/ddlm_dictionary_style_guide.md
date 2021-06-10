@@ -2,15 +2,18 @@
 
 ## Overview
 
-The following rules describe the preferred layout of DDLm dictionaries. Following
-these rules should allow generic dictionary manipulation software to ingest,
-semantically edit and re-output dictionaries with minimal irrelevant changes to whitespace. 
+The following rules describe the preferred layout of DDLm Reference
+and Instance dictionaries. Following these rules should allow generic
+dictionary manipulation software to ingest, semantically edit and
+re-output dictionaries with minimal irrelevant changes to whitespace.
 
-These rules are not intended to apply to CIF data files.
+These rules are not intended to apply to CIF data files or Template
+dictionaries.
 
-These rules are not comprehensive, for example, they do not envisage table values
-that are semicolon-delimited. They should cover all situations encountered in
-DDLm dictionaries, and will be expanded as new situations arise.
+These rules are not comprehensive, for example, they do not envisage
+table values that are semicolon-delimited. They should cover all
+situations typically encountered in DDLm dictionaries, and will be
+expanded as new situations arise.
 
 ## Terminology
 
@@ -26,7 +29,7 @@ The following values are used in the description.
 `<text indent>`: 4
 `<text prefix>`: `>`
 `<value col>`: 35
-`<value indent>`: `<text indent>` + `<loop indent>`
+`<value indent>`: `<text indent>` + `<loop step>`
 `<loop indent>`: 2
 `<loop align>`: 10
 `<loop step>`: 5
@@ -116,7 +119,7 @@ If such attributes are defined, these guidelines will be extended.
 
 1. Key:value pairs are presented with no internal whitespace around the `:` character.
 2. The key is delimited by single quotes (`'`). If this is not possible, the rules
-   for text strings are followed.
+   for text strings (2.1) are followed.
 3. Key:value pairs are separated by `<min whitespace>`.
 4. Keys appear in alphabetical order.
 5. There is no whitespace between the opening and closing braces and the first/last
@@ -137,22 +140,30 @@ If such attributes are defined, these guidelines will be extended.
 
 A multi-line compound object is a list or table containing newlines. DDLm
 does not define attributes with more than one level of nesting. These
-rules will be extended if and when such items are defined.
+rules will be extended if and when such items are defined. The position
+of the opening delimiter determined by rules (1) and (2) is labelled
+`object indent`. The intent of rule (1) is to minimise line breaks
+within any internal compound objects.
 
-1. The opening delimiter is placed on a new line at `<value col>`.
-2. Each subsequent value is formatted according to the present rules
+1. The opening delimiter is placed at the maximum of (`<value col>`,
+   the end of the previous value + `<min whitespace>`), as long as any
+   internal compound values would not exceed the line length when
+   formatted as non-multi-line values according to the following
+   rules.
+2. Otherwise, the opening delimiter is placed at `<value indent>` on a new line.
+3. Each subsequent value is formatted according to the present rules
    until the final character of the next value would be beyond `<line length>`.
-3. The next value is placed on a new line indented by `<value col>` + n, where
+4. The next value is placed on a new line indented by `object indent` + n, where
    n is the nesting level.
-4. A nested opening delimiter followed immediately by a primitive value is placed on a
-   new line indented by `<value col>` + n, where n is the nesting
+5. A nested opening delimiter followed immediately by a primitive value is placed on a
+   new line indented by `object indent` + n, where n is the nesting
    level.
-5. A closing delimiter immediately following a primitive value is placed on the
+6. A closing delimiter immediately following a primitive value is placed on the
    same line.
-6. Except when immediately following a primitive value, closing delimiters are
+7. Except when immediately following a primitive value, closing delimiters are
    placed on a separate line indented by the same amount as their corresponding
    opening delimiter.
-7. A "corresponding value" is either a list entry at the same position
+8. A "corresponding value" is either a list entry at the same position
    in each list of a list of lists, or a table value with the same key
    in a list of tables. Corresponding values must be vertically
    aligned on their first character such that a minimum spacing of
@@ -162,8 +173,9 @@ rules will be extended if and when such items are defined.
 
 #### Examples
 
-One level of nesting, but the nested data do not fit on a single line:
 ```
+# One level of nesting, but the nested data do not fit on a single line:
+
 [
  [c.vector_a*c.vector_a  c.vector_a*c.vector_b  c.vector_a*c.vector_c]
  [c.vector_b*c.vector_a  c.vector_b*c.vector_b  c.vector_b*c.vector_c]
@@ -176,6 +188,31 @@ One level of nesting, but the nested data do not fit on a single line:
  {'file':cif_core.dic  'save':CIF_CORE  'mode':Full}
  {'file':cif_ms.dic    'save':CIF_MS    'mode':Full}
 ]
+
+# Internal value doesn't fit when starting a value_col, so must start
+# at value indent
+
+    _import.get
+         [
+          {"file":templ_attr.cif "save":Cromer_Mann_coeff}
+          {"file":templ_enum.cif "save":Cromer_Mann_a1}
+         ]
+
+# Array item in loop starts at column 37 to maintain min whitespace
+
+    loop_
+      _dictionary_valid.application
+      _dictionary_valid.attributes
+         [Dictionary  Mandatory]    ['_dictionary.title'  '_dictionary.class'
+                                     '_dictionary.version'  '_dictionary.date'
+                                     '_dictionary.uri'
+                                     '_dictionary.ddl_conformance'
+                                     '_dictionary.namespace']
+         [Dictionary  Recommended]  ['_description.text'
+                                     '_dictionary_audit.version'
+                                     '_dictionary_audit.date'
+                                     '_dictionary_audit.revision']
+ 
 ```
 
 ## 3 Data items
@@ -203,6 +240,7 @@ includes the delimiters.
    `_type.contents`.
 
 #### Examples
+
 ```
     _definition.id              '_alias.deprecation_date'
 
@@ -226,11 +264,16 @@ includes the delimiters.
 
 ### 3.2 Loops
 
-Note that loops in dictionaries rarely have more than 2 columns. The "width"
-of a column is the width of the longest data value for the corresponding
-data name, including delimiters. The rules below are designed to make sure
-that columns align on their first character, and that two-column tables
-are readable.
+Loops consist of a series of packets. Corresponding items in each
+packet should be aligned in the output to form visual columns. To
+avoid confusion with "column" in the sense of "horizontal character
+position", these visual columns are called "packet items" in the
+following.  Note that loops in dictionaries rarely have more than 2
+such packet items. The "width" of a packet item is the width of the
+longest data value for the corresponding data name, including
+delimiters. The rules below are designed to make sure that packet
+items align on their first character, and that loops with only two
+packet items are readable.
 
 1. A loop containing a single data name and single packet is presented as an 
    attribute - value pair.
@@ -241,9 +284,9 @@ are readable.
 4. Each packet starts on a new line. The final packet is followed by a single 
    blank line.
 5. The first character of the first value of a packet is placed in column `<loop align>`.
-6. Non-compound values in any column that are longer than `<line
-   length>` - `<loop step>` characters are presented as
-   semicolon-delimited text strings.
+6. Non-compound values that are longer than `<line length>` - `<loop
+   step>` characters are presented as semicolon-delimited text
+   strings.
 7. Semicolon-delimited text strings in loops are formatted as for
    section 2.1, except that they are indented so that the first
    non-blank,non-prefix character of each line aligns with the first alphabetic
@@ -252,12 +295,12 @@ are readable.
 8. If the number of looped data names `n` > 1, values in packets are
    separated by `<min whitespace>` together with any whitespace
    remaining at the end of the line distributed evenly between the
-   columns.  The following algorithm achieves this:
-    1. Find largest integer `p` such that no data values before column
-      `p` on the current line contain a new line and the sum of widths
-      of next `p` values in the packet, separated by `<min
+   packet items.  The following algorithm achieves this:
+    1. Find largest integer `p` such that no data values before packet item
+      `p` on the current line contain a new line and the sum of the widths
+      of next `p` packet items, separated by `<min
       whitespace>` is less than `<line length>`.Call this total width.
-    2. Calculate "remaining whitespace" as `floor(<line length> - total width)/(p-1)`
+    2. Calculate "remaining whitespace" as `floor((<line length> - total width)/(p-1))`
     3. The start position of values for data name number `d+1` is start position of data name 
     `d` + width of data name `d` + `<min whitespace>` + `remaining whitespace`.
     4. If p < n, the next value is placed in column `<loop step>` on a new line and
