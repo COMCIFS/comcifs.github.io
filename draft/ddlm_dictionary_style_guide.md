@@ -83,7 +83,7 @@ present in the supplied value.
 11. The first line of a semi-colon delimited text field should be blank, except
    for line folding and prefixing characters where necessary.
 12. A new line character always follows the final semicolon of a semicolon-delimited text field.
-13. Looped data names should use the same delimiter for all items in the same column.
+13. Looped attributes should use the same delimiter for all items in the same column.
 14. Category names in a category definition should be presented CAPITALISED in 
     `_name.category_id`, `_name.object_id` and `_definition.id`
 15. Category names in data item definitions should be presented in canonical case,
@@ -125,7 +125,7 @@ If such attributes are defined, these guidelines will be extended.
 5. There is no whitespace between the opening and closing braces and the first/last
    key:value pair.
 6. Where application of the rules for loop or attribute-value layout require an 
-   internal line break, the list should be presented as a multi-line compound object.
+   internal line break, the table should be presented as a multi-line compound object.
 7. These rules do not cover tables containing multi-line simple data values or
    tables with more than one level of nesting.
    
@@ -223,7 +223,8 @@ Note the following rule assumes that no DDLm attributes are longer than
 `<value col>` - `<text indent>` - `<min whitespace>`. The length of a value
 includes the delimiters.
 
-1. DDLm attributes appear at the beginning of a line after `<text indent>` spaces.
+1. DDLm attributes appear lowercased at the beginning of a line after
+   `<text indent>` spaces.
 2. A value with character length that is lesser or equal to
    `<line length>` - `<value col>` + 1 starts in column `<value col>`.
 3. A value with character length that is greater than
@@ -279,7 +280,7 @@ packet items are readable.
    attribute - value pair.
 2. The lowercase `loop_` keyword appears on a new line after `<text indent>` spaces
    and is preceded by a single blank line.
-3. The `n` looped data names appear on separate lines starting at column 
+3. The `n` lowercase, looped attribute names appear on separate lines starting at column 
    `<text indent>` + `<loop indent>` + 1
 4. Each packet starts on a new line. The final packet is followed by a single 
    blank line.
@@ -292,7 +293,7 @@ packet items are readable.
    non-blank,non-prefix character of each line aligns with the first alphabetic
    character of the data name header, that is, the first non blank
    character appears in column `<text indent>` + `<loop indent>` + 2
-8. If the number of looped data names `n` > 1, values in packets are
+8. If the number of looped attributes `n` > 1, values in packets are
    separated by `<min whitespace>` together with any whitespace
    remaining at the end of the line distributed evenly between the
    packet items.  The following algorithm achieves this:
@@ -301,7 +302,7 @@ packet items are readable.
       of next `p` packet items, separated by `<min
       whitespace>` is less than `<line length>`.Call this total width.
     2. Calculate "remaining whitespace" as `floor((<line length> - total width)/(p-1))`
-    3. The start position of values for data name number `d+1` is start position of data name 
+    3. The start position of values for attribute number `d+1` is start position of attribute 
     `d` + width of data name `d` + `<min whitespace>` + `remaining whitespace`.
     4. If p < n, the next value is placed in column `<loop step>` on a new line and
     procedure repeated from step 1
