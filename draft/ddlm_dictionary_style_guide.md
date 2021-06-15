@@ -86,10 +86,17 @@ present in the supplied value.
 13. Looped attributes should use the same delimiter for all items in the same column.
 14. Category names in a category definition should be presented CAPITALISED in 
     `_name.category_id`, `_name.object_id` and `_definition.id`
-15. Category names in data item definitions should be presented in canonical case,
-    that is, with proper names (e.g. Wyckoff) capitalised and no leading capital letter.
+15. Category and object names in data item definitions should be presented in "canonical" case.
+    Canonical case follows the rules of English capitalisation where the first letter is not
+    considered to start a sentence. In particular:
+    1. Proper names and place names (e.g. Wyckoff, Cambridge) and
+       their abbreviations (e.g. "H\_M" for "Hermann-Mauguin", "Cartn",
+       "Lp\_factor") are capitalised
+    2. Symbols are capitalised according to crystallographic convention (e.g Uij)
+    3. Initialisms are capitalised (e.g CSD, IT for International Tables)
 16. Enumerated values for case-insensitive data items should be output
     with a leading capital letter.
+17. Function names defined in DDLm Function categories are CamelCased
 
 ### 2.2 Lists
 
@@ -190,7 +197,7 @@ within any internal compound objects.
 ]
 
 # Internal value doesn't fit when starting a value_col, so must start
-# at value indent
+# at value indent. Internal opening delimiter on new line
 
     _import.get
          [
