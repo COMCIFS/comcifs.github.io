@@ -189,7 +189,7 @@ within any internal compound objects.
  [c.vector_c*c.vector_a  c.vector_c*c.vector_b  c.vector_c*c.vector_c]
 ]
 
-# Alignment of internal values
+# Alignment of internal values, nested opening delimiter
 
 [
  {'file':cif_core.dic  'save':CIF_CORE  'mode':Full}
@@ -204,6 +204,13 @@ within any internal compound objects.
           {"file":templ_attr.cif "save":Cromer_Mann_coeff}
           {"file":templ_enum.cif "save":Cromer_Mann_a1}
          ]
+
+# Internal value fits using value_col as indent, but outer brackets are
+# on separate lines by rule 5
+
+    _import.get                   [
+                                   {'file':templ_attr.cif  'save':Miller_index}
+                                  ]
 
 # Array item in loop starts at column 37 to maintain min whitespace
 
