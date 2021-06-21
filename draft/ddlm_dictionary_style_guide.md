@@ -57,9 +57,10 @@ part of the meaning of the data value.
 
 ### 2.1 Text strings
 
-In general multi-line text strings can include formatting like centering or ASCII
-equations. The rules below aim to minimise disruption to such formatting where
-present in the supplied value.
+In general multi-line text strings can include formatting like
+centering or ASCII equations. The rules below aim to minimise
+disruption to such formatting where present in the supplied
+value. Note also that rule 1.2 overrides indentation rules below.
 
 1. Values that can be presented undelimited should not be delimited, unless rule
 13 applies.
@@ -111,12 +112,17 @@ If such attributes are defined, these rules will be extended.
    with more than one level of nesting.
 
 #### Examples
+
 ```
 [112  128  144]
 
 # One level of nesting, can stay on single line
 
 [[t.11  t.12  t.13]  [t.21  t.22  t.23]  [t.31  t.32  t.33]]
+
+# One level of nesting, can stay on a single line
+
+    _import.get                   [{'file':templ_attr.cif  'save':aniso_UIJ}]
 ```
 
 ### 2.3 Tables
@@ -314,10 +320,10 @@ packet items are readable.
     1. Find largest integer `p` such that no data values before packet item
       `p` on the current line contain a new line and the sum of the widths
       of next `p` packet items, separated by `<min
-      whitespace>` is less than `<line length>`.Call this total width.
+      whitespace>` is not greater than `<line length>`.Call this total width.
     2. Calculate "remaining whitespace" as `floor((<line length> - total width)/(p-1))`
     3. The start position of values for attribute number `d+1` is start position of attribute 
-    `d` + width of data name `d` + `<min whitespace>` + `remaining whitespace`.
+    `d` + width of data name `d` + `<min whitespace>` + `remaining whitespace` + 1.
     4. If p < n, the next value is placed in column `<loop step>` on a new line and
     procedure repeated from step 1
     5. If any values for a data name contain a new line, data values following that
@@ -331,9 +337,9 @@ for the second value that is greater than `<value col>`, the calculated value is
 first value in the packet.
 
 10. If there are two values in a packet and the second value would appear on a separate
-line, `<loop step>` in rule 8.4 above is replaced by `<loop align>` + `<text indent>`. If
+line, `<loop step>` in rule 3.2.8.iv above is replaced by `<loop align>` + `<text indent>`. If
 the second value is semicolon-delimited and the first is not, the second value has
-an internal indent of 2*`<text indent>` + `<loop indent>`.
+an internal indent of `loop align` + 1.
 
 #### Examples
 
@@ -345,15 +351,15 @@ an internal indent of 2*`<text indent>` + `<loop indent>`.
       _enumeration_set.detail
          Attribute
 ;
-       Item used as an attribute in the definition
-       of other data items in DDLm dictionaries.
-       These items never appear in data instance files.
+         Item used as an attribute in the definition
+         of other data items in DDLm dictionaries.
+         These items never appear in data instance files.
 ;
          Functions
 ;
-       Category of items that are transient function
-       definitions used only in dREL methods scripts.
-       These items never appear in data instance files.
+         Category of items that are transient function
+         definitions used only in dREL methods scripts.
+         These items never appear in data instance files.
 ;
 
 # Alignment of single-line values
@@ -376,7 +382,7 @@ comment, consisting of a series of lines commencing with a hash character.
 The comment-folding convention is not used.
 3. A single blank line precedes the data block header.
 4. The final character in the file is a new line (`\n`).
-5. A single blank line follows data block header.
+5. A single blank line follows the data block header.
 6. `data` is lowercase in the data block header.
 7. The first definition is the `Head` category.
 8. A category is presented in order: category definition, followed by
@@ -385,6 +391,8 @@ The comment-folding convention is not used.
    order.
 10. Notwithstanding (8), SU definitions always follow the definitions of 
 their corresponding Measurand data names.
+11. Notwithstanding (9), categories with `_definition.class` of `Functions`
+appear after all other categories.
 
 ### 4.2 Layout of non-save-frame information
 
@@ -419,7 +427,7 @@ followed by other data names in alphabetical order.
 ### 4.3 Definition layout
 
 1. 1 blank line appears before and after the save frame begin and end codes,
-which are lowercase
+which are uppercase for category definitions and lowercase for all others.
 2. `_import.get` attributes are separated by 1 blank line above and below.
 3. IMPORT_DETAILS attributes are not used
 4. Attributes in a definition appear in the following order, where
@@ -429,7 +437,7 @@ which are lowercase
    1. DEFINITION_REPLACED(id,by)
    2. ALIAS (definition_id)
    3. `_definition.update`
-   4. `_description.text`
+   4. DESCRIPTION(text,common)
    5. NAME(category_id,object_id,linked_item_id)
    6. `_category_key.name`
    7. TYPE (purpose,source,container,dimension,contents,
