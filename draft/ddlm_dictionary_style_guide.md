@@ -356,9 +356,9 @@ for the second value that is greater than `<value col>`, the calculated value is
 first value in the packet.
 
 10. If there are two values in a packet and the second value would appear on a separate
-line, `<loop step>` in rule 3.2.8.iv above is replaced by `<loop align>` + `<text indent>`. If
-the second value is semicolon-delimited and the first is not, the second value has
-an internal indent of `loop align` + 1.
+line, `<loop step>` in rule 3.2.8.iv above is replaced by `<loop align>` + `<text indent>`.
+If one of the values is semicolon-delimited and the other is not, the
+semicolon-delimited value has an internal indent of `loop align` + 1.
 
 #### Examples
 
@@ -379,6 +379,25 @@ an internal indent of `loop align` + 1.
          Category of items that are transient function
          definitions used only in dREL methods scripts.
          These items never appear in data instance files.
+;
+
+# Alignment of semicolon-delimited text strings
+# when both values are semicolon-delimited
+
+    loop_
+      _description_example.case
+      _description_example.detail
+;
+       Example 1 in the first semicolon delimited field.
+;
+;
+       Detail 1 in the second semicolon delimited field.
+;
+;
+       Example 2 in the first semicolon delimited field.
+;
+;
+       Detail 2 in the second semicolon delimited field.
 ;
 
 # Alignment of single-line values
