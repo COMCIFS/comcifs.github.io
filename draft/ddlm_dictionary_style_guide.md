@@ -416,10 +416,10 @@ Looped data names appear in the order provided in brackets.
 3. `_dictionary_audit.revision` is always presented as a semicolon-delimited
 text string.
 
-3. Non-looped attributes not covered in rule 1 appear in alphabetical order
+4. Non-looped attributes not covered in rule 1 appear in alphabetical order
 after `_dictionary.namespace`.
 
-4. Looped attributes not covered in rule 2 appear before
+5. Looped attributes not covered in rule 2 appear before
 DICTIONARY_VALID in alphabetical order of category, with data names in
 each loop provided in the order: key data names in alphabetical order,
 followed by other data names in alphabetical order.
@@ -434,21 +434,21 @@ which are uppercase for category definitions and lowercase for all others.
    present. The names in brackets give the order in which attributes
    in the given category are presented.
    1. DEFINITION(id, scope, class)
-   1. DEFINITION_REPLACED(id,by)
-   2. ALIAS (definition_id)
-   3. `_definition.update`
-   4. DESCRIPTION(text,common)
-   5. NAME(category_id,object_id,linked_item_id)
-   6. `_category_key.name`
-   7. TYPE (purpose,source,container,dimension,contents,
+   2. DEFINITION_REPLACED(id,by)
+   3. ALIAS (definition_id)
+   4. `_definition.update`
+   5. DESCRIPTION(text,common)
+   6. NAME(category_id,object_id,linked_item_id)
+   7. `_category_key.name`
+   8. TYPE (purpose,source,container,dimension,contents,
             contents_referenced_id,indices,indices_referenced_id)
-   8. ENUMERATION(range)
-   9. ENUMERATION_SET(state,detail)
-   9. `_enumeration.default`
-   9. `_units.code`
-   9. DESCRIPTION_EXAMPLE(case,detail)
-   10. `_import.get`
-   11. METHOD(purpose, expression)
+   9. ENUMERATION(range)
+   10. ENUMERATION_SET(state,detail)
+   11. `_enumeration.default`
+   12. `_units.code`
+   13. DESCRIPTION_EXAMPLE(case,detail)
+   14. `_import.get`
+   15. METHOD(purpose, expression)
    
 5. Any attributes not included in this list should be treated as if they appear 
 in alphabetical order after the last item already listed for their (capitalised)
