@@ -62,8 +62,8 @@ centering or ASCII equations. The rules below aim to minimise
 disruption to such formatting where present in the supplied
 value. Note also that rule 1.2 overrides indentation rules below.
 
-1. Values that can be presented undelimited should not be delimited, unless rule
-13 applies.
+1. Values that can be presented undelimited should not be delimited,
+   unless rule 2.1.13 applies.
 2. The default delimiter for single-line values is the single quote (`'`).
 3. Where a single-line value contains a quote, the double quote (`"`) is used.
 4. Where a single-line value contains both quote and double-quote, the
@@ -416,10 +416,10 @@ Looped data names appear in the order provided in brackets.
 3. `_dictionary_audit.revision` is always presented as a semicolon-delimited
 text string.
 
-4. Non-looped attributes not covered in rule 1 appear in alphabetical order
+4. Non-looped attributes not covered in rule 4.2.1 appear in alphabetical order
 after `_dictionary.namespace`.
 
-5. Looped attributes not covered in rule 2 appear before
+5. Looped attributes not covered in rule 4.2.2 appear before
 DICTIONARY_VALID in alphabetical order of category, with data names in
 each loop provided in the order: key data names in alphabetical order,
 followed by other data names in alphabetical order.
