@@ -266,17 +266,21 @@ includes the delimiters.
     _definition.id                '_alias.deprecation_date'
 
 # Maximum length value that can still appear on the same line (46 characters)
+
     _description_example.case     'Quoted value with padding: +++++++++++++++++'
 
 # Minimum length value that must appear on the next line (47 characters)
+
     _description_example.case
         'Quoted value with padding: ++++++++++++++++++'
 
 # Maximum length value that can appear on the next line (72 characters)
+
     _description_example.case
         'Quoted value with padding: +++++++++++++++++++++++++++++++++++++++++++'
 
 # Minimum length value that requires semicolon delimiters (76 characters)
+
     _description_example.case
 ;
     Quoted value with padding: ++++++++++++++++++++++++++++++++++++++++++++
@@ -284,6 +288,7 @@ includes the delimiters.
 
 # Long values with no internal whitespaces that fit into a single line
 # should be presented without indentation as specified in rule 2.1
+
     _description_example.case
 ;
 InChI=1S/C6H12O6/c7-1-2-3(8)4(9)5(10)6(11)12-2/h2-11H,1H2/t2-,3-,4+,5-,6?/m1/s1
@@ -292,6 +297,7 @@ InChI=1S/C6H12O6/c7-1-2-3(8)4(9)5(10)6(11)12-2/h2-11H,1H2/t2-,3-,4+,5-,6?/m1/s1
 # Long values with no internal whitespaces that do not fit into a single
 # line should be folded and presented without indentation as specified in
 # rule 2.1
+
     _description_example.case
 ;\
 InChI=1S/C40H60N10O12S2/c1-5-20(4)31-37(58)44-23(12-13-29(41)52)33(54)45-25(17-\
