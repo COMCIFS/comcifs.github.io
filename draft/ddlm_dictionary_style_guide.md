@@ -51,7 +51,7 @@ that is, there should be no sequences of more than one blank line.
 5. All lines are terminated by a newline character (`\n`) as per CIF2 specifications.
 6. Tab characters may not be used either as whitespace or within data values, unless
 part of the meaning of the data value.
-7. No comments appear within, or after, the data block
+7. No comments appear within, or after, the data block.
    
 ## 2. Value formatting
 
@@ -86,18 +86,18 @@ value. Note also that rule 1.2 overrides indentation rules below.
 12. A new line character always follows the final semicolon of a semicolon-delimited text field.
 13. Looped attributes should use the same delimiter for all items in the same column.
 14. Category names in a category definition should be presented CAPITALISED in 
-    `_name.category_id`, `_name.object_id` and `_definition.id`
+    `_name.category_id`, `_name.object_id` and `_definition.id`.
 15. Category and object names in data item definitions should be presented in "canonical" case.
     Canonical case follows the rules of English capitalisation where the first letter is not
     considered to start a sentence. In particular:
     1. Proper names and place names (e.g. Wyckoff, Cambridge) and
        their abbreviations (e.g. "H\_M" for "Hermann-Mauguin", "Cartn",
-       "Lp\_factor") are capitalised
-    2. Symbols are capitalised according to crystallographic convention (e.g Uij)
-    3. Initialisms are capitalised (e.g CSD, IT for International Tables)
+       "Lp\_factor") are capitalised.
+    2. Symbols are capitalised according to crystallographic convention (e.g Uij).
+    3. Initialisms are capitalised (e.g. CSD, IT for International Tables).
 16. Enumerated values for case-insensitive data items should be output
     with a leading capital letter.
-17. Function names defined in DDLm Function categories are CamelCased
+17. Function names defined in DDLm Function categories are CamelCased.
 
 ### 2.2 Lists
 
@@ -301,7 +301,7 @@ packet items are readable.
 2. The lowercase `loop_` keyword appears on a new line after `<text indent>` spaces
    and is preceded by a single blank line.
 3. The `n` lowercase, looped attribute names appear on separate lines starting at column 
-   `<text indent>` + `<loop indent>` + 1
+   `<text indent>` + `<loop indent>` + 1.
 4. Each packet starts on a new line. The final packet is followed by a single 
    blank line.
 5. The first character of the first value of a packet is placed in column `<loop align>`.
@@ -312,20 +312,20 @@ packet items are readable.
    section 2.1, except that they are indented so that the first
    non-blank,non-prefix character of each line aligns with the first alphabetic
    character of the data name header, that is, the first non blank
-   character appears in column `<text indent>` + `<loop indent>` + 2
+   character appears in column `<text indent>` + `<loop indent>` + 2.
 8. If the number of looped attributes `n` > 1, values in packets are
    separated by `<min whitespace>` together with any whitespace
    remaining at the end of the line distributed evenly between the
    packet items.  The following algorithm achieves this:
     1. Find largest integer `p` such that no data values before packet item
       `p` on the current line contain a new line and the sum of the widths
-      of next `p` packet items, separated by `<min
-      whitespace>` is not greater than `<line length>`.Call this total width.
-    2. Calculate "remaining whitespace" as `floor((<line length> - total width)/(p-1))`
+      of next `p` packet items, separated by `<min whitespace>` is not greater
+      than `<line length>`. Call this total width.
+    2. Calculate "remaining whitespace" as `floor((<line length> - total width)/(p-1))`.
     3. The start position of values for attribute number `d+1` is start position of attribute 
     `d` + width of data name `d` + `<min whitespace>` + `remaining whitespace` + 1.
     4. If p < n, the next value is placed in column `<loop step>` on a new line and
-    procedure repeated from step 1
+    procedure repeated from step 1.
     5. If any values for a data name contain a new line, data values following that
     data value start from step 4.
     6. Notwithstanding (4), the starting column for multi-line
@@ -414,7 +414,7 @@ Looped data names appear in the order provided in brackets.
    2. DICTIONARY_AUDIT (version, date, revision)
 
 3. `_dictionary_audit.revision` is always presented as a semicolon-delimited
-text string
+text string.
 
 3. Non-looped attributes not covered in rule 1 appear in alphabetical order
 after `_dictionary.namespace`.
@@ -429,7 +429,7 @@ followed by other data names in alphabetical order.
 1. 1 blank line appears before and after the save frame begin and end codes,
 which are uppercase for category definitions and lowercase for all others.
 2. `_import.get` attributes are separated by 1 blank line above and below.
-3. IMPORT_DETAILS attributes are not used
+3. IMPORT_DETAILS attributes are not used.
 4. Attributes in a definition appear in the following order, where
    present. The names in brackets give the order in which attributes
    in the given category are presented.
