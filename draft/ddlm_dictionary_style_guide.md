@@ -434,19 +434,19 @@ which are uppercase for category definitions and lowercase for all others.
    present. The names in brackets give the order in which attributes
    in the given category are presented.
    1. DEFINITION(id, scope, class)
-   2. DEFINITION_REPLACED(id,by)
+   2. DEFINITION_REPLACED(id, by)
    3. ALIAS (definition_id)
    4. `_definition.update`
    5. DESCRIPTION(text,common)
-   6. NAME(category_id,object_id,linked_item_id)
+   6. NAME(category_id, object_id, linked_item_id)
    7. `_category_key.name`
-   8. TYPE (purpose,source,container,dimension,contents,
-            contents_referenced_id,indices,indices_referenced_id)
+   8. TYPE (purpose,source, container, dimension,contents,
+            contents_referenced_id, indices, indices_referenced_id)
    9. ENUMERATION(range)
-   10. ENUMERATION_SET(state,detail)
+   10. ENUMERATION_SET(state, detail)
    11. `_enumeration.default`
    12. `_units.code`
-   13. DESCRIPTION_EXAMPLE(case,detail)
+   13. DESCRIPTION_EXAMPLE(case, detail)
    14. `_import.get`
    15. METHOD(purpose, expression)
    
