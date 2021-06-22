@@ -263,23 +263,23 @@ includes the delimiters.
 #### Examples
 
 ```
-    _definition.id              '_alias.deprecation_date'
+    _definition.id                '_alias.deprecation_date'
 
-# Maximum length value that can still appear on the same line (48 characters)
-    _description_example.case   'Quoted value with padding: +++++++++++++++++++'
+# Maximum length value that can still appear on the same line (46 characters)
+    _description_example.case     'Quoted value with padding: +++++++++++++++++'
 
-# Minimum length value that must appear on the next line (49 characters)
+# Minimum length value that must appear on the next line (47 characters)
     _description_example.case
-     'Quoted value with padding: ++++++++++++++++++++'
+        'Quoted value with padding: ++++++++++++++++++'
 
-# Maximum length value that can appear on the next line (75 characters)
+# Maximum length value that can appear on the next line (72 characters)
     _description_example.case
-     'Quoted value with padding: ++++++++++++++++++++++++++++++++++++++++++++++'
+        'Quoted value with padding: +++++++++++++++++++++++++++++++++++++++++++'
 
 # Minimum length value that requires semicolon delimiters (76 characters)
     _description_example.case
 ;
-    Quoted value with padding: +++++++++++++++++++++++++++++++++++++++++++++++
+    Quoted value with padding: ++++++++++++++++++++++++++++++++++++++++++++
 ;
 ```
 
