@@ -81,7 +81,7 @@ value. Note also that rule 1.2 overrides indentation rules below.
    `<text indent>` spaces at the beginning, for example for ASCII equations or 
    centering purposes.
 10. No tab characters may be used for formatting data values.
-11. The first line of a semi-colon delimited text field should be blank, except
+11. The first line of a semicolon-delimited text field should be blank, except
    for line folding and prefixing characters where necessary.
 12. A new line character always follows the final semicolon of a semicolon-delimited text field.
 13. Looped attributes should use the same delimiter for all items in the same column.
