@@ -281,6 +281,25 @@ includes the delimiters.
 ;
     Quoted value with padding: ++++++++++++++++++++++++++++++++++++++++++++
 ;
+
+# Long values with no internal whitespaces that fit into a single line
+# should be presented without indentation as specified in rule 2.1
+    _description_example.case
+;
+InChI=1S/C6H12O6/c7-1-2-3(8)4(9)5(10)6(11)12-2/h2-11H,1H2/t2-,3-,4+,5-,6?/m1/s1
+;
+
+# Long values with no internal whitespaces that do not fit into a single
+# line should be folded and presented without indentation as specified in
+# rule 2.1
+    _description_example.case
+;\
+InChI=1S/C40H60N10O12S2/c1-5-20(4)31-37(58)44-23(12-13-29(41)52)33(54)45-25(17-\
+30(42)53)34(55)48-27(39(60)50-14-6-7-28(50)36(57)47-26(40(61)62)15-19(2)3)18-63\
+-64-32(43)38(59)46-24(35(56)49-31)16-21-8-10-22(51)11-9-21/h8-11,19-20,23-28,31\
+-32,51H,5-7,12-18,43H2,1-4H3,(H2,41,52)(H2,42,53)(H,44,58)(H,45,54)(H,46,59)(H,\
+47,57)(H,48,55)(H,49,56)(H,61,62)/t20-,23+,24+,25?,26-,27-,28-,31+,32?/m1/s1
+;
 ```
 
 ### 3.2 Loops
