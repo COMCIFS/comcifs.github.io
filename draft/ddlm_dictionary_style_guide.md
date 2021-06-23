@@ -20,31 +20,33 @@ expanded as new situations arise.
 "Attribute" refers to a DDLm attribute (a "data name" in CIF syntax terms).
 Columns are numbered from 1. "Starting at column x" means that the first
 non-whitespace character (which may be a delimiter) appears in column x.
+"Indent" refers to the number of whitespace characters preceding the first
+non-whitespace value.
 
 ## Magic numbers
 
 The following values are used in the description.
 
-`<line length>`: 80
-`<text indent>`: 4
-`<text prefix>`: `>`
-`<value col>`: 35
-`<value indent>`: `<text indent>` + `<loop step>`
-`<loop indent>`: 2
-`<loop align>`: 10
-`<loop step>`: 5
-`<min whitespace>`: 2
+`line length`: 80
+`text indent`: 4
+`text prefix`: `>`
+`value col`: 35
+`value indent`: `text indent` + `loop step`
+`loop indent`: 2
+`loop align`: 10
+`loop step`: 5
+`min whitespace`: 2
 
 ## 1. Lines and padding
 
-1. Lines are a maximum of `<line length>` characters long. Multi-line character strings should
+1. Lines are a maximum of `line length` characters long. Multi-line character strings should
 be broken after the last whitespace character preceding this limit and trailing whitespace
 removed.
 2. Data values with no internal whitespace that would overflow the
 line length limit if formatted according to the following rules should
 be presented in semicolon-delimited text fields with leading blank
 line, no indentation and folded, if necessary, so that the backslash
-appears in column `<line length>`.
+appears in column `line length`.
 3. (No trailing whitespace) The last character in a line should not be whitespace.
 4. Blank lines are inserted only as specified below. Blank lines do not accumulate,
 that is, there should be no sequences of more than one blank line.
@@ -62,32 +64,30 @@ centering or ASCII equations. The rules below aim to minimise
 disruption to such formatting where present in the supplied
 value. Note also that rule 1.2 overrides indentation rules below.
 
-1. Values that can be presented undelimited should not be delimited, unless rule
-13 applies.
-2. The default delimiter for single-line values is the single quote (`'`).
-3. Where a single-line value contains a quote, the double quote (`"`) is used.
-4. Where a single-line value contains both quote and double-quote, the
-   triple-quote is used.
-5. Where a single-line value contains both a double-quote and triple-quote,
-   triple-double-quote is used.
-6. Otherwise, semicolon delimiters are used.
-7. Text fields containing newline characters are always semicolon-delimited.
-8. If a text field contains the newline-semicolon sequence the text-prefix 
-   protocol is used with `<text prefix>` as the prefix.
-9. Each non-blank line of multi-line text fields not appearing as part of loops should
-   contain `<text indent>` spaces at the beginning. Tab characters must not 
+1. Values that can be presented undelimited should not be delimited,
+   unless rule 9 applies.
+2. Where a delimiter is necessary, the first delimiter in the
+   following list that produces a syntactically correct CIF2 file
+   should be used: (single quote `'`, double quote `"`,
+   triple-single-quote `'''`, triple-double-quote `"""`, semicolon
+   `\n;`).
+3. Text fields containing newline characters are always semicolon-delimited.
+4. If a text field contains the newline-semicolon sequence the text-prefix 
+   protocol is used with `text prefix` as the prefix.
+5. Each non-blank line of multi-line text fields not appearing as part of loops should
+   contain `text indent` spaces at the beginning. Tab characters must not 
    be used for this purpose. Paragraphs are separated by a single blank line
    which must contain only a new line character. Lines may contain more than
-   `<text indent>` spaces at the beginning, for example for ASCII equations or 
+   `text indent` spaces at the beginning, for example for ASCII equations or 
    centering purposes.
-10. No tab characters may be used for formatting data values.
-11. The first line of a semi-colon delimited text field should be blank, except
+6. No tab characters may be used for formatting data values.
+7. The first line of a semi-colon delimited text field should be blank, except
    for line folding and prefixing characters where necessary.
-12. A new line character always follows the final semicolon of a semicolon-delimited text field.
-13. Looped attributes should use the same delimiter for all items in the same column.
-14. Category names in a category definition should be presented CAPITALISED in 
+8. A new line character always follows the final semicolon of a semicolon-delimited text field.
+9. Looped attributes should use the same delimiter for all items in the same column.
+10. Category names in a category definition should be presented CAPITALISED in 
     `_name.category_id`, `_name.object_id` and `_definition.id`
-15. Category and object names in data item definitions should be presented in "canonical" case.
+11. Category and object names in data item definitions should be presented in "canonical" case.
     Canonical case follows the rules of English capitalisation where the first letter is not
     considered to start a sentence. In particular:
     1. Proper names and place names (e.g. Wyckoff, Cambridge) and
@@ -95,9 +95,9 @@ value. Note also that rule 1.2 overrides indentation rules below.
        "Lp\_factor") are capitalised
     2. Symbols are capitalised according to crystallographic convention (e.g Uij)
     3. Initialisms are capitalised (e.g CSD, IT for International Tables)
-16. Enumerated values for case-insensitive data items should be output
+12. Enumerated values for case-insensitive data items should be output
     with a leading capital letter.
-17. Function names defined in DDLm Function categories are CamelCased
+13. Function names defined in DDLm Function categories are CamelCased
 
 ### 2.2 Lists
 
@@ -105,7 +105,7 @@ No DDLm attributes are currently defined that require more than one level of nes
 If such attributes are defined, these rules will be extended.
 
 1. The first and last values of a list are not separated from the delimiters by whitespace.
-2. Each element of the list is separated by `<min whitespace>` from the next element.
+2. Each element of the list is separated by `min whitespace` from the next element.
 3. Where application of the rules for loop or attribute-value layout require an internal 
    line break, the list should be presented as a multi-line compound object (see below).
 4. These rules do not cover lists containing multi-line simple data values or lists
@@ -133,7 +133,7 @@ If such attributes are defined, these guidelines will be extended.
 1. Key:value pairs are presented with no internal whitespace around the `:` character.
 2. The key is delimited by single quotes (`'`). If this is not possible, the rules
    for text strings (2.1) are followed.
-3. Key:value pairs are separated by `<min whitespace>`.
+3. Key:value pairs are separated by `min whitespace`.
 4. Keys appear in alphabetical order.
 5. There is no whitespace between the opening and closing braces and the first/last
    key:value pair.
@@ -151,21 +151,24 @@ If such attributes are defined, these guidelines will be extended.
 
 ### 2.4 Multi-line compound object
 
-A multi-line compound object is a list or table containing newlines. DDLm
-does not define attributes with more than one level of nesting. These
-rules will be extended if and when such items are defined. The position
-of the opening delimiter determined by rules (1) and (2) is labelled
-`object indent`. The intent of rule (1) is to minimise line breaks
-within any internal compound objects.
+A multi-line compound object is a list or table containing
+newlines. DDLm does not define attributes with more than one level of
+nesting. These rules will be extended if and when such items are
+defined. The indentation of the opening delimiter determined by rules
+(1) and (2) is labelled `object indent`. Note that this refers to the
+number of whitespace characters preceding the opening delimiter, so
+the opening delimiter appears at column `object indent + 1`. The
+intent of rule (1) is to minimise line breaks within any internal
+compound objects.
 
-1. The opening delimiter is placed at the maximum of (`<value col>`,
-   the end of the previous value + `<min whitespace>`), as long as any
+1. The opening delimiter is placed at the maximum of (`value col`,
+   the end of the previous value + `min whitespace`), as long as any
    internal compound values would not exceed the line length when
    formatted as non-multi-line values according to the following
    rules.
-2. Otherwise, the opening delimiter is placed at `<value indent>` on a new line.
+2. Otherwise, the opening delimiter is placed at `value indent + 1` on a new line.
 3. Each subsequent value is formatted according to the present rules
-   until the final character of the next value would be beyond `<line length>`.
+   until the final character of the next value would be beyond `line length`.
 4. The next value is placed on a new line indented by `object indent` + n, where
    n is the nesting level.
 5. A nested opening delimiter followed immediately by a primitive value is placed on a
@@ -180,8 +183,8 @@ within any internal compound objects.
    in each list of a list of lists, or a table value with the same key
    in a list of tables. Corresponding values must be vertically
    aligned on their first character such that a minimum spacing of
-   `<min whitespace>` is maintained, and at least one whitespace gap
-   between each column is exactly `<min whitespace>` for at least one
+   `min whitespace` is maintained, and at least one whitespace gap
+   between each column is exactly `min whitespace` for at least one
    row.
 
 #### Examples
@@ -240,18 +243,19 @@ within any internal compound objects.
 ### 3.1 Attribute-value pairs
 
 Note the following rule assumes that no DDLm attributes are longer than 
-`<value col>` - `<text indent>` - `<min whitespace>`. The length of a value
+`value col` - `text indent` - `min whitespace`. The length of a value
 includes the delimiters.
 
 1. DDLm attributes appear lowercased at the beginning of a line after
-   `<text indent>` spaces.
+   `text indent` spaces.
 2. A value with character length that is lesser or equal to
-   `<line length>` - `<value col>` + 1 starts in column `<value col>`.
+   `line length` - `value col` + 1 starts in column `value col`.
 3. A value with character length that is greater than
-   `<line length>` - `<value col>` + 1 and lesser or equal to
-   `<line length>` - `<value indent>` + 1 starts in column `<value indent>`
-   of the next line.
-4. A value with character length greater than `<line length>` - `<value indent>` + 1
+   `line length` - `value col` + 1 and lesser or equal to
+   `line length` - `value indent + 1` starts in column 
+   `value indent + 1` of the next line.
+4. A value with character length greater than 
+   `line length - value indent + 1`
    is presented as a semicolon-delimited text string or as a multi-line
    compound object.
 5. `_description.text` is always presented as a semicolon-delimited text string.
@@ -298,33 +302,33 @@ packet items are readable.
 
 1. A loop containing a single data name and single packet is presented as an 
    attribute - value pair.
-2. The lowercase `loop_` keyword appears on a new line after `<text indent>` spaces
+2. The lowercase `loop_` keyword appears on a new line after `text indent` spaces
    and is preceded by a single blank line.
 3. The `n` lowercase, looped attribute names appear on separate lines starting at column 
-   `<text indent>` + `<loop indent>` + 1
+   `text indent + loop indent + 1`
 4. Each packet starts on a new line. The final packet is followed by a single 
    blank line.
-5. The first character of the first value of a packet is placed in column `<loop align>`.
-6. Non-compound values that are longer than `<line length>` - `<loop
-   step>` characters are presented as semicolon-delimited text
-   strings.
+5. The first character of the first value of a packet is placed in column `loop align`.
+6. Non-compound values that are longer than `line length - loop step`
+   characters are presented as semicolon-delimited text strings.
 7. Semicolon-delimited text strings in loops are formatted as for
    section 2.1, except that they are indented so that the first
    non-blank,non-prefix character of each line aligns with the first alphabetic
    character of the data name header, that is, the first non blank
-   character appears in column `<text indent>` + `<loop indent>` + 2
+   character appears in column `text indent` + `loop indent` + 2
 8. If the number of looped attributes `n` > 1, values in packets are
-   separated by `<min whitespace>` together with any whitespace
+   separated by `min whitespace` together with any whitespace
    remaining at the end of the line distributed evenly between the
    packet items.  The following algorithm achieves this:
-    1. Find largest integer `p` such that no data values before packet item
-      `p` on the current line contain a new line and the sum of the widths
-      of next `p` packet items, separated by `<min
-      whitespace>` is not greater than `<line length>`.Call this total width.
-    2. Calculate "remaining whitespace" as `floor((<line length> - total width)/(p-1))`
+    1. Find largest integer `p` such that no data values before packet
+      item `p` on the current line contain a new line and the sum of
+      the widths of next `p` packet items, separated by `min
+      whitespace` is not greater than `line length`.Call this total
+      width.
+    2. Calculate "remaining whitespace" as `floor((line length - total width)/(p-1))`
     3. The start position of values for attribute number `d+1` is start position of attribute 
-    `d` + width of data name `d` + `<min whitespace>` + `remaining whitespace` + 1.
-    4. If p < n, the next value is placed in column `<loop step>` on a new line and
+    `d` + width of data name `d` + `min whitespace` + `remaining whitespace` + 1.
+    4. If p < n, the next value is placed in column `loop step` on a new line and
     procedure repeated from step 1
     5. If any values for a data name contain a new line, data values following that
     data value start from step 4.
@@ -332,14 +336,14 @@ packet items are readable.
     compound data values is that given in section 2.4.
 
 9. If there are two values on a single line and the rules above would yield a starting column
-for the second value that is greater than `<value col>`, the calculated value is replaced by
-`<value col>` unless it would be separated by less than `<min whitespace>` from the
+for the second value that is greater than `value col`, the calculated value is replaced by
+`value col` unless it would be separated by less than `min whitespace` from the
 first value in the packet.
 
 10. If there are two values in a packet and the second value would appear on a separate
-line, `<loop step>` in rule 3.2.8.iv above is replaced by `<loop align>` + `<text indent>`. If
+line, `loop step` in rule 3.2.8.iv above is replaced by `loop align` + `text indent`. If
 the second value is semicolon-delimited and the first is not, the second value has
-an internal indent of `loop align` + 1.
+an internal indent of `loop align` - 1.
 
 #### Examples
 
@@ -426,8 +430,9 @@ followed by other data names in alphabetical order.
 
 ### 4.3 Definition layout
 
-1. 1 blank line appears before and after the save frame begin and end codes,
-which are uppercase for category definitions and lowercase for all others.
+1. 1 blank line appears before and after the save frame begin and end codes.
+The variable part of the save frame begin code is uppercase for categories
+and lowercase for all others.
 2. `_import.get` attributes are separated by 1 blank line above and below.
 3. IMPORT_DETAILS attributes are not used
 4. Attributes in a definition appear in the following order, where
