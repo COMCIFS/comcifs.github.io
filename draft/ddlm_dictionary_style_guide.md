@@ -53,7 +53,7 @@ that is, there should be no sequences of more than one blank line.
 5. All lines are terminated by a newline character (`\n`) as per CIF2 specifications.
 6. Tab characters may not be used either as whitespace or within data values, unless
 part of the meaning of the data value.
-7. No comments appear within, or after, the data block
+7. No comments appear within, or after, the data block.
    
 ## 2. Value formatting
 
@@ -81,7 +81,7 @@ value. Note also that rule 1.2 overrides indentation rules below.
    `text indent` spaces at the beginning, for example for ASCII equations or 
    centering purposes.
 6. No tab characters may be used for formatting data values.
-7. The first line of a semi-colon delimited text field should be blank, except
+7. The first line of a semicolon-delimited text field should be blank, except
    for line folding and prefixing characters where necessary.
 8. A new line character always follows the final semicolon of a semicolon-delimited text field.
 9. Looped attributes should use the same delimiter for all items in the same column.
@@ -92,12 +92,12 @@ value. Note also that rule 1.2 overrides indentation rules below.
     considered to start a sentence. In particular:
     1. Proper names and place names (e.g. Wyckoff, Cambridge) and
        their abbreviations (e.g. "H\_M" for "Hermann-Mauguin", "Cartn",
-       "Lp\_factor") are capitalised
-    2. Symbols are capitalised according to crystallographic convention (e.g Uij)
-    3. Initialisms are capitalised (e.g CSD, IT for International Tables)
+       "Lp\_factor") are capitalised.
+    2. Symbols are capitalised according to crystallographic convention (e.g. Uij).
+    3. Initialisms are capitalised (e.g. CSD, IT for International Tables).
 12. Enumerated values for case-insensitive data items should be output
     with a leading capital letter.
-13. Function names defined in DDLm Function categories are CamelCased
+13. Function names defined in DDLm Function categories are CamelCased.
 
 ### 2.2 Lists
 
@@ -267,23 +267,48 @@ includes the delimiters.
 #### Examples
 
 ```
-    _definition.id              '_alias.deprecation_date'
+    _definition.id                '_alias.deprecation_date'
 
-# Maximum length value that can still appear on the same line (48 characters)
-    _description_example.case   'Quoted value with padding: +++++++++++++++++++'
+# Maximum length value that can still appear on the same line (46 characters)
 
-# Minimum length value that must appear on the next line (49 characters)
+    _description_example.case     'Quoted value with padding: +++++++++++++++++'
+
+# Minimum length value that must appear on the next line (47 characters)
+
     _description_example.case
-     'Quoted value with padding: ++++++++++++++++++++'
+        'Quoted value with padding: ++++++++++++++++++'
 
-# Maximum length value that can appear on the next line (75 characters)
+# Maximum length value that can appear on the next line (72 characters)
+
     _description_example.case
-     'Quoted value with padding: ++++++++++++++++++++++++++++++++++++++++++++++'
+        'Quoted value with padding: +++++++++++++++++++++++++++++++++++++++++++'
 
 # Minimum length value that requires semicolon delimiters (76 characters)
+
     _description_example.case
 ;
-    Quoted value with padding: +++++++++++++++++++++++++++++++++++++++++++++++
+    Quoted value with padding: ++++++++++++++++++++++++++++++++++++++++++++
+;
+
+# Long values with no internal whitespaces that fit into a single line
+# should be presented without indentation as specified in rule 2.1
+
+    _description_example.case
+;
+InChI=1S/C6H12O6/c7-1-2-3(8)4(9)5(10)6(11)12-2/h2-11H,1H2/t2-,3-,4+,5-,6?/m1/s1
+;
+
+# Long values with no internal whitespaces that do not fit into a single
+# line should be folded and presented without indentation as specified in
+# rule 2.1
+
+    _description_example.case
+;\
+InChI=1S/C40H60N10O12S2/c1-5-20(4)31-37(58)44-23(12-13-29(41)52)33(54)45-25(17-\
+30(42)53)34(55)48-27(39(60)50-14-6-7-28(50)36(57)47-26(40(61)62)15-19(2)3)18-63\
+-64-32(43)38(59)46-24(35(56)49-31)16-21-8-10-22(51)11-9-21/h8-11,19-20,23-28,31\
+-32,51H,5-7,12-18,43H2,1-4H3,(H2,41,52)(H2,42,53)(H,44,58)(H,45,54)(H,46,59)(H,\
+47,57)(H,48,55)(H,49,56)(H,61,62)/t20-,23+,24+,25?,26-,27-,28-,31+,32?/m1/s1
 ;
 ```
 
@@ -305,7 +330,7 @@ packet items are readable.
 2. The lowercase `loop_` keyword appears on a new line after `text indent` spaces
    and is preceded by a single blank line.
 3. The `n` lowercase, looped attribute names appear on separate lines starting at column 
-   `text indent + loop indent + 1`
+   `text indent + loop indent + 1`.
 4. Each packet starts on a new line. The final packet is followed by a single 
    blank line.
 5. The first character of the first value of a packet is placed in column `loop align`.
@@ -315,35 +340,36 @@ packet items are readable.
    section 2.1, except that they are indented so that the first
    non-blank,non-prefix character of each line aligns with the first alphabetic
    character of the data name header, that is, the first non blank
-   character appears in column `text indent` + `loop indent` + 2
+   character appears in column `text indent` + `loop indent` + 2.
 8. If the number of looped attributes `n` > 1, values in packets are
    separated by `min whitespace` together with any whitespace
    remaining at the end of the line distributed evenly between the
    packet items.  The following algorithm achieves this:
-    1. Find largest integer `p` such that no data values before packet
-      item `p` on the current line contain a new line and the sum of
-      the widths of next `p` packet items, separated by `min
-      whitespace` is not greater than `line length`.Call this total
-      width.
-    2. Calculate "remaining whitespace" as `floor((line length - total width)/(p-1))`
+    1. Find largest integer `p` such that no data values before packet item
+      `p` on the current line contain a new line and the sum of the widths
+      of next `p` packet items, separated by `min whitespace` is not greater
+      than `line length`. Call this total width.
+    2. Calculate "remaining whitespace" as `floor((line length - total width)/(p-1))`.
     3. The start position of values for attribute number `d+1` is start position of attribute 
-    `d` + width of data name `d` + `min whitespace` + `remaining whitespace` + 1.
+    `d` + width of data name `d + min whitespace + remaining whitespace + 1`.
     4. If p < n, the next value is placed in column `loop step` on a new line and
-    procedure repeated from step 1
+    procedure repeated from step 1.
     5. If any values for a data name contain a new line, data values following that
     data value start from step 4.
     6. Notwithstanding (4), the starting column for multi-line
     compound data values is that given in section 2.4.
 
-9. If there are two values on a single line and the rules above would yield a starting column
-for the second value that is greater than `value col`, the calculated value is replaced by
-`value col` unless it would be separated by less than `min whitespace` from the
-first value in the packet.
+9. If there are two values on a single line and the rules above would
+   yield a starting column for the second value that is greater than
+   `value col`, the calculated value is replaced by `value col` unless
+   it would be separated by less than `min whitespace` from the first
+   value in the packet.
 
-10. If there are two values in a packet and the second value would appear on a separate
-line, `loop step` in rule 3.2.8.iv above is replaced by `loop align` + `text indent`. If
-the second value is semicolon-delimited and the first is not, the second value has
-an internal indent of `loop align` - 1.
+10. If there are two values in a packet and the second value would
+   appear on a separate line, `loop step` in rule 3.2.8.iv above is
+   replaced by `loop align + text indent`. If one of the values is
+   semicolon-delimited and the other is not, the semicolon-delimited
+   value has an internal indent of `loop align - 1`.
 
 #### Examples
 
@@ -364,6 +390,25 @@ an internal indent of `loop align` - 1.
          Category of items that are transient function
          definitions used only in dREL methods scripts.
          These items never appear in data instance files.
+;
+
+# Alignment of semicolon-delimited text strings
+# when both values are semicolon-delimited
+
+    loop_
+      _description_example.case
+      _description_example.detail
+;
+       Example 1 in the first semicolon delimited field.
+;
+;
+       Detail 1 in the second semicolon delimited field.
+;
+;
+       Example 2 in the first semicolon delimited field.
+;
+;
+       Detail 2 in the second semicolon delimited field.
 ;
 
 # Alignment of single-line values
@@ -418,12 +463,12 @@ Looped data names appear in the order provided in brackets.
    2. DICTIONARY_AUDIT (version, date, revision)
 
 3. `_dictionary_audit.revision` is always presented as a semicolon-delimited
-text string
+text string.
 
-3. Non-looped attributes not covered in rule 1 appear in alphabetical order
+4. Non-looped attributes not covered in rule 4.2.1 appear in alphabetical order
 after `_dictionary.namespace`.
 
-4. Looped attributes not covered in rule 2 appear before
+5. Looped attributes not covered in rule 4.2.2 appear before
 DICTIONARY_VALID in alphabetical order of category, with data names in
 each loop provided in the order: key data names in alphabetical order,
 followed by other data names in alphabetical order.
@@ -434,26 +479,26 @@ followed by other data names in alphabetical order.
 The variable part of the save frame begin code is uppercase for categories
 and lowercase for all others.
 2. `_import.get` attributes are separated by 1 blank line above and below.
-3. IMPORT_DETAILS attributes are not used
+3. IMPORT_DETAILS attributes are not used.
 4. Attributes in a definition appear in the following order, where
    present. The names in brackets give the order in which attributes
    in the given category are presented.
    1. DEFINITION(id, scope, class)
-   1. DEFINITION_REPLACED(id,by)
-   2. ALIAS (definition_id)
-   3. `_definition.update`
-   4. DESCRIPTION(text,common)
-   5. NAME(category_id,object_id,linked_item_id)
-   6. `_category_key.name`
-   7. TYPE (purpose,source,container,dimension,contents,
-            contents_referenced_id,indices,indices_referenced_id)
-   8. ENUMERATION(range)
-   9. ENUMERATION_SET(state,detail)
-   9. `_enumeration.default`
-   9. `_units.code`
-   9. DESCRIPTION_EXAMPLE(case,detail)
-   10. `_import.get`
-   11. METHOD(purpose, expression)
+   2. DEFINITION_REPLACED(id, by)
+   3. ALIAS (definition_id)
+   4. `_definition.update`
+   5. DESCRIPTION(text,common)
+   6. NAME(category_id, object_id, linked_item_id)
+   7. `_category_key.name`
+   8. TYPE (purpose,source, container, dimension,contents,
+            contents_referenced_id, indices, indices_referenced_id)
+   9. ENUMERATION(range)
+   10. ENUMERATION_SET(state, detail)
+   11. `_enumeration.default`
+   12. `_units.code`
+   13. DESCRIPTION_EXAMPLE(case, detail)
+   14. `_import.get`
+   15. METHOD(purpose, expression)
    
 5. Any attributes not included in this list should be treated as if they appear 
 in alphabetical order after the last item already listed for their (capitalised)
