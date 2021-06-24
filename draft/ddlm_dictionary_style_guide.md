@@ -96,8 +96,11 @@ value. Note also that rule 1.2 overrides indentation rules below.
     2. Symbols are capitalised according to crystallographic convention (e.g. Uij).
     3. Initialisms are capitalised (e.g. CSD, IT for International Tables).
 12. Enumerated values for case-insensitive data items should be output
-    with a leading capital letter.
-13. Function names defined in DDLm Function categories are CamelCased.
+    with a leading capital letter unless convention dictates otherwise. Currently
+    only unit codes allow lowercase leading letters.
+13. Values of attributes drawn from enumerated states should be capitalised in
+    the same way as the definition of that attribute.
+14. Function names defined in DDLm Function categories are CamelCased.
 
 ### 2.2 Lists
 
