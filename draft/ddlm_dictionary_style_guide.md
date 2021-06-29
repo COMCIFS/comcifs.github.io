@@ -245,9 +245,11 @@ compound objects.
 
 ### 3.1 Attribute-value pairs
 
-Note the following rule assumes that no DDLm attributes are longer than 
-`value col` - `text indent` - `min whitespace`. The length of a value
-includes the delimiters.
+Note the following rule assumes that no DDLm attributes are longer
+than `value col` - `text indent` - `min whitespace`. The length of a
+value includes the delimiters. The rules for attribute-value pairs
+cover items from Set categories as well as items from single-packet
+Loop categories.
 
 1. DDLm attributes appear lowercased at the beginning of a line after
    `text indent` spaces.
@@ -263,7 +265,8 @@ includes the delimiters.
    compound object.
 5. `_description.text` is always presented as a semicolon-delimited text string.
 6. Attributes that take default values (as listed in `ddl.dic`) are
-   not output, except for the following attributes from category TYPE:
+   not output, except for those that participate in category keys or the
+   following attributes from category TYPE:
    `_type.purpose`, `_type.source`, `_type.container`,
    `_type.contents`.
 
@@ -462,7 +465,7 @@ first save frame, in the following order:
 2. All looped attributes describing the dictionary are presented as loops
 appearing after the final save frame, in the following category order.
 Looped data names appear in the order provided in brackets.
-   1. DICTIONARY_VALID (application, attributes)
+   1. DICTIONARY_VALID (scope, option, application, attributes)
    2. DICTIONARY_AUDIT (version, date, revision)
 
 3. `_dictionary_audit.revision` is always presented as a semicolon-delimited
