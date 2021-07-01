@@ -1,5 +1,7 @@
 # Style Guide for DDLm Dictionaries
 
+Version 1.0.0 2021-07-01
+
 ## Overview
 
 The following rules describe the preferred layout of DDLm Reference
@@ -95,9 +97,8 @@ value. Note also that rule 1.2 overrides indentation rules below.
        "Lp\_factor") are capitalised.
     2. Symbols are capitalised according to crystallographic convention (e.g. Uij).
     3. Initialisms are capitalised (e.g. CSD, IT for International Tables).
-12. Enumerated values for case-insensitive data items should be output
-    with a leading capital letter unless convention dictates otherwise. Currently
-    only unit codes allow lowercase leading letters.
+12. Case-insensitive data items should be output with a leading
+    capital letter unless convention dictates otherwise.
 13. Values of attributes drawn from enumerated states should be capitalised in
     the same way as the definition of that attribute.
 14. Function names defined in DDLm Function categories are CamelCased.
@@ -265,10 +266,12 @@ Loop categories.
    compound object.
 5. `_description.text` is always presented as a semicolon-delimited text string.
 6. Attributes that take default values (as listed in `ddl.dic`) are
-   not output, except for those that participate in category keys or the
-   following attributes from category TYPE:
+   not output, except:
+   1. Those that participate in category keys
+   2. The following attributes from category TYPE:
    `_type.purpose`, `_type.source`, `_type.container`,
-   `_type.contents`.
+   `_type.contents`
+   3. Attributes used outside definitions (e.g. `_dictionary.class`)
 
 #### Examples
 
