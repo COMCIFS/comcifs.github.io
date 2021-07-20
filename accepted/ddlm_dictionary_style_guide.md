@@ -1,6 +1,6 @@
 # Style Guide for DDLm Dictionaries
 
-Version 1.0.0 2021-07-01
+Version 1.1.0 2021-07-20
 
 ## Overview
 
@@ -468,7 +468,7 @@ first save frame, in the following order:
 2. All looped attributes describing the dictionary are presented as loops
 appearing after the final save frame, in the following category order.
 Looped data names appear in the order provided in brackets.
-   1. DICTIONARY_VALID (scope, option, application, attributes)
+   1. DICTIONARY_VALID (scope, option, attributes)
    2. DICTIONARY_AUDIT (version, date, revision)
 
 3. `_dictionary_audit.revision` is always presented as a semicolon-delimited
