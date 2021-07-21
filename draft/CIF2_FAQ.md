@@ -66,7 +66,7 @@ See the next questions for information specific to reading and writing CIFs.
 
 ## My software outputs CIF1 files.  What changes should I make when outputting CIF2 files?
 
-Firstly you should begin your files with the string `#\#CIF2.0`. Then
+Firstly you should begin your files with the string `#\#CIF_2.0`. Then
 you should adjust your string datavalue output to use delimiters in
 most cases. See the [separate document](simple_steps.html) for the simple steps you need to
 take.  At a future date, when matrix or table-valued datanames are
