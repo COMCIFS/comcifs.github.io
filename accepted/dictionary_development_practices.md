@@ -1,8 +1,10 @@
-# Dictionary development practices
+# Dictionary versioning process
+
+Version 1.0.0 2020-03-18
 
 The following document proposes a set of practices that should be adopted in Git repositories used for the maintenance and development of DDLm dictionaries.
 
-# Dictionary development cycle
+## Dictionary development cycle
 
 A single iteration of a dictionary development cycle starts with the creation of a development version of a dictionary and ends with a release of a stable dictionary version. A new development version is usually created immediately after the release of a stable version. Each iteration of a development dictionary is assigned a unique development version number to differentiate it from a stable release.  
 
