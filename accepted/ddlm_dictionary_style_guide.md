@@ -524,5 +524,5 @@ DESCRIPTION_EXAMPLE.
 
 ## 5. Naming convention
 
-1. Save frame codes must not start with an underscore symbol ('_').
+1. Save frame codes must not start with an underscore symbol (`_`).
 2. Save frame codes must not contain two consecutive underscore symbols.
