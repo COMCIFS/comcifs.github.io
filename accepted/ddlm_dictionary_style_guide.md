@@ -1,6 +1,13 @@
 # Style Guide for DDLm Dictionaries
 
-Version 1.1.0 2021-07-20
+Version 1.1.0 2021-09-30
+
+## CHANGELOG
+
+| Version | Date       | Revision |
+|--------:|-----------:|:---------|
+|   1.0.0 | 2021-07-20 | Initial release of the style guide. |
+|   1.1.0 | 2021-09-30 | Added rules 5.1 and 5.2 that describe the use of underscores in save frame names. |
 
 ## Overview
 
@@ -514,3 +521,8 @@ in alphabetical order after the last item already listed for their (capitalised)
 categories above. If the category does not appear, the attributes are 
 presented in alphabetical order of category and then `object_id` after 
 DESCRIPTION_EXAMPLE.
+
+## 5. Naming convention
+
+1. Save frame codes must not start with an underscore symbol ('_').
+2. Save frame codes must not contain two consecutive underscore symbols.
