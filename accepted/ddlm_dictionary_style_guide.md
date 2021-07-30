@@ -249,7 +249,7 @@ compound objects.
  
 ```
 
-## 3 Data items
+## 3. Data items
 
 ### 3.1 Attribute-value pairs
 
