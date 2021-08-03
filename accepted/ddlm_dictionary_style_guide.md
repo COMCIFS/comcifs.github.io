@@ -520,7 +520,7 @@ DESCRIPTION_EXAMPLE.
 1. Save frame code of a data item definition frame should be identical to
    the lowercase version of the `_definition.id` attribute value contained
    in the definition, with any leading underscores removed.
-2. Save frame code of a category definitions should be identical to
+2. Save frame code of a category definition should be identical to
    the uppercase version of the `_definition.id` attribute value contained
    in the definition, with any leading underscores removed.
 
