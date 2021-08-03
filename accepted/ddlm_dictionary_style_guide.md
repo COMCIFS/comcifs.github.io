@@ -2,13 +2,6 @@
 
 Version 1.1.0 2021-09-30
 
-## CHANGELOG
-
-| Version | Date       | Revision |
-|--------:|-----------:|:---------|
-|   1.0.0 | 2021-07-20 | Initial release of the style guide. |
-|   1.1.0 | 2021-09-30 | Added rules 5.1 and 5.2 that describe the use of underscores in save frame names. |
-
 ## Overview
 
 The following rules describe the preferred layout of DDLm Reference
@@ -526,3 +519,10 @@ DESCRIPTION_EXAMPLE.
 
 1. Save frame codes must not start with an underscore symbol (`_`).
 2. Save frame codes must not contain two consecutive underscore symbols.
+
+## CHANGELOG
+
+| Version | Date       | Revision |
+|--------:|-----------:|:---------|
+|   1.0.0 | 2021-07-20 | Initial release of the style guide. |
+|   1.1.0 | 2021-09-30 | Added rules 5.1 and 5.2 that describe the use of underscores in save frame names. |
