@@ -96,9 +96,6 @@ outline for this "process number 1".
 
 ## Creating procedures: procedure number 1
 
-The following three steps and documents should be tracked on a
-website: either in the IUCr CIF area, or Github repository, or both.
-
 The type of work that COMCIFS does is similar to the W3C and other
 standards bodies. I suggest that the International Virtual Observatory
 Alliance documentation standards are a good reference point
@@ -106,6 +103,9 @@ Alliance documentation standards are a good reference point
 These are themselves based on the W3C documentation standards. Given
 that our goals are considerably more modest than those sprawling
 organisations, we can aim for considerable simplification.
+
+The following three steps and documents should be tracked on a
+website: either in the IUCr CIF area, or Github repository, or both.
 
 ### Step 1: Proposal
 
@@ -135,9 +135,9 @@ to deal with the following as well:
 
 # Next step
 
-The "Documenting a process" proposal is discussed by COMCIFS as per
-Step 1 above. If COMCIFS agrees, a working group is formed to document
-the process for creating new procedures, as per Step 2 above.
+The "Creating procedures" proposal is discussed by COMCIFS as per Step
+1 above. Once COMCIFS has agreed, a working group is formed to
+document the process for creating new procedures, as per Step 2 above.
 
 
 
