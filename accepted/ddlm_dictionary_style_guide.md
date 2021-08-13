@@ -1,6 +1,6 @@
 # Style Guide for DDLm Dictionaries
 
-Version 1.1.0 2021-07-20
+Version 1.1.0 2021-09-30
 
 ## Overview
 
@@ -242,7 +242,7 @@ compound objects.
  
 ```
 
-## 3 Data items
+## 3. Data items
 
 ### 3.1 Attribute-value pairs
 
@@ -514,3 +514,19 @@ in alphabetical order after the last item already listed for their (capitalised)
 categories above. If the category does not appear, the attributes are 
 presented in alphabetical order of category and then `object_id` after 
 DESCRIPTION_EXAMPLE.
+
+## 5. Naming convention
+
+1. Save frame code of a data item definition frame should be identical to
+   the lowercase version of the `_definition.id` attribute value contained
+   in the definition, with any leading underscores removed.
+2. Save frame code of a category definition should be identical to
+   the uppercase version of the `_definition.id` attribute value contained
+   in the definition, with any leading underscores removed.
+
+## CHANGELOG
+
+| Version | Date       | Revision |
+|--------:|-----------:|:---------|
+|   1.0.0 | 2021-07-20 | Initial release of the style guide. |
+|   1.1.0 | 2021-09-30 | Added rules 5.1 and 5.2 that deal with the naming of save frames. |
