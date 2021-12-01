@@ -1,9 +1,19 @@
-# Proposal for new DDLm attribute 'category_implicit.name'
+# Proposal for new DDLm attribute 'category_implicit.link'
 
 Version: 0.1
 Authors: J Hester
-Status: Draft
-Date: November 2021
+Status: WITHDRAWN
+Date: December 2021
+
+## Reason for withdrawal
+
+As there is now a style guide, updating of dictionaries can be eased by
+automatic tools. Thus there is no particular advantage to dictionary
+authors in providing a mechanism for easy specification of category
+links. On the other hand, dictionary readers need more knowledge in order
+to understand that implicit key data names are present. Explicitly
+adding key data names that are explicitly linked to parent data names as
+done at present is easier for dictionary readers to understand.
 
 ## Introduction
 
