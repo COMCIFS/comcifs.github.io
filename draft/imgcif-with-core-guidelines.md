@@ -1,7 +1,7 @@
 # Draft guidelines for using imgCIF with core CIF
 
-Version: 0.1
-Date: January 2022
+Version: 0.2
+Date: February 2022
 Authors: J R Hester
 
 ## Introduction
@@ -15,9 +15,7 @@ conforming to the PDBx/mmCIF dictionaries.
 
 Tags from the imgCIF dictionary may be freely mixed with core CIF
 tags.  In certain situations the dataset should be distributed over
-multiple data blocks. It is essential for efficiency that
-`_array_data.external_*` tags are used to refer to image data rather 
-than incorporating the image data into the imgCIF file.
+multiple data blocks.
 
 ## Definitions
 
@@ -39,18 +37,15 @@ in that category should take a single value in a single data block.
 _audit_conform.dict_name        CORE_DIC
 ```
 
-2. The only practical way to use imgCIF with raw data is to point to the raw data 
-themselves using `_array_data.external_*` tags.
-
-3. Where a single data collection is reported using a single detector
+2. Where a single data collection is reported using a single detector
 and goniometer, all imgCIF tags may be mixed freely with cif core data
 names in a single data block.
 
-4. Where more than one data collection was performed, each data collection
+3. Where more than one data collection was performed, each data collection
 is placed in its own separate block, with a distinct value of `_diffrn.id`
 provided.
 
-5. If more than one detector has been used to collect data:
+4. If more than one detector has been used to collect data:
 
     * Individual detectors must be identified using a unique, arbitrary value for 
     `_diffrn_detector.id`
@@ -64,7 +59,7 @@ provided.
     used at 3 temperatures, 2*3 = 6 separate blocks are required to specify
     detectors, instead of 2 + 3 = 5.
 
-6. If more than one sample has been used to collect the data:
+5. If more than one sample has been used to collect the data:
 
  * Individual samples are assigned a unique, arbitrary value for
  `_exptl_crystal.id`
@@ -77,7 +72,7 @@ provided.
  of these data collections should be presented as described in (2). 
  Use `_diffrn.crystal.id` to link data collection to crystal.
  
-7. Other, less common situations to be aware of:
+6. Other, less common situations to be aware of:
    * Multiple orienting devices (`diffrn_measurement`) should be treated
    the same as multiple detectors.
     * The `exptl_absorpt` category calculates absorption for a
@@ -86,7 +81,7 @@ provided.
    separate data block for each combination of crystal and diffraction
    conditions.
 
-8. Where more than one of the items in (4-6) vary for a single
+7. Where more than one of the items in (3-5) vary for a single
 dataset, each distinct combination of items is placed in a separate
 data block, together with a single block containing those items that
 do not depend on any of the variable items. So a dataset consisting of
@@ -108,6 +103,29 @@ imgCIF way. Where the difference is due to a complete change of
 instrument, distinct axes for each instrument should be provided in
 the `_axis.id` list and then referred to in the appropriate data
 block.
+
+## Storing raw image data outside imgCIF files
+
+Recently, tags allowing links to externally-stored raw data have been 
+added to imgCIF (see example below). The use of these tags allows 
+complete metadata for a
+complex dataset to be captured in a single text file of manageable
+size. However, before using these tags the following points should
+be considered to minimise the possibility of the raw data and
+metadata becoming separated or contradictory:
+
+1. Links to externally-stored data must not depend on the location
+   of the imgCIF file, and should not change in the future 
+2. The metadata in the imgCIF file should not contradict any metadata found
+   in the raw data files
+
+One way to address these requirements is to ensure that the raw data are associated
+with a DOI, and that the metadata in the imgCIF file are generated
+from metadata contained in the raw image files, using tools to check this
+correspondence.
+
+Other approaches worth considering are bundling an imgCIF file with the
+raw data, and/or extensive, routine, automated use of checking tools.
 
 ## Complex Example
 
