@@ -1,6 +1,6 @@
 # Style Guide for DDLm Dictionaries
 
-Version 1.1.0 2021-09-30
+Version 1.2.0 2022-03-30
 
 ## Overview
 
@@ -43,8 +43,8 @@ The following values are used in the description.
 
 1. Lines are a maximum of `line length` characters long. Multi-line character strings should
 be broken after the last whitespace character preceding this limit and trailing whitespace
-removed.
-2. Data values with no internal whitespace that would overflow the
+removed, unless rule 2.1.15 applies.
+2. Unless rule 2.1.15 applies, data values with no internal whitespace that would overflow the
 line length limit if formatted according to the following rules should
 be presented in semicolon-delimited text fields with leading blank
 line, no indentation and folded, if necessary, so that the backslash
@@ -102,6 +102,8 @@ value. Note also that rule 1.2 overrides indentation rules below.
 13. Values of attributes drawn from enumerated states should be capitalised in
     the same way as the definition of that attribute.
 14. Function names defined in DDLm Function categories are CamelCased.
+15. If the sequence `#####` appears in a multi-line text value, the value is assumed to be pre-formatted. 
+    No line-length, prefixing or other alterations to the contents should be made.
 
 ### 2.2 Lists
 
