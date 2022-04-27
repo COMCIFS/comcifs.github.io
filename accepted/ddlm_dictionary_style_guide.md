@@ -1,6 +1,6 @@
 # Style Guide for DDLm Dictionaries
 
-Version 1.2.0 2022-03-30
+Version 1.2.0 2022-04-27
 
 ## Overview
 
