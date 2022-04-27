@@ -102,8 +102,8 @@ value. Note also that rule 1.2 overrides indentation rules below.
 13. Values of attributes drawn from enumerated states should be capitalised in
     the same way as the definition of that attribute.
 14. Function names defined in DDLm Function categories are CamelCased.
-15. If the sequence `#####` appears in a multi-line text value, the value is assumed to be pre-formatted. 
-    No line-length, prefixing or other alterations to the contents should be made.
+15. If a character drawn from the set `#^*-=+~` appears 5 or more times sequentially (e.g. `^^^^^^`) anywhere in a multi-line text value, 
+    the value is assumed to be pre-formatted. No line-length, prefixing or other alterations to the contents should be made.
 
 ### 2.2 Lists
 
@@ -532,4 +532,4 @@ DESCRIPTION_EXAMPLE.
 |--------:|-----------:|:---------|
 |   1.0.0 | 2021-07-20 | Initial release of the style guide. |
 |   1.1.0 | 2021-09-30 | Added rules 5.1 and 5.2 that deal with the naming of save frames. |
-|   1.2.0 | 2022-03-31 | Added rule 2.1.15 for manual opt-out of formatting. |
+|   1.2.0 | 2022-04-27 | Added rule 2.1.15 for manual opt-out of formatting. |
