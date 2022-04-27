@@ -1,6 +1,6 @@
 # Style Guide for DDLm Dictionaries
 
-Version 1.1.0 2021-09-30
+Version 1.2.0 2022-04-27
 
 ## Overview
 
@@ -43,8 +43,8 @@ The following values are used in the description.
 
 1. Lines are a maximum of `line length` characters long. Multi-line character strings should
 be broken after the last whitespace character preceding this limit and trailing whitespace
-removed.
-2. Data values with no internal whitespace that would overflow the
+removed, unless rule 2.1.15 applies.
+2. Unless rule 2.1.15 applies, data values with no internal whitespace that would overflow the
 line length limit if formatted according to the following rules should
 be presented in semicolon-delimited text fields with leading blank
 line, no indentation and folded, if necessary, so that the backslash
@@ -102,6 +102,8 @@ value. Note also that rule 1.2 overrides indentation rules below.
 13. Values of attributes drawn from enumerated states should be capitalised in
     the same way as the definition of that attribute.
 14. Function names defined in DDLm Function categories are CamelCased.
+15. If a character drawn from the set `#^*-=+~` appears 5 or more times sequentially (e.g. `^^^^^^`) anywhere in a multi-line text value, 
+    the value is assumed to be pre-formatted. No line-length, prefixing or other alterations to the contents should be made.
 
 ### 2.2 Lists
 
@@ -280,23 +282,23 @@ Loop categories.
 
 # Maximum length value that can still appear on the same line (46 characters)
 
-    _description_example.case     'Quoted value with padding: +++++++++++++++++'
+    _description_example.case     'Quoted value with padding: 123456789A1234567'
 
 # Minimum length value that must appear on the next line (47 characters)
 
     _description_example.case
-        'Quoted value with padding: ++++++++++++++++++'
+        'Quoted value with padding: 123456789A12345678'
 
 # Maximum length value that can appear on the next line (72 characters)
 
     _description_example.case
-        'Quoted value with padding: +++++++++++++++++++++++++++++++++++++++++++'
+        'Quoted value with padding: 123456789A123456789B123456789C123456789D123'
 
-# Minimum length value that requires semicolon delimiters (76 characters)
+# Minimum length value that requires semicolon delimiters (75 characters)
 
     _description_example.case
 ;
-    Quoted value with padding: ++++++++++++++++++++++++++++++++++++++++++++
+    Quoted value with padding: 123456789A123456789B123456789C123456789D1234
 ;
 
 # Long values with no internal whitespaces that fit into a single line
@@ -530,3 +532,4 @@ DESCRIPTION_EXAMPLE.
 |--------:|-----------:|:---------|
 |   1.0.0 | 2021-07-20 | Initial release of the style guide. |
 |   1.1.0 | 2021-09-30 | Added rules 5.1 and 5.2 that deal with the naming of save frames. |
+|   1.2.0 | 2022-04-27 | Added rule 2.1.15 for manual opt-out of formatting. |
