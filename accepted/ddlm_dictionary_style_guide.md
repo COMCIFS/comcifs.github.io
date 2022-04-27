@@ -282,23 +282,23 @@ Loop categories.
 
 # Maximum length value that can still appear on the same line (46 characters)
 
-    _description_example.case     'Quoted value with padding: +++++++++++++++++'
+    _description_example.case     'Quoted value with padding: 123456789A1234567'
 
 # Minimum length value that must appear on the next line (47 characters)
 
     _description_example.case
-        'Quoted value with padding: ++++++++++++++++++'
+        'Quoted value with padding: 123456789A12345678'
 
 # Maximum length value that can appear on the next line (72 characters)
 
     _description_example.case
-        'Quoted value with padding: +++++++++++++++++++++++++++++++++++++++++++'
+        'Quoted value with padding: 123456789A123456789B123456789C123456789D123'
 
-# Minimum length value that requires semicolon delimiters (76 characters)
+# Minimum length value that requires semicolon delimiters (75 characters)
 
     _description_example.case
 ;
-    Quoted value with padding: ++++++++++++++++++++++++++++++++++++++++++++
+    Quoted value with padding: 123456789A123456789B123456789C123456789D1234
 ;
 
 # Long values with no internal whitespaces that fit into a single line
