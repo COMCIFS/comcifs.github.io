@@ -1,8 +1,8 @@
-# Draft guidelines for using imgCIF with core CIF
+# Guidelines for using imgCIF with core CIF
 
-Version: 0.2
-Date: February 2022
-Authors: J R Hester
+Version: 1.1.0
+Date: May 2022
+Authors: J R Hester, A Vaitkus
 
 ## Introduction
 
@@ -34,7 +34,7 @@ in that category should take a single value in a single data block.
 
 1. Data blocks conforming to these guidelines should always include the line 
 ```
-_audit_conform.dict_name        CORE_DIC
+_audit_conform.dict_name        Cif_img.dic
 ```
 
 2. Where a single data collection is reported using a single detector
@@ -51,9 +51,9 @@ provided.
     `_diffrn_detector.id`
     * Data and metadata for each detector are presented in separate
     data blocks, one per detector. Only data items in categories
-    `diffrn_detector_axis`,
-    `diffrn_scan_frame_monitor`,`_diffrn_detector_element`, and
-    `diffrn_data_frame` should be included in these data blocks.
+    `DIFFRN_DETECTOR_AXIS`,
+    `DIFFRN_SCAN_FRAME_MONITOR`,`_DIFFRN_DETECTOR_ELEMENT`, and
+    `DIFFRN_DATA_FRAME` should be included in these data blocks.
     * Each set of detectors has to be
     respecified for every data collection. So for 2 detectors
     used at 3 temperatures, 2*3 = 6 separate blocks are required to specify
@@ -66,16 +66,16 @@ provided.
  * Information for each sample is placed in separate data blocks,
  one for each value of `_exptl_crystal.id`.
  * According to the core dictionary, the categories containing child data names for
- `_exptl_crystal.id` are `exptl_crystal_face` and
- `exptl_crystal_appearance`.
+ `_exptl_crystal.id` are `EXPTL_CRYSTAL_FACE` and
+ `EXPTL_CRYSTAL_APPEARANCE`.
  * Each crystal is associated with a separate data collection. Each
  of these data collections should be presented as described in (2). 
  Use `_diffrn.crystal.id` to link data collection to crystal.
  
 6. Other, less common situations to be aware of:
-   * Multiple orienting devices (`diffrn_measurement`) should be treated
+   * Multiple orienting devices (`DIFFRN_MEASUREMENT`) should be treated
    the same as multiple detectors.
-    * The `exptl_absorpt` category calculates absorption for a
+    * The `EXPTL_ABSORPT` category calculates absorption for a
    particular crystal, which depends on wavelength (and radiation
    type). When this category is present, it should be placed in a
    separate data block for each combination of crystal and diffraction
@@ -98,7 +98,7 @@ instrument and detector layout?
 
 A: Where the difference in configuration is due to an axis movement,
 that is accommodated by providing the axis positions for each distinct
-value of `_diffrn.id` and (if necessary) `_scan.id` in the usual
+value of `_diffrn.id` and (if necessary) `_diffrn_scan.id` in the usual
 imgCIF way. Where the difference is due to a complete change of
 instrument, distinct axes for each instrument should be provided in
 the `_axis.id` list and then referred to in the appropriate data
@@ -115,7 +115,7 @@ be considered to minimise the possibility of the raw data and
 metadata becoming separated or contradictory:
 
 1. Links to externally-stored data must not depend on the location
-   of the imgCIF file, and should not change in the future 
+   of the imgCIF file, and should not be subject to change in the future 
 2. The metadata in the imgCIF file should not contradict any metadata found
    in the raw data files
 
@@ -134,6 +134,8 @@ for each wavelength, with different crystals used at each wavelength.
 
 ```
 data_wav1_temp1
+
+_audit_conform.dict_name        Cif_img.dic
 
 # Core items
 _diffrn.id            expt1
@@ -211,6 +213,9 @@ loop_
 
 
 data_wav2_temp1
+
+_audit_conform.dict_name        Cif_img.dic
+
 _diffrn.id            expt3
 _diffrn.crystal_id    crystal2
 _diffrn.ambient_temperature 296
@@ -219,6 +224,9 @@ _diffrn_radiation_wavelength.value  0.71
 # See first block for full example
 
 data_wav2_temp2
+
+_audit_conform.dict_name        Cif_img.dic
+
 _diffrn.id            expt4
 _diffrn.crystal_id    crystal2
 _diffrn.ambient_temperature 89
@@ -227,12 +235,18 @@ _diffrn_radiation_wavelength.value  0.71
 # See first block for full example
 
 data_cryst1
+
+_audit_conform.dict_name        Cif_img.dic
+
 _exptl_crystal.id              crystal1
 _exptl_crystal.density_meas    1.2(1)
 _exptl_crystal.preparation     'mounted on loop with oil'
 _exptl_crystal.size_length     0.011(1)
 
 data_cryst2
+
+_audit_conform.dict_name        Cif_img.dic
+
 _exptl_crystal.id crystal2
 _exptl_crystal.density_meas    1.1(1)
 _exptl_crystal.preparation     'mounted on loop with oil'
@@ -243,6 +257,8 @@ _exptl_crystal.size_length     0.009(1)
 # conditions = 8 blocks.
 
 data_overall
+
+_audit_conform.dict_name        Cif_img.dic
 
 # imgCIF items not depending on wavelength/temperature/crystal
  loop_
@@ -282,9 +298,17 @@ data_overall
          2             increasing             2             2       4362
 
  loop_
-      _array_data.id
-      _array_data.external_format
-      _array_data.external_location_uri
+      _array_data.binary_id
+      _array_data.array_id
+      _array_data.external_data_id
+      1 1 ext1
+      2 1 ext2
+# and many more links between binary_id and external data id
+      
+loop_
+      _array_data_external_data.id
+      _array_data_external_data.format
+      _array_data_external_data_uri
         ext1    CBF https://zenodo.org/record/123456/files/s01f0001.cbf
         ext2    CBF https://zenodo.org/record/123456/files/s01f0002.cbf
 # and many more raw data frames for all of the measurements...
@@ -300,7 +324,7 @@ _audit_author.email
 
 ## Technical Appendix
 
-These recommendations are based on the draft guidelines for multi-block datasets. All
+These recommendations are based on the guidelines for multi-block datasets. All
 core CIF `Set` categories are distributed over multiple data blocks. For the purposes of
 the above, `Set` categories are:
 
@@ -311,7 +335,15 @@ the above, `Set` categories are:
 
 In certain cases currently missing key data names are assumed, for
 example, `EXPTL_ABSORPT` must have key data names pointing to
-`diffrn_radiation` and `exptl_crystal`.
+`DIFFRN_RADIATION` and `EXPTL_CRYSTAL`.
 
 An automatically-generated DDLm version of the DDL2 imgCIF dictionary is
-available at xxxx.
+available [here](http://github.com/COMCIFS/imgCIF/cif_img.dic).
+
+## CHANGELOG
+
+| Version | Date           | Revision |
+|--------:|---------------:|----------|
+| 0.2.0  :| 2022-01-31     | Final draft |
+| 1.0.0  :| 2022-05-09     | Technical edits |
+| 1.1.0  :| 2022-05-09     | Updated for new external link tags and dictionary |
