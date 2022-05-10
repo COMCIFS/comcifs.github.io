@@ -1,6 +1,6 @@
 # Style Guide for DDLm Dictionaries
 
-Version 1.2.0 2022-04-27
+Version 1.2.1 2022-05-10
 
 ## Overview
 
@@ -23,7 +23,9 @@ expanded as new situations arise.
 Columns are numbered from 1. "Starting at column x" means that the first
 non-whitespace character (which may be a delimiter) appears in column x.
 "Indent" refers to the number of whitespace characters preceding the first
-non-whitespace value.
+non-whitespace value. "Special values" are the non-delimited question 
+mark `?` and period `.` used in CIF syntax to denote Unknown and Null 
+values, respectively.
 
 ## Magic numbers
 
@@ -67,7 +69,9 @@ disruption to such formatting where present in the supplied
 value. Note also that rule 1.2 overrides indentation rules below.
 
 1. Values that can be presented undelimited should not be delimited,
-   unless rule 9 applies.
+   unless rule 9 applies. Note that the literal question mark `?`
+   and period `.` must always be delimited as otherwise they will
+   be interpreted as special values.
 2. Where a delimiter is necessary, the first delimiter in the
    following list that produces a syntactically correct CIF2 file
    should be used: (single quote `'`, double quote `"`,
@@ -86,7 +90,8 @@ value. Note also that rule 1.2 overrides indentation rules below.
 7. The first line of a semicolon-delimited text field should be blank, except
    for line folding and prefixing characters where necessary.
 8. A new line character always follows the final semicolon of a semicolon-delimited text field.
-9. Looped attributes should use the same delimiter for all items in the same column.
+9. Looped attributes should use the same delimiter for all items in the same column that
+   are not special values.
 10. Category names in a category definition should be presented CAPITALISED in 
     `_name.category_id`, `_name.object_id` and `_definition.id`
 11. Category and object names in data item definitions should be presented in "canonical" case.
@@ -533,3 +538,4 @@ DESCRIPTION_EXAMPLE.
 |   1.0.0 | 2021-07-20 | Initial release of the style guide. |
 |   1.1.0 | 2021-09-30 | Added rules 5.1 and 5.2 that deal with the naming of save frames. |
 |   1.2.0 | 2022-04-27 | Added rule 2.1.15 for manual opt-out of formatting. |
+|   1.2.1 | 2022-05-10 | Added consideration of special values |
