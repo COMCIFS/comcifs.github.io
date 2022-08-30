@@ -6,9 +6,8 @@ Version: 0.1
 
 ## Introduction
 
-Powder data results often cover multiple phases (compounds) collected
-at multiple temperatures and/or pressures, and/or using multiple instruments.  
-This situation is markedly different to the original CIF approach of a
+Powder data results often cover multiple phases (compounds) collected 
+at multiple temperatures and/or pressures, and/or using multiple instruments.  This situation is markedly different to the original CIF approach of a
 single sample collected at a single wavelength on a single instrument
 under a single set of environmental conditions. The present document
 describes how CIF should be used to express these more complex powder
