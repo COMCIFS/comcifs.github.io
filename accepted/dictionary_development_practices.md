@@ -12,7 +12,7 @@ A single iteration of a dictionary development cycle starts with the creation of
 
 A new development version of a dictionary can be created from the latest stable release version of a dictionary by applying the following changes:
 
-* Replace the `_dictionary.version` data item value with a development version constructed by incrementing the `<update>` part of the current version by one and postfixing it with the `-dev.0` string (i.e. "3.4.5" to "3.4.6-dev.0");
+* Replace the `_dictionary.version` data item value with a development version constructed by incrementing the `<update>` part of the current version by one and postfixing it with the `-dev.0` string (e.g. "3.4.5" to "3.4.6-dev.0");
 * Update the `_dictionary.date` data item if needed;
 * Register the development version in the `DICTIONARY_AUDIT` looped list. This is done by creating a new entry in which the `_dictionary_audit.version` data item value matches the the `_dictionary.version` data item value, the `_dictionary_audit.date` data item value matches the `_dictionary.date` data item value and the `_dictionary_audit.revision` data item value is set to an empty string.
 
@@ -28,13 +28,13 @@ All changes applied to the development dictionary during the development cycle s
 ## Versioning a development dictionary
 Version number of a development dictionary is intended to uniquely identify an incremental step in the dictionary development process as well as provide information about the compatibility of the implemented changes. This is done by adopting version numbers of the `<planned-release-version>`-**dev**.`<increment>` form.
 
-The `<planned-release-version>` part adheres to the standard `<major>`.`<version>`.`<update>` version format and stores the version number of the next stable version release (i.e. "3.2.7", "3.5.1"). As a result, it can be changed at most two times during a single dictionary development iteration:
+The `<planned-release-version>` part adheres to the standard `<major>`.`<version>`.`<update>` version format and stores the version number of the next stable version release (e.g. "3.2.7", "3.5.1"). As a result, it can be changed at most two times during a single dictionary development iteration:
 
-* `<version>` change. In case a new feature is introduced, the `<version>` part must be incremented by one and the `<update>` part must be set to zero (i.e. "3.5.2" to "3.6.0"). Further introduction of new features or bugfixes during the same dictionary development iteration do not affect the `<planned-release-version>`.
+* `<version>` change. In case a new feature is introduced, the `<version>` part must be incremented by one and the `<update>` part must be set to zero (e.g. "3.5.2" to "3.6.0"). Further introduction of new features or bugfixes during the same dictionary development iteration do not affect the `<planned-release-version>`.
 
-* `<major>` change. In case an interface breaking change is introduced, the `<major>` part must be incremented by one and the rest of the parts must be set to zero (i.e. "3.7.1" to "4.0.0"). After a `<major>` version change, the version number remains unchanged until the end of a dictionary development iteration.
+* `<major>` change. In case an interface breaking change is introduced, the `<major>` part must be incremented by one and the rest of the parts must be set to zero (e.g. "3.7.1" to "4.0.0"). After a `<major>` version change, the version number remains unchanged until the end of a dictionary development iteration.
 
-The `<increment>` part takes a form of an integer that gets incremented after each dictionary revision (i.e. "1", "2", "3"). 
+The `<increment>` part takes a form of an integer that gets incremented after each dictionary revision (e.g. "1", "2", "3").
 
 An example of a version number change sequence that may occur during a single dictionary development iteration: "3.2.1-dev.0", "3.2.1-dev.1", "3.2.1-dev.2", "3.3.0-dev.4", "3.3.0-dev.5", ..., "4.0.0-dev.42".
 
