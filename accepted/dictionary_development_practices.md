@@ -1,6 +1,6 @@
 # Dictionary versioning process
 
-Version 1.0.0 2020-03-18
+Version 1.1.0 2022-10-11
 
 The following document proposes a set of practices that should be adopted in Git repositories used for the maintenance and development of DDLm dictionaries.
 
@@ -47,3 +47,10 @@ The following changes should be applied to a development version in preparation 
 3. The `_dictionary_audit.revision` data item value associated with the current release may should be reviewed and simplified if needed.
 
 The release is considered finalised once the a stable version is placed in a separate Git tag. After this it can be distributed to other official IUCr resources (website, FTP).
+
+## CHANGELOG
+
+| Version | Date       | Revision |
+|--------:|-----------:|:---------|
+|   1.0.0 | 2020-03-18 | Initial release of the dictionary development practices. |
+|   1.1.0 | 2022-10-11 | Changed the pre-release version number syntax to use a dot ('.') instead of a dash ('-') as the '<increment>' component separator. Corrected multiple minor grammatical issues. |
