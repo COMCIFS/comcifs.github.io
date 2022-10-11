@@ -12,7 +12,7 @@ A single iteration of a dictionary development cycle starts with the creation of
 
 A new development version of a dictionary can be created from the latest stable release version of a dictionary by applying the following changes:
 
-* Replace the `_dictionary.version` data item value with a development version constructed by incrementing the `<update>` part of the current version by one and postfixing it with the `-dev-0` string (i.e. "3.4.5" to "3.4.6-dev-0");
+* Replace the `_dictionary.version` data item value with a development version constructed by incrementing the `<update>` part of the current version by one and postfixing it with the `-dev.0` string (i.e. "3.4.5" to "3.4.6-dev.0");
 * Update the `_dictionary.date` data item if needed;
 * Register the development version in the `DICTIONARY_AUDIT` looped list. This is done by creating a new entry in which the `_dictionary_audit.version` data item value matches the the `_dictionary.version` data item value, the `_dictionary_audit.date` data item value matches the `_dictionary.date` data item value and the `_dictionary_audit.revision` data item value is set to an empty string.
 
@@ -26,7 +26,7 @@ All changes applied to the development dictionary during the development cycle s
 * The `_definition.update` data item value of all modified definition save blocks should be updated to the appropriate change date.
 
 ## Versioning a development dictionary
-Version number of a development dictionary is intended to uniquely identify an incremental step in the dictionary development process as well as provide information about the compatibility of the implemented changes. This is done by adopting version numbers of the `<planned-release-version>`-**dev**-`<increment>` form.
+Version number of a development dictionary is intended to uniquely identify an incremental step in the dictionary development process as well as provide information about the compatibility of the implemented changes. This is done by adopting version numbers of the `<planned-release-version>`-**dev**.`<increment>` form.
 
 The `<planned-release-version>` part adheres to the standard `<major>`.`<version>`.`<update>` version format and stores the version number of the next stable version release (i.e. "3.2.7", "3.5.1"). As a result, it can be changed at most two times during a single dictionary development iteration:
 
@@ -36,13 +36,13 @@ The `<planned-release-version>` part adheres to the standard `<major>`.`<version
 
 The `<increment>` part takes a form of an integer that gets incremented after each dictionary revision (i.e. "1", "2", "3"). 
 
-An example of a version number change sequence that may occur during a single dictionary development iteration: "3.2.1-dev-0", "3.2.1-dev-1", "3.2.1-dev-2", "3.3.0-dev-4", "3.3.0-dev-5", ..., "4.0.0-dev-42".
+An example of a version number change sequence that may occur during a single dictionary development iteration: "3.2.1-dev.0", "3.2.1-dev.1", "3.2.1-dev.2", "3.3.0-dev.4", "3.3.0-dev.5", ..., "4.0.0-dev.42".
 
 ## Releasing a stable dictionary version
 
 The following changes should be applied to a development version in preparation for its release as a stable version:
 
-1. The version number should be updated to reflect the stable release version. This should generally only require the removal of the '-dev-*n*' postfix from the development version number. The change should be applied both to the `_dictionary.version` data item and the `_dictionary_audit.version` data item;
+1. The version number should be updated to reflect the stable release version. This should generally only require the removal of the '-dev.*n*' postfix from the development version number. The change should be applied both to the `_dictionary.version` data item and the `_dictionary_audit.version` data item;
 2. The release date should be updated to reflect the release date of the stable version. The change should be applied both to the `_dictionary.date` data item and the `_dictionary_audit.date` data item;
 3. The `_dictionary_audit.revision` data item value associated with the current release may should be reviewed and simplified if needed.
 
