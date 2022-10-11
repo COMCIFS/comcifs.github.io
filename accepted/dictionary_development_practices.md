@@ -6,7 +6,7 @@ The following document proposes a set of practices that should be adopted in Git
 
 ## Dictionary development cycle
 
-A single iteration of a dictionary development cycle starts with the creation of a development version of a dictionary and ends with a release of a stable dictionary version. A new development version is usually created immediately after the release of a stable version. Each iteration of a development dictionary is assigned a unique development version number to differentiate it from a stable release.  
+A single iteration of a dictionary development cycle starts with the creation of a development version of a dictionary and ends with a release of a stable dictionary version. A new development version is usually created immediately after the release of a stable version. Each iteration of a development dictionary is assigned a unique development version number to differentiate it from a stable release.
 
 ## Creating a development dictionary version
 
