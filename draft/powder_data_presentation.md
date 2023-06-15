@@ -21,7 +21,7 @@ CIF loop (a table)
 
 **Set category**: A category for which only one row of the loop can appear
 in a single data block, that is, each of the data names in the category
-can only take a single value. The concept of a Set category was introduced in
+can only take a single value in each data block. The concept of a Set category was introduced in
 the DDLm dictionary language and is roughly equivalent to a collection
 of data names with attribute `list no` in DDL1. Items in Set categories
 are often presented as key-value pairs.
