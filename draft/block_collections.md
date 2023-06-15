@@ -94,7 +94,7 @@ tabulations. Instead of samples `1` and `2`, there could be samples
 * software would have to be massively reconfigured to generate these IDs
 in all cases.
 
-## `_audit_dataset.id`
+### `_audit_dataset.id`
 
 All datasets are assigned an `_audit_dataset.id`, which is stated in any
 data blocks belonging to it.
