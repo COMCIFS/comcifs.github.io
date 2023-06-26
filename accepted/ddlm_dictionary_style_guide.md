@@ -246,7 +246,6 @@ compound objects.
                                      '_dictionary_audit.version'
                                      '_dictionary_audit.date'
                                      '_dictionary_audit.revision']
-
 ```
 
 ### 2.5 Enumeration ranges
@@ -269,7 +268,6 @@ the point. Any following digits, if present, must be non-zero.
 0.0:
 -180.0:180.0
 0.95:1.0
-
 ```
 
 ## 3. Data items
