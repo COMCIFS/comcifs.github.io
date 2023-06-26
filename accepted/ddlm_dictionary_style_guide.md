@@ -23,8 +23,8 @@ expanded as new situations arise.
 Columns are numbered from 1. "Starting at column x" means that the first
 non-whitespace character (which may be a delimiter) appears in column x.
 "Indent" refers to the number of whitespace characters preceding the first
-non-whitespace value. "Special values" are the non-delimited question 
-mark `?` and period `.` used in CIF syntax to denote Unknown and Null 
+non-whitespace value. "Special values" are the non-delimited question
+mark `?` and period `.` used in CIF syntax to denote Unknown and Null
 values, respectively.
 
 ## Magic numbers
@@ -58,7 +58,7 @@ that is, there should be no sequences of more than one blank line.
 6. Tab characters may not be used either as whitespace or within data values, unless
 part of the meaning of the data value.
 7. No comments appear within, or after, the data block.
-   
+
 ## 2. Value formatting
 
 ### 2.1 Text strings
@@ -78,13 +78,13 @@ value. Note also that rule 1.2 overrides indentation rules below.
    triple-single-quote `'''`, triple-double-quote `"""`, semicolon
    `\n;`).
 3. Text fields containing newline characters are always semicolon-delimited.
-4. If a text field contains the newline-semicolon sequence the text-prefix 
+4. If a text field contains the newline-semicolon sequence the text-prefix
    protocol is used with `text prefix` as the prefix.
 5. Each non-blank line of multi-line text fields not appearing as part of loops should
-   contain `text indent` spaces at the beginning. Tab characters must not 
+   contain `text indent` spaces at the beginning. Tab characters must not
    be used for this purpose. Paragraphs are separated by a single blank line
    which must contain only a new line character. Lines may contain more than
-   `text indent` spaces at the beginning, for example for ASCII equations or 
+   `text indent` spaces at the beginning, for example for ASCII equations or
    centering purposes.
 6. No tab characters may be used for formatting data values.
 7. The first line of a semicolon-delimited text field should be blank, except
@@ -92,7 +92,7 @@ value. Note also that rule 1.2 overrides indentation rules below.
 8. A new line character always follows the final semicolon of a semicolon-delimited text field.
 9. Looped attributes should use the same delimiter for all values in the same column.
    Special values are exempt from this rule.
-10. Category names in a category definition should be presented CAPITALISED in 
+10. Category names in a category definition should be presented CAPITALISED in
     `_name.category_id`, `_name.object_id` and `_definition.id`
 11. Category and object names in data item definitions should be presented in "canonical" case.
     Canonical case follows the rules of English capitalisation where the first letter is not
@@ -107,7 +107,7 @@ value. Note also that rule 1.2 overrides indentation rules below.
 13. Values of attributes drawn from enumerated states should be capitalised in
     the same way as the definition of that attribute.
 14. Function names defined in DDLm Function categories are CamelCased.
-15. If a character drawn from the set `#^*-=+~` appears 5 or more times sequentially (e.g. `^^^^^^`) anywhere in a multi-line text value, 
+15. If a character drawn from the set `#^*-=+~` appears 5 or more times sequentially (e.g. `^^^^^^`) anywhere in a multi-line text value,
     the value is assumed to be pre-formatted. No line-length, prefixing or other alterations to the contents should be made.
 
 ### 2.2 Lists
@@ -117,7 +117,7 @@ If such attributes are defined, these rules will be extended.
 
 1. The first and last values of a list are not separated from the delimiters by whitespace.
 2. Each element of the list is separated by `min whitespace` from the next element.
-3. Where application of the rules for loop or attribute-value layout require an internal 
+3. Where application of the rules for loop or attribute-value layout require an internal
    line break, the list should be presented as a multi-line compound object (see below).
 4. These rules do not cover lists containing multi-line simple data values or lists
    with more than one level of nesting.
@@ -148,11 +148,11 @@ If such attributes are defined, these guidelines will be extended.
 4. Keys appear in alphabetical order.
 5. There is no whitespace between the opening and closing braces and the first/last
    key:value pair.
-6. Where application of the rules for loop or attribute-value layout require an 
+6. Where application of the rules for loop or attribute-value layout require an
    internal line break, the table should be presented as a multi-line compound object.
 7. These rules do not cover tables containing multi-line simple data values or
    tables with more than one level of nesting.
-   
+
 #### Examples
 ```
 {'save':orient_matrix  'file':templ_attr.cif}
@@ -246,7 +246,7 @@ compound objects.
                                      '_dictionary_audit.version'
                                      '_dictionary_audit.date'
                                      '_dictionary_audit.revision']
- 
+
 ```
 
 ## 3. Data items
@@ -265,9 +265,9 @@ Loop categories.
    `line length` - `value col` + 1 starts in column `value col`.
 3. A value with character length that is greater than
    `line length` - `value col` + 1 and lesser or equal to
-   `line length` - `value indent + 1` starts in column 
+   `line length` - `value indent + 1` starts in column
    `value indent + 1` of the next line.
-4. A value with character length greater than 
+4. A value with character length greater than
    `line length - value indent + 1`
    is presented as a semicolon-delimited text string or as a multi-line
    compound object.
@@ -341,13 +341,13 @@ delimiters. The rules below are designed to make sure that packet
 items align on their first character, and that loops with only two
 packet items are readable.
 
-1. A loop containing a single data name and single packet is presented as an 
+1. A loop containing a single data name and single packet is presented as an
    attribute - value pair.
 2. The lowercase `loop_` keyword appears on a new line after `text indent` spaces
    and is preceded by a single blank line.
-3. The `n` lowercase, looped attribute names appear on separate lines starting at column 
+3. The `n` lowercase, looped attribute names appear on separate lines starting at column
    `text indent + loop indent + 1`.
-4. Each packet starts on a new line. The final packet is followed by a single 
+4. Each packet starts on a new line. The final packet is followed by a single
    blank line.
 5. The first character of the first value of a packet is placed in column `loop align`.
 6. Non-compound values that are longer than `line length - loop step`
@@ -366,7 +366,7 @@ packet items are readable.
       of next `p` packet items, separated by `min whitespace` is not greater
       than `line length`. Call this total width.
     2. Calculate "remaining whitespace" as `floor((line length - total width)/(p-1))`.
-    3. The start position of values for attribute number `d+1` is start position of attribute 
+    3. The start position of values for attribute number `d+1` is start position of attribute
     `d` + width of data name `d + min whitespace + remaining whitespace + 1`.
     4. If p < n, the next value is placed in column `loop step` on a new line and
     procedure repeated from step 1.
@@ -454,7 +454,7 @@ The comment-folding convention is not used.
    all data names in alphabetical order, followed by child categories.
 9. Categories with the same parent category are presented in alphabetical
    order.
-10. Notwithstanding (8), SU definitions always follow the definitions of 
+10. Notwithstanding (8), SU definitions always follow the definitions of
 their corresponding Measurand data names.
 11. Notwithstanding (9), categories with `_definition.class` of `Functions`
 appear after all other categories.
@@ -515,11 +515,11 @@ and lowercase for all others.
    13. DESCRIPTION_EXAMPLE(case, detail)
    14. `_import.get`
    15. METHOD(purpose, expression)
-   
-5. Any attributes not included in this list should be treated as if they appear 
+
+5. Any attributes not included in this list should be treated as if they appear
 in alphabetical order after the last item already listed for their (capitalised)
-categories above. If the category does not appear, the attributes are 
-presented in alphabetical order of category and then `object_id` after 
+categories above. If the category does not appear, the attributes are
+presented in alphabetical order of category and then `object_id` after
 DESCRIPTION_EXAMPLE.
 
 ## 5. Naming convention
