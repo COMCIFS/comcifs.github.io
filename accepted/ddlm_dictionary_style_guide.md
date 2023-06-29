@@ -252,7 +252,7 @@ compound objects.
 
 When giving enumeration ranges for `Integer` data items, no decimal
 point should be used. When giving enumeration ranges for `Real` data
-items, a decimal point shall be used with at least one digit after
+items, a decimal point should be used with at least one digit after
 the point. Any following digits, if present, must be non-zero.
 
 #### Examples
