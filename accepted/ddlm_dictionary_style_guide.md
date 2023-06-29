@@ -258,7 +258,7 @@ the point. Any following digits, if present, must be non-zero.
 #### Examples
 
 ```
-# Integers
+# Integer ranges
 1:230
 0:
 -8:8
