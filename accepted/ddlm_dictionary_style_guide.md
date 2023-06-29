@@ -263,7 +263,7 @@ the point. Any following digits, if present, must be non-zero.
 0:
 -8:8
 
-# Reals
+# Real number ranges
 0.0:100.0
 0.0:
 -180.0:180.0
