@@ -1,6 +1,6 @@
 # Style Guide for DDLm Dictionaries
 
-Version 1.2.1 2022-05-10
+Version 1.2.2 2023-06-29
 
 ## Overview
 
@@ -560,3 +560,4 @@ DESCRIPTION_EXAMPLE.
 |   1.1.0 | 2021-09-30 | Added rules 5.1 and 5.2 that deal with the naming of save frames. |
 |   1.2.0 | 2022-04-27 | Added rule 2.1.15 for manual opt-out of formatting. |
 |   1.2.1 | 2022-05-10 | Added consideration of special values. |
+|   1.2.2 | 2023-06-29 | Added rule 2.5 for enumeration formatting. |
