@@ -250,10 +250,49 @@ compound objects.
 
 ### 2.5 Enumeration ranges
 
-When giving enumeration ranges for `Integer` data items, no decimal
-point should be used. When giving enumeration ranges for `Real` data
-items, a decimal point should be used with at least one digit after
-the point. Any following digits, if present, must be non-zero.
+#### 2.5.1 Integer ranges
+
+Numeric range limits of `Integer` data items should be expressed as integer numbers.
+These integer numbers:
+1. Should not include non-significant leading zeros, e.g. '7' instead of '007'.
+2. Should not include a fractional part, e.g. '1' instead of '1.0'.
+3. Should not include a trailing decimal separator, e.g. '2' instead of '2.'.
+4. Should not include the '+' symbol, e.g. '42' instead '+42'.
+5. Should not include a signed zero, e.g. '0' instead of '+0' or '-0'.
+
+The following regular expression may be used to check if a limit number adheres to the formatting rules:
+```
+^
+(
+  0|( [-]?[1-9][0-9]* )
+)
+$
+```
+The regular expression above if formatted for readability following the rules permitted by the `/x` Perl regular expression modifier (e.g. any unescaped whitespace symbols can be ignored).
+
+### 2.5.2 Real number ranges
+
+Numeric range limits of `Real` data items should be expressed using floating-point real numbers.
+These floating-point real numbers:
+1. Should include at least one digit before the decimal separator, e.g. '0.5' instead of '.5'.
+2. Should include at least one digit after the decimal separator, e.g. '7.0' instead of '7.' or '7'.
+3. Should include the minimal number of non-significant leading zeros that still satisfy other formatting rules, e.g. '0.25' instead of '000.25'.
+4. Should include the minimal number of non-significant trailing zeros that still satisfy other formatting rules, e.g. '13.0' instead of '13.000'.
+5. Should not include the '+' symbol, e.g. '42.0' instead '+42.0'.
+6. Should not include a signed zero, e.g. '0.0' instead of '+0.0' or '-0.0'.
+
+The following regular expression may be used to check if the limit number adheres to the formatting rules:
+
+```
+^
+(
+  ( 0[.]0 ) |                   # Real number 0.0
+  ( [-]?([1-9][0-9]*)[.]0 ) |   # All integer-like numbers, e.g. -5.0
+  ( [-]?(0|))[.]([0-9]*[1-9]) ) # All remaining floating-point numbers
+)
+$
+```
+The regular expression above if formatted for readability following the rules permitted by the `/x` Perl regular expression modifier (e.g. any unescaped whitespace symbols can be ignored).
 
 #### Examples
 
