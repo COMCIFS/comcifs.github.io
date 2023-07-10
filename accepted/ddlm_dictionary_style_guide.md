@@ -270,6 +270,14 @@ $
 ```
 The regular expression above if formatted for readability following the rules permitted by the `/x` Perl regular expression modifier (e.g. any unescaped whitespace symbols can be ignored).
 
+#### Examples
+```
+1:230
+0:
+:27
+-8:8
+```
+
 ### 2.5.2 Real number ranges
 
 Numeric range limits of `Real` data items should be expressed using floating-point real numbers.
@@ -295,16 +303,9 @@ $
 The regular expression above if formatted for readability following the rules permitted by the `/x` Perl regular expression modifier (e.g. any unescaped whitespace symbols can be ignored).
 
 #### Examples
-
-```
-# Integer ranges
-1:230
-0:
--8:8
-
-# Real number ranges
 0.0:100.0
 0.0:
+:13.0
 -180.0:180.0
 0.95:1.0
 ```
