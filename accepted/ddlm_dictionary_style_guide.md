@@ -263,7 +263,7 @@ Numeric range limits of data items with the `Integer` content type should be exp
 4. Do not include the '+' symbol, e.g. '42' instead '+42'.
 5. Do not include a signed zero, e.g. '0' instead of '+0' or '-0'.
 
-The following regular expression may be used to check if a limit number adheres to the formatting rules:
+The following regular expression may be used to check if a number adheres to the integer range limit formatting rules:
 ```
 ^
 (
@@ -273,7 +273,7 @@ $
 ```
 The regular expression above if formatted for readability using the additional syntax rules enabled by the `/x` Perl regular expression modifier (e.g. any unescaped whitespace symbols must be ignored).
 
-##### Examples
+##### Examples of properly formatted integer number ranges
 ```
 1:230
 0:
@@ -286,30 +286,34 @@ The regular expression above if formatted for readability using the additional s
 Numeric range limits of data items with the `Real` content type should be expressed using floating-point real numbers that:
 1. Include at least one digit before the decimal separator, e.g. '0.5' instead of '.5'.
 2. Include at least one digit after the decimal separator, e.g. '7.0' instead of '7.' or '7'.
-3. Include the minimal number of non-significant leading zeros that still satisfy other formatting rules, e.g. '0.25' instead of '000.25'.
-4. Include the minimal number of non-significant trailing zeros that still satisfy other formatting rules, e.g. '13.0' instead of '13.000'.
+3. Include the minimal number of non-significant leading zeros that still satisfies other formatting rules, e.g. '0.25' instead of '000.25'.
+4. Include the minimal number of non-significant trailing zeros that still satisfies other formatting rules, e.g. '13.0' instead of '13.000'.
 5. Do not include the '+' symbol, e.g. '42.0' instead '+42.0'.
 6. Do not include a signed zero, e.g. '0.0' instead of '+0.0' or '-0.0'.
 
-The following regular expression may be used to check if the limit number adheres to the formatting rules:
+The following regular expression may be used to check if a number adheres to the real number range limit formatting rules:
 
 ```
 ^
 (
-  ( 0[.]0 ) |                   # Real number '0.0'.
-  ( [-]?([1-9][0-9]*)[.]0 ) |   # All integer-like numbers, e.g. '-5.0'.
-  ( [-]?(0|))[.]([0-9]*[1-9]) ) # All remaining floating-point numbers.
+  # Real number '0.0'.
+  ( 0[.]0 ) |
+  # All integer-like numbers, e.g. '-5.0'.
+  ( [-]?([1-9][0-9]*)[.]0 ) |
+  # All remaining floating-point numbers.
+  ( [-]?(0|([1-9][0-9]*))[.]([0-9]*[1-9]) )
 )
 $
 ```
 The regular expression above if formatted for readability using the additional syntax rules enabled by the `/x` Perl regular expression modifier (e.g. any unescaped whitespace symbols must be ignored).
 
-##### Examples
+##### Examples of properly formatted real number ranges
 ```
 0.0:100.0
 0.0:
 :13.0
 -180.0:180.0
+-3.14:3.14
 0.95:1.0
 ```
 
