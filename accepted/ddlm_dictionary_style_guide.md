@@ -271,7 +271,7 @@ The following regular expression may be used to check if a number adheres to the
 )
 $
 ```
-The regular expression above if formatted for readability using the additional syntax rules enabled by the `/x` Perl regular expression modifier (e.g. any unescaped whitespace symbols must be ignored).
+The regular expression above is formatted for readability using the additional syntax rules enabled by the `/x` Perl regular expression modifier (e.g. any unescaped whitespace symbols must be ignored).
 
 ##### Examples of properly formatted integer number ranges
 ```
@@ -305,7 +305,7 @@ The following regular expression may be used to check if a number adheres to the
 )
 $
 ```
-The regular expression above if formatted for readability using the additional syntax rules enabled by the `/x` Perl regular expression modifier (e.g. any unescaped whitespace symbols must be ignored).
+The regular expression above is formatted for readability using the additional syntax rules enabled by the `/x` Perl regular expression modifier (e.g. any unescaped whitespace symbols must be ignored).
 
 ##### Examples of properly formatted real number ranges
 ```
