@@ -250,23 +250,70 @@ compound objects.
 
 ### 2.5 Enumeration ranges
 
-When giving enumeration ranges for `Integer` data items, no decimal
-point should be used. When giving enumeration ranges for `Real` data
-items, a decimal point should be used with at least one digit after
-the point. Any following digits, if present, must be non-zero.
+Values of the `_enumeration.range` attribute should be expressed in a format that best reflects the content type of the defining item.
+That is, numeric range limits of data items with the `Integer` content type should be formatted as integers while data items with the `Real` content type should be formatted as floating-point real numbers.
+Additional formatting rules for enumeration ranges are provided in Section 2.5.1 and Section 2.5.2.
 
-#### Examples
+#### 2.5.1 Integer ranges
 
+Numeric range limits of data items with the `Integer` content type should be expressed as integers that:
+1. Do not include non-significant leading zeros, e.g. '7' instead of '007'.
+2. Do not include a fractional part, e.g. '1' instead of '1.0'.
+3. Do not include a trailing decimal separator, e.g. '2' instead of '2.'.
+4. Do not include the '+' symbol, e.g. '42' instead '+42'.
+5. Do not include a signed zero, e.g. '0' instead of '+0' or '-0'.
+
+The following regular expression may be used to check if a number adheres to the integer range limit formatting rules:
 ```
-# Integer ranges
+^
+(
+  0|( [-]?[1-9][0-9]* )
+)
+$
+```
+The regular expression above is formatted for readability using the additional syntax rules enabled by the `/x` Perl regular expression modifier (e.g. any unescaped whitespace symbols must be ignored).
+
+##### Examples of properly formatted integer number ranges
+```
 1:230
 0:
+:27
 -8:8
+```
 
-# Real number ranges
+### 2.5.2 Real number ranges
+
+Numeric range limits of data items with the `Real` content type should be expressed using floating-point real numbers that:
+1. Include at least one digit before the decimal separator, e.g. '0.5' instead of '.5'.
+2. Include at least one digit after the decimal separator, e.g. '7.0' instead of '7.' or '7'.
+3. Include the smallest number of non-significant leading zeros that still satisfies other formatting rules, e.g. '0.25' instead of '000.25'.
+4. Include the smallest number of non-significant trailing zeros that still satisfies other formatting rules, e.g. '13.0' instead of '13.000'.
+5. Do not include the '+' symbol, e.g. '42.0' instead '+42.0'.
+6. Do not include a signed zero, e.g. '0.0' instead of '+0.0' or '-0.0'.
+
+The following regular expression may be used to check if a number adheres to the real number range limit formatting rules:
+
+```
+^
+(
+  # Real number '0.0'.
+  ( 0[.]0 ) |
+  # All integer-like numbers, e.g. '-5.0'.
+  ( [-]?([1-9][0-9]*)[.]0 ) |
+  # All remaining floating-point numbers.
+  ( [-]?(0|([1-9][0-9]*))[.]([0-9]*[1-9]) )
+)
+$
+```
+The regular expression above is formatted for readability using the additional syntax rules enabled by the `/x` Perl regular expression modifier (e.g. any unescaped whitespace symbols must be ignored).
+
+##### Examples of properly formatted real number ranges
+```
 0.0:100.0
 0.0:
+:13.0
 -180.0:180.0
+-3.14:3.14
 0.95:1.0
 ```
 
