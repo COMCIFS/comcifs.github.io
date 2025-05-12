@@ -22,48 +22,55 @@ the examples. Please refer to that discussion for the method of
 determining which categories belong together for the purposes of Steps 1
 and 2.
 
-The distribution of data amongst data blocks can be worked out in
-the following steps:
+The distribution of data amongst data blocks can be worked out as follows:
 
 1. Start with a set of data blocks obtained by allowing only one value
 for data names from the categories in Column 1 of Table 1 in any given
 data block.  In other words, a single data block may only describe a
 single instance of the concepts in the second column (e.g. one phase,
-one structure). A key data name with unique value must be provided
-if there is more than one data block associated with a given category.
+one structure). The key data name with unique value must be provided
+if there are multiple data blocks associated with a given category.
 
 **Table 1:** common items that might be spread over multiple data blocks
 
-| Top category       | Explanation                | Key data name          | Children (most common)        |
-|--------------------|----------------------------|------------------------|-------------------------------|
-| `PD_PHASE`         | (compound name and id)     | `_pd_phase.id`         | `PD_AMORPHOUS`                |
-| `PD_DIFFRACTOGRAM` | (powder data measurements) | `_pd_diffractogram.id` | `PD_MEAS`                     |
-| `DIFFRN`           | (experimental conditions)  | `_diffrn.id`           |                               |
-| `DIFFRN_RADIATION` | (radiation source)         | `_diffrn_radiation.id` | `DIFFRN_RADIATION_WAVELENGTH` |
-| `EXPTL_CRYSTAL`    | (other sample information) | `_exptl_crystal.id`    |                               |
-| `SPACE_GROUP`      | (space group information)  | `_space_group.id`      | `SPACE_GROUP_SYMOP`           |
-| `STRUCTURE`        | (structural information)   | `_structure.id`        | `CELL`, `ATOM_SITE`           |
-|                    |                            |                        |                               |
+| Top category       | Explanation                     | Key data name          | Children                                                                                                                                                                              |
+|--------------------|---------------------------------|------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `DIFFRN`           | (experimental conditions)       | `_diffrn.id`           |                                                                                                                                                                                       |
+| `DIFFRN_RADIATION` | (radiation source)              | `_diffrn_radiation.id` | `diffrn_radiation_wavelength`                                                                                                                                                         |
+| `EXPTL_CRYSTAL`    | (sample information)            | `_exptl_crystal.id`    |                                                                                                                                                                                       |
+| `PD_DIFFRACTOGRAM` | (powder data measurements)      | `_pd_diffractogram.id` | `pd_qpa_external_std` `pd_proc_overall` `pd_qpa_overall` `pd_meas_overall` `pd_proc_ls` `pd_calc_overall` `pd_data` `pd_meas` `pd_calc` `pd_background` `pd_calib_d_to_tof` `pd_proc` |
+| `PD_INSTR`         | (powder instrument description) | `_pd_instr.id`         |                                                                                                                                                                                       |
+| `PD_PEAK_OVERALL`  | (powder peak information)       | `_pd_peak_overall.id`  |                                                                                                                                                                                       |
+| `PD_PHASE`         | (compound name and ID)          | `_pd_phase.id`         | `pd_qpa_calib_factor` `refln` `pd_amorphous`                                                                                                                                          |
+| `PD_SPEC`          | (specimen description)          | `_pd_spec.id`          |                                                                                                                                                                                       |
+| `SPACE_GROUP`      | (symmetry information)          | `_space_group.id`      | `space_group_symop` `space_group_wyckoff` `space_group_generator`                                                                                                                     |
+| `STRUCTURE`        | (structure description)         | `_structure.id`        | `cell` `cell_measurement` `atom_site` `atom_site_aniso` `cell_measurement_refln`                                                                                                      |
 
-2. Certain categories require a separate data block for every distinct
-combination of items from Step 1. For example, there should be a
-separate block for each combination of histogram and phase if
-reflection lists or preferred orientation parameters are
-provided. These data blocks include the particular values of the key
+2. In addition to the blocks determined from Step 1, a separate
+data block is required for every distinct
+combination of items from Step 1, if there are categories that
+are related to more than one Set category. Currently defined
+categories that fall into this class are listed in Table 2.
+
+For example, as the `pd_pref_orient` category depends on both the
+phase and the diffractogram, a separate data block should be created for
+every combination of phase and diffractogram.
+ 
+These data blocks include the particular values of the key
 data names for the combined categories as shown in the `Key data name`
 column of Table 1.
 
 **Table 2:** Combined items
 
-| Top category | Combination categories |
-|--------------|------------------------|
-| `REFLN`, `PD_PREF_ORIENT` | `PD_DIFFRACTOGRAM`, `PD_PHASE`|
-| Table to be continued | |
+| Set categories                         | Children                                                                                                                                                                 |
+|----------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `DIFFRN` `PD_DIFFRACTOGRAM` `PD_PHASE` | `pd_calib_wavelength`                                                                                                                                                    |
+| `PD_DIFFRACTOGRAM` `PD_PHASE`          | `pd_pref_orient` `pd_qpa_internal_std` `pd_calc_component` `pd_qpa_intensity_factor` `pd_pref_orient_spherical_harmonics` `pd_pref_orient_march_dollase` `pd_phase_mass` |
 
-3. Where only one item for each entry in Step 1 is present, their
-blocks should be combined into a single block.  Note that this does
+3. Categories from Step 1 for which there is only a single value should
+have their blocks combined into a single block.  This does
 not violate the requirement stated in Step 1 as the combined data block
-still contains only a single instance of the items.
+still contains only a single instance of each of the data items.
 
 4. The following information should always be grouped together in a single
 data block, even if that introduces repetition:
@@ -83,7 +90,7 @@ situation would be looping mass content of phases for a histogram.
 
 6. Loops for the Child categories (Table 1) and Combination
 categories (Table 2) should only include those values relevant to the
-particular values of the key data names valid for the data block in
+particular values of the key data names for the data block in
 which they appear. For example, only the measured points for the
 diffractogram identified by `_pd_diffractogram.id` should appear
 in the same data block.
@@ -926,27 +933,58 @@ data names belonging to `Set` categories should only appear once
 within any given data block, and multiple data blocks are therefore
 needed to provide multiple values for those `Set` data names. By
 applying these principles, a prescription for powder data can be
-obtained based on the `Set` categories for core CIF and noting
-that `PD_PHASE` and `PD_HISTOGRAM` are `Set` categories.
+obtained based on the `Set` categories for core and powder CIF,
+noting that `PD_PHASE` and `PD_DIFFRACTOGRAM` are `Set` categories.
 
-### Heuristic
+### Technical description
 
-(To be completed)
+The complete dataset may be represented as a collection of tables. Thus
+if ten diffraction patterns are included, they will appear in a single
+table, with the `_pd_diffractogram.id` column identifying which 
+diffractogram a given two theta and intensity value belong to. These
+tables will include a great deal of repetition of the values of
+the key data names. To avoid repetition, we use "scoping" and "projection"
+to divide the dataset into blocks. After scoping and projection,
+the dataset has been divided into chunks.
 
-There are many ways to distribute powder data over data blocks and conform
-to the general restrictions described above. The following heuristic results in
-a single preferred approach which should simplify the task of software
-authors.
+#### Scoping
+
+A "data block" creates a scope within which a Set category
+key data name's value can be used to "project" rows out of categories.
+
+#### Projection
+
+"Projection" is selecting only those rows of tables for which
+key data names that are children of Set category key data names
+take the values that are in scope. After projection, there is
+no need to include values of the child key data names as their
+values are just those of the Set category key data names.
+
+In our example containing many diffractograms, each data block takes a
+single value for `_pd_diffractogram.id`, leading to ten data blocks,
+one for each diffractogram. Projection means selecting only those rows
+of the overall data table that belong to the diffractogram identified
+by `_pd_diffractogram.id`, leading to the obvious result that each
+data block contains a diffractogram from a single experiment.
+
+### Creating Tables 1 and 2
+
+There are many ways to distribute powder data over data blocks and
+conform to the general restrictions described in the previous
+section. The following heuristic results in a single preferred
+approach which should simplify the task of software authors.
 
 To obtain the category lists in Table 1:
 
-1. Make a list of all Top categories.
-2. For each category from Step 1, add all child categories that are not children
-   of other child categories.
+1. Make a list of Set categories that have a single key data name defined
+2. For each category from Step 1, the "child" categories are
+those that have a key data name that is linked (via 
+`_name.linked_item_id`) to the Set category key data name.
 
 The category lists in Table 2 are obtained as follows:
 
-1. List all categories that are children of more than one Top category
-2. Categories from Step 1 are grouped together if they have the same parent
-   categories.
+1. Find all categories for which two or more key data names are linked
+to Top category key data names via `_name.linked_item_id`
+2. Sort these categories according to the particular combination of
+Set categories that they relate to.
    
