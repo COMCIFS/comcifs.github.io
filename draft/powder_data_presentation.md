@@ -110,7 +110,7 @@ three data blocks: two containing the two measurements together with
 their measurement conditions, and one containing everything else.
 
 ```
-#\#CIF2.0
+#\#CIF_2.0
 #
 # Example of using CIF to describe two data sets, one phase
 #
@@ -259,13 +259,13 @@ loop_
 data_CuCr2O4
 
 _structure.id	CuCr2O4
-_structure.space_group_id	'F d d d'
+_structure.space_group_id	fddd
 _structure.phase_id    cucr2o4   # <- proposed
 _pd_phase.id           cucr2o4
 _pd_phase_mass.percent         98.7
 
 _space_group.crystal_system	orthorhombic
-_space_group.id	'F d d d'
+_space_group.id	fddd
 _space_group.laue_class	mmm
 _space_group.name_h-m_alt	'F d d d'
 _space_group.name_Hall           '-F 2uv 2vw'
@@ -293,13 +293,13 @@ loop_
 data_CuO
 
 _structure.id	CuO
-_structure.space_group_id	'C 2 C'
+_structure.space_group_id	c2c
 _structure.phase_id     cuo    # <- proposed
 _pd_phase.id    cuo
 _pd_phase_mass.percent       1.3
 
 _space_group.crystal_system	monoclinic
-_space_group.id	'C 2 C'
+_space_group.id	c2c
 _space_group.name_h-m_alt	'C 2/c'
 _space_group.name_Hall           '-C 2yc'
 #symops could go here
@@ -430,7 +430,7 @@ loop_
    _atom_site.site_symmetry_multiplicity
 Cu     Cu   0.12500     0.12500     0.12500     1.0000     Uiso 0.00003(22) 8   
 Cr     Cr   0.50000     0.50000     0.50000     1.0000     Uiso 0.00011(22) 16  
-O      O    0.24582(21) 0.2682(4)   0.2674(4)   1.0000     Uiso -0.0042(5) 32  
+O      O    0.24582(21) 0.2682(4)   0.2674(4)   1.0000     Uiso 0.0042(5) 32  
 
 data_cr2cuo4_17k
 
@@ -479,7 +479,7 @@ loop_
    _atom_site.site_symmetry_multiplicity
 Cu     Cu   0.12500     0.12500     0.12500     1.0000     Uiso 0.00062(21) 8   
 Cr     Cr   0.50000     0.50000     0.50000     1.0000     Uiso 0.00036(21) 16  
-O      O    0.24520(20) 0.2681(4)   0.2676(4)   1.0000     Uiso -0.0042(4) 32  
+O      O    0.24520(20) 0.2681(4)   0.2676(4)   1.0000     Uiso 0.0042(4) 32  
 
 data_cr2cuo4_47k
 
@@ -528,7 +528,7 @@ loop_
    _atom_site.site_symmetry_multiplicity
 Cu     Cu   0.12500     0.12500     0.12500     1.0000     Uiso 0.00086(21) 8   
 Cr     Cr   0.50000     0.50000     0.50000     1.0000     Uiso 0.00020(20) 16  
-O      O    0.24566(20) 0.2674(4)   0.2676(4)   1.0000     Uiso -0.0032(4) 32  
+O      O    0.24566(20) 0.2674(4)   0.2676(4)   1.0000     Uiso 0.0032(4) 32  
 
 data_cuo_7K
 
@@ -708,7 +708,7 @@ data_0H_04
 
 _diffrn.id                   17K
 _diffrn.ambient_temperature  16.702
-_diffrn,ambient_pressure     100
+_diffrn.ambient_pressure     100
 _diffrn.diffrn_radiation_id  common
 
 _pd_diffractogram.id       0H_04
@@ -768,7 +768,7 @@ data_0H_cr2cuo4
 
 _pd_diffractogram.id       0H_00
 _pd_phase.id               cr2cuo4
-_pd_phase.mass_percent     0.9888(4)
+_pd_phase_mass.percent     0.9888(4)
 
 # The following assumes that _refln.diffractogram_id
 # has been defined so that per-diffractogram results
@@ -782,10 +782,10 @@ loop_
    _refln.F_squared_calc
    _refln.phase_calc
    _refln.d_spacing
-  1    1    1    2923.7101  1848.8118  -0.0    4.75465    
+  1    1    1    2923.7101  1848.8118    0.0    4.75465    
   0    2    2    50887.9824 44176.2312 180.0   3.01930    
   2    2    0    41129.5142 38146.8191 180.0   2.86244    
-  2    0    2    40719.7976 38182.2594 -180.0  2.86141   
+  2    0    2    40719.7976 38182.2594 180.0   2.86141   
 # ...
 
 # preferred orientation information also goes here
@@ -794,7 +794,7 @@ data_0H_cuo
 
 _pd_diffractogram.id       0H_00
 _pd_phase.id               cuo
-_pd_phase.mass_percent     0.0112(4)
+_pd_phase_mass.percent     0.0112(4)
 
 loop_
    _refln.index_h
@@ -806,18 +806,18 @@ loop_
    _refln.d_spacing
 
   1    1    0    4339.5540  527.9252   180.0   2.74595   
-  0    0    2    5381.1374  4772.3738  -0.0    2.52848   
+  0    0    2    5381.1374  4772.3738  0.0    2.52848   
   1    1    -1   7778.9105  6672.9552  180.0   2.52221   
-  1    1    1    10519.8297 10580.5215 -180.0  2.31709   
+  1    1    1    10519.8297 10580.5215 180.0  2.31709   
   2    0    0    6179.8194  4667.8699  180.0   2.30477   
-  1    1    -2   1570.8862  298.7972   -0.0    1.96126   
+  1    1    -2   1570.8862  298.7972   0.0    1.96126   
 # ...
 
 data_04_cr2cuo4
 
 _pd_diffractogram.id       0H_04
 _pd_phase.id               cr2cuo4
-_pd_phase.mass_percent     0.9885(4)
+_pd_phase_mass.percent     0.9885(4)
 
 loop_
    _refln.index_h
@@ -828,10 +828,10 @@ loop_
    _refln.phase_calc
    _refln.d_spacing
 
-  1    1    1    2857.5850  1815.5648  -0.0    4.75469   
+  1    1    1    2857.5850  1815.5648  0.0    4.75469   
   0    2    2    50066.2033 44075.8291 180.0   3.01930   
   2    2    0    40970.9520 37913.9619 180.0   2.86246   
-  2    0    2    40623.1705 37934.3275 -180.0  2.86146   
+  2    0    2    40623.1705 37934.3275 180.0  2.86146   
   1    3    1    65233.6297 67538.1258 180.0   2.54953   
 # ...
 
@@ -839,7 +839,7 @@ data_04_cuo
 
 _pd_diffractogram.id       0H_04
 _pd_phase.id               cuo
-_pd_phase.mass_percent     0.0115(4)
+_pd_phase_mass.percent     0.0115(4)
 
 loop_
    _refln.index_h
@@ -851,9 +851,9 @@ loop_
    _refln.d_spacing
 
   1    1    0    3027.3298  528.0777   180.0   2.74652    
-  0    0    2    5645.9302  4772.1111  -0.0    2.52777    
+  0    0    2    5645.9302  4772.1111  0.0    2.52777    
   1    1    -1   7984.2080  6673.2990  180.0   2.52253    
-  1    1    1    10367.4860 10581.1099 -180.0  2.31726    
+  1    1    1    10367.4860 10581.1099 180.0  2.31726    
   2    0    0    6208.4277  4668.0844  180.0   2.30514  
 # ...
 
@@ -861,7 +861,7 @@ data_09_cr2cuo4
 
 _pd_diffractogram.id       0H_09
 _pd_phase.id               cr2cuo4
-_pd_phase.mass_percent     0.9865(4)
+_pd_phase_mass.percent     0.9865(4)
 
 loop_
    _refln.index_h
@@ -872,10 +872,10 @@ loop_
    _refln.phase_calc
    _refln.d_spacing
 
-  1    1    1    2866.3493  1806.1692  -0.0    4.75488   
+  1    1    1    2866.3493  1806.1692  0.0    4.75488   
   0    2    2    48243.5918 43869.8403 180.0   3.01927   
   2    2    0    40547.2038 38008.3146 180.0   2.86260   
-  2    0    2    40068.9116 37989.4186 -180.0  2.86167   
+  2    0    2    40068.9116 37989.4186 180.0  2.86167   
   1    3    1    66629.5169 68307.3304 180.0   2.54949   
 # ...
 
@@ -883,7 +883,7 @@ data_09_cuo
 
 _pd_diffractogram.id       0H_09
 _pd_phase.id               cuo
-_pd_phase.mass_percent     0.0135(4)
+_pd_phase_mass.percent     0.0135(4)
 
 loop_
    _refln.index_h
@@ -895,14 +895,14 @@ loop_
    _refln.d_spacing
 
   1    1    0    4614.5984  528.0627   180.0   2.74646    
-  0    0    2    5629.4996  4772.3673  -0.0    2.52846    
+  0    0    2    5629.4996  4772.3673  0.0    2.52846    
   1    1    -1   7957.5050  6673.6405  180.0   2.52285    
-  1    1    1    10650.5252 10580.9378 -180.0  2.31721    
+  1    1    1    10650.5252 10580.9378 180.0  2.31721    
   2    0    0    5809.4324  4667.7910  180.0   2.30463    
 # ...
 ```
 
-## Technical appendix (incomplete)
+## Technical appendix
 
 ### Definitions
 
