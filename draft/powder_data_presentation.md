@@ -75,7 +75,7 @@ still contains only a single instance of each of the data items.
 4. The following information should always be grouped together in a single
 data block, even if that introduces repetition:
  - Measurement conditions (`DIFFRN*` categories) and the measurement 
-   (`PD_HISTOGRAM`) that was conducted under those conditions. Where multiple
+   (`PD_DIFFRACTOGRAM`) that was conducted under those conditions. Where multiple
    measurements are conducted under the same conditions, each measurement
    is in a separate data block and the `DIFFRN*` data names are repeated.
  - Space group details with other structural information (`CELL`) and overall
