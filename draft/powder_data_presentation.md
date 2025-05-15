@@ -15,6 +15,11 @@ single instrument under a single set of environmental conditions. The
 present document describes how CIF should be used to express these
 more complex powder results.
 
+[Toby, von Dreele, and Larson (2003)](https://onlinelibrary.wiley.com/iucr/doi/10.1107/S0021889803016819)
+outlines an earlier approach to this task. Where possible, these
+recommendations attempt to follow the descriptions in Section 3 of
+that paper. An appendix outlines differences.
+
 ## General rules for powder data
 
 A more technical discussion of the following rules is presented after
@@ -902,7 +907,7 @@ loop_
 # ...
 ```
 
-## Technical appendix
+## Appendix A: Technical
 
 ### Definitions
 
@@ -987,4 +992,8 @@ The category lists in Table 2 are obtained as follows:
 to Top category key data names via `_name.linked_item_id`
 2. Sort these categories according to the particular combination of
 Set categories that they relate to.
+
+## Appendix B: Comparison with Toby et. al.
+
+(TODO)
    
