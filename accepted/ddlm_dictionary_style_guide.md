@@ -599,6 +599,14 @@ DESCRIPTION_EXAMPLE.
    the uppercase version of the `_definition.id` attribute value contained
    in the definition, with any leading underscores removed.
 
+## 6. Known implementations
+
+* [julia_cif_tools](https://github.com/jamesrhester/julia_cif_tools).
+  This software package includes several programs that make use of this guide.
+  Most notably:
+  - `pretty_print.jl`. Reformats a dictionary in accordance to this guide.
+  - `linter.jl`. Detect deviation from this guide in a given dictionary.
+
 ## CHANGELOG
 
 | Version | Date       | Revision |
@@ -608,3 +616,4 @@ DESCRIPTION_EXAMPLE.
 |   1.2.0 | 2022-04-27 | Added rule 2.1.15 for manual opt-out of formatting. |
 |   1.2.1 | 2022-05-10 | Added consideration of special values. |
 |   1.2.2 | 2023-06-29 | Added rule 2.5 for enumeration formatting. |
+|   1.3.0 | 2025-05-23 | Added the "Known implementations" section. |
