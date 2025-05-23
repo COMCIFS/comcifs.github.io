@@ -84,7 +84,7 @@ data block, even if that introduces repetition:
    measurements are conducted under the same conditions, each measurement
    is in a separate data block and the `DIFFRN*` data names are repeated.
  - Space group details with other structural information (`CELL`) and overall
-   phase information (`_phase.id`, `_phase.name`).
+   phase information (`_pd_phase.id`, `_pd_phase.name`).
    
 5. Any data blocks violating point (1) should set data name
 `_audit.schema` to non-default value `Custom`. For example,
@@ -1031,7 +1031,39 @@ identifiers.
 ### Block identifiers/pointers
 
 In TvDL, blocks are connected using block pointers. Nothing in the present
-standard prevents the use of these pointers or identifiers.
+standard prevents the use of these pointers or identifiers in addition to
+`_audit_dataset.id`.
 
-### 
+### Separate blocks
+
+The publication and overall information blocks would be combined into a
+single block in the present guide. This is not strictly necessary.
+
+### Chemical species blocks
+
+Rule 4 combines categories that have child key data names of
+`_structure.id` and `_pd_phase.id`. This results in the same contents.
+
+### Diffraction data blocks
+
+Diffraction data blocks are the most complex of those described in TvDL.
+In terms of child key data names of Set categories, TvDL diffraction data
+blocks contain:
+
+1. Diffractograms together with the measurement conditions and instruments - 
+children of `_diffrn.id`, `_pd_diffractogram.id`, and `_pd_instr.id`.
+
+2. Phase table (TvDL 3.4.1). Combinations of children of `_pd_phase.id`
+and `_pd_diffractogram.id` giving all categories in the second row of Table 2.
+
+3. Wavelength table - `_diffrn_radiation_wavelength.id`. Our recommendations
+would put this in a separate block.
+
+4. Refln loop. TvDL includes `_pd_refln.phase_id` as a column in the loop,
+so that hkl from all phases are contained in a single loop for a single
+diffractogram.
+
+The present guidelines reproduce only part 1 of the TvDL recommendations.
+
+
    
