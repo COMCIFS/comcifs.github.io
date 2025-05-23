@@ -22,6 +22,8 @@ that paper. An appendix outlines differences.
 
 ## General rules for powder data
 
+### Dividing data between data blocks
+
 A more technical discussion of the following rules is presented after
 the examples. Please refer to that discussion for the method of
 determining which categories belong together for the purposes of Steps 1
@@ -100,6 +102,18 @@ which they appear. For example, only the measured points for the
 diffractogram identified by `_pd_diffractogram.id` should appear
 in the same data block.
 
+### Identifying related data blocks
+
+Data blocks belonging to the same dataset are distinguished by having
+identical values for the `_audit_dataset.id` data name. Values should
+be universally unique. Sources of universally unique values include
+the original powder block id generation algorithm and 
+[RFC9562](https://datatracker.ietf.org/doc/html/rfc9562) as implemented
+in many computing systems.
+
+An earlier scheme linking blocks using block ids and block pointers
+may also be used to support legacy software.
+
 ## Examples
 
 ### One phase, two measurements
@@ -128,6 +142,8 @@ their measurement conditions, and one containing everything else.
 #
 data_PWDR_PBSO4.CWN_Bank_1
 
+_audit_dataset.id d25aad62-effc-4920-a01a-568a2c2a350c
+
 _diffrn.id	11158
 
 _diffrn.ambient_pressure	0.1
@@ -155,6 +171,8 @@ _pd_phase_mass.percent   100
 #...
 
 data_PWDR_PBSO4.XRA_Bank_1
+
+_audit_dataset.id d25aad62-effc-4920-a01a-568a2c2a350c
 
 _diffrn.id	11080
 
@@ -186,6 +204,8 @@ _pd_phase_mass.percent   100
 #...
 
 data_classic
+
+_audit_dataset.id d25aad62-effc-4920-a01a-568a2c2a350c
 
 _pd_phase.id          pbso4
 
@@ -241,6 +261,7 @@ leaving us with three data blocks.
 #
 data_classic
 
+_audit_dataset.id 6bdf3aa2-a2d9-41a3-ae76-36af9af8ab19
 _diffrn.ambient_pressure	0.1
 _diffrn.ambient_temperature	6.778
 _diffrn_radiation.probe	        x-ray
@@ -262,6 +283,8 @@ loop_
 # Lines omitted...
 
 data_CuCr2O4
+
+_audit_dataset.id 6bdf3aa2-a2d9-41a3-ae76-36af9af8ab19
 
 _structure.id	CuCr2O4
 _structure.space_group_id	fddd
@@ -296,6 +319,8 @@ loop_
       O                   O    0.2457                0.2682                0.2674
          
 data_CuO
+
+_audit_dataset.id 6bdf3aa2-a2d9-41a3-ae76-36af9af8ab19
 
 _structure.id	CuO
 _structure.space_group_id	c2c
@@ -377,6 +402,8 @@ As a result we have 16 data blocks.
 
 data_classic
 
+_audit_dataset.id c5c4b947-0708-411e-b44b-e157f645fd23
+
 _diffrn_radiation.id                common
 _diffrn_radiation_wavelength.value  0.41326
 _diffrn_radiation.probe             x-ray
@@ -389,6 +416,8 @@ _diffrn_radiation.polarisn_ratio    0.9900
 # List all distinct structures, one per data block, including space group
 
 data_cr2cuo4_7k
+
+_audit_dataset.id c5c4b947-0708-411e-b44b-e157f645fd23
 
 _structure.id                cr2cuo4_7K
 _structure.diffrn_id         7K
@@ -439,6 +468,8 @@ O      O    0.24582(21) 0.2682(4)   0.2674(4)   1.0000     Uiso 0.0042(5) 32
 
 data_cr2cuo4_17k
 
+_audit_dataset.id c5c4b947-0708-411e-b44b-e157f645fd23
+
 _structure.id                cr2cuo4_17K
 _structure.diffrn_id         17K
 _structure.space_group_id    fddd
@@ -488,6 +519,8 @@ O      O    0.24520(20) 0.2681(4)   0.2676(4)   1.0000     Uiso 0.0042(4) 32
 
 data_cr2cuo4_47k
 
+_audit_dataset.id c5c4b947-0708-411e-b44b-e157f645fd23
+
 _structure.id                cr2cuo4_7K
 _structure.diffrn_id         7K
 _structure.space_group_id    fddd
@@ -536,6 +569,8 @@ Cr     Cr   0.50000     0.50000     0.50000     1.0000     Uiso 0.00020(20) 16
 O      O    0.24566(20) 0.2674(4)   0.2676(4)   1.0000     Uiso 0.0032(4) 32  
 
 data_cuo_7K
+
+_audit_dataset.id c5c4b947-0708-411e-b44b-e157f645fd23
 
 _structure.id                cuo_7K
 _structure.diffrn_id         7K
@@ -631,6 +666,8 @@ O1     O2-  0.00000     0.41840     0.25000     1.0000     Uiso 0.0010     4
 
 data_cuo_47K
 
+_audit_dataset.id c5c4b947-0708-411e-b44b-e157f645fd23
+
 _structure.id                cr2cuo4_7K
 _structure.diffrn_id         47K
 _structure.space_group_id    c2c
@@ -682,6 +719,8 @@ O1     O2-  0.00000     0.41840     0.25000     1.0000     Uiso 0.0010     4
 
 data_0H_00
 
+_audit_dataset.id c5c4b947-0708-411e-b44b-e157f645fd23
+
 _diffrn.id                   7K
 _diffrn.ambient_temperature  6.778
 _diffrn.ambient_pressure     100
@@ -711,6 +750,8 @@ loop_
 
 data_0H_04
 
+_audit_dataset.id c5c4b947-0708-411e-b44b-e157f645fd23
+
 _diffrn.id                   17K
 _diffrn.ambient_temperature  16.702
 _diffrn.ambient_pressure     100
@@ -738,6 +779,8 @@ loop_
 # ...omitted measurements
 
 data_OH_09
+
+_audit_dataset.id c5c4b947-0708-411e-b44b-e157f645fd23
 
 _diffrn.id                   47K
 _diffrn.ambient_temperature  46.97
@@ -771,6 +814,8 @@ loop_
 
 data_0H_cr2cuo4
 
+_audit_dataset.id c5c4b947-0708-411e-b44b-e157f645fd23
+
 _pd_diffractogram.id       0H_00
 _pd_phase.id               cr2cuo4
 _pd_phase_mass.percent     0.9888(4)
@@ -797,6 +842,8 @@ loop_
 
 data_0H_cuo
 
+_audit_dataset.id c5c4b947-0708-411e-b44b-e157f645fd23
+
 _pd_diffractogram.id       0H_00
 _pd_phase.id               cuo
 _pd_phase_mass.percent     0.0112(4)
@@ -820,6 +867,8 @@ loop_
 
 data_04_cr2cuo4
 
+_audit_dataset.id c5c4b947-0708-411e-b44b-e157f645fd23
+
 _pd_diffractogram.id       0H_04
 _pd_phase.id               cr2cuo4
 _pd_phase_mass.percent     0.9885(4)
@@ -841,6 +890,8 @@ loop_
 # ...
 
 data_04_cuo
+
+_audit_dataset.id c5c4b947-0708-411e-b44b-e157f645fd23
 
 _pd_diffractogram.id       0H_04
 _pd_phase.id               cuo
@@ -864,6 +915,8 @@ loop_
 
 data_09_cr2cuo4
 
+_audit_dataset.id c5c4b947-0708-411e-b44b-e157f645fd23
+
 _pd_diffractogram.id       0H_09
 _pd_phase.id               cr2cuo4
 _pd_phase_mass.percent     0.9865(4)
@@ -885,6 +938,8 @@ loop_
 # ...
 
 data_09_cuo
+
+_audit_dataset.id c5c4b947-0708-411e-b44b-e157f645fd23
 
 _pd_diffractogram.id       0H_09
 _pd_phase.id               cuo
