@@ -995,5 +995,43 @@ Set categories that they relate to.
 
 ## Appendix B: Comparison with Toby et. al.
 
-(TODO)
+### Summary of TvDL approach
+
+For brevity, 
+[Toby, von Dreele, and Larson (2003)](https://onlinelibrary.wiley.com/iucr/doi/10.1107/S0021889803016819) is abbreviated as TvDL below. The TvDL prescription is given in terms
+of `D` diffraction measurements and `P` phases.
+
+Four kinds of data blocks are described:
+
+1. A separate publication block
+
+2. A separate overall information block
+
+3. P Chemical species blocks
+
+4. D Diffraction data blocks
+
+Key points:
+
+1. When either D > 1 or P > 1, all D and P are placed in separate blocks. When
+D = P = 1, all the above blocks are merged into a single block. This is for
+simplicity in implementation.
+
+2. The chemical species blocks include structural and chemical information, as
+would be seen in a single crystal data block.
+
+3. The diffraction data blocks include loops over the constituent phases,
+loops for raw and calculated data, and potentially loops where the incident
+beam contains more than one wavelength.
+
+4. Relationships between blocks (e.g. which chemical species are present in
+which diffraction data set) are indicated using block pointers and block
+identifiers.
+
+### Block identifiers/pointers
+
+In TvDL, blocks are connected using block pointers. Nothing in the present
+standard prevents the use of these pointers or identifiers.
+
+### 
    
