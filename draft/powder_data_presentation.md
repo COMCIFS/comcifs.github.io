@@ -109,7 +109,8 @@ identical values for the `_audit_dataset.id` data name. Values should
 be universally unique. Sources of universally unique values include
 the original powder block id generation algorithm and 
 [RFC9562](https://datatracker.ietf.org/doc/html/rfc9562) as implemented
-in many computing systems.
+in many computing systems. Note that RFC9562 specifies case-insensitive
+UUIDs, whereas `_audit_dataset.id` is case-sensitive.
 
 An earlier scheme linking blocks using block ids and block pointers
 may also be used to support legacy software.
@@ -618,6 +619,8 @@ Cu1    Cu2+ 0.25000     0.25000     0.00000     1.0000     Uiso 0.0010     4
 O1     O2-  0.00000     0.41840     0.25000     1.0000     Uiso 0.0010     4
 
 data_cuo_17K
+
+_audit_dataset.id c5c4b947-0708-411e-b44b-e157f645fd23
 
 _structure.id                cuo_17K
 _structure.diffrn_id         17K
