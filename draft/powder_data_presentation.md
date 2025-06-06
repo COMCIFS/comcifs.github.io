@@ -291,6 +291,7 @@ _structure.id	CuCr2O4
 _structure.space_group_id	fddd
 _structure.phase_id    cucr2o4   # <- proposed
 _pd_phase.id           cucr2o4
+_pd_phase_mass.diffractogram_id  'PWDR OH_00.fxye Bank 1'
 _pd_phase_mass.percent         98.7
 
 _space_group.crystal_system	orthorhombic
@@ -327,6 +328,7 @@ _structure.id	CuO
 _structure.space_group_id	c2c
 _structure.phase_id     cuo    # <- proposed
 _pd_phase.id    cuo
+_pd_phase_mass.diffractogram_id  'PWDR OH_00.fxye Bank 1'
 _pd_phase_mass.percent       1.3
 
 _space_group.crystal_system	monoclinic
