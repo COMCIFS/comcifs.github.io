@@ -62,7 +62,7 @@ categories that fall into this class are listed in Table 2.
 For example, as the `pd_pref_orient` category depends on both the
 phase and the diffractogram, a separate data block should be created for
 every combination of phase and diffractogram.
- 
+
 These data blocks include the particular values of the key
 data names for the combined categories as shown in the `Key data name`
 column of Table 1.
@@ -81,13 +81,13 @@ still contains only a single instance of each of the data items.
 
 4. The following information should always be grouped together in a single
 data block, even if that introduces repetition:
- - Measurement conditions (`DIFFRN*` categories) and the measurement 
+ - Measurement conditions (`DIFFRN*` categories) and the measurement
    (`PD_DIFFRACTOGRAM`) that was conducted under those conditions. Where multiple
    measurements are conducted under the same conditions, each measurement
    is in a separate data block and the `DIFFRN*` data names are repeated.
  - Space group details with other structural information (`CELL`) and overall
    phase information (`_pd_phase.id`, `_pd_phase.name`).
-   
+
 5. Any data blocks violating point (1) should set data name
 `_audit.schema` to non-default value `Custom`. For example,
 summary data listing all cell parameters as a function of
@@ -107,7 +107,7 @@ in the same data block.
 Data blocks belonging to the same dataset are distinguished by having
 identical values for the `_audit_dataset.id` data name. Values should
 be universally unique. Sources of universally unique values include
-the original powder block id generation algorithm and 
+the original powder block id generation algorithm and
 [RFC9562](https://datatracker.ietf.org/doc/html/rfc9562) as implemented
 in many computing systems. Note that RFC9562 specifies case-insensitive
 UUIDs, whereas `_audit_dataset.id` is case-sensitive.
@@ -315,10 +315,10 @@ loop_
    _atom_site.fract_x
    _atom_site.fract_y
    _atom_site.fract_z
-      Cu                  Cu   0.125                 0.125                 0.125               
-      Cr                  Cr   0.5                   0.5                   0.5                 
+      Cu                  Cu   0.125                 0.125                 0.125
+      Cr                  Cr   0.5                   0.5                   0.5
       O                   O    0.2457                0.2682                0.2674
-         
+
 data_CuO
 
 _audit_dataset.id 6bdf3aa2-a2d9-41a3-ae76-36af9af8ab19
@@ -349,12 +349,12 @@ loop_
   _atom_site.fract_x
   _atom_site.fract_y
   _atom_site.fract_z
-       Cu1       Cu+2  0.25         0.25           0.0     
-       O1         O-2  0.0          0.4184         0.25    
+       Cu1       Cu+2  0.25         0.25           0.0
+       O1         O-2  0.0          0.4184         0.25
 
 ```
 
-### Multiple temperatures, multiple phases 
+### Multiple temperatures, multiple phases
 
 In this example we have measured the previous sample at
 multiple temperatures, and also wish to present our
@@ -375,9 +375,9 @@ source was used.
 
 As a result, after steps 1 - 3, there are 2 space
 group blocks, 3 x 2 structural blocks, 3 measurement
-blocks, 3 experimental condition blocks, 
+blocks, 3 experimental condition blocks,
 2 phase information blocks, and 3 x 2 reflection
-blocks, and one block for everything else, 
+blocks, and one block for everything else,
 making a total of 23 blocks.
 
 Step 4 requires us to merge space group information in
@@ -388,14 +388,14 @@ the diffraction conditions for each measurement should be
 merged with that measurement, removing the 3 experimental condition
 blocks.
 
-As a result we have 16 data blocks. 
+As a result we have 16 data blocks.
 
 ```
 #\#CIF_2.0
 #
 # Example of a dataset containing measurements at
-# multiple temperatures of a two-phase sample 
-# 
+# multiple temperatures of a two-phase sample
+#
 #=============================================================================
 
 # List all distinct radiations used. In this case this belongs in the
@@ -453,7 +453,7 @@ _cell.volume  562.481(6)
 _chemical_formula.sum  "Cr2 Cu O4"
 _chemical_formula.weight  231.53
 
-loop_ 
+loop_
    _atom_site.label
    _atom_site.type_symbol
    _atom_site.fract_x
@@ -463,9 +463,9 @@ loop_
    _atom_site.adp_type
    _atom_site.U_iso_or_equiv
    _atom_site.site_symmetry_multiplicity
-Cu     Cu   0.12500     0.12500     0.12500     1.0000     Uiso 0.00003(22) 8   
-Cr     Cr   0.50000     0.50000     0.50000     1.0000     Uiso 0.00011(22) 16  
-O      O    0.24582(21) 0.2682(4)   0.2674(4)   1.0000     Uiso 0.0042(5) 32  
+Cu     Cu   0.12500     0.12500     0.12500     1.0000     Uiso 0.00003(22) 8
+Cr     Cr   0.50000     0.50000     0.50000     1.0000     Uiso 0.00011(22) 16
+O      O    0.24582(21) 0.2682(4)   0.2674(4)   1.0000     Uiso 0.0042(5) 32
 
 data_cr2cuo4_17k
 
@@ -504,7 +504,7 @@ _cell.volume  562.493(6)
 _chemical_formula_sum  "Cr2 Cu O4"
 _chemical_formula_weight  231.53
 
-loop_ 
+loop_
    _atom_site.label
    _atom_site.type_symbol
    _atom_site.fract_x
@@ -514,9 +514,9 @@ loop_
    _atom_site.adp_type
    _atom_site.U_iso_or_equiv
    _atom_site.site_symmetry_multiplicity
-Cu     Cu   0.12500     0.12500     0.12500     1.0000     Uiso 0.00062(21) 8   
-Cr     Cr   0.50000     0.50000     0.50000     1.0000     Uiso 0.00036(21) 16  
-O      O    0.24520(20) 0.2681(4)   0.2676(4)   1.0000     Uiso 0.0042(4) 32  
+Cu     Cu   0.12500     0.12500     0.12500     1.0000     Uiso 0.00062(21) 8
+Cr     Cr   0.50000     0.50000     0.50000     1.0000     Uiso 0.00036(21) 16
+O      O    0.24520(20) 0.2681(4)   0.2676(4)   1.0000     Uiso 0.0042(4) 32
 
 data_cr2cuo4_47k
 
@@ -555,7 +555,7 @@ _cell.volume  562.550(5)
 _chemical_formula.sum  "Cr2 Cu O4" # <- need to add ptr to _structure.id
 _chemical_formula.weight  231.53   # <- need to add ptr to _structure.id
 
-loop_ 
+loop_
    _atom_site.label
    _atom_site.type_symbol
    _atom_site.fract_x
@@ -565,9 +565,9 @@ loop_
    _atom_site.adp_type
    _atom_site.U_iso_or_equiv
    _atom_site.site_symmetry_multiplicity
-Cu     Cu   0.12500     0.12500     0.12500     1.0000     Uiso 0.00086(21) 8   
-Cr     Cr   0.50000     0.50000     0.50000     1.0000     Uiso 0.00020(20) 16  
-O      O    0.24566(20) 0.2674(4)   0.2676(4)   1.0000     Uiso 0.0032(4) 32  
+Cu     Cu   0.12500     0.12500     0.12500     1.0000     Uiso 0.00086(21) 8
+Cr     Cr   0.50000     0.50000     0.50000     1.0000     Uiso 0.00020(20) 16
+O      O    0.24566(20) 0.2674(4)   0.2676(4)   1.0000     Uiso 0.0032(4) 32
 
 data_cuo_7K
 
@@ -605,7 +605,7 @@ _cell.angle_beta   99.751(21)
 _cell.angle_gamma  90
 _cell.volume  80.860(18)
 
-loop_ 
+loop_
    _atom_site.label
    _atom_site.type_symbol
    _atom_site.fract_x
@@ -615,7 +615,7 @@ loop_
    _atom_site.adp_type
    _atom_site.U_iso_or_equiv
    _atom_site.site_symmetry_multiplicity
-Cu1    Cu2+ 0.25000     0.25000     0.00000     1.0000     Uiso 0.0010     4   
+Cu1    Cu2+ 0.25000     0.25000     0.00000     1.0000     Uiso 0.0010     4
 O1     O2-  0.00000     0.41840     0.25000     1.0000     Uiso 0.0010     4
 
 data_cuo_17K
@@ -654,7 +654,7 @@ _cell.angle_beta   99.754(18)
 _cell.angle_gamma  90
 _cell.volume  80.871(16)
 
-loop_ 
+loop_
    _atom_site.label
    _atom_site.type_symbol
    _atom_site.fract_x
@@ -664,7 +664,7 @@ loop_
    _atom_site.adp_type
    _atom_site.U_iso_or_equiv
    _atom_site.site_symmetry_multiplicity
-Cu1    Cu2+ 0.25000     0.25000     0.00000     1.0000     Uiso 0.0010     4   
+Cu1    Cu2+ 0.25000     0.25000     0.00000     1.0000     Uiso 0.0010     4
 O1     O2-  0.00000     0.41840     0.25000     1.0000     Uiso 0.0010     4
 
 data_cuo_47K
@@ -703,7 +703,7 @@ _cell.angle_beta   99.771(20)
 _cell.angle_gamma  90
 _cell.volume  80.886(17)
 
-loop_ 
+loop_
    _atom_site.label
    _atom_site.type_symbol
    _atom_site.fract_x
@@ -713,8 +713,8 @@ loop_
    _atom_site.adp_type
    _atom_site.U_iso_or_equiv
    _atom_site.site_symmetry_multiplicity
-Cu1    Cu2+ 0.25000     0.25000     0.00000     1.0000     Uiso 0.0010     4   
-O1     O2-  0.00000     0.41840     0.25000     1.0000     Uiso 0.0010     4   
+Cu1    Cu2+ 0.25000     0.25000     0.00000     1.0000     Uiso 0.0010     4
+O1     O2-  0.00000     0.41840     0.25000     1.0000     Uiso 0.0010     4
 
 #=============================================================================
 
@@ -742,13 +742,13 @@ loop_
    _pd_proc.intensity_bkg_calc
    _pd_proc.ls_weight
 
-  43.783814    41.795171    41.771237   0.0229313 
-  45.626478    41.851699    41.827565   0.0219996 
-  47.171463    41.908055    41.883717   0.021299  
-  36.951371    41.964215    41.939672   0.0272123 
-  33.266743    42.020211    41.99546    0.0301765 
-  40.981582    42.075989    42.051027   0.0246658 
-  41.683548    42.131611    42.106435   0.0245573 
+  43.783814    41.795171    41.771237   0.0229313
+  45.626478    41.851699    41.827565   0.0219996
+  47.171463    41.908055    41.883717   0.021299
+  36.951371    41.964215    41.939672   0.0272123
+  33.266743    42.020211    41.99546    0.0301765
+  40.981582    42.075989    42.051027   0.0246658
+  41.683548    42.131611    42.106435   0.0245573
 # ... measurements omitted
 
 data_0H_04
@@ -772,13 +772,13 @@ loop_
    _pd_calc.intensity_total
    _pd_proc.intensity_bkg_calc
    _pd_proc.ls_weight
-  29.898017    41.711299    41.687919   0.0335978 
-  39.768154    41.769158    41.745582   0.0253885 
-  39.527914    41.826837    41.803062   0.0253699 
-  46.349986    41.884328    41.860353   0.0218265 
-  42.403998    41.941639    41.91746    0.0240971 
-  47.876864    41.99877     41.974385   0.0210206 
-  40.335609    42.055705    42.031112   0.0249116 
+  29.898017    41.711299    41.687919   0.0335978
+  39.768154    41.769158    41.745582   0.0253885
+  39.527914    41.826837    41.803062   0.0253699
+  46.349986    41.884328    41.860353   0.0218265
+  42.403998    41.941639    41.91746    0.0240971
+  47.876864    41.99877     41.974385   0.0210206
+  40.335609    42.055705    42.031112   0.0249116
 # ...omitted measurements
 
 data_OH_09
@@ -802,13 +802,13 @@ loop_
    _pd_calc.intensity_total
    _pd_proc.intensity_bkg_calc
    _pd_proc.ls_weight
-  42.173306    41.069518    41.047364   0.0238043 
-  48.964589    41.127992    41.105653   0.0205706 
-  45.8184      41.186308    41.163781   0.021942  
-  43.853758    41.244428    41.221709   0.0231165 
-  61.582546    41.302373    41.279462   0.0163382 
-  35.581044    41.360115    41.337009   0.0282443 
-  48.461362    41.417706    41.394402   0.0207815 
+  42.173306    41.069518    41.047364   0.0238043
+  48.964589    41.127992    41.105653   0.0205706
+  45.8184      41.186308    41.163781   0.021942
+  43.853758    41.244428    41.221709   0.0231165
+  61.582546    41.302373    41.279462   0.0163382
+  35.581044    41.360115    41.337009   0.0282443
+  48.461362    41.417706    41.394402   0.0207815
 # ...measurements omitted
 
 #===============================================================
@@ -835,10 +835,10 @@ loop_
    _refln.F_squared_calc
    _refln.phase_calc
    _refln.d_spacing
-  1    1    1    2923.7101  1848.8118    0.0    4.75465    
-  0    2    2    50887.9824 44176.2312 180.0   3.01930    
-  2    2    0    41129.5142 38146.8191 180.0   2.86244    
-  2    0    2    40719.7976 38182.2594 180.0   2.86141   
+  1    1    1    2923.7101  1848.8118    0.0    4.75465
+  0    2    2    50887.9824 44176.2312 180.0   3.01930
+  2    2    0    41129.5142 38146.8191 180.0   2.86244
+  2    0    2    40719.7976 38182.2594 180.0   2.86141
 # ...
 
 # preferred orientation information also goes here
@@ -860,12 +860,12 @@ loop_
    _refln.phase_calc
    _refln.d_spacing
 
-  1    1    0    4339.5540  527.9252   180.0   2.74595   
-  0    0    2    5381.1374  4772.3738  0.0    2.52848   
-  1    1    -1   7778.9105  6672.9552  180.0   2.52221   
-  1    1    1    10519.8297 10580.5215 180.0  2.31709   
-  2    0    0    6179.8194  4667.8699  180.0   2.30477   
-  1    1    -2   1570.8862  298.7972   0.0    1.96126   
+  1    1    0    4339.5540  527.9252   180.0   2.74595
+  0    0    2    5381.1374  4772.3738  0.0    2.52848
+  1    1    -1   7778.9105  6672.9552  180.0   2.52221
+  1    1    1    10519.8297 10580.5215 180.0  2.31709
+  2    0    0    6179.8194  4667.8699  180.0   2.30477
+  1    1    -2   1570.8862  298.7972   0.0    1.96126
 # ...
 
 data_04_cr2cuo4
@@ -885,11 +885,11 @@ loop_
    _refln.phase_calc
    _refln.d_spacing
 
-  1    1    1    2857.5850  1815.5648  0.0    4.75469   
-  0    2    2    50066.2033 44075.8291 180.0   3.01930   
-  2    2    0    40970.9520 37913.9619 180.0   2.86246   
-  2    0    2    40623.1705 37934.3275 180.0  2.86146   
-  1    3    1    65233.6297 67538.1258 180.0   2.54953   
+  1    1    1    2857.5850  1815.5648  0.0    4.75469
+  0    2    2    50066.2033 44075.8291 180.0   3.01930
+  2    2    0    40970.9520 37913.9619 180.0   2.86246
+  2    0    2    40623.1705 37934.3275 180.0  2.86146
+  1    3    1    65233.6297 67538.1258 180.0   2.54953
 # ...
 
 data_04_cuo
@@ -909,11 +909,11 @@ loop_
    _refln.phase_calc
    _refln.d_spacing
 
-  1    1    0    3027.3298  528.0777   180.0   2.74652    
-  0    0    2    5645.9302  4772.1111  0.0    2.52777    
-  1    1    -1   7984.2080  6673.2990  180.0   2.52253    
-  1    1    1    10367.4860 10581.1099 180.0  2.31726    
-  2    0    0    6208.4277  4668.0844  180.0   2.30514  
+  1    1    0    3027.3298  528.0777   180.0   2.74652
+  0    0    2    5645.9302  4772.1111  0.0    2.52777
+  1    1    -1   7984.2080  6673.2990  180.0   2.52253
+  1    1    1    10367.4860 10581.1099 180.0  2.31726
+  2    0    0    6208.4277  4668.0844  180.0   2.30514
 # ...
 
 data_09_cr2cuo4
@@ -933,11 +933,11 @@ loop_
    _refln.phase_calc
    _refln.d_spacing
 
-  1    1    1    2866.3493  1806.1692  0.0    4.75488   
-  0    2    2    48243.5918 43869.8403 180.0   3.01927   
-  2    2    0    40547.2038 38008.3146 180.0   2.86260   
-  2    0    2    40068.9116 37989.4186 180.0  2.86167   
-  1    3    1    66629.5169 68307.3304 180.0   2.54949   
+  1    1    1    2866.3493  1806.1692  0.0    4.75488
+  0    2    2    48243.5918 43869.8403 180.0   3.01927
+  2    2    0    40547.2038 38008.3146 180.0   2.86260
+  2    0    2    40068.9116 37989.4186 180.0  2.86167
+  1    3    1    66629.5169 68307.3304 180.0   2.54949
 # ...
 
 data_09_cuo
@@ -957,11 +957,11 @@ loop_
    _refln.phase_calc
    _refln.d_spacing
 
-  1    1    0    4614.5984  528.0627   180.0   2.74646    
-  0    0    2    5629.4996  4772.3673  0.0    2.52846    
-  1    1    -1   7957.5050  6673.6405  180.0   2.52285    
-  1    1    1    10650.5252 10580.9378 180.0  2.31721    
-  2    0    0    5809.4324  4667.7910  180.0   2.30463    
+  1    1    0    4614.5984  528.0627   180.0   2.74646
+  0    0    2    5629.4996  4772.3673  0.0    2.52846
+  1    1    -1   7957.5050  6673.6405  180.0   2.52285
+  1    1    1    10650.5252 10580.9378 180.0  2.31721
+  2    0    0    5809.4324  4667.7910  180.0   2.30463
 # ...
 ```
 
@@ -969,7 +969,7 @@ loop_
 
 ### Definitions
 
-**Category**: a collection of data names that appear together in a 
+**Category**: a collection of data names that appear together in a
 CIF loop (a table)
 
 **Set category**:  Data names belonging to a Set category
@@ -1003,7 +1003,7 @@ noting that `PD_PHASE` and `PD_DIFFRACTOGRAM` are `Set` categories.
 
 The complete dataset may be represented as a collection of tables. Thus
 if ten diffraction patterns are included, they will appear in a single
-table, with the `_pd_diffractogram.id` column identifying which 
+table, with the `_pd_diffractogram.id` column identifying which
 diffractogram a given two theta and intensity value belong to. These
 tables will include a great deal of repetition of the values of
 the key data names. To avoid repetition, we use "scoping" and "projection"
@@ -1041,7 +1041,7 @@ To obtain the category lists in Table 1:
 
 1. Make a list of Set categories that have a single key data name defined
 2. For each category from Step 1, the "child" categories are
-those that have a key data name that is linked (via 
+those that have a key data name that is linked (via
 `_name.linked_item_id`) to the Set category key data name.
 
 The category lists in Table 2 are obtained as follows:
@@ -1055,7 +1055,7 @@ Set categories that they relate to.
 
 ### Summary of TvDL approach
 
-For brevity, 
+For brevity,
 [Toby, von Dreele, and Larson (2003)](https://onlinelibrary.wiley.com/iucr/doi/10.1107/S0021889803016819) is abbreviated as TvDL below. The TvDL prescription is given in terms
 of `D` diffraction measurements and `P` phases.
 
@@ -1108,7 +1108,7 @@ Diffraction data blocks are the most complex of those described in TvDL.
 In terms of child key data names of Set categories, TvDL diffraction data
 blocks contain:
 
-1. Diffractograms together with the measurement conditions and instruments - 
+1. Diffractograms together with the measurement conditions and instruments -
 children of `_diffrn.id`, `_pd_diffractogram.id`, and `_pd_instr.id`.
 
 2. Phase table (TvDL 3.4.1). Combinations of children of `_pd_phase.id`
@@ -1124,4 +1124,4 @@ diffractogram.
 The present guidelines reproduce only part 1 of the TvDL recommendations.
 
 
-   
+
