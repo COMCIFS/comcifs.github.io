@@ -86,7 +86,7 @@ data block, even if that introduces repetition:
    measurements are conducted under the same conditions, each measurement
    is in a separate data block and the `DIFFRN*` data names are repeated.
  - Space group details with other structural information (`CELL`) and overall
-   phase information (`_phase.id`, `_phase.name`).
+   phase information (`_pd_phase.id`, `_pd_phase.name`).
    
 5. Any data blocks violating point (1) should set data name
 `_audit.schema` to non-default value `Custom`. For example,
@@ -1053,5 +1053,75 @@ Set categories that they relate to.
 
 ## Appendix B: Comparison with Toby et. al.
 
-(TODO)
+### Summary of TvDL approach
+
+For brevity, 
+[Toby, von Dreele, and Larson (2003)](https://onlinelibrary.wiley.com/iucr/doi/10.1107/S0021889803016819) is abbreviated as TvDL below. The TvDL prescription is given in terms
+of `D` diffraction measurements and `P` phases.
+
+Four kinds of data blocks are described:
+
+1. A separate publication block
+
+2. A separate overall information block
+
+3. P Chemical species blocks
+
+4. D Diffraction data blocks
+
+Key points:
+
+1. When either D > 1 or P > 1, all D and P are placed in separate blocks. When
+D = P = 1, all the above blocks are merged into a single block. This is for
+simplicity in implementation.
+
+2. The chemical species blocks include structural and chemical information, as
+would be seen in a single crystal data block.
+
+3. The diffraction data blocks include loops over the constituent phases,
+loops for raw and calculated data, and potentially loops where the incident
+beam contains more than one wavelength.
+
+4. Relationships between blocks (e.g. which chemical species are present in
+which diffraction data set) are indicated using block pointers and block
+identifiers.
+
+### Block identifiers/pointers
+
+In TvDL, blocks are connected using block pointers. Nothing in the present
+standard prevents the use of these pointers or identifiers in addition to
+`_audit_dataset.id`.
+
+### Separate blocks
+
+The publication and overall information blocks would be combined into a
+single block in the present guide. This is not strictly necessary.
+
+### Chemical species blocks
+
+Rule 4 combines categories that have child key data names of
+`_structure.id` and `_pd_phase.id`. This results in the same contents.
+
+### Diffraction data blocks
+
+Diffraction data blocks are the most complex of those described in TvDL.
+In terms of child key data names of Set categories, TvDL diffraction data
+blocks contain:
+
+1. Diffractograms together with the measurement conditions and instruments - 
+children of `_diffrn.id`, `_pd_diffractogram.id`, and `_pd_instr.id`.
+
+2. Phase table (TvDL 3.4.1). Combinations of children of `_pd_phase.id`
+and `_pd_diffractogram.id` giving all categories in the second row of Table 2.
+
+3. Wavelength table - `_diffrn_radiation_wavelength.id`. Our recommendations
+would put this in a separate block.
+
+4. Refln loop. TvDL includes `_pd_refln.phase_id` as a column in the loop,
+so that hkl from all phases are contained in a single loop for a single
+diffractogram.
+
+The present guidelines reproduce only part 1 of the TvDL recommendations.
+
+
    
