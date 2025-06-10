@@ -7,10 +7,10 @@ Status: Draft
 
 ## Introduction
 
-Powder data results often include multiple phases (compounds) collected
-at multiple temperatures and/or pressures, and/or using multiple
-instruments.  This situation is markedly different to the original CIF
-approach of a single sample collected at a single wavelength on a
+Powder data results often include multiple phases (crystallographically
+distinct compounds) collected at multiple temperatures and/or pressures,
+and/or using multiple instruments. This situation is markedly different
+to the original CIF approach of a single sample collected at a single wavelength on a
 single instrument under a single set of environmental conditions. The
 present document describes how CIF should be used to express these
 more complex powder results.
@@ -33,12 +33,13 @@ The distribution of data amongst data blocks can be worked out as follows:
 
 1. Start with a set of data blocks obtained by allowing only one value
 for data names from the categories in Column 1 of Table 1 in any given
-data block.  In other words, a single data block may only describe a
+data block. In other words, a single data block may only describe a
 single instance of the concepts in the second column (e.g. one phase,
-one structure). The key data name with unique value must be provided
-if there are multiple data blocks associated with a given category.
+one structure, one diffractogram). Where there are multiple instances,
+multiple blocks must be used, and the key data name with a unique value
+must be provided associated with the given category.
 
-**Table 1:** common items that might be spread over multiple data blocks
+**Table 1:** Non-exhaustive list of common items that might be spread over multiple data blocks
 
 | Top category       | Explanation                     | Key data name          | Children                                                                                                                                                                              |
 |--------------------|---------------------------------|------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -53,13 +54,13 @@ if there are multiple data blocks associated with a given category.
 | `SPACE_GROUP`      | (symmetry information)          | `_space_group.id`      | `space_group_symop` `space_group_wyckoff` `space_group_generator`                                                                                                                     |
 | `STRUCTURE`        | (structure description)         | `_structure.id`        | `cell` `cell_measurement` `atom_site` `atom_site_aniso` `cell_measurement_refln`                                                                                                      |
 
-2. In addition to the blocks determined from Step 1, a separate
+2. In addition to the blocks determined from Step 1, if there are categories that
+are related to more than one Set category, a separate
 data block is required for every distinct
-combination of items from Step 1, if there are categories that
-are related to more than one Set category. Currently defined
+combination of these categories. Currently defined
 categories that fall into this class are listed in Table 2.
 
-For example, as the `pd_pref_orient` category depends on both the
+For example, as the `PD_PHASE_MASS` category depends on both the
 phase and the diffractogram, a separate data block should be created for
 every combination of phase and diffractogram.
 
@@ -67,7 +68,7 @@ These data blocks include the particular values of the key
 data names for the combined categories as shown in the `Key data name`
 column of Table 1.
 
-**Table 2:** Combined items
+**Table 2:** Non-exhaustive list of combined items
 
 | Set categories                         | Children                                                                                                                                                                 |
 |----------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -93,7 +94,7 @@ data block, even if that introduces repetition:
 summary data listing all cell parameters as a function of
 temperature would need to set this value, as cell parameters
 can only have single values in a normal data block. Another common
-situation would be looping mass content of phases for a histogram.
+situation would be looping mass content of phases for a diffractogram.
 
 6. Loops for the Child categories (Table 1) and Combination
 categories (Table 2) should only include those values relevant to the
@@ -117,16 +118,16 @@ may also be used to support legacy software.
 
 ## Examples
 
-### One phase, two measurements
+### One phase, two diffractograms
 
 After Steps (1) - (3), we have five data blocks consisting of
-the two measurement conditions, the two corresponding measurements,
+the two measurement conditions, the two corresponding diffractograms,
 and the remainder containing information about the sample and
 jointly refined model for which there is only one of each.
 
 According to Step (4), measurement conditions and the corresponding
 diffractograms should be combined. Therefore we have
-three data blocks: two containing the two measurements together with
+three data blocks: two containing the two diffractograms together with
 their measurement conditions, and one containing everything else.
 
 ```
@@ -239,9 +240,9 @@ loop_
    O5        0.085             0.026            0.806       O
 ```
 
-### Multiple phases, single histogram
+### Multiple phases, single diffractogram
 
-In this case a single measurement is modelled using multiple
+In this case a single diffractogram is modelled using multiple
 structures (phases).
 
 After Steps 1 - 3, we have five data blocks: one for each structure,
@@ -254,7 +255,7 @@ leaving us with three data blocks.
 ```
 #\#CIF_2.0
 #
-# Example: using pdCIF to describe multiple phases in a single histogram
+# Example: using pdCIF to describe multiple phases in a single diffractogram
 #
 # The sample contains CuCr2O4 and CuO impurity. Each structure is listed in
 # a separate block. Data items that can be listed in a single block are
@@ -360,23 +361,25 @@ In this example we have measured the previous sample at
 multiple temperatures, and also wish to present our
 modelled structure factors.
 
-We have 3 sets of measurement
+We have three sets of measurement
 conditions, resulting in three diffractograms. We have
-two phases belonging to different space groups
-producing 3 x 2 structures, 2 for each temperature.
+two phases belonging to different space groups, giving a
+total of 3 x 2 structures.
 
-When presenting the structure factors, we have separate
-blocks for each combination of phase and measurement,
-giving another 3 x 2 data blocks (Step 2).
+When presenting the structure factors in the reflection table, we have separate
+blocks for each combination of phase and diffractogram,
+giving another 3 x 2 data blocks (Step 2). These blocks can also contain the
+phase mass percentages, as these values also depend on the sam ecombination of
+phase and diffractogram.
 
 We also have a block describing the radiation source, which
 can be included in the overall block as only one radiation
 source was used.
 
 As a result, after steps 1 - 3, there are 2 space
-group blocks, 3 x 2 structural blocks, 3 measurement
+group blocks, 3 x 2 structural blocks, 3 diffractogram
 blocks, 3 experimental condition blocks,
-2 phase information blocks, and 3 x 2 reflection
+2 phase information blocks, and 3 x 2 reflection/phase mass
 blocks, and one block for everything else,
 making a total of 23 blocks.
 
@@ -821,7 +824,7 @@ _audit_dataset.id c5c4b947-0708-411e-b44b-e157f645fd23
 
 _pd_diffractogram.id       0H_00
 _pd_phase.id               cr2cuo4
-_pd_phase_mass.percent     0.9888(4)
+_pd_phase_mass.percent     98.88(4)
 
 loop_
    _refln.id
@@ -846,7 +849,7 @@ _audit_dataset.id c5c4b947-0708-411e-b44b-e157f645fd23
 
 _pd_diffractogram.id       0H_00
 _pd_phase.id               cuo
-_pd_phase_mass.percent     0.0112(4)
+_pd_phase_mass.percent     1.12(4)
 
 loop_
    _refln.id
@@ -871,7 +874,7 @@ _audit_dataset.id c5c4b947-0708-411e-b44b-e157f645fd23
 
 _pd_diffractogram.id       0H_04
 _pd_phase.id               cr2cuo4
-_pd_phase_mass.percent     0.9885(4)
+_pd_phase_mass.percent     98.85(4)
 
 loop_
    _refln.id
@@ -895,7 +898,7 @@ _audit_dataset.id c5c4b947-0708-411e-b44b-e157f645fd23
 
 _pd_diffractogram.id       0H_04
 _pd_phase.id               cuo
-_pd_phase_mass.percent     0.0115(4)
+_pd_phase_mass.percent     1.15(4)
 
 loop_
    _refln.id
@@ -919,7 +922,7 @@ _audit_dataset.id c5c4b947-0708-411e-b44b-e157f645fd23
 
 _pd_diffractogram.id       0H_09
 _pd_phase.id               cr2cuo4
-_pd_phase_mass.percent     0.9865(4)
+_pd_phase_mass.percent     98.65(4)
 
 loop_
    _refln.id
@@ -943,7 +946,7 @@ _audit_dataset.id c5c4b947-0708-411e-b44b-e157f645fd23
 
 _pd_diffractogram.id       0H_09
 _pd_phase.id               cuo
-_pd_phase_mass.percent     0.0135(4)
+_pd_phase_mass.percent     1.35(4)
 
 loop_
    _refln.id
@@ -967,12 +970,17 @@ loop_
 ### Definitions
 
 **Category**: a collection of data names that appear together in a
-CIF loop (a table)
+CIF loop. These form a table in a relational-database-sense.
 
 **Set category**:  Data names belonging to a Set category
 can only take a single value in each data block. Items in Set categories
 are often presented as key-value pairs, but could be presented as
 a single-row loop if desired.
+
+**Loop category**:  Data names belonging to a Loop category
+can take on multiple values in each data block. Items in Loop categories
+are often presented as multi-row loops, but could be presented as
+a key-value pair if there is only one value in a block.
 
 **Child category**:  A category is a **child** of a Set category if
 one of its key data names is linked to the Set category key data
@@ -1062,9 +1070,9 @@ Four kinds of data blocks are described:
 
 2. A separate overall information block
 
-3. P Chemical species blocks
+3. `P` Chemical species (phase) blocks
 
-4. D Diffraction data blocks
+4. `D` Diffraction data blocks
 
 Key points:
 
@@ -1073,7 +1081,7 @@ D = P = 1, all the above blocks are merged into a single block. This is for
 simplicity in implementation.
 
 2. The chemical species blocks include structural and chemical information, as
-would be seen in a single crystal data block.
+would be seen in a single-crystal data block.
 
 3. The diffraction data blocks include loops over the constituent phases,
 loops for raw and calculated data, and potentially loops where the incident
@@ -1105,8 +1113,8 @@ Diffraction data blocks are the most complex of those described in TvDL.
 In terms of child key data names of Set categories, TvDL diffraction data
 blocks contain:
 
-1. Diffractograms together with the measurement conditions and instruments -
-children of `_diffrn.id`, `_pd_diffractogram.id`, and `_pd_instr.id`.
+1. Diffractograms, together with the measurement conditions and instruments -
+children of `_pd_diffractogram.id`, `_diffrn.id`, and `_pd_instr.id`.
 
 2. Phase table (TvDL 3.4.1). Combinations of children of `_pd_phase.id`
 and `_pd_diffractogram.id` giving all categories in the second row of Table 2.
@@ -1118,7 +1126,8 @@ would put this in a separate block.
 so that hkl from all phases are contained in a single loop for a single
 diffractogram.
 
-The present guidelines reproduce only part 1 of the TvDL recommendations.
+The present guidelines reproduce only part 1 of the TvDL recommendations for
+diffraction data blocks.
 
 
 
