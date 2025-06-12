@@ -455,6 +455,12 @@ packet items are readable.
    semicolon-delimited and the other is not, the semicolon-delimited
    value has an internal indent of `loop align - 1`.
 
+11. Values of the `_method.expression` attribute are always presented
+    as semicolon-delimited text strings following the formatting and
+    prefixing rules of regular strings as specified in section 2.1.
+    This allows to keep a more uniform layout of the dREL code throughout
+    the dictionary file.
+
 #### Examples
 
 ```
@@ -617,3 +623,4 @@ DESCRIPTION_EXAMPLE.
 |   1.2.1 | 2022-05-10 | Added consideration of special values. |
 |   1.2.2 | 2023-06-29 | Added rule 2.5 for enumeration formatting. |
 |   1.3.0 | 2025-05-23 | Added the "Known implementations" section. |
+|   1.3.1 | 2025-06-13 | Added rule 3.2.11 for the formatting of the `_method.expression` attribute in a loop context. |
