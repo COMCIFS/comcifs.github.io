@@ -72,7 +72,6 @@ column of Table 1.
 
 | Set categories                         | Children                                                                                                                                                                 |
 |----------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `DIFFRN` `PD_DIFFRACTOGRAM` `PD_PHASE` | `pd_calib_wavelength`                                                                                                                                                    |
 | `PD_DIFFRACTOGRAM` `PD_PHASE`          | `pd_pref_orient` `pd_qpa_internal_std` `pd_calc_component` `pd_qpa_intensity_factor` `pd_pref_orient_spherical_harmonics` `pd_pref_orient_march_dollase` `pd_phase_mass` |
 
 3. Categories from Step 1 for which there is only a single value should
