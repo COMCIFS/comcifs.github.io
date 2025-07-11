@@ -70,9 +70,9 @@ column of Table 1.
 
 **Table 2:** Non-exhaustive list of combined items
 
-| Set categories                         | Children                                                                                                                                                                 |
-|----------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `PD_DIFFRACTOGRAM` `PD_PHASE`          | `pd_pref_orient` `pd_qpa_internal_std` `pd_calc_component` `pd_qpa_intensity_factor` `pd_pref_orient_spherical_harmonics` `pd_pref_orient_march_dollase` `pd_phase_mass` |
+| Set categories                         | Children                                                                                                                                                                        |
+|----------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `PD_DIFFRACTOGRAM` `PD_PHASE`          | `pd_pref_orient` `pd_qpa_internal_std` `pd_calc_component` `pd_qpa_intensity_factor` `pd_pref_orient_spherical_harmonics` `pd_pref_orient_march_dollase` `pd_phase_mass` `refln`|
 
 3. Categories from Step 1 for which there is only a single value should
 have their blocks combined into a single block.  This does
