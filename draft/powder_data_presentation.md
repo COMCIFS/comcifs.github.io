@@ -1,8 +1,8 @@
 # CIF presentation of powder data results
 
 Authors: various
-Date: May 2025
-Version: 0.3
+Date: Oct 2025
+Version: 0.4
 Status: Draft
 
 ## Introduction
@@ -11,14 +11,28 @@ Powder data results often include multiple phases (crystallographically
 distinct compounds) collected at multiple temperatures and/or pressures,
 and/or using multiple instruments. This situation is markedly different
 to the original CIF approach of a single sample collected at a single wavelength on a
-single instrument under a single set of environmental conditions. The
-present document describes how CIF should be used to express these
-more complex powder results.
+single instrument under a single set of environmental conditions, and has
+resulted in the use of multiple CIF data blocks to hold full powder data
+sets. [Toby, von Dreele, and Larson (2003)](https://onlinelibrary.wiley.com/iucr/doi/10.1107/S0021889803016819)
+recommended way of distributing such powder data amongst data blocks.
 
-[Toby, von Dreele, and Larson (2003)](https://onlinelibrary.wiley.com/iucr/doi/10.1107/S0021889803016819)
-outlines an earlier approach to this task. Where possible, these
-recommendations attempt to follow the descriptions in Section 3 of
-that paper. An appendix outlines differences.
+In the last two decades, new CIF standards have formalised multi-block
+data presentations.  The present recommendations revisit the task set
+by Toby _et al_ in the light of these changes, while aiming to follow the
+descriptions in Section 3 of the original paper. An appendix outlines
+differences.
+
+It should be noted that redistribution of data between data blocks in
+a multi-block data set can be carried out automatically in a way that
+does not change the data content. Therefore, failure to follow these
+recommendations does not, of itself, render a multi-block powder data
+set incorrect or unusable. Nevertheless, as the following rules have
+been designed to allow maximum backwards-compatibility for software
+tools that do not understand multi-block data sets, conforming to them
+is desirable. For example, structural information for a single phase
+will be contained in a single data block, so that data sets including
+multiple phases can be interpreted by naive software as two
+independent structural descriptions.
 
 ## General rules for powder data
 
@@ -55,11 +69,11 @@ must be provided associated with the given category.
 | `SPACE_GROUP`       | (symmetry information)          | `_space_group.id`       | `space_group_symop` `space_group_wyckoff` `space_group_generator`                                                                                                                               |
 | `STRUCTURE`         | (structure description)         | `_structure.id`         | `cell` `cell_measurement` `atom_site` `atom_site_aniso` `cell_measurement_refln`                                                                                                                |
 
-2. In addition to the blocks determined from Step 1, if there are categories that
-are related to more than one Set category, a separate
-data block is required for every distinct
-combination of these categories. Currently defined
-categories that fall into this class are listed in Table 2.
+2. In addition to the blocks determined from Step 1, if there are
+categories that are related to more than one Set category, a separate
+data block is required for every distinct combination of these
+categories. Currently defined categories that fall into this class are
+listed in Table 2.
 
 For example, as the `PD_PHASE_MASS` category depends on both the
 phase and the diffractogram, a separate data block should be created for
@@ -90,18 +104,18 @@ data block, even if that introduces repetition:
    phase information (`_pd_phase.id`, `_pd_phase.name`).
 
 5. Any data blocks violating point (1) should set data name
-`_audit.schema` to non-default value `Custom`. For example,
-summary data listing all cell parameters as a function of
-temperature would need to set this value, as cell parameters
-can only have single values in a normal data block. Another common
-situation would be looping mass content of phases for a diffractogram.
+`_audit.schema` to non-default value `Custom`. For example, summary
+data listing all cell parameters as a function of temperature would
+need to set this value, as cell parameters can only have single values
+in a normal data block. Another common situation would be looping mass
+content of phases for a diffractogram.
 
-6. Loops for the Child categories (Table 1) and Combination
-categories (Table 2) should only include those values relevant to the
-particular values of the key data names for the data block in
-which they appear. For example, only the measured points for the
-diffractogram identified by `_pd_diffractogram.id` should appear
-in the same data block.
+6. Loops for the Child categories (Table 1) and Combination categories
+(Table 2) should only include those values relevant to the particular
+values of the key data names for the data block in which they
+appear. For example, only the measured points for the diffractogram
+identified by `_pd_diffractogram.id` should appear in the same data
+block.
 
 ### Identifying related data blocks
 
