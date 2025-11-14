@@ -13,7 +13,7 @@ and/or using multiple instruments. This situation is markedly different
 to the original CIF approach of a single sample collected at a single wavelength on a
 single instrument under a single set of environmental conditions, and has
 resulted in the use of multiple CIF data blocks to hold full powder data
-sets. [Toby, von Dreele, and Larson (2003)](https://onlinelibrary.wiley.com/iucr/doi/10.1107/S0021889803016819)
+sets. [Toby, Von Dreele, and Larson (2003)](https://onlinelibrary.wiley.com/iucr/doi/10.1107/S0021889803016819)
 recommended way of distributing such powder data amongst data blocks.
 
 In the last two decades, new CIF standards have formalised multi-block
@@ -1080,10 +1080,10 @@ Set categories that they relate to.
 
 ## Appendix B: Comparison with Toby et. al.
 
-### Summary of TvDL approach
+### Summary of TVDL approach
 
 For brevity,
-[Toby, von Dreele, and Larson (2003)](https://onlinelibrary.wiley.com/iucr/doi/10.1107/S0021889803016819) is abbreviated as TvDL below. The TvDL prescription is given in terms
+[Toby, Von Dreele, and Larson (2003)](https://onlinelibrary.wiley.com/iucr/doi/10.1107/S0021889803016819) is abbreviated as TVDL below. The TVDL prescription is given in terms
 of `D` diffraction measurements and `P` phases.
 
 Four kinds of data blocks are described:
@@ -1115,7 +1115,7 @@ identifiers.
 
 ### Block identifiers/pointers
 
-In TvDL, blocks are connected using block pointers. Nothing in the present
+In TVDL, blocks are connected using block pointers. Nothing in the present
 standard prevents the use of these pointers or identifiers in addition to
 `_audit_dataset.id`.
 
@@ -1131,24 +1131,24 @@ Rule 4 combines categories that have child key data names of
 
 ### Diffraction data blocks
 
-Diffraction data blocks are the most complex of those described in TvDL.
-In terms of child key data names of Set categories, TvDL diffraction data
+Diffraction data blocks are the most complex of those described in TVDL.
+In terms of child key data names of Set categories, TVDL diffraction data
 blocks contain:
 
 1. Diffractograms, together with the measurement conditions and instruments -
 children of `_pd_diffractogram.id`, `_diffrn.id`, and `_pd_instr.id`.
 
-2. Phase table (TvDL 3.4.1). Combinations of children of `_pd_phase.id`
+2. Phase table (TVDL 3.4.1). Combinations of children of `_pd_phase.id`
 and `_pd_diffractogram.id` giving all categories in the second row of Table 2.
 
 3. Wavelength table - `_diffrn_radiation_wavelength.id`. Our recommendations
 would put this in a separate block.
 
-4. Refln loop. TvDL includes `_pd_refln.phase_id` as a column in the loop,
+4. Refln loop. TVDL includes `_pd_refln.phase_id` as a column in the loop,
 so that hkl from all phases are contained in a single loop for a single
 diffractogram.
 
-The present guidelines reproduce only part 1 of the TvDL recommendations for
+The present guidelines reproduce only part 1 of the TVDL recommendations for
 diffraction data blocks.
 
 
