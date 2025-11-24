@@ -1,3 +1,7 @@
+# Dictionary naming conventions
+
+Version 0.1.0 2025-11-24
+
 This table establishes conventions for naming dictionaries and tracking their implementation. The first set of columns tracks historical usage; the last (in bold) indicate dictionaries on GitHub now conforming to the agreed requirements.
 
 The target conventions for CIF data dictionaries are:
@@ -22,9 +26,9 @@ Conventions for DDL dictionaries still to be confirmed.
 | Image | imgCIF | imgCIF | imgCIF | CIF_img | cif_img.dic | Cif_img.dic  | **CIF_IMG** |  | **CIF_IMG_HEAD** |  |  |
 | |   |   |   |    | mmcif_img.dic (P)   |   |  |  |  |  |
 | Symmetry | symCIF | symCIF | symCIF | CIF_sym | cif_sym.dic | N/A   |   |  |  |  |  |
-| Restraints | N/A | . | . | CIF_restraints |  cif_core_restraints.dic |  | **CIF_RSTR**  |  |  |  | OK, or CIF_RESTR?; abbreviated logo cif_rstr needed |
+| Restraints | N/A | . | . | CIF_restraints |  cif_core_restraints.dic |  | **CIF_RSTR**  |  | CIF_RSTR_HEAD | CifCore | PR in progress; Abbreviated logo cif_rstr needed |
 |  |   |   |   |   | cif_restr.dic (G)   | CIF_RSTR   |   |  |  |  |  |
-| Twinning | N/A | twinCIF |  . | CIF_twinning  | cif_twinning.dic |  | **CIF_TWIN**  |  |  | **CifCore** | Abbreviated logo cif_twin needed |
+| Twinning | N/A | twinCIF |  . | CIF_twinning  | cif_twinning.dic |  | **CIF_TWIN**  |  | CIF_TWIN_HEAD | **CifCore** | PR in progress; Abbreviated logo cif_twin needed |
 |  |   |   |   |   | cif_twin.dic (G)   |  CIF_TWIN   |   |  |  |  |  |
 | Magnetic | N/A | magCIF  |  magCIF | CIF_mag | cif_mag.dic | MAGNETIC_CIF   | **CIF_MAG**  |  |  **CIF_MAG_HEAD** | **CifCore** |  |
 | Topology | N/A | . | topoCIF  |  CIF_topo |  cif_topology.dic | TOPOLOGY_CIF   | **CIF_TOPO**  |  | **CIF_TOPO_HEAD** | **CifCore** |  |
@@ -38,3 +42,11 @@ Conventions for DDL dictionaries still to be confirmed.
 |  |   |   |   |   | mmcif_ddl.dic (P)   |   |  |  |  |  |
 | DDLm | N/A | . | . | CIF_DDL | ddl.dic | DDL_DIC   |   |  |  |  |  |
 |   |   |   |   |  | DDLm.dic (G)   |   |  |  |  |  |
+
+
+
+## CHANGELOG
+
+| Version | Date       | Revision |
+|--------:|-----------:|:---------|
+|   0.1.0 | 2025-11-24 | Initial draft of the dictionary naming conventions. |
