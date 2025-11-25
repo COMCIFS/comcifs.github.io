@@ -19,7 +19,7 @@ Conventions for DDL dictionaries still to be confirmed.
 | Powder | pdCIF | pdCIF | pdCIF | CIF_pd | cif_pd.dic |  |  |  |  |  | Dictionary currently CIF_POW; CIF_PD preferred? |
 |  |   |   |   |   | cif_pow.dic (G)   | CIF_POW   |   |  |  |  |  |
 | Modulated struct | msCIF | msCIF | msCIF | CIF_ms | cif_ms.dic | CIF_MS   | **CIF_MS**  |  | **CIF_MS_HEAD**  |  |  |
-| Electron density | rhoCIF | rhoCIF | rhoCIF | CIF_rho | cif_rho.dic |  Cif_rho   |  **CIF_RHO**  |   |   | **CifCore**  |  |
+| Electron density | rhoCIF | rhoCIF | rhoCIF | CIF_rho | cif_rho.dic |  Cif_rho   |  **CIF_RHO**  |   |  **CIF_RHO_HEAD** | **CifCore**  |  |
 | Macromolecular | mmCIF | mmCIF | mmCIF | CIF_mm | cif_mm.dic | N/A   |   |  |  |  |  |
 |  |   |   |   |   | mmcif_std.dic (P)   |   |  |  |  |  |
 | |   |   |   |    | mmcif_pdbx.dic (P)   |   |  |  |  |  |
