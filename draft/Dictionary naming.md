@@ -43,7 +43,8 @@ Conventions for DDL dictionaries still to be confirmed.
 | DDLm | N/A | . | . | CIF_DDL | ddl.dic | DDL_DIC   |   |  |  |  |  |
 |   |   |   |   |  | DDLm.dic (G)   |   |  |  |  |  |
 
-
+(G) means version on GitHub (sometimes corresponds to DDL1/DDLm versions).
+(P) refers to the current latest versions on the wwPDB site (over which COMCIFS has no say).
 
 ## CHANGELOG
 
