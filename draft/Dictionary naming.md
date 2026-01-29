@@ -14,7 +14,7 @@ The target conventions for CIF data dictionaries are:
 Conventions for DDL dictionaries still to be confirmed.
 
 | dictionary       | ITG1e   | ITG2e   | Website              | Logo           | File                     | historical _dictionary.title | _dictionary.title | Repository name   | Head group         | _dictionary.namespace | Comments                                         |
-| --- | --- | --- | --- | --- | --- | ---  | --- | --- | --- | --- | --- |
+| --- | --- | --- | --- | :---: | --- | ---  | --- | --- | --- | --- | --- |
 | Core             | coreCIF | coreCIF | coreCIF              | CIF_core <img src="logos/CIF_core.jpg" height="60">      | cif_core.dic             | CIF_CORE               | **CIF_CORE**      | **cif_core**       | **CIF_CORE_HEAD**  | **CifCore**           |                                                  |
 | Powder           | pdCIF   | pdCIF   | pdCIF                | CIF_pd <img src="logos/CIF_pd.jpg" height="60">          | cif_pd.dic               | CIF_POW (!)            |                   | **cif_pd**         | **PD_GROUP** (!)   | **CifPow** (!)        | Dictionary currently CIF_POW; CIF_PD preferred?  |
 |                  |         |         |                      |                | cif_pow.dic (G) (!)      |                        |                   |                    |                    |                       |                                                  |
