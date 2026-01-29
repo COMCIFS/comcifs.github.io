@@ -1,6 +1,6 @@
 # Dictionary naming conventions
 
-Version 0.2.0 2026-01-28
+Version 0.2.1 2026-01-29
 
 This table establishes conventions for naming dictionaries and tracking their implementation. The first set of columns tracks historical usage; the last (in bold) indicate dictionaries on GitHub now conforming to the agreed requirements.
 
