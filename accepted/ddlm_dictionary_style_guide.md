@@ -1,6 +1,6 @@
 # Style Guide for DDLm Dictionaries
 
-Version 1.3.2 2026-02-05
+Version 1.4.0 2026-02-05
 
 ## Overview
 
@@ -39,7 +39,7 @@ The following values are used in the description.
 `loop indent`: 2
 `loop align`: 10
 `loop step`: 5
-/bin/bash: line 1: a: command not found
+`min whitespace`: 2
 
 ## 1. Lines and padding
 
@@ -232,21 +232,21 @@ compound objects.
                                    {'file':templ_attr.cif  'save':Miller_index}
                                   ]
 
-# Array item in loop starts at column 37 to maintain min whitespace
+# Array item in loop starts at column 35 to maintain min whitespace
 
     loop_
       _dictionary_valid.scope
       _dictionary_valid.option
       _dictionary_valid.attributes
-         Dictionary  Mandatory      ['_dictionary.title'  '_dictionary.class'
-                                     '_dictionary.version'  '_dictionary.date'
-                                     '_dictionary.uri'
-                                     '_dictionary.ddl_conformance'
-                                     '_dictionary.namespace']
-         Dictionary  Recommended    ['_description.text'
-                                     '_dictionary_audit.version'
-                                     '_dictionary_audit.date'
-                                     '_dictionary_audit.revision']
+         Dictionary  Mandatory    ['_dictionary.title'  '_dictionary.class'
+                                   '_dictionary.version'  '_dictionary.date'
+                                   '_dictionary.uri'
+                                   '_dictionary.ddl_conformance'
+                                   '_dictionary.namespace']
+         Dictionary  Recommended  ['_description.text'
+                                   '_dictionary_audit.version'
+                                   '_dictionary_audit.date'
+                                   '_dictionary_audit.revision']
 ```
 
 ### 2.5 Enumeration ranges
@@ -333,7 +333,7 @@ Loop categories.
 2. A value with character length that is less than or equal to
    (`line length` - `value col`) + 1 starts in column `value col`.
 3. A value with character length that is greater than
-   (`line length` - `value col` + 1 and less than or equal to
+   (`line length` - `value col`) + 1 and less than or equal to
    (`line length` - `value indent`) + 1 starts in column
    `value indent + 1` of the next line.
 4. A value with character length greater than
@@ -434,7 +434,7 @@ packet items are readable.
       `p` on the current line contain a newline and the sum of the widths
       of the next `p` packet items, separated by `min whitespace`, is not greater
       than `line length`. Call this total width.
-    2. Calculate "remaining white space" as `floor[(line length - total width)/(p-1)]`.
+    2. Calculate "remaining white space" as `floor((line length - total width)/(p-1))`.
     3. The start position of values for attribute number `d+1` is the start position of attribute
     `d` + width of data name `d + min whitespace + remaining whitespace + 1`.
     4. If p < n, the next value is placed in column `loop step` on a new line and
@@ -516,7 +516,7 @@ packet items are readable.
 
 ### 4.1  Front matter and definitions
 
-1. The first line contains the `#\#CIF2.0` identifier with no trailing white space.
+1. The first line consists of the `#\\#CIF2.0` identifier with no trailing white space.
 2. Between the first line and the data-block header is an arbitrary multi-line
 comment, consisting of a series of lines commencing with a hash character.
 The comment-folding convention is not used.
@@ -626,4 +626,4 @@ DESCRIPTION_EXAMPLE.
 |   1.2.2 | 2023-06-29 | Added rule 2.5 for enumeration formatting. |
 |   1.3.0 | 2025-05-23 | Added the "Known implementations" section. |
 |   1.3.1 | 2025-06-13 | Added rule 3.2.11 for the formatting of the `_method.expression` attribute in a loop context. |
-|   1.3.2 | 2026-02-05 | Added DICTIONARY_AUTHORS category, updated some examples; otherwise largely cosmetic to align with International Tables house style. |
+|   1.4.0 | 2026-02-05 | Specified the placement and attribute order of the DICTIONARY_AUTHORS category, updated some examples; otherwise largely cosmetic to align with International Tables house style. |
