@@ -516,7 +516,7 @@ packet items are readable.
 
 ### 4.1  Front matter and definitions
 
-1. The first line consists of the `#\\#CIF2.0` identifier with no trailing white space.
+1. The first line consists of the `#\#CIF_2.0` identifier with no trailing white space.
 2. Between the first line and the data-block header is an arbitrary multi-line
 comment, consisting of a series of lines commencing with a hash character.
 The comment-folding convention is not used.
