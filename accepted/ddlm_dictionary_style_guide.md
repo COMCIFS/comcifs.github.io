@@ -1,18 +1,18 @@
 # Style Guide for DDLm Dictionaries
 
-Version 1.2.2 2023-06-29
+Version 1.4.0 2026-02-05
 
 ## Overview
 
 The following rules describe the preferred layout of DDLm Reference
 and Instance dictionaries. Following these rules should allow generic
 dictionary manipulation software to ingest, semantically edit and
-re-output dictionaries with minimal irrelevant changes to whitespace.
+re-output dictionaries with minimal irrelevant changes to white space.
 
 These rules are not intended to apply to CIF data files or Template
 dictionaries.
 
-These rules are not comprehensive, for example, they do not envisage
+These rules are not comprehensive. For example, they do not envisage
 table values that are semicolon-delimited. They should cover all
 situations typically encountered in DDLm dictionaries, and will be
 expanded as new situations arise.
@@ -21,10 +21,10 @@ expanded as new situations arise.
 
 "Attribute" refers to a DDLm attribute (a "data name" in CIF syntax terms).
 Columns are numbered from 1. "Starting at column x" means that the first
-non-whitespace character (which may be a delimiter) appears in column x.
-"Indent" refers to the number of whitespace characters preceding the first
-non-whitespace value. "Special values" are the non-delimited question
-mark `?` and period `.` used in CIF syntax to denote Unknown and Null
+non-white-space character (which may be a delimiter) appears in column x.
+"Indent" refers to the number of white-space characters preceding the first
+non-white-space value. "Special values" are the non-delimited question
+mark `?` and period `.` used in CIF syntax to denote unknown and null
 values, respectively.
 
 ## Magic numbers
@@ -44,18 +44,18 @@ The following values are used in the description.
 ## 1. Lines and padding
 
 1. Lines are a maximum of `line length` characters long. Multi-line character strings should
-be broken after the last whitespace character preceding this limit and trailing whitespace
+be broken after the last white-space character preceding this limit and trailing white space
 removed, unless rule 2.1.15 applies.
-2. Unless rule 2.1.15 applies, data values with no internal whitespace that would overflow the
+2. Unless rule 2.1.15 applies, data values with no internal white space that would overflow the
 line length limit if formatted according to the following rules should
 be presented in semicolon-delimited text fields with leading blank
 line, no indentation and folded, if necessary, so that the backslash
 appears in column `line length`.
-3. (No trailing whitespace) The last character in a line should not be whitespace.
+3. (No trailing white space) The last character in a line should not be white space.
 4. Blank lines are inserted only as specified below. Blank lines do not accumulate,
 that is, there should be no sequences of more than one blank line.
-5. All lines are terminated by a newline character (`\n`) as per CIF2 specifications.
-6. Tab characters may not be used either as whitespace or within data values, unless
+5. All lines are terminated by a newline character (`\n`) as per CIF 2 specifications.
+6. Tab characters may not be used either as white space or within data values, unless
 part of the meaning of the data value.
 7. No comments appear within, or after, the data block.
 
@@ -64,7 +64,7 @@ part of the meaning of the data value.
 ### 2.1 Text strings
 
 In general multi-line text strings can include formatting like
-centering or ASCII equations. The rules below aim to minimise
+centring or plain-text equations. The rules below aim to minimize
 disruption to such formatting where present in the supplied
 value. Note also that rule 1.2 overrides indentation rules below.
 
@@ -73,7 +73,7 @@ value. Note also that rule 1.2 overrides indentation rules below.
    and period `.` must always be delimited as otherwise they will
    be interpreted as special values.
 2. Where a delimiter is necessary, the first delimiter in the
-   following list that produces a syntactically correct CIF2 file
+   following list that produces a syntactically correct CIF 2 file
    should be used: (single quote `'`, double quote `"`,
    triple-single-quote `'''`, triple-double-quote `"""`, semicolon
    `\n;`).
@@ -84,27 +84,27 @@ value. Note also that rule 1.2 overrides indentation rules below.
    contain `text indent` spaces at the beginning. Tab characters must not
    be used for this purpose. Paragraphs are separated by a single blank line
    which must contain only a new line character. Lines may contain more than
-   `text indent` spaces at the beginning, for example for ASCII equations or
-   centering purposes.
+   `text indent` spaces at the beginning, for example for plain-text equations or
+   centring purposes.
 6. No tab characters may be used for formatting data values.
 7. The first line of a semicolon-delimited text field should be blank, except
    for line folding and prefixing characters where necessary.
 8. A new line character always follows the final semicolon of a semicolon-delimited text field.
 9. Looped attributes should use the same delimiter for all values in the same column.
    Special values are exempt from this rule.
-10. Category names in a category definition should be presented CAPITALISED in
+10. Category names in a category definition should be presented CAPITALIZED in
     `_name.category_id`, `_name.object_id` and `_definition.id`
 11. Category and object names in data item definitions should be presented in "canonical" case.
-    Canonical case follows the rules of English capitalisation where the first letter is not
+    Canonical case follows the rules of English capitalization where the first letter is not
     considered to start a sentence. In particular:
     1. Proper names and place names (e.g. Wyckoff, Cambridge) and
        their abbreviations (e.g. "H\_M" for "Hermann-Mauguin", "Cartn",
-       "Lp\_factor") are capitalised.
-    2. Symbols are capitalised according to crystallographic convention (e.g. Uij).
-    3. Initialisms are capitalised (e.g. CSD, IT for International Tables).
+       "Lp\_factor") are capitalized.
+    2. Symbols are capitalized according to crystallographic convention (e.g. Uij).
+    3. Initialisms are capitalized (e.g. CSD, IT for International Tables).
 12. Case-insensitive data items should be output with a leading
     capital letter unless convention dictates otherwise.
-13. Values of attributes drawn from enumerated states should be capitalised in
+13. Values of attributes drawn from enumerated states should be capitalized in
     the same way as the definition of that attribute.
 14. Function names defined in DDLm Function categories are CamelCased.
 15. If a character drawn from the set `#^*-=+~` appears 5 or more times sequentially (e.g. `^^^^^^`) anywhere in a multi-line text value,
@@ -115,7 +115,7 @@ value. Note also that rule 1.2 overrides indentation rules below.
 No DDLm attributes are currently defined that require more than one level of nesting.
 If such attributes are defined, these rules will be extended.
 
-1. The first and last values of a list are not separated from the delimiters by whitespace.
+1. The first and last values of a list are not separated from the delimiters by white space.
 2. Each element of the list is separated by `min whitespace` from the next element.
 3. Where application of the rules for loop or attribute-value layout require an internal
    line break, the list should be presented as a multi-line compound object (see below).
@@ -141,12 +141,12 @@ If such attributes are defined, these rules will be extended.
 No DDLm attributes are currently defined that require more than one level of nesting.
 If such attributes are defined, these guidelines will be extended.
 
-1. Key:value pairs are presented with no internal whitespace around the `:` character.
+1. Key:value pairs are presented with no internal white space around the `:` character.
 2. The key is delimited by single quotes (`'`). If this is not possible, the rules
    for text strings (2.1) are followed.
 3. Key:value pairs are separated by `min whitespace`.
 4. Keys appear in alphabetical order.
-5. There is no whitespace between the opening and closing braces and the first/last
+5. There is no white space between the opening and closing braces and the first/last
    key:value pair.
 6. Where application of the rules for loop or attribute-value layout require an
    internal line break, the table should be presented as a multi-line compound object.
@@ -167,9 +167,9 @@ newlines. DDLm does not define attributes with more than one level of
 nesting. These rules will be extended if and when such items are
 defined. The indentation of the opening delimiter determined by rules
 (1) and (2) is labelled `object indent`. Note that this refers to the
-number of whitespace characters preceding the opening delimiter, so
+number of white-space characters preceding the opening delimiter, so
 the opening delimiter appears at column `object indent + 1`. The
-intent of rule (1) is to minimise line breaks within any internal
+intent of rule (1) is to minimize line breaks within any internal
 compound objects.
 
 1. The opening delimiter is placed at the maximum of (`value col`,
@@ -190,11 +190,11 @@ compound objects.
 7. Except when immediately following a primitive value, closing delimiters are
    placed on a separate line indented by the same amount as their corresponding
    opening delimiter.
-8. A "corresponding value" is either a list entry at the same position
-   in each list of a list of lists, or a table value with the same key
-   in a list of tables. Corresponding values must be vertically
+8. A "corresponding value" is either a List entry at the same position
+   in each List of a list of Lists, or a Table value with the same key
+   in a list of Tables. Corresponding values must be vertically
    aligned on their first character such that a minimum spacing of
-   `min whitespace` is maintained, and at least one whitespace gap
+   `min whitespace` is maintained, and at least one white-space gap
    between each column is exactly `min whitespace` for at least one
    row.
 
@@ -212,11 +212,11 @@ compound objects.
 # Alignment of internal values, nested opening delimiter
 
 [
- {'file':cif_core.dic  'save':CIF_CORE  'mode':Full}
- {'file':cif_ms.dic    'save':CIF_MS    'mode':Full}
+ {'file':cif_core.dic  'save':CIF_CORE_HEAD  'mode':Full}
+ {'file':cif_ms.dic    'save':CIF_MS_HEAD    'mode':Full}
 ]
 
-# Internal value doesn't fit when starting a value_col, so must start
+# Internal value doesn't fit when starting at value_col, so must start
 # at value indent. Internal opening delimiter on new line
 
     _import.get
@@ -232,20 +232,21 @@ compound objects.
                                    {'file':templ_attr.cif  'save':Miller_index}
                                   ]
 
-# Array item in loop starts at column 37 to maintain min whitespace
+# Array item in loop starts at column 35 to maintain min whitespace
 
     loop_
-      _dictionary_valid.application
+      _dictionary_valid.scope
+      _dictionary_valid.option
       _dictionary_valid.attributes
-         [Dictionary  Mandatory]    ['_dictionary.title'  '_dictionary.class'
-                                     '_dictionary.version'  '_dictionary.date'
-                                     '_dictionary.uri'
-                                     '_dictionary.ddl_conformance'
-                                     '_dictionary.namespace']
-         [Dictionary  Recommended]  ['_description.text'
-                                     '_dictionary_audit.version'
-                                     '_dictionary_audit.date'
-                                     '_dictionary_audit.revision']
+         Dictionary  Mandatory    ['_dictionary.title'  '_dictionary.class'
+                                   '_dictionary.version'  '_dictionary.date'
+                                   '_dictionary.uri'
+                                   '_dictionary.ddl_conformance'
+                                   '_dictionary.namespace']
+         Dictionary  Recommended  ['_description.text'
+                                   '_dictionary_audit.version'
+                                   '_dictionary_audit.date'
+                                   '_dictionary_audit.revision']
 ```
 
 ### 2.5 Enumeration ranges
@@ -260,7 +261,7 @@ Numeric range limits of data items with the `Integer` content type should be exp
 1. Do not include non-significant leading zeros, e.g. '7' instead of '007'.
 2. Do not include a fractional part, e.g. '1' instead of '1.0'.
 3. Do not include a trailing decimal separator, e.g. '2' instead of '2.'.
-4. Do not include the '+' symbol, e.g. '42' instead '+42'.
+4. Do not include the '+' symbol, e.g. '42' instead of '+42'.
 5. Do not include a signed zero, e.g. '0' instead of '+0' or '-0'.
 
 The following regular expression may be used to check if a number adheres to the integer range limit formatting rules:
@@ -271,7 +272,7 @@ The following regular expression may be used to check if a number adheres to the
 )
 $
 ```
-The regular expression above is formatted for readability using the additional syntax rules enabled by the `/x` Perl regular expression modifier (e.g. any unescaped whitespace symbols must be ignored).
+The regular expression above is formatted for readability using the additional syntax rules enabled by the `/x` Perl regular expression modifier (e.g. any unescaped white-space symbols must be ignored).
 
 ##### Examples of properly formatted integer number ranges
 ```
@@ -281,17 +282,17 @@ The regular expression above is formatted for readability using the additional s
 -8:8
 ```
 
-### 2.5.2 Real number ranges
+### 2.5.2 Real-number ranges
 
 Numeric range limits of data items with the `Real` content type should be expressed using floating-point real numbers that:
 1. Include at least one digit before the decimal separator, e.g. '0.5' instead of '.5'.
 2. Include at least one digit after the decimal separator, e.g. '7.0' instead of '7.' or '7'.
 3. Include the smallest number of non-significant leading zeros that still satisfies other formatting rules, e.g. '0.25' instead of '000.25'.
 4. Include the smallest number of non-significant trailing zeros that still satisfies other formatting rules, e.g. '13.0' instead of '13.000'.
-5. Do not include the '+' symbol, e.g. '42.0' instead '+42.0'.
+5. Do not include the '+' symbol, e.g. '42.0' instead of '+42.0'.
 6. Do not include a signed zero, e.g. '0.0' instead of '+0.0' or '-0.0'.
 
-The following regular expression may be used to check if a number adheres to the real number range limit formatting rules:
+The following regular expression may be used to check if a number adheres to the real-number range limit formatting rules:
 
 ```
 ^
@@ -305,9 +306,9 @@ The following regular expression may be used to check if a number adheres to the
 )
 $
 ```
-The regular expression above is formatted for readability using the additional syntax rules enabled by the `/x` Perl regular expression modifier (e.g. any unescaped whitespace symbols must be ignored).
+The regular expression above is formatted for readability using the additional syntax rules enabled by the `/x` Perl regular expression modifier (e.g. any unescaped white-space symbols must be ignored).
 
-##### Examples of properly formatted real number ranges
+##### Examples of properly formatted real-number ranges
 ```
 0.0:100.0
 0.0:
@@ -322,31 +323,31 @@ The regular expression above is formatted for readability using the additional s
 ### 3.1 Attribute-value pairs
 
 Note the following rule assumes that no DDLm attributes are longer
-than `value col` - `text indent` - `min whitespace`. The length of a
+than (`value col` - `text indent`) - `min whitespace`. The length of a
 value includes the delimiters. The rules for attribute-value pairs
 cover items from Set categories as well as items from single-packet
 Loop categories.
 
-1. DDLm attributes appear lowercased at the beginning of a line after
+1. DDLm attributes appear lower-cased at the beginning of a line after
    `text indent` spaces.
-2. A value with character length that is lesser or equal to
-   `line length` - `value col` + 1 starts in column `value col`.
+2. A value with character length that is less than or equal to
+   (`line length` - `value col`) + 1 starts in column `value col`.
 3. A value with character length that is greater than
-   `line length` - `value col` + 1 and lesser or equal to
-   `line length` - `value indent + 1` starts in column
+   (`line length` - `value col`) + 1 and less than or equal to
+   (`line length` - `value indent`) + 1 starts in column
    `value indent + 1` of the next line.
 4. A value with character length greater than
-   `line length - value indent + 1`
+   (`line length` - `value indent`) + 1
    is presented as a semicolon-delimited text string or as a multi-line
    compound object.
 5. `_description.text` is always presented as a semicolon-delimited text string.
 6. Attributes that take default values (as listed in `ddl.dic`) are
    not output, except:
-   1. Those that participate in category keys
+   1. Those that participate in category keys.
    2. The following attributes from category TYPE:
    `_type.purpose`, `_type.source`, `_type.container`,
-   `_type.contents`
-   3. Attributes used outside definitions (e.g. `_dictionary.class`)
+   `_type.contents`.
+   3. Attributes used outside definitions (e.g. `_dictionary.class`).
 
 #### Examples
 
@@ -374,7 +375,7 @@ Loop categories.
     Quoted value with padding: 123456789A123456789B123456789C123456789D1234
 ;
 
-# Long values with no internal whitespaces that fit into a single line
+# Long values with no internal white spaces that fit into a single line
 # should be presented without indentation as specified in rule 2.1
 
     _description_example.case
@@ -382,7 +383,7 @@ Loop categories.
 InChI=1S/C6H12O6/c7-1-2-3(8)4(9)5(10)6(11)12-2/h2-11H,1H2/t2-,3-,4+,5-,6?/m1/s1
 ;
 
-# Long values with no internal whitespaces that do not fit into a single
+# Long values with no internal white spaces that do not fit into a single
 # line should be folded and presented without indentation as specified in
 # rule 2.1
 
@@ -402,7 +403,7 @@ Loops consist of a series of packets. Corresponding items in each
 packet should be aligned in the output to form visual columns. To
 avoid confusion with "column" in the sense of "horizontal character
 position", these visual columns are called "packet items" in the
-following.  Note that loops in dictionaries rarely have more than 2
+following.  Note that loops in dictionaries rarely have more than two
 such packet items. The "width" of a packet item is the width of the
 longest data value for the corresponding data name, including
 delimiters. The rules below are designed to make sure that packet
@@ -411,9 +412,9 @@ packet items are readable.
 
 1. A loop containing a single data name and single packet is presented as an
    attribute - value pair.
-2. The lowercase `loop_` keyword appears on a new line after `text indent` spaces
+2. The lower-case `loop_` keyword appears on a new line after `text indent` spaces
    and is preceded by a single blank line.
-3. The `n` lowercase, looped attribute names appear on separate lines starting at column
+3. The `n` lower-case, looped attribute names appear on separate lines starting at column
    `text indent + loop indent + 1`.
 4. Each packet starts on a new line. The final packet is followed by a single
    blank line.
@@ -421,27 +422,27 @@ packet items are readable.
 6. Non-compound values that are longer than `line length - loop step`
    characters are presented as semicolon-delimited text strings.
 7. Semicolon-delimited text strings in loops are formatted as for
-   section 2.1, except that they are indented so that the first
+   Section 2.1, except that they are indented so that the first
    non-blank,non-prefix character of each line aligns with the first alphabetic
-   character of the data name header, that is, the first non blank
+   character of the data-name header, that is, the first non-blank
    character appears in column `text indent` + `loop indent` + 2.
 8. If the number of looped attributes `n` > 1, values in packets are
-   separated by `min whitespace` together with any whitespace
+   separated by `min whitespace` together with any white space
    remaining at the end of the line distributed evenly between the
    packet items.  The following algorithm achieves this:
     1. Find largest integer `p` such that no data values before packet item
-      `p` on the current line contain a new line and the sum of the widths
-      of next `p` packet items, separated by `min whitespace` is not greater
+      `p` on the current line contain a newline and the sum of the widths
+      of the next `p` packet items, separated by `min whitespace`, is not greater
       than `line length`. Call this total width.
-    2. Calculate "remaining whitespace" as `floor((line length - total width)/(p-1))`.
-    3. The start position of values for attribute number `d+1` is start position of attribute
+    2. Calculate "remaining white space" as `floor((line length - total width)/(p-1))`.
+    3. The start position of values for attribute number `d+1` is the start position of attribute
     `d` + width of data name `d + min whitespace + remaining whitespace + 1`.
     4. If p < n, the next value is placed in column `loop step` on a new line and
-    procedure repeated from step 1.
-    5. If any values for a data name contain a new line, data values following that
+    the procedure repeated from step 1.
+    5. If any values for a data name contain a newline, data values following that
     data value start from step 4.
     6. Notwithstanding (4), the starting column for multi-line
-    compound data values is that given in section 2.4.
+    compound data values is that given in Section 2.4.
 
 9. If there are two values on a single line and the rules above would
    yield a starting column for the second value that is greater than
@@ -457,7 +458,7 @@ packet items are readable.
 
 11. Values of the `_method.expression` attribute are always presented
     as semicolon-delimited text strings following the formatting and
-    prefixing rules of regular strings as specified in section 2.1.
+    prefixing rules of regular strings as specified in Section 2.1.
     This allows to keep a more uniform layout of the dREL code throughout
     the dictionary file.
 
@@ -489,16 +490,16 @@ packet items are readable.
       _description_example.case
       _description_example.detail
 ;
-       Example 1 in the first semicolon delimited field.
+       Example 1 in the first semicolon-delimited field.
 ;
 ;
-       Detail 1 in the second semicolon delimited field.
+       Detail 1 in the second semicolon-delimited field.
 ;
 ;
-       Example 2 in the first semicolon delimited field.
+       Example 2 in the first semicolon-delimited field.
 ;
 ;
-       Detail 2 in the second semicolon delimited field.
+       Detail 2 in the second semicolon-delimited field.
 ;
 
 # Alignment of single-line values
@@ -515,14 +516,14 @@ packet items are readable.
 
 ### 4.1  Front matter and definitions
 
-1. The first line contains the CIF2.0 identifier with no trailing whitespace.
-2. Between the first line and the data block header is an arbitrary multi-line
+1. The first line consists of the `#\#CIF_2.0` identifier with no trailing white space.
+2. Between the first line and the data-block header is an arbitrary multi-line
 comment, consisting of a series of lines commencing with a hash character.
 The comment-folding convention is not used.
-3. A single blank line precedes the data block header.
+3. A single blank line precedes the data-block header.
 4. The final character in the file is a new line (`\n`).
-5. A single blank line follows the data block header.
-6. `data` is lowercase in the data block header.
+5. A single blank line follows the data-block header.
+6. `data_` is lower case in the data block header.
 7. The first definition is the `Head` category.
 8. A category is presented in order: category definition, followed by
    all data names in alphabetical order, followed by child categories.
@@ -550,7 +551,8 @@ first save frame, in the following order:
 appearing after the final save frame, in the following category order.
 Looped data names appear in the order provided in brackets.
    1. DICTIONARY_VALID (scope, option, attributes)
-   2. DICTIONARY_AUDIT (version, date, revision)
+   2. DICTIONARY_AUTHOR (id, name, id_ORCID, email)
+   3. DICTIONARY_AUDIT (version, date, revision)
 
 3. `_dictionary_audit.revision` is always presented as a semicolon-delimited
 text string.
@@ -565,10 +567,10 @@ followed by other data names in alphabetical order.
 
 ### 4.3 Definition layout
 
-1. 1 blank line appears before and after the save frame begin and end codes.
-The variable part of the save frame begin code is uppercase for categories
-and lowercase for all others.
-2. `_import.get` attributes are separated by 1 blank line above and below.
+1. One blank line appears before and after the save-frame begin and end codes.
+The variable part of the save-frame begin code is upper case for categories
+and lower case for all others.
+2. `_import.get` attributes are separated by one blank line above and below.
 3. IMPORT_DETAILS attributes are not used.
 4. Attributes in a definition appear in the following order, where
    present. The names in brackets give the order in which attributes
@@ -591,18 +593,18 @@ and lowercase for all others.
    15. METHOD(purpose, expression)
 
 5. Any attributes not included in this list should be treated as if they appear
-in alphabetical order after the last item already listed for their (capitalised)
+in alphabetical order after the last item already listed for their (capitalized)
 categories above. If the category does not appear, the attributes are
 presented in alphabetical order of category and then `object_id` after
 DESCRIPTION_EXAMPLE.
 
 ## 5. Naming convention
 
-1. Save frame code of a data item definition frame should be identical to
-   the lowercase version of the `_definition.id` attribute value contained
+1. The save-frame code of a data-item definition frame should be identical to
+   the lower-case version of the `_definition.id` attribute value contained
    in the definition, with any leading underscores removed.
-2. Save frame code of a category definition should be identical to
-   the uppercase version of the `_definition.id` attribute value contained
+2. The save-frame code of a category definition should be identical to
+   the upper-case version of the `_definition.id` attribute value contained
    in the definition, with any leading underscores removed.
 
 ## 6. Known implementations
@@ -610,8 +612,8 @@ DESCRIPTION_EXAMPLE.
 * [julia_cif_tools](https://github.com/jamesrhester/julia_cif_tools).
   This software package includes several programs that make use of this guide.
   Most notably:
-  - `pretty_print.jl`. Reformats a dictionary in accordance to this guide.
-  - `linter.jl`. Detect deviation from this guide in a given dictionary.
+  - `pretty_print.jl`. Reformats a dictionary in accordance with this guide.
+  - `linter.jl`. Detects deviations from this guide in a given dictionary.
 
 ## CHANGELOG
 
@@ -624,3 +626,4 @@ DESCRIPTION_EXAMPLE.
 |   1.2.2 | 2023-06-29 | Added rule 2.5 for enumeration formatting. |
 |   1.3.0 | 2025-05-23 | Added the "Known implementations" section. |
 |   1.3.1 | 2025-06-13 | Added rule 3.2.11 for the formatting of the `_method.expression` attribute in a loop context. |
+|   1.4.0 | 2026-02-05 | Specified the placement and attribute order of the DICTIONARY_AUTHORS category, updated some examples; otherwise largely cosmetic to align with International Tables house style. |
