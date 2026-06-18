@@ -1,6 +1,6 @@
 # Dictionary naming conventions
 
-Version 0.2.2 2026-02-20
+Version 0.2.3 2026-06-18
 
 This table establishes conventions for naming dictionaries and tracking their implementation. The first set of columns tracks historical usage; the last (in bold) indicate dictionaries on GitHub now conforming to the agreed requirements.
 
@@ -55,3 +55,4 @@ Legend:
 |   0.2.0 | 2026-01-28 | Added legend, update table values.                  |
 |   0.2.1 | 2026-01-29 | Added CIF logo files.                               |
 |   0.2.2 | 2026-02-20 | Added preliminary info for spinCIF.                 |
+|   0.2.3 | 2026-06-18 | Update table values.                                |
