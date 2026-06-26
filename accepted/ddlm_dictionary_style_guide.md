@@ -223,8 +223,8 @@ compound objects.
 
     _import.get
          [
-          {"file":templ_attr.cif "save":Cromer_Mann_coeff}
-          {"file":templ_enum.cif "save":Cromer_Mann_a1}
+          {'file':templ_attr.cif 'save':Cromer_Mann_coeff}
+          {'file':templ_enum.cif 'save':Cromer_Mann_a1}
          ]
 
 # Internal value fits using value_col as indent, but outer brackets are
@@ -342,9 +342,8 @@ Loop categories.
    (`line length` - `value indent`) + 1
    is presented as a semicolon-delimited text string or as a multi-line
    compound object.
-5. `_description.text` is always presented as a semicolon-delimited text string.
-6. Attributes that take default values (as listed in `ddl.dic`) are
-   not output, except:
+5. `_description.text` values are always presented as semicolon-delimited text strings.
+6. Attributes that take default values are not output, except:
    1. Those that participate in category keys.
    2. The following attributes from category TYPE:
    `_type.purpose`, `_type.source`, `_type.container`,
@@ -425,7 +424,7 @@ packet items are readable.
    characters are presented as semicolon-delimited text strings.
 7. Semicolon-delimited text strings in loops are formatted as for
    Section 2.1, except that they are indented so that the first
-   non-blank,non-prefix character of each line aligns with the first alphabetic
+   non-blank, non-prefix character of each line aligns with the first alphabetic
    character of the data-name header, that is, the first non-blank
    character appears in column `text indent` + `loop indent` + 2.
 8. If the number of looped attributes `n` > 1, values in packets are
@@ -461,7 +460,7 @@ packet items are readable.
 11. Values of the `_method.expression` attribute are always presented
     as semicolon-delimited text strings following the formatting and
     prefixing rules of regular strings as specified in Section 2.1.
-    This allows to keep a more uniform layout of the dREL code throughout
+    This allows a more uniform layout of the dREL code throughout
     the dictionary file.
 
 #### Examples
@@ -556,8 +555,8 @@ Looped data names appear in the order provided in brackets.
    2. DICTIONARY_AUTHOR (id, name, id_ORCID, email)
    3. DICTIONARY_AUDIT (version, date, revision)
 
-3. `_dictionary_audit.revision` is always presented as a semicolon-delimited
-text string.
+3. `_dictionary_audit.revision` values are always presented as
+semicolon-delimited text strings.
 
 4. Non-looped attributes not covered in rule 4.2.1 appear in alphabetical order
 after `_dictionary.namespace`.
@@ -581,10 +580,10 @@ and lower case for all others.
    2. DEFINITION_REPLACED(id, by)
    3. ALIAS (definition_id)
    4. `_definition.update`
-   5. DESCRIPTION(text,common)
+   5. DESCRIPTION(text, common)
    6. NAME(category_id, object_id, linked_item_id)
    7. `_category_key.name`
-   8. TYPE (purpose,source, container, dimension,contents,
+   8. TYPE (purpose, source, container, dimension, contents,
             contents_referenced_id, indices, indices_referenced_id)
    9. ENUMERATION(range)
    10. ENUMERATION_SET(state, detail)
