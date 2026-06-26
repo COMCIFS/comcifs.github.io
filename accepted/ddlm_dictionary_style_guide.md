@@ -1,6 +1,6 @@
 # Style Guide for DDLm Dictionaries
 
-Version 1.4.0 2026-02-05
+Version 1.5.0 2026-06-26
 
 ## Overview
 
@@ -31,15 +31,17 @@ values, respectively.
 
 The following values are used in the description.
 
-`line length`: 80
-`text indent`: 4
-`text prefix`: `>`
-`value col`: 35
-`value indent`: `text indent` + `loop step`
-`loop indent`: 2
-`loop align`: 10
-`loop step`: 5
-`min whitespace`: 2
+| Name             | Value |
+|:-----------------|------:|
+| `line length`    |    80 |
+| `text indent`    |     4 |
+| `text prefix`    |   `>` |
+| `value col`      |    35 |
+| `value indent`   | `text indent` + `loop step`
+| `loop indent`    |     2 |
+| `loop align`     |    10 |
+| `loop step`      |     5 |
+| `min whitespace` |     2 |
 
 ## 1. Lines and padding
 
@@ -627,3 +629,4 @@ DESCRIPTION_EXAMPLE.
 |   1.3.0 | 2025-05-23 | Added the "Known implementations" section. |
 |   1.3.1 | 2025-06-13 | Added rule 3.2.11 for the formatting of the `_method.expression` attribute in a loop context. |
 |   1.4.0 | 2026-02-05 | Specified the placement and attribute order of the DICTIONARY_AUTHORS category, updated some examples; otherwise largely cosmetic to align with International Tables house style. |
+|   1.4.1 | 2026-06-26 | Formatting adjustments. |
