@@ -545,8 +545,9 @@ first save frame, in the following order:
    4. `_dictionary.date`
    5. `_dictionary.uri`
    6. `_dictionary.ddl_conformance`
-   7. `_dictionary.namespace`
-   8. `_description.text`
+   7. `_dictionary.licensing_SPDX`
+   8. `_dictionary.namespace`
+   9. `_description.text`
 
 2. All looped attributes describing the dictionary are presented as loops
 appearing after the final save frame, in the following category order.
@@ -628,4 +629,4 @@ DESCRIPTION_EXAMPLE.
 |   1.3.0 | 2025-05-23 | Added the "Known implementations" section. |
 |   1.3.1 | 2025-06-13 | Added rule 3.2.11 for the formatting of the `_method.expression` attribute in a loop context. |
 |   1.4.0 | 2026-02-05 | Specified the placement and attribute order of the DICTIONARY_AUTHORS category, updated some examples; otherwise largely cosmetic to align with International Tables house style. |
-|   1.4.1 | 2026-06-26 | Formatting adjustments. |
+|   1.4.1 | 2026-06-26 | Added the `_dictionary.licensing_SPDX` attribute to rule 4.2.1. Made minor phrasing and text formatting adjustments. |
