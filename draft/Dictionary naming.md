@@ -1,6 +1,6 @@
 # Dictionary naming conventions
 
-Version 0.2.3 2026-06-18
+Version 0.2.4 2026-06-29
 
 This table establishes conventions for naming dictionaries and tracking their implementation. The first set of columns tracks historical usage; the last (in bold) indicate dictionaries on GitHub now conforming to the agreed requirements.
 
@@ -15,11 +15,10 @@ Conventions for DDL dictionaries still to be confirmed.
 
 | dictionary       | ITG1e   | ITG2e   | Website              | Logo           | File                     | historical _dictionary.title | _dictionary.title | Repository name   | Head group         | _dictionary.namespace | Comments                                         |
 | --- | --- | --- | --- | :---: | --- | ---  | --- | --- | --- | --- | --- |
-| Core             | coreCIF | coreCIF | coreCIF              | CIF_core <img src="logos/CIF_core.jpg" alt="coreCIF logo" height="60">      | cif_core.dic             | CIF_CORE               | **CIF_CORE**      | **cif_core**       | **CIF_CORE_HEAD**  | **CifCore**           |                                                  |
-| Powder           | pdCIF   | pdCIF   | pdCIF                | CIF_pd <img src="logos/CIF_pd.jpg" alt="pdCIF logo" height="60">          | cif_pd.dic               | CIF_POW (!)            |                   | **cif_pd**         | **PD_GROUP** (!)   | **CifPow** (!)        | Dictionary currently CIF_POW; CIF_PD preferred?  |
-|                  |         |         |                      |                | cif_pow.dic (G) (!)      |                        |                   |                    |                    |                       |                                                  |
-| Modulated struct | msCIF   | msCIF   | msCIF                | CIF_ms <img src="logos/CIF_ms.jpg" alt="msCIF logo" height="60">          | cif_ms.dic               | CIF_MS                 | **CIF_MS**        | **cif_ms**         | **CIF_MS_HEAD**    | **CifCore**     |                                                  |
-| Electron density | rhoCIF  | rhoCIF  | rhoCIF               | CIF_rho <img src="logos/CIF_rho.jpg" alt="rhoCIF logo" height="60">        | cif_rho.dic              | CIF_RHO                | **CIF_RHO**       | **cif_rho**        | **CIF_RHO_HEAD**   | **CifCore**           |                                                  |
+| Core             | coreCIF | coreCIF | coreCIF              | CIF_core <img src="logos/CIF_core.jpg" alt="coreCIF logo" height="60">    | cif_core.dic             | CIF_CORE               | **CIF_CORE**      | **cif_core**       | **CIF_CORE_HEAD**  | **CifCore** |      |
+| Powder           | pdCIF   | pdCIF   | pdCIF                | CIF_pd <img src="logos/CIF_pd.jpg" alt="pdCIF logo" height="60">          | cif_pd.dic               | CIF_PD                 | **CIF_PD**        | **cif_pd**         | **CIF_PD_HEAD**    | **CifCore** |      |
+| Modulated struct | msCIF   | msCIF   | msCIF                | CIF_ms <img src="logos/CIF_ms.jpg" alt="msCIF logo" height="60">          | cif_ms.dic               | CIF_MS                 | **CIF_MS**        | **cif_ms**         | **CIF_MS_HEAD**    | **CifCore** |      |
+| Electron density | rhoCIF  | rhoCIF  | rhoCIF               | CIF_rho <img src="logos/CIF_rho.jpg" alt="rhoCIF logo" height="60">       | cif_rho.dic              | CIF_RHO                | **CIF_RHO**       | **cif_rho**        | **CIF_RHO_HEAD**   | **CifCore**           |                                                  |
 | Macromolecular   | mmCIF   | mmCIF   | mmCIF                | CIF_mm <img src="logos/CIF_mm.jpg" alt="mmCIF logo" height="60">          | cif_mm.dic               | N/A                    |                   |                    |                    | N/A                   |                                                  |
 |                  |         |         |                      |                | mmcif_std.dic (P)        |                        |                   |                    |                    |                       |                                                  |
 |                  |         |         |                      |                | mmcif_pdbx.dic (P)       |                        |                   |                    |                    |                       |                                                  |
@@ -55,4 +54,5 @@ Legend:
 |   0.2.0 | 2026-01-28 | Added legend, update table values.                  |
 |   0.2.1 | 2026-01-29 | Added CIF logo files.                               |
 |   0.2.2 | 2026-02-20 | Added preliminary info for spinCIF.                 |
-|   0.2.3 | 2026-06-18 | Update table values.                                |
+|   0.2.3 | 2026-06-18 | Updated table values.                               |
+|   0.2.4 | 2026-06-26 | Updated details for pdCIF.                          |
